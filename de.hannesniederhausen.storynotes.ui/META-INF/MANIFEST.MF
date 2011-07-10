@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Stoprynotes UI
-Bundle-SymbolicName: de.hannesniederhausen.storynotes.ui; singleton:=true
+Bundle-SymbolicName: de.hannesniederhausen.storynotes.ui;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: de.hannesniederhausen.storynotes.ui.Activator
 Require-Bundle: javax.inject;bundle-version="1.0.0",
