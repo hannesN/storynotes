@@ -1,0 +1,25 @@
+<Shell xmlns="http://www.eclipse.org/xwt/presentation" xmlns:x="http://www.eclipse.org/xwt" x:Class="mockup.Application" text="XWT Application">
+	<Shell.layout>
+		<GridLayout/>
+	</Shell.layout>
+	<Composite background="COLOR_WHITE">
+		<Composite.layout>
+			<GridLayout numColumns="7"/>
+		</Composite.layout>
+		<Composite.layoutData>
+			<GridData horizontalAlignment="FILL" grabExcessHorizontalSpace="true"/>
+		</Composite.layoutData>
+		<Combo text="File"/>
+		<Label text="-&gt;"/>
+		<Combo text="Project"/>
+		<Label text="-&gt;"/>
+		<Combo text="Category"/>
+		<Label text="-&gt;"/>
+		<Combo text="Note"/>
+	</Composite>
+	<Composite>
+		<Composite.layoutData>
+			<GridData verticalAlignment="FILL" horizontalAlignment="FILL" grabExcessVerticalSpace="true" grabExcessHorizontalSpace="true"/>
+		</Composite.layoutData>
+	</Composite>
+</Shell>
