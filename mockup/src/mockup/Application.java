@@ -7,6 +7,7 @@ import org.eclipse.e4.xwt.XWT;
 import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.widgets.Event;
 
 public class Application {
 
@@ -31,4 +32,8 @@ public class Application {
 				displayArea.width / 2, displayArea.height / 2);
 	}
 
+	public void onSelection(Event event) {
+	}
+	public void onSelection_1(Event event) {
+	}
 }

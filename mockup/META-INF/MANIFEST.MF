@@ -41,4 +41,9 @@ Export-Package: mockup,
  org.pushingpixels.trident.ease,
  org.pushingpixels.trident.interpolator,
  org.pushingpixels.trident.swt
-Require-Bundle: org.eclipse.swt;bundle-version="3.7.0"
+Require-Bundle: org.eclipse.swt;bundle-version="3.7.0",
+ org.eclipse.jface;bundle-version="3.7.0",
+ org.eclipse.jface.databinding;bundle-version="1.5.0",
+ org.eclipse.jface.text;bundle-version="3.7.0",
+ org.eclipse.ui;bundle-version="3.7.100"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
