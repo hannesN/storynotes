@@ -8,7 +8,7 @@
  * Contributors:
  *     IBM Corporation - initial API and implementation
  *******************************************************************************/
-package de.hannesniederhausen.storynotes.ui.handlers;
+package de.hannesniederhausen.storynotes.application.handlers;
 
 import java.lang.reflect.InvocationTargetException;
 

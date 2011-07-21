@@ -1,23 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin>
-
    <extension
          id="product"
          point="org.eclipse.core.runtime.products">
       <product
-            name="de.hannesniederhausen.storynotes.ui"
-            application="org.eclipse.e4.ui.workbench.swt.E4Application">
+            application="org.eclipse.e4.ui.workbench.swt.E4Application"
+            name="Storynotes">
          <property
                name="appName"
-               value="de.hannesniederhausen.storynotes.ui">
+               value="Storynotes">
          </property>
-         <property
+          <property
                name="applicationXMI"
-               value="de.hannesniederhausen.storynotes.ui/Application.e4xmi">
+               value="de.hannesniederhausen.storynotes.application/Application.e4xmi">
          </property>
          <property
                name="applicationCSS"
-               value="platform:/plugin/de.hannesniederhausen.storynotes.ui/css/default.css">
+               value="platform:/plugin/de.hannesniederhausen.storynotes.application/css/default.css">
          </property>
       </product>
    </extension>

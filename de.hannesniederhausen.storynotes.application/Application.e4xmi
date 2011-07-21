@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <application:Application xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:advanced="http://www.eclipse.org/ui/2010/UIModel/application/ui/advanced" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_3nxecKAIEeCMHLQZFU1fxg" elementId="org.eclipse.e4.ide.application" bindingContexts="_3nxecaAIEeCMHLQZFU1fxg">
-  <children xsi:type="basic:TrimmedWindow" xmi:id="_3nxeh6AIEeCMHLQZFU1fxg" label="de.hannesniederhausen.storynotes.ui" width="500" height="400">
+  <children xsi:type="basic:TrimmedWindow" xmi:id="_3nxeh6AIEeCMHLQZFU1fxg" label="Storynotes" width="500" height="400">
     <children xsi:type="advanced:PerspectiveStack" xmi:id="_3nxej6AIEeCMHLQZFU1fxg">
       <children xsi:type="advanced:Perspective" xmi:id="_3nxekKAIEeCMHLQZFU1fxg">
         <children xsi:type="basic:PartSashContainer" xmi:id="_3nxekaAIEeCMHLQZFU1fxg">
@@ -25,10 +25,10 @@
       </children>
     </trimBars>
   </children>
-  <handlers xmi:id="_3nxee6AIEeCMHLQZFU1fxg" contributionURI="platform:/plugin/de.hannesniederhausen.storynotes.ui/de.hannesniederhausen.storynotes.ui.handlers.QuitHandler" command="_3nxeeqAIEeCMHLQZFU1fxg"/>
-  <handlers xmi:id="_3nxef6AIEeCMHLQZFU1fxg" contributionURI="platform:/plugin/de.hannesniederhausen.storynotes.ui/de.hannesniederhausen.storynotes.ui.handlers.OpenHandler" command="_3nxefqAIEeCMHLQZFU1fxg"/>
-  <handlers xmi:id="_3nxegqAIEeCMHLQZFU1fxg" contributionURI="platform:/plugin/de.hannesniederhausen.storynotes.ui/de.hannesniederhausen.storynotes.ui.handlers.SaveHandler" command="_3nxegaAIEeCMHLQZFU1fxg"/>
-  <handlers xmi:id="_3nxehaAIEeCMHLQZFU1fxg" contributionURI="platform:/plugin/de.hannesniederhausen.storynotes.ui/de.hannesniederhausen.storynotes.ui.handlers.AboutHandler" command="_3nxehKAIEeCMHLQZFU1fxg"/>
+  <handlers xmi:id="_3nxee6AIEeCMHLQZFU1fxg" contributionURI="platform:/plugin/de.hannesniederhausen.storynotes.application/de.hannesniederhausen.storynotes.application.handlers.QuitHandler" command="_3nxeeqAIEeCMHLQZFU1fxg"/>
+  <handlers xmi:id="_3nxef6AIEeCMHLQZFU1fxg" contributionURI="platform:/plugin/de.hannesniederhausen.storynotes.application/de.hannesniederhausen.storynotes.application.handlers.OpenHandler" command="_3nxefqAIEeCMHLQZFU1fxg"/>
+  <handlers xmi:id="_3nxegqAIEeCMHLQZFU1fxg" contributionURI="platform:/plugin/de.hannesniederhausen.storynotes.application/de.hannesniederhausen.storynotes.application.handlers.SaveHandler" command="_3nxegaAIEeCMHLQZFU1fxg"/>
+  <handlers xmi:id="_3nxehaAIEeCMHLQZFU1fxg" contributionURI="platform:/plugin/de.hannesniederhausen.storynotes.application/de.hannesniederhausen.storynotes.application.handlers.AboutHandler" command="_3nxehKAIEeCMHLQZFU1fxg"/>
   <bindingTables xmi:id="_3nxefKAIEeCMHLQZFU1fxg" bindingContext="_3nxecaAIEeCMHLQZFU1fxg">
     <bindings xmi:id="_3nxefaAIEeCMHLQZFU1fxg" keySequence="Ctrl+Q" command="_3nxeeqAIEeCMHLQZFU1fxg"/>
     <bindings xmi:id="_3nxegKAIEeCMHLQZFU1fxg" keySequence="Ctrl+O" command="_3nxefqAIEeCMHLQZFU1fxg"/>

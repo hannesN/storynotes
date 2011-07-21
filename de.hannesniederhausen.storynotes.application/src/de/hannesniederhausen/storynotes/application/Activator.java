@@ -1,4 +1,4 @@
-package de.hannesniederhausen.storynotes.ui;
+package de.hannesniederhausen.storynotes.application;
 
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;

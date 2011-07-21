@@ -7,7 +7,7 @@
 
 	<Composite background="COLOR_WIDGET_LIGHT_SHADOW">
 		<Composite.layout>
-			<GridLayout numColumns="7" />
+			<GridLayout numColumns="10" />
 		</Composite.layout>
 		<Composite.layoutData>
 			<GridData horizontalAlignment="FILL" />
@@ -45,6 +45,13 @@
 				<p1:String>New...</p1:String>
 			</Combo.items>
 		</Combo>
+		<Button text="Back" image="/icons/full/dtool16/undo_edit.gif"/>
+		<Button text="Foreward" image="/icons/full/dtool16/redo_edit.gif"/>
+		<Text x:Style="BORDER | H_SCROLL | SEARCH | CANCEL" text="Search">
+			<Text.layoutData>
+				<GridData grabExcessHorizontalSpace="true" horizontalAlignment="FILL"/>
+			</Text.layoutData>
+		</Text>
 	</Composite>
 	<Composite background="COLOR_WHITE">
 		<Composite.layout>
