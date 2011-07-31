@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns:sn="https://github.com/hannesN/storynotes" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="https://github.com/hannesN/storynotes">
+  <xsd:import namespace="http://www.omg.org/XMI" schemaLocation="platform:/plugin/org.eclipse.emf.ecore/model/XMI.xsd"/>
+  <xsd:complexType name="File">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="author" type="xsd:string" use="required"/>
+    <xsd:attribute name="version" type="xsd:string" use="required"/>
+  </xsd:complexType>
+  <xsd:element name="File" type="sn:File"/>
+  <xsd:complexType name="Project">
+    <xsd:complexContent>
+      <xsd:extension base="sn:FileElement">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="categories" type="sn:Category"/>
+        </xsd:choice>
+        <xsd:attribute name="name" type="xsd:string" use="required"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="Project" type="sn:Project"/>
+  <xsd:complexType abstract="true" name="FileElement">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="id" type="xsd:long" use="required"/>
+  </xsd:complexType>
+  <xsd:element name="FileElement" type="sn:FileElement"/>
+  <xsd:complexType abstract="true" name="Category">
+    <xsd:complexContent>
+      <xsd:extension base="sn:FileElement">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="notes" type="sn:Note"/>
+        </xsd:choice>
+        <xsd:attribute name="name" type="xsd:string" use="required"/>
+        <xsd:attribute name="notes" type="xsd:string"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="Category" type="sn:Category"/>
+  <xsd:complexType abstract="true" name="Note">
+    <xsd:complexContent>
+      <xsd:extension base="sn:FileElement">
+        <xsd:attribute name="refId" type="xsd:string" use="required"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="Note" type="sn:Note"/>
+  <xsd:complexType name="Person">
+    <xsd:complexContent>
+      <xsd:extension base="sn:Note">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="hobbies" nillable="true" type="xsd:string"/>
+        </xsd:choice>
+        <xsd:attribute name="name" type="xsd:string" use="required"/>
+        <xsd:attribute name="cv" type="xsd:string"/>
+        <xsd:attribute name="age" type="xsd:int"/>
+        <xsd:attribute name="hairColor" type="xsd:string" use="required"/>
+        <xsd:attribute name="eyeColor" type="xsd:string" use="required"/>
+        <xsd:attribute name="size" type="xsd:int" use="required"/>
+        <xsd:attribute name="weight" type="xsd:float" use="required"/>
+        <xsd:attribute name="skinColor" type="xsd:string" use="required"/>
+        <xsd:attribute name="socialBackground" type="xsd:string" use="required"/>
+        <xsd:attribute name="psychologicalBackground" type="xsd:string" use="required"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="Person" type="sn:Person"/>
+  <xsd:complexType name="Setting">
+    <xsd:complexContent>
+      <xsd:extension base="sn:Note">
+        <xsd:attribute name="name" type="xsd:string" use="required"/>
+        <xsd:attribute name="kind" type="xsd:string" use="required"/>
+        <xsd:attribute name="description" type="xsd:string" use="required"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="Setting" type="sn:Setting"/>
+  <xsd:complexType name="Plot">
+    <xsd:complexContent>
+      <xsd:extension base="sn:Note">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="notes" type="sn:Note"/>
+        </xsd:choice>
+        <xsd:attribute name="kind" type="xsd:string" use="required"/>
+        <xsd:attribute name="title" type="xsd:string"/>
+        <xsd:attribute name="description" type="xsd:string" use="required"/>
+        <xsd:attribute name="notes" type="xsd:string"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="Plot" type="sn:Plot"/>
+</xsd:schema>

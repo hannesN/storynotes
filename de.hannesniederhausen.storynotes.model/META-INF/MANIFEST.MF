@@ -1,9 +1,15 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Story Notes Model
-Bundle-SymbolicName: de.hannesniederhausen.storynotes.model
+Bundle-Name: %pluginName
+Bundle-SymbolicName: de.hannesniederhausen.storynotes.model;singleton:=true
 Bundle-Version: 1.0.0.qualifier
-Bundle-Activator: de.hannesniederhausen.storynotes.model.Activator
-Require-Bundle: org.eclipse.core.runtime
-Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: .
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: de.hannesniederhausen.storynotes.model,
+ de.hannesniederhausen.storynotes.model.impl,
+ de.hannesniederhausen.storynotes.model.util
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.emf.ecore;visibility:=reexport
+Bundle-ActivationPolicy: lazy

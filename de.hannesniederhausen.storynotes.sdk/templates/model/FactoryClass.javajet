@@ -59,6 +59,19 @@ public class <%=genPackage.getFactoryClassName()%> extends <%=genModel.getImport
 public interface <%=genPackage.getFactoryInterfaceName()%><%if (!genModel.isSuppressEMFMetaData()) {%> extends <%=genModel.getImportedName("org.eclipse.emf.ecore.EFactory")%><%}%>
 <%}%>
 {
+
+<%if (isImplementation) {%>
+
+	/**
+	 * Counter to know which was the last given id
+	 *
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private static long lastId = -1;
+<%}%>
+
 <%if (genModel.hasCopyrightField()) {%>
 	/**
 	 * <!-- begin-user-doc -->
@@ -68,6 +81,9 @@ public interface <%=genPackage.getFactoryInterfaceName()%><%if (!genModel.isSupp
 	<%=publicStaticFinalFlag%><%=genModel.getImportedName("java.lang.String")%> copyright = <%=genModel.getCopyrightFieldLiteral()%>;<%=genModel.getNonNLS()%>
 
 <%}%>
+
+
+
 <%if (isImplementation && (genModel.isSuppressEMFMetaData() || genModel.isSuppressInterfaces())) {%>
 	/**
 	 * The singleton instance of the factory.
@@ -76,7 +92,7 @@ public interface <%=genPackage.getFactoryInterfaceName()%><%if (!genModel.isSupp
 	 * @generated
 	 */
 	<%=publicStaticFinalFlag%><%=genPackage.getFactoryClassName()%> eINSTANCE = init();
-
+	
 <%}%>
 <%if (isInterface && genModel.isSuppressEMFMetaData()) {%>
 	/**
@@ -217,6 +233,9 @@ public interface <%=genPackage.getFactoryInterfaceName()%><%if (!genModel.isSupp
     <%} else {%>
 		<%=genClass.getImportedClassName()%><%=genClass.getClassTypeArguments()%> <%=genClass.getSafeUncapName()%> = new <%=genClass.getImportedClassName()%><%=genClass.getClassTypeArguments()%>()<%if (genModel.isSuppressInterfaces() && !genPackage.getReflectionPackageName().equals(genPackage.getInterfacePackageName())) {%>{}<%}%>;
     <%}%>
+     <%if (!genClass.getInterfaceExtends().endsWith("extends EObject")) {%>
+     	setId(<%=genClass.getSafeUncapName()%>);
+     <%}%>
 		return <%=genClass.getSafeUncapName()%>;
 	}
 
@@ -691,6 +710,16 @@ public interface <%=genPackage.getFactoryInterfaceName()%><%if (!genModel.isSupp
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private void setId(FileElement element) {
+		 lastId++;
+		 element.setId(lastId);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @deprecated
 	 * @generated
 	 */
@@ -704,4 +733,7 @@ public interface <%=genPackage.getFactoryInterfaceName()%><%if (!genModel.isSupp
 
 <%}%>
 } //<%=isInterface ? genPackage.getFactoryInterfaceName() : genPackage.getFactoryClassName()%>
+
+
+
 <%genModel.emitSortedImports();%>
