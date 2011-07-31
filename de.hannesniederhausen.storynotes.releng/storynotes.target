@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?pde version="3.6"?>
+
+<target name="Base RCP (Binary Only)" sequenceNumber="7">
+<locations>
+<location includeAllPlatforms="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.equinox.executable.feature.group" version="3.5.0.v20110530-7P7NFUFFLWUl76mart"/>
+<unit id="org.eclipse.rcp.sdk.id" version="3.7.0.I20110613-1736"/>
+<repository location="http://download.eclipse.org/releases/indigo"/>
+</location>
+<location includeAllPlatforms="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.emf.sdk.feature.group" version="2.7.0.v20110606-0949"/>
+<repository location="http://download.eclipse.org/releases/indigo"/>
+</location>
+<location includeAllPlatforms="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.e4.resources.feature.feature.group" version="0.10.0.v20100211-0930-179-8s73553B5D15733"/>
+<unit id="org.eclipse.e4.runtime.feature.feature.group" version="0.9.1.v20100917-1000-7R77F9wF9JgLWVN4kcCmbZE"/>
+<unit id="org.eclipse.e4.tm.feature.feature.group" version="0.9.1.v20091029-1300-17q2CcNBC0HCMw5G_EB"/>
+<unit id="org.eclipse.e4.core.tools.feature.feature.group" version="0.10.0.v20110613-2030-28F1EVVFNMFz-Mh8XF_D"/>
+<unit id="org.eclipse.e4.ui.css.feature.feature.group" version="0.9.1.v20100603-1900-798A0FAiKQ6jV7i2Rsuo9"/>
+<unit id="org.eclipse.e4.ui.feature.feature.group" version="0.10.0.v20110613-2030-78Ab6FQFxCMosQTedwtB227B74"/>
+<unit id="org.eclipse.e4.ui.source.feature.feature.group" version="0.10.0.v20110613-2030-78Ab6FQFxCMosQTedwtB227B74"/>
+<unit id="org.eclipse.e4.ui.css.source.feature.feature.group" version="0.9.1.v20100603-1900-798A0FAiKQ6jV7i2Rsuo9"/>
+<unit id="org.eclipse.e4.ui.web.feature.feature.group" version="0.9.0.v20091022-1230-17H18s73553D6D16A63"/>
+<unit id="org.eclipse.e4.ui.web.source.feature.feature.group" version="0.9.0.v20091022-1230-17H18s73553D6D16A63"/>
+<unit id="org.eclipse.e4.xwt.feature.feature.group" version="0.9.1.v20091126-1500-17Z2AkF7B98PAL03211"/>
+<unit id="org.eclipse.e4.xwt.css.feature.feature.group" version="0.9.0.v20090609-1530-178-7w3121172803211"/>
+<unit id="org.eclipse.e4.xwt.css.source.feature.feature.group" version="0.9.0.v20090609-1530-178-7w3121172803211"/>
+<unit id="org.eclipse.e4.xwt.workbench.source.feature.feature.group" version="0.9.0.v20100618-178-7w3121222A01911"/>
+<unit id="org.eclipse.e4.xwt.emf.feature.feature.group" version="0.9.0.v20090624-1330-178-7w3121172803211"/>
+<unit id="org.eclipse.e4.xwt.emf.source.feature.feature.group" version="0.9.0.v20090624-1330-178-7w3121172803211"/>
+<unit id="org.eclipse.e4.xwt.source.feature.feature.group" version="0.9.1.v20091126-1500-17Z2AkF7B98PAL03211"/>
+<unit id="org.eclipse.e4.xwt.tools.feature.feature.group" version="0.9.0.v20110609-1700-28Z5F9JgLWMPz0b56QNJD"/>
+<unit id="org.eclipse.e4.xwt.tools.source.feature.feature.group" version="0.9.0.v20110609-1700-28Z5F9JgLWMPz0b56QNJD"/>
+<unit id="org.eclipse.e4.xwt.workbench.feature.feature.group" version="0.9.0.v20100618-178-7w3121222A01911"/>
+<repository location="http://download.eclipse.org/e4/updates/0.11"/>
+</location>
+<location includeAllPlatforms="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.platform.sdk" version="3.7.0.I20110613-1736"/>
+<repository location="http://download.eclipse.org/releases/indigo"/>
+</location>
+</locations>
+</target>

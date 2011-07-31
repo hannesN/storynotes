@@ -9,7 +9,7 @@
 	<packaging>pom</packaging>
 
 	<properties>
-		<tycho-version>0.12.0</tycho-version>
+		<tycho-version>0.13.0-SNAPSHOT</tycho-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
@@ -34,6 +34,7 @@
 							<ws>gtk</ws>
 							<arch>x86</arch>
 						</environment>
+						<!-- 
 						<environment>
 							<os>linux</os>
 							<ws>gtk</ws>
@@ -54,8 +55,16 @@
 							<ws>cocoa</ws>
 							<arch>x86_64</arch>
 						</environment>
+						 -->
 					</environments>
-
+					<target>
+						<artifact>
+							<groupId>de.hannesniederhausen.storynotes</groupId>
+							<artifactId>releng</artifactId>
+							<version>1.0.0-SNAPSHOT</version>
+							<classifier>storynotes</classifier>
+						</artifact>
+					</target>
 				</configuration>
 			</plugin>
 		</plugins>
@@ -74,4 +83,20 @@
 		</repository>
 	</repositories>
 
+	<pluginRepositories>
+		<pluginRepository>
+			<id>Sonatype</id>
+			<url>https://repository.sonatype.org/content/groups/sonatype-public-grid</url>
+		</pluginRepository>
+	</pluginRepositories>
+
+	<modules>
+		<module>../de.hannesniederhausen.storynotes.model</module>
+		<module>../de.hannesniederhausen.storynotes.ui</module>
+		<module>../de.hannesniederhausen.storynotes.application_feature</module>
+		<module>../de.hannesniederhausen.storynotes_feature</module>
+		<module>../de.hannesniederhausen.storynotes.application</module>
+		<module>../de.hannesniederhausen.storynotes.repository</module>
+	</modules>
+	<name>Storynotes Release Engineering</name>
 </project>
