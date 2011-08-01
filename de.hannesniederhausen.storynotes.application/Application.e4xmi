@@ -20,8 +20,8 @@
     </mainMenu>
     <trimBars xmi:id="_3nxek6AIEeCMHLQZFU1fxg">
       <children xsi:type="menu:ToolBar" xmi:id="_3nxelKAIEeCMHLQZFU1fxg" elementId="toolbar:org.eclipse.ui.main.toolbar">
-        <children xsi:type="menu:HandledToolItem" xmi:id="_3nxelaAIEeCMHLQZFU1fxg" iconURI="platform:/plugin/de.hannesniederhausen.storynotes.ui/icons/sample.gif" command="_3nxefqAIEeCMHLQZFU1fxg"/>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_3nxelqAIEeCMHLQZFU1fxg" iconURI="platform:/plugin/de.hannesniederhausen.storynotes.ui/icons/save_edit.gif" command="_3nxegaAIEeCMHLQZFU1fxg"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_3nxelaAIEeCMHLQZFU1fxg" iconURI="platform:/plugin/de.hannesniederhausen.storynotes.application/icons/sample.gif" command="_3nxefqAIEeCMHLQZFU1fxg"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_3nxelqAIEeCMHLQZFU1fxg" iconURI="platform:/plugin/de.hannesniederhausen.storynotes.application/icons/save_edit.gif" command="_3nxegaAIEeCMHLQZFU1fxg"/>
       </children>
     </trimBars>
   </children>
