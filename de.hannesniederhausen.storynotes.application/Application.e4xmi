@@ -1,32 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<application:Application xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:advanced="http://www.eclipse.org/ui/2010/UIModel/application/ui/advanced" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_3nxecKAIEeCMHLQZFU1fxg" elementId="org.eclipse.e4.ide.application" bindingContexts="_3nxecaAIEeCMHLQZFU1fxg">
-  <children xsi:type="basic:TrimmedWindow" xmi:id="_3nxeh6AIEeCMHLQZFU1fxg" label="Storynotes" width="500" height="400">
-    <children xsi:type="advanced:PerspectiveStack" xmi:id="_3nxej6AIEeCMHLQZFU1fxg">
-      <children xsi:type="advanced:Perspective" xmi:id="_3nxekKAIEeCMHLQZFU1fxg">
-        <children xsi:type="basic:PartSashContainer" xmi:id="_3nxekaAIEeCMHLQZFU1fxg">
-          <children xsi:type="basic:PartStack" xmi:id="_3nxekqAIEeCMHLQZFU1fxg"/>
-        </children>
+<application:Application xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_3nxecKAIEeCMHLQZFU1fxg" elementId="org.eclipse.e4.ide.application" bindingContexts="_3nxecaAIEeCMHLQZFU1fxg">
+  <children xsi:type="basic:TrimmedWindow" xmi:id="_Lxi_wMKdEeCPp6cpUPk1qw" width="800" height="600">
+    <children xsi:type="basic:Part" xmi:id="_OBx9AMKdEeCPp6cpUPk1qw" elementId="mainview" contributionURI="platform:/plugin/de.hannesniederhausen.storynotes.ui/de.hannesniederhausen.storynotes.ui.views.MainView"/>
+    <mainMenu xmi:id="_M1SUsMKdEeCPp6cpUPk1qw">
+      <children xsi:type="menu:Menu" xmi:id="_XdPx4MKdEeCPp6cpUPk1qw" elementId="file" label="&amp;File">
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_lZOkkMKdEeCPp6cpUPk1qw" label="&amp;Open" command="_3nxefqAIEeCMHLQZFU1fxg"/>
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_n4pNUMKdEeCPp6cpUPk1qw" label="&amp;Save" command="_3nxegaAIEeCMHLQZFU1fxg"/>
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_gVVM4MKdEeCPp6cpUPk1qw" label="E&amp;xit" command="_3nxeeqAIEeCMHLQZFU1fxg"/>
       </children>
-    </children>
-    <mainMenu xmi:id="_3nxeiKAIEeCMHLQZFU1fxg" elementId="menu:org.eclipse.ui.main.menu">
-      <children xsi:type="menu:Menu" xmi:id="_3nxeiaAIEeCMHLQZFU1fxg" label="File">
-        <children xsi:type="menu:HandledMenuItem" xmi:id="_3nxeiqAIEeCMHLQZFU1fxg" label="Open" iconURI="platform:/plugin/de.hannesniederhausen.storynotes.ui/icons/sample.gif" command="_3nxefqAIEeCMHLQZFU1fxg"/>
-        <children xsi:type="menu:HandledMenuItem" xmi:id="_3nxei6AIEeCMHLQZFU1fxg" label="Save" iconURI="platform:/plugin/de.hannesniederhausen.storynotes.ui/icons/save_edit.gif" command="_3nxegaAIEeCMHLQZFU1fxg"/>
-        <children xsi:type="menu:HandledMenuItem" xmi:id="_3nxejKAIEeCMHLQZFU1fxg" label="Quit" command="_3nxeeqAIEeCMHLQZFU1fxg"/>
-      </children>
-      <children xsi:type="menu:Menu" xmi:id="_3nxejaAIEeCMHLQZFU1fxg" label="Help">
-        <children xsi:type="menu:HandledMenuItem" xmi:id="_3nxejqAIEeCMHLQZFU1fxg" label="About" command="_3nxehKAIEeCMHLQZFU1fxg"/>
+      <children xsi:type="menu:Menu" xmi:id="_pvPikMKdEeCPp6cpUPk1qw" label="&amp;Help">
+        <children xsi:type="menu:MenuSeparator" xmi:id="_srOLgMKdEeCPp6cpUPk1qw"/>
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_q12lUMKdEeCPp6cpUPk1qw" label="&amp;About" command="_3nxehKAIEeCMHLQZFU1fxg"/>
       </children>
     </mainMenu>
-    <trimBars xmi:id="_3nxek6AIEeCMHLQZFU1fxg">
-      <children xsi:type="menu:ToolBar" xmi:id="_3nxelKAIEeCMHLQZFU1fxg" elementId="toolbar:org.eclipse.ui.main.toolbar">
-        <children xsi:type="menu:HandledToolItem" xmi:id="_3nxelaAIEeCMHLQZFU1fxg" iconURI="platform:/plugin/de.hannesniederhausen.storynotes.application/icons/sample.gif" command="_3nxefqAIEeCMHLQZFU1fxg"/>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_3nxelqAIEeCMHLQZFU1fxg" iconURI="platform:/plugin/de.hannesniederhausen.storynotes.application/icons/save_edit.gif" command="_3nxegaAIEeCMHLQZFU1fxg"/>
+    <trimBars xmi:id="_ybgIEMKdEeCPp6cpUPk1qw">
+      <children xsi:type="menu:ToolBar" xmi:id="_zEOU8MKdEeCPp6cpUPk1qw">
+        <children xsi:type="menu:HandledToolItem" xmi:id="_zyBPEMKdEeCPp6cpUPk1qw" iconURI="platform:/plugin/de.hannesniederhausen.storynotes.application/icons/sample.gif" command="_3nxefqAIEeCMHLQZFU1fxg"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_1JTLEMKdEeCPp6cpUPk1qw" iconURI="platform:/plugin/de.hannesniederhausen.storynotes.application/icons/save_edit.gif" command="_3nxegaAIEeCMHLQZFU1fxg"/>
       </children>
     </trimBars>
   </children>
   <handlers xmi:id="_3nxee6AIEeCMHLQZFU1fxg" contributionURI="platform:/plugin/de.hannesniederhausen.storynotes.application/de.hannesniederhausen.storynotes.application.handlers.QuitHandler" command="_3nxeeqAIEeCMHLQZFU1fxg"/>
-  <handlers xmi:id="_3nxef6AIEeCMHLQZFU1fxg" contributionURI="platform:/plugin/de.hannesniederhausen.storynotes.application/de.hannesniederhausen.storynotes.application.handlers.OpenHandler" command="_3nxefqAIEeCMHLQZFU1fxg"/>
+  <handlers xmi:id="_3nxef6AIEeCMHLQZFU1fxg" elementId="de.hannesniederhausen.storynotes.ui.openCommand" contributionURI="platform:/plugin/de.hannesniederhausen.storynotes.application/de.hannesniederhausen.storynotes.application.handlers.OpenHandler" command="_3nxefqAIEeCMHLQZFU1fxg"/>
   <handlers xmi:id="_3nxegqAIEeCMHLQZFU1fxg" contributionURI="platform:/plugin/de.hannesniederhausen.storynotes.application/de.hannesniederhausen.storynotes.application.handlers.SaveHandler" command="_3nxegaAIEeCMHLQZFU1fxg"/>
   <handlers xmi:id="_3nxehaAIEeCMHLQZFU1fxg" contributionURI="platform:/plugin/de.hannesniederhausen.storynotes.application/de.hannesniederhausen.storynotes.application.handlers.AboutHandler" command="_3nxehKAIEeCMHLQZFU1fxg"/>
   <bindingTables xmi:id="_3nxefKAIEeCMHLQZFU1fxg" bindingContext="_3nxecaAIEeCMHLQZFU1fxg">
@@ -39,6 +34,7 @@
     <children xmi:id="_3nxecqAIEeCMHLQZFU1fxg" elementId="org.eclipse.ui.contexts.window" name="In Windows"/>
     <children xmi:id="_3nxec6AIEeCMHLQZFU1fxg" elementId="org.eclipse.ui.contexts.dialog" name="In Dialogs"/>
   </rootContext>
+  <descriptors xmi:id="_sgBTAMKbEeCPp6cpUPk1qw" elementId="mainview"/>
   <commands xmi:id="_3nxeeqAIEeCMHLQZFU1fxg" elementId="de.hannesniederhausen.storynotes.ui.quitCommand" commandName="quitCommand"/>
   <commands xmi:id="_3nxefqAIEeCMHLQZFU1fxg" elementId="de.hannesniederhausen.storynotes.ui.openCommand" commandName="openCommand"/>
   <commands xmi:id="_3nxegaAIEeCMHLQZFU1fxg" elementId="de.hannesniederhausen.storynotes.ui.saveCommand" commandName="saveCommand"/>

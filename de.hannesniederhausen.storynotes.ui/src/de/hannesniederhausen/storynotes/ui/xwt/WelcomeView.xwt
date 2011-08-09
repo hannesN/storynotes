@@ -1,0 +1,14 @@
+<Composite xmlns="http://www.eclipse.org/xwt/presentation" xmlns:x="http://www.eclipse.org/xwt" x:Class="de.hannesniederhausen.storynotes.ui.xwt.WelcomeView">
+	<Composite.layout>
+		<GridLayout numColumns="2"/>
+	</Composite.layout>
+	<Label text="Welcome to StoryNotes" font="Purisa,22,BOLD">
+		<Label.layoutData>
+			<GridData verticalSpan="2" horizontalSpan="2"/>
+		</Label.layoutData>
+	</Label>
+	<Label/>
+	<Label/>
+	<Button text="Create New File" />
+	<Button text="Open File" SelectionEvent="onOpenSelection"/>
+</Composite>

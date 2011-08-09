@@ -1,0 +1,106 @@
+<Shell xmlns="http://www.eclipse.org/xwt/presentation" xmlns:x="http://www.eclipse.org/xwt"
+	x:Class="mockup.Application" text="Storynotes" background="COLOR_WIDGET_BACKGROUND"
+	x:Style="SHELL_TRIM | BORDER" image="/icons/full/dtool16/save_edit.gif" xmlns:p1="clr-namespace:java.lang">
+	<Shell.layout>
+		<GridLayout />
+	</Shell.layout>
+
+	<Composite background="COLOR_WIDGET_LIGHT_SHADOW">
+		<Composite.layout>
+			<GridLayout numColumns="10" />
+		</Composite.layout>
+		<Composite.layoutData>
+			<GridData horizontalAlignment="FILL" />
+		</Composite.layoutData>
+		<Combo text="File" >
+			<Combo.items>
+				<p1:String>text.xml</p1:String>
+				<p1:String>stories.xml</p1:String>
+				<p1:String>New...</p1:String>
+			</Combo.items>
+		</Combo>
+		<Label text="-&gt;" />
+		<Combo text="Project" >
+			<Combo.items>
+				<p1:String>Story One</p1:String>
+				<p1:String>Story Two</p1:String>
+				<p1:String>New...</p1:String>
+			</Combo.items>
+		</Combo>
+		<Label text="-&gt;" />
+		<Combo text="Category" >
+			<Combo.items>
+				<p1:String>Person</p1:String>
+				<p1:String>Setting</p1:String>
+				<p1:String>Plot</p1:String>
+				<p1:String>New...</p1:String>
+			</Combo.items>
+		</Combo>
+		<Label text="-&gt;" />
+		<Combo text="Note" >
+			<Combo.items>
+				<p1:String>Harald Meyer</p1:String>
+				<p1:String>New York City</p1:String>
+				<p1:String>Central Park</p1:String>
+				<p1:String>New...</p1:String>
+			</Combo.items>
+		</Combo>
+		<Button text="Back" image="/icons/full/dtool16/undo_edit.gif"/>
+		<Button text="Foreward" image="/icons/full/dtool16/redo_edit.gif"/>
+		<Text x:Style="BORDER | H_SCROLL | SEARCH | CANCEL" text="Search">
+			<Text.layoutData>
+				<GridData grabExcessHorizontalSpace="true" horizontalAlignment="FILL"/>
+			</Text.layoutData>
+		</Text>
+	</Composite>
+	<Composite background="COLOR_WHITE">
+		<Composite.layout>
+			<GridLayout numColumns="2" />
+		</Composite.layout>
+		<Composite.layoutData>
+			<GridData verticalAlignment="FILL" horizontalAlignment="FILL"
+				grabExcessVerticalSpace="true" grabExcessHorizontalSpace="true" />
+		</Composite.layoutData>
+		<Label text="New Note:" bounds="0, 0, 63, 15" background="COLOR_WHITE">
+			<Label.layoutData>
+				<GridData horizontalSpan="2" />
+			</Label.layoutData>
+		</Label>
+		<Label text="Name">
+			<Label.layoutData>
+				<GridData horizontalAlignment="LEFT" />
+			</Label.layoutData>
+		</Label>
+		<Text x:Style="BORDER">
+			<Text.layoutData>
+				<GridData grabExcessHorizontalSpace="true"
+					horizontalAlignment="FILL" />
+			</Text.layoutData>
+		</Text>
+		<Label text="Description" background="COLOR_WHITE">
+			<Label.layoutData>
+				<GridData horizontalAlignment="LEFT" verticalAlignment="TOP" />
+			</Label.layoutData>
+		</Label>
+		<Text x:Style="BORDER | WRAP | MULTI">
+			<Text.layoutData>
+				<GridData grabExcessHorizontalSpace="true"
+					horizontalAlignment="FILL" verticalAlignment="FILL"
+					grabExcessVerticalSpace="true" />
+			</Text.layoutData>
+		</Text>
+		<Button text="Save" SelectionEvent="onSelection_1" selection="true" />
+		<Button text="Reset" alignment="RIGHT" SelectionEvent="onSelection">
+			<Button.layoutData>
+				<GridData horizontalAlignment="RIGHT" />
+			</Button.layoutData>
+		</Button>
+	</Composite>
+	<Shell.menuBar>
+		<Menu x:style="SWT.BAR">
+			<MenuItem text="File" x:style="SWT.CASCADE" />
+			<MenuItem text="Edit"/>
+			<MenuItem text="Help"/>
+		</Menu>
+	</Shell.menuBar>
+</Shell>

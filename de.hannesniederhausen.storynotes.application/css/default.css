@@ -1,0 +1,46 @@
+				
+Label {
+	/*font: Verdana 8px;
+	color: black;*/
+}
+
+Composite Label {
+	color: black;
+}
+
+
+Text {
+	font: Verdana 8px;
+}
+
+Composite Text {
+	background-color: white;
+	color: black;
+}
+
+SashForm {
+	background-color: #c1d5ef;
+}
+
+
+.MTrimBar {
+	background-color: #e3efff #c1d5ef;
+	color: white;
+	font: Verdana 8px;
+}
+
+Shell {
+    background-color: #e3efff #c1d5ef 60%;
+}
+
+ScrolledPageBook {
+	background-color: #e3ef00 #c1d5ef 60%;
+}
+
+#breadcrumbbar {
+	background-color: #ffffff #dddddd 100%;
+}
+
+#mainstack {
+	background-color: #4466dd #dddddd 70%;
+}
