@@ -8,8 +8,9 @@ Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: de.hannesniederhausen.storynotes.model,
- de.hannesniederhausen.storynotes.model.impl,
+ de.hannesniederhausen.storynotes.model.service,
  de.hannesniederhausen.storynotes.model.util
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport
 Bundle-ActivationPolicy: lazy
+Service-Component: OSGI-INF/defaultstorynotesmodel.xml
