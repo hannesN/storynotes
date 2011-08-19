@@ -3,9 +3,12 @@
  */
 package de.hannesniederhausen.storynotes.ui.navigation.widgets;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.IContentProvider;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.Viewer;
+
+import de.hannesniederhausen.storynotes.model.File;
 
 /**
  * A {@link IContentProvider} used by the navigation bar, which
@@ -19,19 +22,17 @@ import org.eclipse.jface.viewers.Viewer;
  */
 public class StoryNotesModelContentProvider implements ITreeContentProvider {
 
+	private EObject currentModel;
+	
 	@Override
 	public void dispose() {
 		// TODO Auto-generated method stub
 
 	}
 
-	/* (non-Javadoc)
-	 * @see org.eclipse.jface.viewers.IContentProvider#inputChanged(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-	 */
 	@Override
 	public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
-		// TODO Auto-generated method stub
-
+		currentModel = (EObject) newInput;
 	}
 
 	/* (non-Javadoc)
@@ -39,8 +40,12 @@ public class StoryNotesModelContentProvider implements ITreeContentProvider {
 	 */
 	@Override
 	public Object[] getElements(Object inputElement) {
-		// TODO Auto-generated method stub
-		return null;
+		if (inputElement instanceof File) {
+			File file = (File) inputElement;
+			return new Object[]{file};
+		}
+		
+		return new Object[0];
 	}
 
 	/* (non-Javadoc)
@@ -52,13 +57,12 @@ public class StoryNotesModelContentProvider implements ITreeContentProvider {
 		return null;
 	}
 
-	/* (non-Javadoc)
-	 * @see org.eclipse.jface.viewers.ITreeContentProvider#getParent(java.lang.Object)
-	 */
 	@Override
 	public Object getParent(Object element) {
-		// TODO Auto-generated method stub
-		return null;
+		if ((element instanceof File) || (element==null))
+			return null;
+		else
+			return ((EObject)element).eContainer();
 	}
 
 	/* (non-Javadoc)
@@ -66,8 +70,9 @@ public class StoryNotesModelContentProvider implements ITreeContentProvider {
 	 */
 	@Override
 	public boolean hasChildren(Object element) {
-		// TODO Auto-generated method stub
-		return false;
+		if ((element instanceof File) || (element==null))
+			return false;
+		return true;
 	}
 
 }

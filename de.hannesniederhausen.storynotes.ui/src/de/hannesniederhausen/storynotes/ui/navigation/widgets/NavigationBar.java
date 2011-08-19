@@ -8,7 +8,9 @@ import java.util.List;
 
 import org.eclipse.e4.ui.css.swt.CSSSWTConstants;
 import org.eclipse.jface.viewers.IContentProvider;
+import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.IStructuredContentProvider;
+import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Point;
@@ -116,8 +118,9 @@ public class NavigationBar extends StructuredViewer {
 		Object[] elements = cp.getElements(getInput());
 		((GridLayout)control.getLayout()).numColumns=elements.length;
 		for (Object obj : elements) {
-			NavigationItem l = new NavigationItem(control, SWT.NONE);
-			l.setText(obj.toString());
+			new NavigationItem(control, SWT.NONE, 
+					(ILabelProvider) getLabelProvider(), 
+					(ITreeContentProvider) getContentProvider(), obj);
 		}
 		
 	}

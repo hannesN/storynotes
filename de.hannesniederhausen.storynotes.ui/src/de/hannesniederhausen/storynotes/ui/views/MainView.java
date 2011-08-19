@@ -22,8 +22,10 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 
+import de.hannesniederhausen.storynotes.model.File;
 import de.hannesniederhausen.storynotes.model.service.IModelProviderService;
 import de.hannesniederhausen.storynotes.ui.navigation.widgets.NavigationBar;
+import de.hannesniederhausen.storynotes.ui.navigation.widgets.StoryNotesModelContentProvider;
 import de.hannesniederhausen.storynotes.ui.xwt.WelcomeView;
 
 /**
@@ -63,12 +65,17 @@ public class MainView {
 		comp.setLayout(layout);
 
 		NavigationBar navigationBar = new NavigationBar(comp);
-		navigationBar.getControl().setLayoutData(
-				new GridData(GridData.FILL_HORIZONTAL));
-		navigationBar.setContentProvider(ArrayContentProvider.getInstance());
+		navigationBar.getControl().setLayoutData( new GridData(GridData.FILL_HORIZONTAL));
+		navigationBar.setContentProvider(new StoryNotesModelContentProvider());
 		navigationBar.setLabelProvider(new ILabelProvider() {
 			@Override
 			public String getText(Object element) {
+				if (element instanceof File) {
+					String filename = ((File) element).getFilename();
+					if (filename==null)
+						filename = "Unnamed file";
+					return filename;
+				}
 				return element.toString();
 			}
 
