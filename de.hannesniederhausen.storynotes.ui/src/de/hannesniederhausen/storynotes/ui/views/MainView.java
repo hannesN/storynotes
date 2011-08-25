@@ -6,23 +6,18 @@ import javax.inject.Inject;
 import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.core.services.log.Logger;
 import org.eclipse.e4.ui.css.swt.CSSSWTConstants;
-import org.eclipse.jface.viewers.ArrayContentProvider;
-import org.eclipse.jface.viewers.IBaseLabelProvider;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ILabelProviderListener;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.StackLayout;
-import org.eclipse.swt.events.SelectionAdapter;
-import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Image;
-import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 
 import de.hannesniederhausen.storynotes.model.File;
+import de.hannesniederhausen.storynotes.model.Project;
 import de.hannesniederhausen.storynotes.model.service.IModelProviderService;
 import de.hannesniederhausen.storynotes.ui.navigation.widgets.NavigationBar;
 import de.hannesniederhausen.storynotes.ui.navigation.widgets.StoryNotesModelContentProvider;
@@ -55,6 +50,12 @@ public class MainView {
 	public void init() {
 
 		modelProvider.newFile();
+		
+		// TODO remove test model
+		File file = modelProvider.getFile();
+		Project project = modelProvider.getModelFactory().createProject();
+		project.setName("Test Project");
+		file.getProjects().add(project);
 		
 		// create some stuff to see how the dependency injection works
 
@@ -101,7 +102,7 @@ public class MainView {
 				return null;
 			}
 		});
-		navigationBar.setInput(modelProvider.getFile());
+		navigationBar.setInput(file);
 
 		final Composite stack = new Composite(comp, SWT.NONE);
 		stack.setData(CSSSWTConstants.CSS_ID_KEY, "mainstack");
@@ -117,19 +118,6 @@ public class MainView {
 				context);
 		welcomeView.setLayoutData(new GridData(GridData.FILL_BOTH));
 
-		// Button b = new Button(navigationBar, SWT.PUSH);
-		// b.setText("Switch");
-		// b.addSelectionListener(new SelectionAdapter() {
-		// @Override
-		// public void widgetSelected(SelectionEvent e) {
-		// if (stackLayout.topControl==l1) {
-		// stackLayout.topControl=welcomeView;
-		// } else {
-		// stackLayout.topControl=l1;
-		// }
-		// stack.layout();
-		// }
-		// });
 	}
 
 }

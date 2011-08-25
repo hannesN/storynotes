@@ -20,7 +20,7 @@ import de.hannesniederhausen.storynotes.model.File;
  * @author Hannes Niederhausen
  *
  */
-public class StoryNotesModelContentProvider implements ITreeContentProvider {
+public class StoryNotesModelContentProvider implements ITreeContentProvider{
 
 	private EObject currentModel;
 	
@@ -53,8 +53,12 @@ public class StoryNotesModelContentProvider implements ITreeContentProvider {
 	 */
 	@Override
 	public Object[] getChildren(Object parentElement) {
-		// TODO Auto-generated method stub
-		return null;
+		if (parentElement instanceof File) {
+			File file = (File) parentElement;
+			return file.getProjects().toArray();
+		}
+		
+		return new Object[0];
 	}
 
 	@Override
