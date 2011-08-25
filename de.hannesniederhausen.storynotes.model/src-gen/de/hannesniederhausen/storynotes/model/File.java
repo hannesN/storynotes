@@ -11,6 +11,7 @@
  */
 package de.hannesniederhausen.storynotes.model;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -24,6 +25,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link de.hannesniederhausen.storynotes.model.File#getFilename <em>Filename</em>}</li>
  *   <li>{@link de.hannesniederhausen.storynotes.model.File#getAuthor <em>Author</em>}</li>
  *   <li>{@link de.hannesniederhausen.storynotes.model.File#getVersion <em>Version</em>}</li>
+ *   <li>{@link de.hannesniederhausen.storynotes.model.File#getProjects <em>Projects</em>}</li>
  * </ul>
  * </p>
  *
@@ -109,5 +111,21 @@ public interface File extends EObject {
 	 * @generated
 	 */
 	void setVersion(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Projects</b></em>' containment reference list.
+	 * The list contents are of type {@link de.hannesniederhausen.storynotes.model.Project}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Projects</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Projects</em>' containment reference list.
+	 * @see de.hannesniederhausen.storynotes.model.StorynotesPackage#getFile_Projects()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<Project> getProjects();
 
 } // File

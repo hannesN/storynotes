@@ -3,6 +3,7 @@
   <xsd:import namespace="http://www.omg.org/XMI" schemaLocation="platform:/plugin/org.eclipse.emf.ecore/model/XMI.xsd"/>
   <xsd:complexType name="File">
     <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element name="projects" type="sn:Project"/>
       <xsd:element ref="xmi:Extension"/>
     </xsd:choice>
     <xsd:attribute ref="xmi:id"/>

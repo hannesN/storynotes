@@ -199,6 +199,15 @@ public class StorynotesPackageImpl extends EPackageImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getFile_Projects() {
+		return (EReference) fileEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getProject() {
 		return projectEClass;
 	}
@@ -506,6 +515,7 @@ public class StorynotesPackageImpl extends EPackageImpl implements
 		createEAttribute(fileEClass, FILE__FILENAME);
 		createEAttribute(fileEClass, FILE__AUTHOR);
 		createEAttribute(fileEClass, FILE__VERSION);
+		createEReference(fileEClass, FILE__PROJECTS);
 
 		projectEClass = createEClass(PROJECT);
 		createEAttribute(projectEClass, PROJECT__NAME);
@@ -597,6 +607,10 @@ public class StorynotesPackageImpl extends EPackageImpl implements
 				null, 1, 1, File.class, !IS_TRANSIENT, !IS_VOLATILE,
 				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
+		initEReference(getFile_Projects(), this.getProject(), null, "projects",
+				null, 0, -1, File.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(projectEClass, Project.class, "Project", !IS_ABSTRACT,
 				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

@@ -103,13 +103,22 @@ public interface StorynotesPackage extends EPackage {
 	int FILE__VERSION = 2;
 
 	/**
+	 * The feature id for the '<em><b>Projects</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FILE__PROJECTS = 3;
+
+	/**
 	 * The number of structural features of the '<em>File</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FILE_FEATURE_COUNT = 3;
+	int FILE_FEATURE_COUNT = 4;
 
 	/**
 	 * The meta object id for the '{@link de.hannesniederhausen.storynotes.model.impl.FileElementImpl <em>File Element</em>}' class.
@@ -585,6 +594,17 @@ public interface StorynotesPackage extends EPackage {
 	EAttribute getFile_Version();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link de.hannesniederhausen.storynotes.model.File#getProjects <em>Projects</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Projects</em>'.
+	 * @see de.hannesniederhausen.storynotes.model.File#getProjects()
+	 * @see #getFile()
+	 * @generated
+	 */
+	EReference getFile_Projects();
+
+	/**
 	 * Returns the meta object for class '{@link de.hannesniederhausen.storynotes.model.Project <em>Project</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -973,6 +993,14 @@ public interface StorynotesPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute FILE__VERSION = eINSTANCE.getFile_Version();
+
+		/**
+		 * The meta object literal for the '<em><b>Projects</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference FILE__PROJECTS = eINSTANCE.getFile_Projects();
 
 		/**
 		 * The meta object literal for the '{@link de.hannesniederhausen.storynotes.model.impl.ProjectImpl <em>Project</em>}' class.

@@ -12,14 +12,21 @@
 package de.hannesniederhausen.storynotes.model.impl;
 
 import de.hannesniederhausen.storynotes.model.File;
+import de.hannesniederhausen.storynotes.model.Project;
 import de.hannesniederhausen.storynotes.model.StorynotesPackage;
 
+import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -31,6 +38,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  *   <li>{@link de.hannesniederhausen.storynotes.model.impl.FileImpl#getFilename <em>Filename</em>}</li>
  *   <li>{@link de.hannesniederhausen.storynotes.model.impl.FileImpl#getAuthor <em>Author</em>}</li>
  *   <li>{@link de.hannesniederhausen.storynotes.model.impl.FileImpl#getVersion <em>Version</em>}</li>
+ *   <li>{@link de.hannesniederhausen.storynotes.model.impl.FileImpl#getProjects <em>Projects</em>}</li>
  * </ul>
  * </p>
  *
@@ -96,6 +104,16 @@ public class FileImpl extends EObjectImpl implements File {
 	 * @ordered
 	 */
 	protected String version = VERSION_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getProjects() <em>Projects</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getProjects()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Project> projects;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -187,6 +205,35 @@ public class FileImpl extends EObjectImpl implements File {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<Project> getProjects() {
+		if (projects == null) {
+			projects = new EObjectContainmentEList<Project>(Project.class,
+					this, StorynotesPackage.FILE__PROJECTS);
+		}
+		return projects;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+		case StorynotesPackage.FILE__PROJECTS:
+			return ((InternalEList<?>) getProjects()).basicRemove(otherEnd,
+					msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -196,6 +243,8 @@ public class FileImpl extends EObjectImpl implements File {
 			return getAuthor();
 		case StorynotesPackage.FILE__VERSION:
 			return getVersion();
+		case StorynotesPackage.FILE__PROJECTS:
+			return getProjects();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -205,6 +254,7 @@ public class FileImpl extends EObjectImpl implements File {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -216,6 +266,10 @@ public class FileImpl extends EObjectImpl implements File {
 			return;
 		case StorynotesPackage.FILE__VERSION:
 			setVersion((String) newValue);
+			return;
+		case StorynotesPackage.FILE__PROJECTS:
+			getProjects().clear();
+			getProjects().addAll((Collection<? extends Project>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -238,6 +292,9 @@ public class FileImpl extends EObjectImpl implements File {
 		case StorynotesPackage.FILE__VERSION:
 			setVersion(VERSION_EDEFAULT);
 			return;
+		case StorynotesPackage.FILE__PROJECTS:
+			getProjects().clear();
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -259,6 +316,8 @@ public class FileImpl extends EObjectImpl implements File {
 		case StorynotesPackage.FILE__VERSION:
 			return VERSION_EDEFAULT == null ? version != null
 					: !VERSION_EDEFAULT.equals(version);
+		case StorynotesPackage.FILE__PROJECTS:
+			return projects != null && !projects.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
