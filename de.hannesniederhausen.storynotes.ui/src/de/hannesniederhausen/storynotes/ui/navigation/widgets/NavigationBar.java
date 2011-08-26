@@ -6,22 +6,14 @@ package de.hannesniederhausen.storynotes.ui.navigation.widgets;
 import java.util.Collections;
 import java.util.List;
 
-import org.eclipse.e4.ui.css.swt.CSSSWTConstants;
-import org.eclipse.jface.viewers.IContentProvider;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
-import org.eclipse.swt.widgets.Event;
-import org.eclipse.swt.widgets.Item;
-import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.widgets.Layout;
-import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Widget;
 
 /**
@@ -30,6 +22,8 @@ import org.eclipse.swt.widgets.Widget;
  */
 public class NavigationBar extends StructuredViewer {
 
+	private ICommandProvider commandProvider;
+	
 	private Composite control;
 	
 	public NavigationBar(Composite parent) {
@@ -37,6 +31,7 @@ public class NavigationBar extends StructuredViewer {
 	}
 
 	private void init(Composite parent) {
+		setCommandProvider(null);
 		control = new Composite(parent, SWT.NONE);
 		control.setLayout(new GridLayout());
 //		control.setData(CSSSWTConstants.CSS_ID_KEY, "navigationBar");
@@ -103,6 +98,18 @@ public class NavigationBar extends StructuredViewer {
 	public Control getControl() {
 		return control;
 	}
+	
+	/**
+	 * Sets the command provider. Setting it to null removes the already set provider.
+	 * @param commandProvider the new command provider or <code>null</code>
+	 */
+	public void setCommandProvider(ICommandProvider commandProvider) {
+		if (commandProvider==null) {
+			this.commandProvider = ICommandProvider.NullCommandProvider.getInstance();
+		} else {
+			this.commandProvider = commandProvider;
+		}
+	}
 
 	@Override
 	protected void inputChanged(Object input, Object oldInput) {
@@ -120,7 +127,8 @@ public class NavigationBar extends StructuredViewer {
 		for (Object obj : elements) {
 			new NavigationItem(control, SWT.NONE, 
 					(ILabelProvider) getLabelProvider(), 
-					(ITreeContentProvider) getContentProvider(), obj);
+					(ITreeContentProvider) getContentProvider(), 
+					commandProvider, obj);
 		}
 		
 	}

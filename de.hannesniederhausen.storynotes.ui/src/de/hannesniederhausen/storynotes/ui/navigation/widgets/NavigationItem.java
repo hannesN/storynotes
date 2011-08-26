@@ -24,6 +24,7 @@ import org.eclipse.swt.widgets.Widget;
 public class NavigationItem extends Item  {
 
 	private ITreeContentProvider contentProvider;
+	private ICommandProvider commandProvider;
 	private ILabelProvider labelProvider;
 	private Composite container;
 	
@@ -31,8 +32,9 @@ public class NavigationItem extends Item  {
 	private Button siblingButton;
 	private Button childrenButton;
 	
-	public NavigationItem(Widget parent, int style, ILabelProvider labelProvider, ITreeContentProvider contentProvider, Object model) {
+	public NavigationItem(Widget parent, int style, ILabelProvider labelProvider, ITreeContentProvider contentProvider, ICommandProvider commandProvider, Object model) {
 		super(parent, style);
+		this.commandProvider = commandProvider;
 		this.contentProvider = contentProvider;
 		this.labelProvider = labelProvider;
 		this.model = model;
@@ -78,7 +80,7 @@ public class NavigationItem extends Item  {
 	private void showChildSelectionOptions() {
 		Object[] children = contentProvider.getChildren(model);
 		
-		ChoiceDialog dlg = new ChoiceDialog(container.getShell(), 0, labelProvider);
+		ChoiceDialog dlg = new ChoiceDialog(container.getShell(), 0, labelProvider, commandProvider);
 		
 		
 		dlg.setInput(children);

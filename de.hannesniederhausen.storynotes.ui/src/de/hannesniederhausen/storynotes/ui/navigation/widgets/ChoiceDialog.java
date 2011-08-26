@@ -3,12 +3,15 @@
  */
 package de.hannesniederhausen.storynotes.ui.navigation.widgets;
 
+import org.eclipse.core.resources.ICommand;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ILabelProvider;
+import org.eclipse.jface.viewers.ILabelProviderListener;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.FocusListener;
+import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Dialog;
@@ -20,13 +23,17 @@ import org.eclipse.swt.widgets.Shell;
  */
 public class ChoiceDialog extends Dialog implements FocusListener {
 
+	private ICommandProvider commandProvider;
+	private ILabelProvider labelProvider;
 	private TableViewer viewer;
 	private Shell shell;
+	
 
-	public ChoiceDialog(Shell parent, int style, ILabelProvider labelProvider) {
+	public ChoiceDialog(Shell parent, int style, ILabelProvider labelProvider, ICommandProvider commandProvider) {
 		super(parent, style);
 		init(parent);
-		viewer.setLabelProvider(labelProvider);
+		this.commandProvider = commandProvider;
+		this.labelProvider = labelProvider;
 	}
 
 	private void init(Shell parent) {
@@ -36,7 +43,7 @@ public class ChoiceDialog extends Dialog implements FocusListener {
 		shell.setLayout(new GridLayout());
 
 		viewer = new TableViewer(shell);
-		viewer.setContentProvider(ArrayContentProvider.getInstance());
+		viewer.setContentProvider(new ContentProvider());
 
 		viewer.getControl().setLayoutData(new GridData(GridData.FILL_BOTH));
 		viewer.getControl().addFocusListener(this);
@@ -68,4 +75,55 @@ public class ChoiceDialog extends Dialog implements FocusListener {
 		getShell().close();
 	}
 
+	private class ContentProvider extends ArrayContentProvider {
+		@Override
+		public Object[] getElements(Object arg0) {
+
+			ICommand[] cmds = commandProvider.getCommand(arg0);
+			Object[] elements = super.getElements(arg0);
+			if (cmds.length==0) {
+				return elements;
+			}
+			
+			Object[] results = new Object[cmds.length+elements.length];
+			System.arraycopy(cmds, 0, results, 0, cmds.length);
+			System.arraycopy(elements, 0, results, cmds.length, elements.length);
+			return null;
+		}
+		
+	}
+	
+	private class LabelProvider implements ILabelProvider {
+
+		@Override
+		public void addListener(ILabelProviderListener arg0) {
+		}
+
+		@Override
+		public void dispose() {
+		}
+
+		@Override
+		public boolean isLabelProperty(Object arg0, String arg1) {
+			return false;
+		}
+
+		@Override
+		public void removeListener(ILabelProviderListener arg0) {
+		}
+
+		@Override
+		public Image getImage(Object arg0) {
+			return labelProvider.getImage(arg0);
+		}
+
+		@Override
+		public String getText(Object arg0) {
+			if (arg0 instanceof ICommand) {
+				return ((ICommand) arg0).getBuilderName();
+			}
+			return labelProvider.getText(arg0);
+		}
+		
+	}
 }
