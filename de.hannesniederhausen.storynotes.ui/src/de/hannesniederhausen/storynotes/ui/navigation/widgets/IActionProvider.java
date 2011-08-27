@@ -28,18 +28,18 @@ public interface IActionProvider {
 	 */
 	public IAction[] getActions(Object element);
 
-	public static class NullCommandProvider implements IActionProvider {
+	public static class NullActionProvider implements IActionProvider {
 
-		public static NullCommandProvider instance;
+		public static NullActionProvider instance;
 
 		public static IActionProvider getInstance() {
 			if (instance == null) {
-				instance = new NullCommandProvider();
+				instance = new NullActionProvider();
 			}
 			return instance;
 		}
 		
-		private NullCommandProvider() {
+		private NullActionProvider() {
 		}
 
 		@Override

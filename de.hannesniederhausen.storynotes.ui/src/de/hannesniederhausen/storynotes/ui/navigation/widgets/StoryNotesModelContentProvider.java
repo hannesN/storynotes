@@ -9,6 +9,7 @@ import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.Viewer;
 
 import de.hannesniederhausen.storynotes.model.File;
+import de.hannesniederhausen.storynotes.model.Project;
 
 /**
  * A {@link IContentProvider} used by the navigation bar, which
@@ -41,8 +42,11 @@ public class StoryNotesModelContentProvider implements ITreeContentProvider{
 	@Override
 	public Object[] getElements(Object inputElement) {
 		if (inputElement instanceof File) {
-			File file = (File) inputElement;
-			return new Object[]{file};
+			return new Object[]{inputElement};
+		}
+		
+		if (inputElement instanceof Project) {
+			return new Object[]{((EObject)inputElement).eContainer(), inputElement};
 		}
 		
 		return new Object[0];

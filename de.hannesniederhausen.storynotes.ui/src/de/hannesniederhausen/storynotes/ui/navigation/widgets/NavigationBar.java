@@ -6,6 +6,7 @@ package de.hannesniederhausen.storynotes.ui.navigation.widgets;
 import java.util.Collections;
 import java.util.List;
 
+import org.eclipse.e4.ui.workbench.modeling.ESelectionService;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.ITreeContentProvider;
@@ -22,6 +23,8 @@ import org.eclipse.swt.widgets.Widget;
  */
 public class NavigationBar extends StructuredViewer {
 
+	private ESelectionService selectionService;
+	
 	private IActionProvider actionProvider;
 	
 	private Composite control;
@@ -30,8 +33,33 @@ public class NavigationBar extends StructuredViewer {
 		init(parent);
 	}
 
+	@Override
+	public void reveal(Object element) {
+	}
+
+	@Override
+	public Control getControl() {
+		return control;
+	}
+
+	public void setSelectionService(ESelectionService selectionService) {
+		this.selectionService = selectionService;
+	}
+	
+	/**
+	 * Sets the action provider. Setting it to null removes the already set provider.
+	 * @param actionProvider the new action provider or <code>null</code>
+	 */
+	public void setActionProvider(IActionProvider actionProvider) {
+		if (actionProvider==null) {
+			this.actionProvider = IActionProvider.NullActionProvider.getInstance();
+		} else {
+			this.actionProvider = actionProvider;
+		}
+	}
+
 	private void init(Composite parent) {
-		setCommandProvider(null);
+		setActionProvider(null);
 		control = new Composite(parent, SWT.NONE);
 		control.setLayout(new GridLayout());
 //		control.setData(CSSSWTConstants.CSS_ID_KEY, "navigationBar");
@@ -83,32 +111,9 @@ public class NavigationBar extends StructuredViewer {
 	}
 
 
-	@Override
-	public void reveal(Object element) {
-	}
-
-
 	@SuppressWarnings("rawtypes")
 	@Override
 	protected void setSelectionToWidget(List l, boolean reveal) {
-	}
-
-
-	@Override
-	public Control getControl() {
-		return control;
-	}
-	
-	/**
-	 * Sets the command provider. Setting it to null removes the already set provider.
-	 * @param actionProvider the new command provider or <code>null</code>
-	 */
-	public void setCommandProvider(IActionProvider actionProvider) {
-		if (actionProvider==null) {
-			this.actionProvider = IActionProvider.NullCommandProvider.getInstance();
-		} else {
-			this.actionProvider = actionProvider;
-		}
 	}
 
 	@Override
@@ -128,6 +133,7 @@ public class NavigationBar extends StructuredViewer {
 			new NavigationItem(control, SWT.NONE, 
 					(ILabelProvider) getLabelProvider(), 
 					(ITreeContentProvider) getContentProvider(), 
+					selectionService,
 					actionProvider, obj);
 		}
 		
