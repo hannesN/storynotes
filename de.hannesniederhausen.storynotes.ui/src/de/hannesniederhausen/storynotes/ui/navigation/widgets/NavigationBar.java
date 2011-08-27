@@ -139,7 +139,7 @@ public class NavigationBar extends StructuredViewer {
 					context,
 					actionProvider, obj);
 		}
-		
+		control.layout(true);
 	}
 
 	public void setContext(IEclipseContext context) {
