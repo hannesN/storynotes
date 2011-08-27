@@ -3,7 +3,7 @@
  */
 package de.hannesniederhausen.storynotes.ui.navigation.widgets;
 
-import org.eclipse.core.resources.ICommand;
+import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ILabelProviderListener;
@@ -23,16 +23,16 @@ import org.eclipse.swt.widgets.Shell;
  */
 public class ChoiceDialog extends Dialog implements FocusListener {
 
-	private ICommandProvider commandProvider;
+	private IActionProvider actionProvider;
 	private ILabelProvider labelProvider;
 	private TableViewer viewer;
 	private Shell shell;
 	
 
-	public ChoiceDialog(Shell parent, int style, ILabelProvider labelProvider, ICommandProvider commandProvider) {
+	public ChoiceDialog(Shell parent, int style, ILabelProvider labelProvider, IActionProvider actionProvider) {
 		super(parent, style);
 		init(parent);
-		this.commandProvider = commandProvider;
+		this.actionProvider = actionProvider;
 		this.labelProvider = labelProvider;
 	}
 
@@ -43,6 +43,7 @@ public class ChoiceDialog extends Dialog implements FocusListener {
 		shell.setLayout(new GridLayout());
 
 		viewer = new TableViewer(shell);
+		viewer.setLabelProvider(new LabelProvider());
 		viewer.setContentProvider(new ContentProvider());
 
 		viewer.getControl().setLayoutData(new GridData(GridData.FILL_BOTH));
@@ -79,15 +80,15 @@ public class ChoiceDialog extends Dialog implements FocusListener {
 		@Override
 		public Object[] getElements(Object arg0) {
 
-			ICommand[] cmds = commandProvider.getCommand(arg0);
+			IAction[] actions = actionProvider.getActions(arg0);
 			Object[] elements = super.getElements(arg0);
-			if (cmds.length==0) {
+			if (actions.length==0) {
 				return elements;
 			}
 			
-			Object[] results = new Object[cmds.length+elements.length];
-			System.arraycopy(cmds, 0, results, 0, cmds.length);
-			System.arraycopy(elements, 0, results, cmds.length, elements.length);
+			Object[] results = new Object[actions.length+elements.length];
+			System.arraycopy(actions, 0, results, 0, actions.length);
+			System.arraycopy(elements, 0, results, actions.length, elements.length);
 			return null;
 		}
 		
@@ -119,8 +120,8 @@ public class ChoiceDialog extends Dialog implements FocusListener {
 
 		@Override
 		public String getText(Object arg0) {
-			if (arg0 instanceof ICommand) {
-				return ((ICommand) arg0).getBuilderName();
+			if (arg0 instanceof IAction) {
+				return ((IAction) arg0).getText();
 			}
 			return labelProvider.getText(arg0);
 		}

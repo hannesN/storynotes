@@ -22,7 +22,7 @@ import org.eclipse.swt.widgets.Widget;
  */
 public class NavigationBar extends StructuredViewer {
 
-	private ICommandProvider commandProvider;
+	private IActionProvider actionProvider;
 	
 	private Composite control;
 	
@@ -101,13 +101,13 @@ public class NavigationBar extends StructuredViewer {
 	
 	/**
 	 * Sets the command provider. Setting it to null removes the already set provider.
-	 * @param commandProvider the new command provider or <code>null</code>
+	 * @param actionProvider the new command provider or <code>null</code>
 	 */
-	public void setCommandProvider(ICommandProvider commandProvider) {
-		if (commandProvider==null) {
-			this.commandProvider = ICommandProvider.NullCommandProvider.getInstance();
+	public void setCommandProvider(IActionProvider actionProvider) {
+		if (actionProvider==null) {
+			this.actionProvider = IActionProvider.NullCommandProvider.getInstance();
 		} else {
-			this.commandProvider = commandProvider;
+			this.actionProvider = actionProvider;
 		}
 	}
 
@@ -128,7 +128,7 @@ public class NavigationBar extends StructuredViewer {
 			new NavigationItem(control, SWT.NONE, 
 					(ILabelProvider) getLabelProvider(), 
 					(ITreeContentProvider) getContentProvider(), 
-					commandProvider, obj);
+					actionProvider, obj);
 		}
 		
 	}

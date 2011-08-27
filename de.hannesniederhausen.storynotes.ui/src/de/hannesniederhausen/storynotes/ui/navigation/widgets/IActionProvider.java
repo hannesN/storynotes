@@ -3,7 +3,7 @@
  */
 package de.hannesniederhausen.storynotes.ui.navigation.widgets;
 
-import org.eclipse.core.resources.ICommand;
+import org.eclipse.jface.action.IAction;
 
 /**
  * A command provider provides command for specific elements for the drop down
@@ -15,24 +15,24 @@ import org.eclipse.core.resources.ICommand;
  * @author Hannes Niederhausen
  * 
  */
-public interface ICommandProvider {
+public interface IActionProvider {
 
 	/**
-	 * Returns an array of commands for the specific element
+	 * Returns an array of {@link IAction} for the specific element
 	 * 
 	 * @param element
 	 *            the element which for the commands
 	 * 
-	 * @return an array if {@link ICommand}; must not be <code>null</code> but
+	 * @return an array if {@link IAction}; must not be <code>null</code> but
 	 *         may be empty
 	 */
-	public ICommand[] getCommand(Object element);
+	public IAction[] getActions(Object element);
 
-	public static class NullCommandProvider implements ICommandProvider {
+	public static class NullCommandProvider implements IActionProvider {
 
 		public static NullCommandProvider instance;
 
-		public static ICommandProvider getInstance() {
+		public static IActionProvider getInstance() {
 			if (instance == null) {
 				instance = new NullCommandProvider();
 			}
@@ -43,8 +43,8 @@ public interface ICommandProvider {
 		}
 
 		@Override
-		public ICommand[] getCommand(Object element) {
-			return new ICommand[0];
+		public IAction[] getActions(Object element) {
+			return new IAction[0];
 		}
 
 	}
