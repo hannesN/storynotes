@@ -3,6 +3,7 @@
  */
 package de.hannesniederhausen.storynotes.ui.navigation.widgets;
 
+import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.ui.workbench.modeling.ESelectionService;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ITreeContentProvider;
@@ -24,7 +25,7 @@ import org.eclipse.swt.widgets.Widget;
  */
 public class NavigationItem extends Item  {
 
-	private ESelectionService selectionService;
+	private IEclipseContext context;
 	private ITreeContentProvider contentProvider;
 	private IActionProvider actionProvider;
 	private ILabelProvider labelProvider;
@@ -36,10 +37,10 @@ public class NavigationItem extends Item  {
 	
 	public NavigationItem(Widget parent, int style, ILabelProvider labelProvider, 
 						  ITreeContentProvider contentProvider, 
-						  ESelectionService selectionService,
+						  IEclipseContext context,
 						  IActionProvider actionProvider, Object model) {
 		super(parent, style);
-		this.selectionService = selectionService;
+		this.context = context;
 		this.actionProvider = actionProvider;
 		this.contentProvider = contentProvider;
 		this.labelProvider = labelProvider;
@@ -87,7 +88,7 @@ public class NavigationItem extends Item  {
 		Object[] children = contentProvider.getChildren(model);
 		
 		ChoiceDialog dlg = new ChoiceDialog(container.getShell(), 0,
-											selectionService,
+											context,
 											labelProvider, 
 											actionProvider, model);
 		

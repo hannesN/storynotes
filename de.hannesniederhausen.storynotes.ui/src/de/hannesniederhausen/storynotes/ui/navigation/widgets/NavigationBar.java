@@ -6,6 +6,7 @@ package de.hannesniederhausen.storynotes.ui.navigation.widgets;
 import java.util.Collections;
 import java.util.List;
 
+import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.ui.workbench.modeling.ESelectionService;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.IStructuredContentProvider;
@@ -28,6 +29,8 @@ public class NavigationBar extends StructuredViewer {
 	private IActionProvider actionProvider;
 	
 	private Composite control;
+
+	private IEclipseContext context;
 	
 	public NavigationBar(Composite parent) {
 		init(parent);
@@ -133,10 +136,14 @@ public class NavigationBar extends StructuredViewer {
 			new NavigationItem(control, SWT.NONE, 
 					(ILabelProvider) getLabelProvider(), 
 					(ITreeContentProvider) getContentProvider(), 
-					selectionService,
+					context,
 					actionProvider, obj);
 		}
 		
+	}
+
+	public void setContext(IEclipseContext context) {
+		this.context = context;
 	}
 	
 }

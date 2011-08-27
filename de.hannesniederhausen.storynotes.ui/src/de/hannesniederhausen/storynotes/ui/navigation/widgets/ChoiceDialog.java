@@ -3,6 +3,7 @@
  */
 package de.hannesniederhausen.storynotes.ui.navigation.widgets;
 
+import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.ui.workbench.modeling.ESelectionService;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ArrayContentProvider;
@@ -11,7 +12,6 @@ import org.eclipse.jface.viewers.IDoubleClickListener;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ILabelProviderListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.FocusEvent;
@@ -35,13 +35,13 @@ public class ChoiceDialog extends Dialog implements FocusListener, IDoubleClickL
 	private TableViewer viewer;
 	private Shell shell;
 	private final Object model;
-	private ESelectionService selectionService;
+	private IEclipseContext context;
 
 	public ChoiceDialog(Shell parent, int style, 
-						ESelectionService selectionService, ILabelProvider labelProvider, 
+			IEclipseContext context, ILabelProvider labelProvider, 
 						IActionProvider actionProvider, Object model) {
 		super(parent, style);
-		this.selectionService = selectionService;
+		this.context = context;
 		this.model = model;
 		init(parent);
 		this.actionProvider = actionProvider;
@@ -103,9 +103,12 @@ public class ChoiceDialog extends Dialog implements FocusListener, IDoubleClickL
 		if (o instanceof IAction) {
 			((IAction) o).run();
 		} else {
-			selectionService.setSelection(o);
+			context.get(ESelectionService.class).setSelection(o);
 		}
-		getShell().close();
+		
+		if (!getShell().isDisposed()) {
+			getShell().close();
+		}
 	}
 	
 	private class ContentProvider extends ArrayContentProvider {

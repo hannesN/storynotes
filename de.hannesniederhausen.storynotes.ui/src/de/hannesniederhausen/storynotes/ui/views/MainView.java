@@ -11,6 +11,7 @@ import org.eclipse.e4.core.services.log.Logger;
 import org.eclipse.e4.ui.css.swt.CSSSWTConstants;
 import org.eclipse.e4.ui.model.application.ui.basic.MPart;
 import org.eclipse.e4.ui.services.IServiceConstants;
+import org.eclipse.e4.ui.workbench.modeling.EPartService;
 import org.eclipse.e4.ui.workbench.modeling.ESelectionService;
 import org.eclipse.e4.ui.workbench.modeling.ISelectionListener;
 import org.eclipse.swt.SWT;
@@ -57,6 +58,7 @@ public class MainView  {
 	@PostConstruct
 	public void init() {
 
+		context.set(MainView.class, this);
 		modelProvider.newFile();
 		
 		// TODO remove test model
@@ -73,13 +75,18 @@ public class MainView  {
 		layout.marginHeight = 0;
 		comp.setLayout(layout);
 
+		StoryNotesActionProvider actionProvider = new StoryNotesActionProvider();
+		actionProvider.setModelProviderService(modelProvider);
+		actionProvider.setContext(context);
+		
 		navigationBar = new NavigationBar(comp);
 		navigationBar.getControl().setLayoutData( new GridData(GridData.FILL_HORIZONTAL));
 		navigationBar.setContentProvider(new StoryNotesModelContentProvider());
-		navigationBar.setActionProvider(new StoryNotesActionProvider());
+		navigationBar.setActionProvider(actionProvider);
 		navigationBar.setLabelProvider(new StoryNotesLabelProvider());
-		navigationBar.setSelectionService(context.get(ESelectionService.class));
-		navigationBar.setInput(file);
+		
+		navigationBar.setContext(context);
+		navigationBar.setInput(project);
 		
 		final Composite stack = new Composite(comp, SWT.NONE);
 		stack.setData(CSSSWTConstants.CSS_ID_KEY, "mainstack");
@@ -95,6 +102,10 @@ public class MainView  {
 				context);
 		welcomeView.setLayoutData(new GridData(GridData.FILL_BOTH));
 
+	}
+	
+	public Composite getParent() {
+		return parent;
 	}
 	
 	@Inject

@@ -3,7 +3,7 @@
  */
 package de.hannesniederhausen.storynotes.ui.navigation.widgets;
 
-import org.eclipse.e4.ui.workbench.modeling.ESelectionService;
+import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.action.IAction;
 
@@ -21,7 +21,7 @@ import de.hannesniederhausen.storynotes.ui.actions.CreateProjectAction;
 public class StoryNotesActionProvider implements IActionProvider {
 
 	private IModelProviderService modelProviderService;
-	private ESelectionService selectionService;
+	private IEclipseContext context;
 	
 	@Override
 	public IAction[] getActions(Object element) {
@@ -44,16 +44,16 @@ public class StoryNotesActionProvider implements IActionProvider {
 			IModelProviderService modelProviderService) {
 		this.modelProviderService = modelProviderService;
 	}
-	
-	public void setSelectionService(ESelectionService selectionService) {
-		this.selectionService = selectionService;
+
+	public void setContext(IEclipseContext context) {
+		this.context = context;
 	}
 
 	private IAction[] getAction(EObject element, Class<? extends AbstractCreationAction> clazz) {
 		try {
 			AbstractCreationAction a = (AbstractCreationAction) clazz.newInstance();
 			a.setParentElement(element);
-			a.setSelectionService(selectionService);
+			a.setContext(context);
 			a.setModelProviderService(modelProviderService);
 			return new IAction[]{a};
 		} catch (Exception e) {

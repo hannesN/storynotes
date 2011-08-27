@@ -5,6 +5,8 @@ package de.hannesniederhausen.storynotes.ui.actions;
 
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.InputDialog;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
 
 import de.hannesniederhausen.storynotes.model.File;
 import de.hannesniederhausen.storynotes.model.Project;
@@ -23,7 +25,7 @@ public class CreateProjectAction extends AbstractCreationAction {
 	
 	@Override
 	public void run() {
-		InputDialog dlg = new InputDialog(null, 
+		InputDialog dlg = new InputDialog(getShell(), 
 				"Project Name", 
 				"Please enter a project name", 
 				"", 
