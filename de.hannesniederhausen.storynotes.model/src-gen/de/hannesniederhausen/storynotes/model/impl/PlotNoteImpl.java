@@ -12,7 +12,7 @@
 package de.hannesniederhausen.storynotes.model.impl;
 
 import de.hannesniederhausen.storynotes.model.Note;
-import de.hannesniederhausen.storynotes.model.Plot;
+import de.hannesniederhausen.storynotes.model.PlotNote;
 import de.hannesniederhausen.storynotes.model.StorynotesPackage;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -24,22 +24,22 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Plot</b></em>'.
+ * An implementation of the model object '<em><b>Plot Note</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link de.hannesniederhausen.storynotes.model.impl.PlotImpl#getRefId <em>Ref Id</em>}</li>
- *   <li>{@link de.hannesniederhausen.storynotes.model.impl.PlotImpl#getKind <em>Kind</em>}</li>
- *   <li>{@link de.hannesniederhausen.storynotes.model.impl.PlotImpl#getTitle <em>Title</em>}</li>
- *   <li>{@link de.hannesniederhausen.storynotes.model.impl.PlotImpl#getNotes <em>Notes</em>}</li>
- *   <li>{@link de.hannesniederhausen.storynotes.model.impl.PlotImpl#getDescription <em>Description</em>}</li>
+ *   <li>{@link de.hannesniederhausen.storynotes.model.impl.PlotNoteImpl#getRefId <em>Ref Id</em>}</li>
+ *   <li>{@link de.hannesniederhausen.storynotes.model.impl.PlotNoteImpl#getKind <em>Kind</em>}</li>
+ *   <li>{@link de.hannesniederhausen.storynotes.model.impl.PlotNoteImpl#getTitle <em>Title</em>}</li>
+ *   <li>{@link de.hannesniederhausen.storynotes.model.impl.PlotNoteImpl#getNotes <em>Notes</em>}</li>
+ *   <li>{@link de.hannesniederhausen.storynotes.model.impl.PlotNoteImpl#getDescription <em>Description</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class PlotImpl extends FileElementImpl implements Plot {
+public class PlotNoteImpl extends FileElementImpl implements PlotNote {
 	/**
 	 * The default value of the '{@link #getRefId() <em>Ref Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -135,7 +135,7 @@ public class PlotImpl extends FileElementImpl implements Plot {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected PlotImpl() {
+	protected PlotNoteImpl() {
 		super();
 	}
 
@@ -146,7 +146,7 @@ public class PlotImpl extends FileElementImpl implements Plot {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return StorynotesPackage.Literals.PLOT;
+		return StorynotesPackage.Literals.PLOT_NOTE;
 	}
 
 	/**
@@ -168,7 +168,7 @@ public class PlotImpl extends FileElementImpl implements Plot {
 		refId = newRefId;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					StorynotesPackage.PLOT__REF_ID, oldRefId, refId));
+					StorynotesPackage.PLOT_NOTE__REF_ID, oldRefId, refId));
 	}
 
 	/**
@@ -190,7 +190,7 @@ public class PlotImpl extends FileElementImpl implements Plot {
 		kind = newKind;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					StorynotesPackage.PLOT__KIND, oldKind, kind));
+					StorynotesPackage.PLOT_NOTE__KIND, oldKind, kind));
 	}
 
 	/**
@@ -212,7 +212,7 @@ public class PlotImpl extends FileElementImpl implements Plot {
 		title = newTitle;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					StorynotesPackage.PLOT__TITLE, oldTitle, title));
+					StorynotesPackage.PLOT_NOTE__TITLE, oldTitle, title));
 	}
 
 	/**
@@ -227,7 +227,7 @@ public class PlotImpl extends FileElementImpl implements Plot {
 			if (notes != oldNotes) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							StorynotesPackage.PLOT__NOTES, oldNotes, notes));
+							StorynotesPackage.PLOT_NOTE__NOTES, oldNotes, notes));
 			}
 		}
 		return notes;
@@ -252,7 +252,7 @@ public class PlotImpl extends FileElementImpl implements Plot {
 		notes = newNotes;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					StorynotesPackage.PLOT__NOTES, oldNotes, notes));
+					StorynotesPackage.PLOT_NOTE__NOTES, oldNotes, notes));
 	}
 
 	/**
@@ -274,7 +274,7 @@ public class PlotImpl extends FileElementImpl implements Plot {
 		description = newDescription;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					StorynotesPackage.PLOT__DESCRIPTION, oldDescription,
+					StorynotesPackage.PLOT_NOTE__DESCRIPTION, oldDescription,
 					description));
 	}
 
@@ -286,17 +286,17 @@ public class PlotImpl extends FileElementImpl implements Plot {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case StorynotesPackage.PLOT__REF_ID:
+		case StorynotesPackage.PLOT_NOTE__REF_ID:
 			return getRefId();
-		case StorynotesPackage.PLOT__KIND:
+		case StorynotesPackage.PLOT_NOTE__KIND:
 			return getKind();
-		case StorynotesPackage.PLOT__TITLE:
+		case StorynotesPackage.PLOT_NOTE__TITLE:
 			return getTitle();
-		case StorynotesPackage.PLOT__NOTES:
+		case StorynotesPackage.PLOT_NOTE__NOTES:
 			if (resolve)
 				return getNotes();
 			return basicGetNotes();
-		case StorynotesPackage.PLOT__DESCRIPTION:
+		case StorynotesPackage.PLOT_NOTE__DESCRIPTION:
 			return getDescription();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -310,19 +310,19 @@ public class PlotImpl extends FileElementImpl implements Plot {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case StorynotesPackage.PLOT__REF_ID:
+		case StorynotesPackage.PLOT_NOTE__REF_ID:
 			setRefId((String) newValue);
 			return;
-		case StorynotesPackage.PLOT__KIND:
+		case StorynotesPackage.PLOT_NOTE__KIND:
 			setKind((String) newValue);
 			return;
-		case StorynotesPackage.PLOT__TITLE:
+		case StorynotesPackage.PLOT_NOTE__TITLE:
 			setTitle((String) newValue);
 			return;
-		case StorynotesPackage.PLOT__NOTES:
+		case StorynotesPackage.PLOT_NOTE__NOTES:
 			setNotes((Note) newValue);
 			return;
-		case StorynotesPackage.PLOT__DESCRIPTION:
+		case StorynotesPackage.PLOT_NOTE__DESCRIPTION:
 			setDescription((String) newValue);
 			return;
 		}
@@ -337,19 +337,19 @@ public class PlotImpl extends FileElementImpl implements Plot {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case StorynotesPackage.PLOT__REF_ID:
+		case StorynotesPackage.PLOT_NOTE__REF_ID:
 			setRefId(REF_ID_EDEFAULT);
 			return;
-		case StorynotesPackage.PLOT__KIND:
+		case StorynotesPackage.PLOT_NOTE__KIND:
 			setKind(KIND_EDEFAULT);
 			return;
-		case StorynotesPackage.PLOT__TITLE:
+		case StorynotesPackage.PLOT_NOTE__TITLE:
 			setTitle(TITLE_EDEFAULT);
 			return;
-		case StorynotesPackage.PLOT__NOTES:
+		case StorynotesPackage.PLOT_NOTE__NOTES:
 			setNotes((Note) null);
 			return;
-		case StorynotesPackage.PLOT__DESCRIPTION:
+		case StorynotesPackage.PLOT_NOTE__DESCRIPTION:
 			setDescription(DESCRIPTION_EDEFAULT);
 			return;
 		}
@@ -364,18 +364,18 @@ public class PlotImpl extends FileElementImpl implements Plot {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case StorynotesPackage.PLOT__REF_ID:
+		case StorynotesPackage.PLOT_NOTE__REF_ID:
 			return REF_ID_EDEFAULT == null ? refId != null : !REF_ID_EDEFAULT
 					.equals(refId);
-		case StorynotesPackage.PLOT__KIND:
+		case StorynotesPackage.PLOT_NOTE__KIND:
 			return KIND_EDEFAULT == null ? kind != null : !KIND_EDEFAULT
 					.equals(kind);
-		case StorynotesPackage.PLOT__TITLE:
+		case StorynotesPackage.PLOT_NOTE__TITLE:
 			return TITLE_EDEFAULT == null ? title != null : !TITLE_EDEFAULT
 					.equals(title);
-		case StorynotesPackage.PLOT__NOTES:
+		case StorynotesPackage.PLOT_NOTE__NOTES:
 			return notes != null;
-		case StorynotesPackage.PLOT__DESCRIPTION:
+		case StorynotesPackage.PLOT_NOTE__DESCRIPTION:
 			return DESCRIPTION_EDEFAULT == null ? description != null
 					: !DESCRIPTION_EDEFAULT.equals(description);
 		}
@@ -405,4 +405,4 @@ public class PlotImpl extends FileElementImpl implements Plot {
 		return result.toString();
 	}
 
-} //PlotImpl
+} //PlotNoteImpl

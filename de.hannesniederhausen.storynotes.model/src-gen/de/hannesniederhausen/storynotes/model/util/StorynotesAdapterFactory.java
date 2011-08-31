@@ -101,18 +101,18 @@ public class StorynotesAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter casePerson(Person object) {
-			return createPersonAdapter();
+		public Adapter casePersonNote(PersonNote object) {
+			return createPersonNoteAdapter();
 		}
 
 		@Override
-		public Adapter caseSetting(Setting object) {
-			return createSettingAdapter();
+		public Adapter caseSettingNote(SettingNote object) {
+			return createSettingNoteAdapter();
 		}
 
 		@Override
-		public Adapter casePlot(Plot object) {
-			return createPlotAdapter();
+		public Adapter casePlotNote(PlotNote object) {
+			return createPlotNoteAdapter();
 		}
 
 		@Override
@@ -205,44 +205,44 @@ public class StorynotesAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.hannesniederhausen.storynotes.model.Person <em>Person</em>}'.
+	 * Creates a new adapter for an object of class '{@link de.hannesniederhausen.storynotes.model.PersonNote <em>Person Note</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.hannesniederhausen.storynotes.model.Person
+	 * @see de.hannesniederhausen.storynotes.model.PersonNote
 	 * @generated
 	 */
-	public Adapter createPersonAdapter() {
+	public Adapter createPersonNoteAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.hannesniederhausen.storynotes.model.Setting <em>Setting</em>}'.
+	 * Creates a new adapter for an object of class '{@link de.hannesniederhausen.storynotes.model.SettingNote <em>Setting Note</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.hannesniederhausen.storynotes.model.Setting
+	 * @see de.hannesniederhausen.storynotes.model.SettingNote
 	 * @generated
 	 */
-	public Adapter createSettingAdapter() {
+	public Adapter createSettingNoteAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.hannesniederhausen.storynotes.model.Plot <em>Plot</em>}'.
+	 * Creates a new adapter for an object of class '{@link de.hannesniederhausen.storynotes.model.PlotNote <em>Plot Note</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.hannesniederhausen.storynotes.model.Plot
+	 * @see de.hannesniederhausen.storynotes.model.PlotNote
 	 * @generated
 	 */
-	public Adapter createPlotAdapter() {
+	public Adapter createPlotNoteAdapter() {
 		return null;
 	}
 

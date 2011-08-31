@@ -15,31 +15,31 @@ import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Person</b></em>'.
+ * A representation of the model object '<em><b>Person Note</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link de.hannesniederhausen.storynotes.model.Person#getName <em>Name</em>}</li>
- *   <li>{@link de.hannesniederhausen.storynotes.model.Person#getCv <em>Cv</em>}</li>
- *   <li>{@link de.hannesniederhausen.storynotes.model.Person#getAge <em>Age</em>}</li>
- *   <li>{@link de.hannesniederhausen.storynotes.model.Person#getHairColor <em>Hair Color</em>}</li>
- *   <li>{@link de.hannesniederhausen.storynotes.model.Person#getEyeColor <em>Eye Color</em>}</li>
- *   <li>{@link de.hannesniederhausen.storynotes.model.Person#getSize <em>Size</em>}</li>
- *   <li>{@link de.hannesniederhausen.storynotes.model.Person#getWeight <em>Weight</em>}</li>
- *   <li>{@link de.hannesniederhausen.storynotes.model.Person#getSkinColor <em>Skin Color</em>}</li>
- *   <li>{@link de.hannesniederhausen.storynotes.model.Person#getSocialBackground <em>Social Background</em>}</li>
- *   <li>{@link de.hannesniederhausen.storynotes.model.Person#getHobbies <em>Hobbies</em>}</li>
- *   <li>{@link de.hannesniederhausen.storynotes.model.Person#getPsychologicalBackground <em>Psychological Background</em>}</li>
+ *   <li>{@link de.hannesniederhausen.storynotes.model.PersonNote#getName <em>Name</em>}</li>
+ *   <li>{@link de.hannesniederhausen.storynotes.model.PersonNote#getCv <em>Cv</em>}</li>
+ *   <li>{@link de.hannesniederhausen.storynotes.model.PersonNote#getAge <em>Age</em>}</li>
+ *   <li>{@link de.hannesniederhausen.storynotes.model.PersonNote#getHairColor <em>Hair Color</em>}</li>
+ *   <li>{@link de.hannesniederhausen.storynotes.model.PersonNote#getEyeColor <em>Eye Color</em>}</li>
+ *   <li>{@link de.hannesniederhausen.storynotes.model.PersonNote#getSize <em>Size</em>}</li>
+ *   <li>{@link de.hannesniederhausen.storynotes.model.PersonNote#getWeight <em>Weight</em>}</li>
+ *   <li>{@link de.hannesniederhausen.storynotes.model.PersonNote#getSkinColor <em>Skin Color</em>}</li>
+ *   <li>{@link de.hannesniederhausen.storynotes.model.PersonNote#getSocialBackground <em>Social Background</em>}</li>
+ *   <li>{@link de.hannesniederhausen.storynotes.model.PersonNote#getHobbies <em>Hobbies</em>}</li>
+ *   <li>{@link de.hannesniederhausen.storynotes.model.PersonNote#getPsychologicalBackground <em>Psychological Background</em>}</li>
  * </ul>
  * </p>
  *
- * @see de.hannesniederhausen.storynotes.model.StorynotesPackage#getPerson()
+ * @see de.hannesniederhausen.storynotes.model.StorynotesPackage#getPersonNote()
  * @model
  * @generated
  */
-public interface Person extends Note {
+public interface PersonNote extends Note {
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -50,14 +50,14 @@ public interface Person extends Note {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
-	 * @see de.hannesniederhausen.storynotes.model.StorynotesPackage#getPerson_Name()
+	 * @see de.hannesniederhausen.storynotes.model.StorynotesPackage#getPersonNote_Name()
 	 * @model required="true"
 	 * @generated
 	 */
 	String getName();
 
 	/**
-	 * Sets the value of the '{@link de.hannesniederhausen.storynotes.model.Person#getName <em>Name</em>}' attribute.
+	 * Sets the value of the '{@link de.hannesniederhausen.storynotes.model.PersonNote#getName <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Name</em>' attribute.
@@ -76,14 +76,14 @@ public interface Person extends Note {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Cv</em>' attribute.
 	 * @see #setCv(String)
-	 * @see de.hannesniederhausen.storynotes.model.StorynotesPackage#getPerson_Cv()
+	 * @see de.hannesniederhausen.storynotes.model.StorynotesPackage#getPersonNote_Cv()
 	 * @model
 	 * @generated
 	 */
 	String getCv();
 
 	/**
-	 * Sets the value of the '{@link de.hannesniederhausen.storynotes.model.Person#getCv <em>Cv</em>}' attribute.
+	 * Sets the value of the '{@link de.hannesniederhausen.storynotes.model.PersonNote#getCv <em>Cv</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Cv</em>' attribute.
@@ -102,14 +102,14 @@ public interface Person extends Note {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Age</em>' attribute.
 	 * @see #setAge(int)
-	 * @see de.hannesniederhausen.storynotes.model.StorynotesPackage#getPerson_Age()
+	 * @see de.hannesniederhausen.storynotes.model.StorynotesPackage#getPersonNote_Age()
 	 * @model
 	 * @generated
 	 */
 	int getAge();
 
 	/**
-	 * Sets the value of the '{@link de.hannesniederhausen.storynotes.model.Person#getAge <em>Age</em>}' attribute.
+	 * Sets the value of the '{@link de.hannesniederhausen.storynotes.model.PersonNote#getAge <em>Age</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Age</em>' attribute.
@@ -128,14 +128,14 @@ public interface Person extends Note {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Hair Color</em>' attribute.
 	 * @see #setHairColor(String)
-	 * @see de.hannesniederhausen.storynotes.model.StorynotesPackage#getPerson_HairColor()
+	 * @see de.hannesniederhausen.storynotes.model.StorynotesPackage#getPersonNote_HairColor()
 	 * @model required="true"
 	 * @generated
 	 */
 	String getHairColor();
 
 	/**
-	 * Sets the value of the '{@link de.hannesniederhausen.storynotes.model.Person#getHairColor <em>Hair Color</em>}' attribute.
+	 * Sets the value of the '{@link de.hannesniederhausen.storynotes.model.PersonNote#getHairColor <em>Hair Color</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Hair Color</em>' attribute.
@@ -154,14 +154,14 @@ public interface Person extends Note {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Eye Color</em>' attribute.
 	 * @see #setEyeColor(String)
-	 * @see de.hannesniederhausen.storynotes.model.StorynotesPackage#getPerson_EyeColor()
+	 * @see de.hannesniederhausen.storynotes.model.StorynotesPackage#getPersonNote_EyeColor()
 	 * @model required="true"
 	 * @generated
 	 */
 	String getEyeColor();
 
 	/**
-	 * Sets the value of the '{@link de.hannesniederhausen.storynotes.model.Person#getEyeColor <em>Eye Color</em>}' attribute.
+	 * Sets the value of the '{@link de.hannesniederhausen.storynotes.model.PersonNote#getEyeColor <em>Eye Color</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Eye Color</em>' attribute.
@@ -180,14 +180,14 @@ public interface Person extends Note {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Size</em>' attribute.
 	 * @see #setSize(int)
-	 * @see de.hannesniederhausen.storynotes.model.StorynotesPackage#getPerson_Size()
+	 * @see de.hannesniederhausen.storynotes.model.StorynotesPackage#getPersonNote_Size()
 	 * @model required="true"
 	 * @generated
 	 */
 	int getSize();
 
 	/**
-	 * Sets the value of the '{@link de.hannesniederhausen.storynotes.model.Person#getSize <em>Size</em>}' attribute.
+	 * Sets the value of the '{@link de.hannesniederhausen.storynotes.model.PersonNote#getSize <em>Size</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Size</em>' attribute.
@@ -206,14 +206,14 @@ public interface Person extends Note {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Weight</em>' attribute.
 	 * @see #setWeight(float)
-	 * @see de.hannesniederhausen.storynotes.model.StorynotesPackage#getPerson_Weight()
+	 * @see de.hannesniederhausen.storynotes.model.StorynotesPackage#getPersonNote_Weight()
 	 * @model required="true"
 	 * @generated
 	 */
 	float getWeight();
 
 	/**
-	 * Sets the value of the '{@link de.hannesniederhausen.storynotes.model.Person#getWeight <em>Weight</em>}' attribute.
+	 * Sets the value of the '{@link de.hannesniederhausen.storynotes.model.PersonNote#getWeight <em>Weight</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Weight</em>' attribute.
@@ -232,14 +232,14 @@ public interface Person extends Note {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Skin Color</em>' attribute.
 	 * @see #setSkinColor(String)
-	 * @see de.hannesniederhausen.storynotes.model.StorynotesPackage#getPerson_SkinColor()
+	 * @see de.hannesniederhausen.storynotes.model.StorynotesPackage#getPersonNote_SkinColor()
 	 * @model required="true"
 	 * @generated
 	 */
 	String getSkinColor();
 
 	/**
-	 * Sets the value of the '{@link de.hannesniederhausen.storynotes.model.Person#getSkinColor <em>Skin Color</em>}' attribute.
+	 * Sets the value of the '{@link de.hannesniederhausen.storynotes.model.PersonNote#getSkinColor <em>Skin Color</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Skin Color</em>' attribute.
@@ -258,14 +258,14 @@ public interface Person extends Note {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Social Background</em>' attribute.
 	 * @see #setSocialBackground(String)
-	 * @see de.hannesniederhausen.storynotes.model.StorynotesPackage#getPerson_SocialBackground()
+	 * @see de.hannesniederhausen.storynotes.model.StorynotesPackage#getPersonNote_SocialBackground()
 	 * @model required="true"
 	 * @generated
 	 */
 	String getSocialBackground();
 
 	/**
-	 * Sets the value of the '{@link de.hannesniederhausen.storynotes.model.Person#getSocialBackground <em>Social Background</em>}' attribute.
+	 * Sets the value of the '{@link de.hannesniederhausen.storynotes.model.PersonNote#getSocialBackground <em>Social Background</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Social Background</em>' attribute.
@@ -284,7 +284,7 @@ public interface Person extends Note {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Hobbies</em>' attribute list.
-	 * @see de.hannesniederhausen.storynotes.model.StorynotesPackage#getPerson_Hobbies()
+	 * @see de.hannesniederhausen.storynotes.model.StorynotesPackage#getPersonNote_Hobbies()
 	 * @model required="true"
 	 * @generated
 	 */
@@ -300,14 +300,14 @@ public interface Person extends Note {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Psychological Background</em>' attribute.
 	 * @see #setPsychologicalBackground(String)
-	 * @see de.hannesniederhausen.storynotes.model.StorynotesPackage#getPerson_PsychologicalBackground()
+	 * @see de.hannesniederhausen.storynotes.model.StorynotesPackage#getPersonNote_PsychologicalBackground()
 	 * @model required="true"
 	 * @generated
 	 */
 	String getPsychologicalBackground();
 
 	/**
-	 * Sets the value of the '{@link de.hannesniederhausen.storynotes.model.Person#getPsychologicalBackground <em>Psychological Background</em>}' attribute.
+	 * Sets the value of the '{@link de.hannesniederhausen.storynotes.model.PersonNote#getPsychologicalBackground <em>Psychological Background</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Psychological Background</em>' attribute.
@@ -316,4 +316,4 @@ public interface Person extends Note {
 	 */
 	void setPsychologicalBackground(String value);
 
-} // Person
+} // PersonNote

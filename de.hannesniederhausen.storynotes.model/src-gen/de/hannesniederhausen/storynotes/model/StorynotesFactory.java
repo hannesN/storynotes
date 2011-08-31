@@ -51,31 +51,40 @@ public interface StorynotesFactory extends EFactory {
 	Project createProject();
 
 	/**
-	 * Returns a new object of class '<em>Person</em>'.
+	 * Returns a new object of class '<em>Category</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Person</em>'.
+	 * @return a new object of class '<em>Category</em>'.
 	 * @generated
 	 */
-	Person createPerson();
+	Category createCategory();
 
 	/**
-	 * Returns a new object of class '<em>Setting</em>'.
+	 * Returns a new object of class '<em>Person Note</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Setting</em>'.
+	 * @return a new object of class '<em>Person Note</em>'.
 	 * @generated
 	 */
-	Setting createSetting();
+	PersonNote createPersonNote();
 
 	/**
-	 * Returns a new object of class '<em>Plot</em>'.
+	 * Returns a new object of class '<em>Setting Note</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Plot</em>'.
+	 * @return a new object of class '<em>Setting Note</em>'.
 	 * @generated
 	 */
-	Plot createPlot();
+	SettingNote createSettingNote();
+
+	/**
+	 * Returns a new object of class '<em>Plot Note</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Plot Note</em>'.
+	 * @generated
+	 */
+	PlotNote createPlotNote();
 
 	/**
 	 * Returns the package supported by this factory.

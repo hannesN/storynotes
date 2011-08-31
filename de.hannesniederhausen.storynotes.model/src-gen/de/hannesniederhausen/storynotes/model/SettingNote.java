@@ -13,23 +13,23 @@ package de.hannesniederhausen.storynotes.model;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Setting</b></em>'.
+ * A representation of the model object '<em><b>Setting Note</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link de.hannesniederhausen.storynotes.model.Setting#getName <em>Name</em>}</li>
- *   <li>{@link de.hannesniederhausen.storynotes.model.Setting#getKind <em>Kind</em>}</li>
- *   <li>{@link de.hannesniederhausen.storynotes.model.Setting#getDescription <em>Description</em>}</li>
+ *   <li>{@link de.hannesniederhausen.storynotes.model.SettingNote#getName <em>Name</em>}</li>
+ *   <li>{@link de.hannesniederhausen.storynotes.model.SettingNote#getKind <em>Kind</em>}</li>
+ *   <li>{@link de.hannesniederhausen.storynotes.model.SettingNote#getDescription <em>Description</em>}</li>
  * </ul>
  * </p>
  *
- * @see de.hannesniederhausen.storynotes.model.StorynotesPackage#getSetting()
+ * @see de.hannesniederhausen.storynotes.model.StorynotesPackage#getSettingNote()
  * @model
  * @generated
  */
-public interface Setting extends Note {
+public interface SettingNote extends Note {
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -40,14 +40,14 @@ public interface Setting extends Note {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
-	 * @see de.hannesniederhausen.storynotes.model.StorynotesPackage#getSetting_Name()
+	 * @see de.hannesniederhausen.storynotes.model.StorynotesPackage#getSettingNote_Name()
 	 * @model required="true"
 	 * @generated
 	 */
 	String getName();
 
 	/**
-	 * Sets the value of the '{@link de.hannesniederhausen.storynotes.model.Setting#getName <em>Name</em>}' attribute.
+	 * Sets the value of the '{@link de.hannesniederhausen.storynotes.model.SettingNote#getName <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Name</em>' attribute.
@@ -66,14 +66,14 @@ public interface Setting extends Note {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Kind</em>' attribute.
 	 * @see #setKind(String)
-	 * @see de.hannesniederhausen.storynotes.model.StorynotesPackage#getSetting_Kind()
+	 * @see de.hannesniederhausen.storynotes.model.StorynotesPackage#getSettingNote_Kind()
 	 * @model required="true"
 	 * @generated
 	 */
 	String getKind();
 
 	/**
-	 * Sets the value of the '{@link de.hannesniederhausen.storynotes.model.Setting#getKind <em>Kind</em>}' attribute.
+	 * Sets the value of the '{@link de.hannesniederhausen.storynotes.model.SettingNote#getKind <em>Kind</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Kind</em>' attribute.
@@ -92,14 +92,14 @@ public interface Setting extends Note {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Description</em>' attribute.
 	 * @see #setDescription(String)
-	 * @see de.hannesniederhausen.storynotes.model.StorynotesPackage#getSetting_Description()
+	 * @see de.hannesniederhausen.storynotes.model.StorynotesPackage#getSettingNote_Description()
 	 * @model required="true"
 	 * @generated
 	 */
 	String getDescription();
 
 	/**
-	 * Sets the value of the '{@link de.hannesniederhausen.storynotes.model.Setting#getDescription <em>Description</em>}' attribute.
+	 * Sets the value of the '{@link de.hannesniederhausen.storynotes.model.SettingNote#getDescription <em>Description</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Description</em>' attribute.
@@ -108,4 +108,4 @@ public interface Setting extends Note {
 	 */
 	void setDescription(String value);
 
-} // Setting
+} // SettingNote

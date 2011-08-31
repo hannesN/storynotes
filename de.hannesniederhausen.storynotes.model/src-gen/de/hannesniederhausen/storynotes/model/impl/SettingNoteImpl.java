@@ -11,7 +11,7 @@
  */
 package de.hannesniederhausen.storynotes.model.impl;
 
-import de.hannesniederhausen.storynotes.model.Setting;
+import de.hannesniederhausen.storynotes.model.SettingNote;
 import de.hannesniederhausen.storynotes.model.StorynotesPackage;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -22,21 +22,21 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Setting</b></em>'.
+ * An implementation of the model object '<em><b>Setting Note</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link de.hannesniederhausen.storynotes.model.impl.SettingImpl#getRefId <em>Ref Id</em>}</li>
- *   <li>{@link de.hannesniederhausen.storynotes.model.impl.SettingImpl#getName <em>Name</em>}</li>
- *   <li>{@link de.hannesniederhausen.storynotes.model.impl.SettingImpl#getKind <em>Kind</em>}</li>
- *   <li>{@link de.hannesniederhausen.storynotes.model.impl.SettingImpl#getDescription <em>Description</em>}</li>
+ *   <li>{@link de.hannesniederhausen.storynotes.model.impl.SettingNoteImpl#getRefId <em>Ref Id</em>}</li>
+ *   <li>{@link de.hannesniederhausen.storynotes.model.impl.SettingNoteImpl#getName <em>Name</em>}</li>
+ *   <li>{@link de.hannesniederhausen.storynotes.model.impl.SettingNoteImpl#getKind <em>Kind</em>}</li>
+ *   <li>{@link de.hannesniederhausen.storynotes.model.impl.SettingNoteImpl#getDescription <em>Description</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class SettingImpl extends FileElementImpl implements Setting {
+public class SettingNoteImpl extends FileElementImpl implements SettingNote {
 	/**
 	 * The default value of the '{@link #getRefId() <em>Ref Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -122,7 +122,7 @@ public class SettingImpl extends FileElementImpl implements Setting {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected SettingImpl() {
+	protected SettingNoteImpl() {
 		super();
 	}
 
@@ -133,7 +133,7 @@ public class SettingImpl extends FileElementImpl implements Setting {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return StorynotesPackage.Literals.SETTING;
+		return StorynotesPackage.Literals.SETTING_NOTE;
 	}
 
 	/**
@@ -155,7 +155,7 @@ public class SettingImpl extends FileElementImpl implements Setting {
 		refId = newRefId;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					StorynotesPackage.SETTING__REF_ID, oldRefId, refId));
+					StorynotesPackage.SETTING_NOTE__REF_ID, oldRefId, refId));
 	}
 
 	/**
@@ -177,7 +177,7 @@ public class SettingImpl extends FileElementImpl implements Setting {
 		name = newName;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					StorynotesPackage.SETTING__NAME, oldName, name));
+					StorynotesPackage.SETTING_NOTE__NAME, oldName, name));
 	}
 
 	/**
@@ -199,7 +199,7 @@ public class SettingImpl extends FileElementImpl implements Setting {
 		kind = newKind;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					StorynotesPackage.SETTING__KIND, oldKind, kind));
+					StorynotesPackage.SETTING_NOTE__KIND, oldKind, kind));
 	}
 
 	/**
@@ -221,8 +221,8 @@ public class SettingImpl extends FileElementImpl implements Setting {
 		description = newDescription;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					StorynotesPackage.SETTING__DESCRIPTION, oldDescription,
-					description));
+					StorynotesPackage.SETTING_NOTE__DESCRIPTION,
+					oldDescription, description));
 	}
 
 	/**
@@ -233,13 +233,13 @@ public class SettingImpl extends FileElementImpl implements Setting {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case StorynotesPackage.SETTING__REF_ID:
+		case StorynotesPackage.SETTING_NOTE__REF_ID:
 			return getRefId();
-		case StorynotesPackage.SETTING__NAME:
+		case StorynotesPackage.SETTING_NOTE__NAME:
 			return getName();
-		case StorynotesPackage.SETTING__KIND:
+		case StorynotesPackage.SETTING_NOTE__KIND:
 			return getKind();
-		case StorynotesPackage.SETTING__DESCRIPTION:
+		case StorynotesPackage.SETTING_NOTE__DESCRIPTION:
 			return getDescription();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -253,16 +253,16 @@ public class SettingImpl extends FileElementImpl implements Setting {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case StorynotesPackage.SETTING__REF_ID:
+		case StorynotesPackage.SETTING_NOTE__REF_ID:
 			setRefId((String) newValue);
 			return;
-		case StorynotesPackage.SETTING__NAME:
+		case StorynotesPackage.SETTING_NOTE__NAME:
 			setName((String) newValue);
 			return;
-		case StorynotesPackage.SETTING__KIND:
+		case StorynotesPackage.SETTING_NOTE__KIND:
 			setKind((String) newValue);
 			return;
-		case StorynotesPackage.SETTING__DESCRIPTION:
+		case StorynotesPackage.SETTING_NOTE__DESCRIPTION:
 			setDescription((String) newValue);
 			return;
 		}
@@ -277,16 +277,16 @@ public class SettingImpl extends FileElementImpl implements Setting {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case StorynotesPackage.SETTING__REF_ID:
+		case StorynotesPackage.SETTING_NOTE__REF_ID:
 			setRefId(REF_ID_EDEFAULT);
 			return;
-		case StorynotesPackage.SETTING__NAME:
+		case StorynotesPackage.SETTING_NOTE__NAME:
 			setName(NAME_EDEFAULT);
 			return;
-		case StorynotesPackage.SETTING__KIND:
+		case StorynotesPackage.SETTING_NOTE__KIND:
 			setKind(KIND_EDEFAULT);
 			return;
-		case StorynotesPackage.SETTING__DESCRIPTION:
+		case StorynotesPackage.SETTING_NOTE__DESCRIPTION:
 			setDescription(DESCRIPTION_EDEFAULT);
 			return;
 		}
@@ -301,16 +301,16 @@ public class SettingImpl extends FileElementImpl implements Setting {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case StorynotesPackage.SETTING__REF_ID:
+		case StorynotesPackage.SETTING_NOTE__REF_ID:
 			return REF_ID_EDEFAULT == null ? refId != null : !REF_ID_EDEFAULT
 					.equals(refId);
-		case StorynotesPackage.SETTING__NAME:
+		case StorynotesPackage.SETTING_NOTE__NAME:
 			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT
 					.equals(name);
-		case StorynotesPackage.SETTING__KIND:
+		case StorynotesPackage.SETTING_NOTE__KIND:
 			return KIND_EDEFAULT == null ? kind != null : !KIND_EDEFAULT
 					.equals(kind);
-		case StorynotesPackage.SETTING__DESCRIPTION:
+		case StorynotesPackage.SETTING_NOTE__DESCRIPTION:
 			return DESCRIPTION_EDEFAULT == null ? description != null
 					: !DESCRIPTION_EDEFAULT.equals(description);
 		}
@@ -340,4 +340,4 @@ public class SettingImpl extends FileElementImpl implements Setting {
 		return result.toString();
 	}
 
-} //SettingImpl
+} //SettingNoteImpl

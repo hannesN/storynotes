@@ -195,10 +195,10 @@ public interface StorynotesPackage extends EPackage {
 	int PROJECT_FEATURE_COUNT = FILE_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
-	 * The meta object id for the '{@link de.hannesniederhausen.storynotes.model.Category <em>Category</em>}' class.
+	 * The meta object id for the '{@link de.hannesniederhausen.storynotes.model.impl.CategoryImpl <em>Category</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.hannesniederhausen.storynotes.model.Category
+	 * @see de.hannesniederhausen.storynotes.model.impl.CategoryImpl
 	 * @see de.hannesniederhausen.storynotes.model.impl.StorynotesPackageImpl#getCategory()
 	 * @generated
 	 */
@@ -214,22 +214,13 @@ public interface StorynotesPackage extends EPackage {
 	int CATEGORY__ID = FILE_ELEMENT__ID;
 
 	/**
-	 * The feature id for the '<em><b>Notes</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CATEGORY__NOTES = FILE_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CATEGORY__NAME = FILE_ELEMENT_FEATURE_COUNT + 1;
+	int CATEGORY__NAME = FILE_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Category</em>' class.
@@ -238,7 +229,7 @@ public interface StorynotesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CATEGORY_FEATURE_COUNT = FILE_ELEMENT_FEATURE_COUNT + 2;
+	int CATEGORY_FEATURE_COUNT = FILE_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link de.hannesniederhausen.storynotes.model.Note <em>Note</em>}' class.
@@ -278,14 +269,14 @@ public interface StorynotesPackage extends EPackage {
 	int NOTE_FEATURE_COUNT = FILE_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The meta object id for the '{@link de.hannesniederhausen.storynotes.model.impl.PersonImpl <em>Person</em>}' class.
+	 * The meta object id for the '{@link de.hannesniederhausen.storynotes.model.impl.PersonNoteImpl <em>Person Note</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.hannesniederhausen.storynotes.model.impl.PersonImpl
-	 * @see de.hannesniederhausen.storynotes.model.impl.StorynotesPackageImpl#getPerson()
+	 * @see de.hannesniederhausen.storynotes.model.impl.PersonNoteImpl
+	 * @see de.hannesniederhausen.storynotes.model.impl.StorynotesPackageImpl#getPersonNote()
 	 * @generated
 	 */
-	int PERSON = 5;
+	int PERSON_NOTE = 5;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -294,7 +285,7 @@ public interface StorynotesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PERSON__ID = NOTE__ID;
+	int PERSON_NOTE__ID = NOTE__ID;
 
 	/**
 	 * The feature id for the '<em><b>Ref Id</b></em>' attribute.
@@ -303,7 +294,7 @@ public interface StorynotesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PERSON__REF_ID = NOTE__REF_ID;
+	int PERSON_NOTE__REF_ID = NOTE__REF_ID;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -312,7 +303,7 @@ public interface StorynotesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PERSON__NAME = NOTE_FEATURE_COUNT + 0;
+	int PERSON_NOTE__NAME = NOTE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Cv</b></em>' attribute.
@@ -321,7 +312,7 @@ public interface StorynotesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PERSON__CV = NOTE_FEATURE_COUNT + 1;
+	int PERSON_NOTE__CV = NOTE_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Age</b></em>' attribute.
@@ -330,7 +321,7 @@ public interface StorynotesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PERSON__AGE = NOTE_FEATURE_COUNT + 2;
+	int PERSON_NOTE__AGE = NOTE_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Hair Color</b></em>' attribute.
@@ -339,7 +330,7 @@ public interface StorynotesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PERSON__HAIR_COLOR = NOTE_FEATURE_COUNT + 3;
+	int PERSON_NOTE__HAIR_COLOR = NOTE_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Eye Color</b></em>' attribute.
@@ -348,7 +339,7 @@ public interface StorynotesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PERSON__EYE_COLOR = NOTE_FEATURE_COUNT + 4;
+	int PERSON_NOTE__EYE_COLOR = NOTE_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Size</b></em>' attribute.
@@ -357,7 +348,7 @@ public interface StorynotesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PERSON__SIZE = NOTE_FEATURE_COUNT + 5;
+	int PERSON_NOTE__SIZE = NOTE_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Weight</b></em>' attribute.
@@ -366,7 +357,7 @@ public interface StorynotesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PERSON__WEIGHT = NOTE_FEATURE_COUNT + 6;
+	int PERSON_NOTE__WEIGHT = NOTE_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Skin Color</b></em>' attribute.
@@ -375,7 +366,7 @@ public interface StorynotesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PERSON__SKIN_COLOR = NOTE_FEATURE_COUNT + 7;
+	int PERSON_NOTE__SKIN_COLOR = NOTE_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Social Background</b></em>' attribute.
@@ -384,7 +375,7 @@ public interface StorynotesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PERSON__SOCIAL_BACKGROUND = NOTE_FEATURE_COUNT + 8;
+	int PERSON_NOTE__SOCIAL_BACKGROUND = NOTE_FEATURE_COUNT + 8;
 
 	/**
 	 * The feature id for the '<em><b>Hobbies</b></em>' attribute list.
@@ -393,7 +384,7 @@ public interface StorynotesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PERSON__HOBBIES = NOTE_FEATURE_COUNT + 9;
+	int PERSON_NOTE__HOBBIES = NOTE_FEATURE_COUNT + 9;
 
 	/**
 	 * The feature id for the '<em><b>Psychological Background</b></em>' attribute.
@@ -402,26 +393,26 @@ public interface StorynotesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PERSON__PSYCHOLOGICAL_BACKGROUND = NOTE_FEATURE_COUNT + 10;
+	int PERSON_NOTE__PSYCHOLOGICAL_BACKGROUND = NOTE_FEATURE_COUNT + 10;
 
 	/**
-	 * The number of structural features of the '<em>Person</em>' class.
+	 * The number of structural features of the '<em>Person Note</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PERSON_FEATURE_COUNT = NOTE_FEATURE_COUNT + 11;
+	int PERSON_NOTE_FEATURE_COUNT = NOTE_FEATURE_COUNT + 11;
 
 	/**
-	 * The meta object id for the '{@link de.hannesniederhausen.storynotes.model.impl.SettingImpl <em>Setting</em>}' class.
+	 * The meta object id for the '{@link de.hannesniederhausen.storynotes.model.impl.SettingNoteImpl <em>Setting Note</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.hannesniederhausen.storynotes.model.impl.SettingImpl
-	 * @see de.hannesniederhausen.storynotes.model.impl.StorynotesPackageImpl#getSetting()
+	 * @see de.hannesniederhausen.storynotes.model.impl.SettingNoteImpl
+	 * @see de.hannesniederhausen.storynotes.model.impl.StorynotesPackageImpl#getSettingNote()
 	 * @generated
 	 */
-	int SETTING = 6;
+	int SETTING_NOTE = 6;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -430,7 +421,7 @@ public interface StorynotesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SETTING__ID = NOTE__ID;
+	int SETTING_NOTE__ID = NOTE__ID;
 
 	/**
 	 * The feature id for the '<em><b>Ref Id</b></em>' attribute.
@@ -439,7 +430,7 @@ public interface StorynotesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SETTING__REF_ID = NOTE__REF_ID;
+	int SETTING_NOTE__REF_ID = NOTE__REF_ID;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -448,7 +439,7 @@ public interface StorynotesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SETTING__NAME = NOTE_FEATURE_COUNT + 0;
+	int SETTING_NOTE__NAME = NOTE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Kind</b></em>' attribute.
@@ -457,7 +448,7 @@ public interface StorynotesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SETTING__KIND = NOTE_FEATURE_COUNT + 1;
+	int SETTING_NOTE__KIND = NOTE_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -466,26 +457,26 @@ public interface StorynotesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SETTING__DESCRIPTION = NOTE_FEATURE_COUNT + 2;
+	int SETTING_NOTE__DESCRIPTION = NOTE_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of structural features of the '<em>Setting</em>' class.
+	 * The number of structural features of the '<em>Setting Note</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SETTING_FEATURE_COUNT = NOTE_FEATURE_COUNT + 3;
+	int SETTING_NOTE_FEATURE_COUNT = NOTE_FEATURE_COUNT + 3;
 
 	/**
-	 * The meta object id for the '{@link de.hannesniederhausen.storynotes.model.impl.PlotImpl <em>Plot</em>}' class.
+	 * The meta object id for the '{@link de.hannesniederhausen.storynotes.model.impl.PlotNoteImpl <em>Plot Note</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.hannesniederhausen.storynotes.model.impl.PlotImpl
-	 * @see de.hannesniederhausen.storynotes.model.impl.StorynotesPackageImpl#getPlot()
+	 * @see de.hannesniederhausen.storynotes.model.impl.PlotNoteImpl
+	 * @see de.hannesniederhausen.storynotes.model.impl.StorynotesPackageImpl#getPlotNote()
 	 * @generated
 	 */
-	int PLOT = 7;
+	int PLOT_NOTE = 7;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -494,7 +485,7 @@ public interface StorynotesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PLOT__ID = NOTE__ID;
+	int PLOT_NOTE__ID = NOTE__ID;
 
 	/**
 	 * The feature id for the '<em><b>Ref Id</b></em>' attribute.
@@ -503,7 +494,7 @@ public interface StorynotesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PLOT__REF_ID = NOTE__REF_ID;
+	int PLOT_NOTE__REF_ID = NOTE__REF_ID;
 
 	/**
 	 * The feature id for the '<em><b>Kind</b></em>' attribute.
@@ -512,7 +503,7 @@ public interface StorynotesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PLOT__KIND = NOTE_FEATURE_COUNT + 0;
+	int PLOT_NOTE__KIND = NOTE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Title</b></em>' attribute.
@@ -521,7 +512,7 @@ public interface StorynotesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PLOT__TITLE = NOTE_FEATURE_COUNT + 1;
+	int PLOT_NOTE__TITLE = NOTE_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Notes</b></em>' reference.
@@ -530,7 +521,7 @@ public interface StorynotesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PLOT__NOTES = NOTE_FEATURE_COUNT + 2;
+	int PLOT_NOTE__NOTES = NOTE_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -539,16 +530,16 @@ public interface StorynotesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PLOT__DESCRIPTION = NOTE_FEATURE_COUNT + 3;
+	int PLOT_NOTE__DESCRIPTION = NOTE_FEATURE_COUNT + 3;
 
 	/**
-	 * The number of structural features of the '<em>Plot</em>' class.
+	 * The number of structural features of the '<em>Plot Note</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PLOT_FEATURE_COUNT = NOTE_FEATURE_COUNT + 4;
+	int PLOT_NOTE_FEATURE_COUNT = NOTE_FEATURE_COUNT + 4;
 
 	/**
 	 * Returns the meta object for class '{@link de.hannesniederhausen.storynotes.model.File <em>File</em>}'.
@@ -668,17 +659,6 @@ public interface StorynotesPackage extends EPackage {
 	EClass getCategory();
 
 	/**
-	 * Returns the meta object for the reference list '{@link de.hannesniederhausen.storynotes.model.Category#getNotes <em>Notes</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Notes</em>'.
-	 * @see de.hannesniederhausen.storynotes.model.Category#getNotes()
-	 * @see #getCategory()
-	 * @generated
-	 */
-	EReference getCategory_Notes();
-
-	/**
 	 * Returns the meta object for the attribute '{@link de.hannesniederhausen.storynotes.model.Category#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -711,232 +691,232 @@ public interface StorynotesPackage extends EPackage {
 	EAttribute getNote_RefId();
 
 	/**
-	 * Returns the meta object for class '{@link de.hannesniederhausen.storynotes.model.Person <em>Person</em>}'.
+	 * Returns the meta object for class '{@link de.hannesniederhausen.storynotes.model.PersonNote <em>Person Note</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Person</em>'.
-	 * @see de.hannesniederhausen.storynotes.model.Person
+	 * @return the meta object for class '<em>Person Note</em>'.
+	 * @see de.hannesniederhausen.storynotes.model.PersonNote
 	 * @generated
 	 */
-	EClass getPerson();
+	EClass getPersonNote();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.hannesniederhausen.storynotes.model.Person#getName <em>Name</em>}'.
+	 * Returns the meta object for the attribute '{@link de.hannesniederhausen.storynotes.model.PersonNote#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see de.hannesniederhausen.storynotes.model.Person#getName()
-	 * @see #getPerson()
+	 * @see de.hannesniederhausen.storynotes.model.PersonNote#getName()
+	 * @see #getPersonNote()
 	 * @generated
 	 */
-	EAttribute getPerson_Name();
+	EAttribute getPersonNote_Name();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.hannesniederhausen.storynotes.model.Person#getCv <em>Cv</em>}'.
+	 * Returns the meta object for the attribute '{@link de.hannesniederhausen.storynotes.model.PersonNote#getCv <em>Cv</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Cv</em>'.
-	 * @see de.hannesniederhausen.storynotes.model.Person#getCv()
-	 * @see #getPerson()
+	 * @see de.hannesniederhausen.storynotes.model.PersonNote#getCv()
+	 * @see #getPersonNote()
 	 * @generated
 	 */
-	EAttribute getPerson_Cv();
+	EAttribute getPersonNote_Cv();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.hannesniederhausen.storynotes.model.Person#getAge <em>Age</em>}'.
+	 * Returns the meta object for the attribute '{@link de.hannesniederhausen.storynotes.model.PersonNote#getAge <em>Age</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Age</em>'.
-	 * @see de.hannesniederhausen.storynotes.model.Person#getAge()
-	 * @see #getPerson()
+	 * @see de.hannesniederhausen.storynotes.model.PersonNote#getAge()
+	 * @see #getPersonNote()
 	 * @generated
 	 */
-	EAttribute getPerson_Age();
+	EAttribute getPersonNote_Age();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.hannesniederhausen.storynotes.model.Person#getHairColor <em>Hair Color</em>}'.
+	 * Returns the meta object for the attribute '{@link de.hannesniederhausen.storynotes.model.PersonNote#getHairColor <em>Hair Color</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Hair Color</em>'.
-	 * @see de.hannesniederhausen.storynotes.model.Person#getHairColor()
-	 * @see #getPerson()
+	 * @see de.hannesniederhausen.storynotes.model.PersonNote#getHairColor()
+	 * @see #getPersonNote()
 	 * @generated
 	 */
-	EAttribute getPerson_HairColor();
+	EAttribute getPersonNote_HairColor();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.hannesniederhausen.storynotes.model.Person#getEyeColor <em>Eye Color</em>}'.
+	 * Returns the meta object for the attribute '{@link de.hannesniederhausen.storynotes.model.PersonNote#getEyeColor <em>Eye Color</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Eye Color</em>'.
-	 * @see de.hannesniederhausen.storynotes.model.Person#getEyeColor()
-	 * @see #getPerson()
+	 * @see de.hannesniederhausen.storynotes.model.PersonNote#getEyeColor()
+	 * @see #getPersonNote()
 	 * @generated
 	 */
-	EAttribute getPerson_EyeColor();
+	EAttribute getPersonNote_EyeColor();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.hannesniederhausen.storynotes.model.Person#getSize <em>Size</em>}'.
+	 * Returns the meta object for the attribute '{@link de.hannesniederhausen.storynotes.model.PersonNote#getSize <em>Size</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Size</em>'.
-	 * @see de.hannesniederhausen.storynotes.model.Person#getSize()
-	 * @see #getPerson()
+	 * @see de.hannesniederhausen.storynotes.model.PersonNote#getSize()
+	 * @see #getPersonNote()
 	 * @generated
 	 */
-	EAttribute getPerson_Size();
+	EAttribute getPersonNote_Size();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.hannesniederhausen.storynotes.model.Person#getWeight <em>Weight</em>}'.
+	 * Returns the meta object for the attribute '{@link de.hannesniederhausen.storynotes.model.PersonNote#getWeight <em>Weight</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Weight</em>'.
-	 * @see de.hannesniederhausen.storynotes.model.Person#getWeight()
-	 * @see #getPerson()
+	 * @see de.hannesniederhausen.storynotes.model.PersonNote#getWeight()
+	 * @see #getPersonNote()
 	 * @generated
 	 */
-	EAttribute getPerson_Weight();
+	EAttribute getPersonNote_Weight();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.hannesniederhausen.storynotes.model.Person#getSkinColor <em>Skin Color</em>}'.
+	 * Returns the meta object for the attribute '{@link de.hannesniederhausen.storynotes.model.PersonNote#getSkinColor <em>Skin Color</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Skin Color</em>'.
-	 * @see de.hannesniederhausen.storynotes.model.Person#getSkinColor()
-	 * @see #getPerson()
+	 * @see de.hannesniederhausen.storynotes.model.PersonNote#getSkinColor()
+	 * @see #getPersonNote()
 	 * @generated
 	 */
-	EAttribute getPerson_SkinColor();
+	EAttribute getPersonNote_SkinColor();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.hannesniederhausen.storynotes.model.Person#getSocialBackground <em>Social Background</em>}'.
+	 * Returns the meta object for the attribute '{@link de.hannesniederhausen.storynotes.model.PersonNote#getSocialBackground <em>Social Background</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Social Background</em>'.
-	 * @see de.hannesniederhausen.storynotes.model.Person#getSocialBackground()
-	 * @see #getPerson()
+	 * @see de.hannesniederhausen.storynotes.model.PersonNote#getSocialBackground()
+	 * @see #getPersonNote()
 	 * @generated
 	 */
-	EAttribute getPerson_SocialBackground();
+	EAttribute getPersonNote_SocialBackground();
 
 	/**
-	 * Returns the meta object for the attribute list '{@link de.hannesniederhausen.storynotes.model.Person#getHobbies <em>Hobbies</em>}'.
+	 * Returns the meta object for the attribute list '{@link de.hannesniederhausen.storynotes.model.PersonNote#getHobbies <em>Hobbies</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute list '<em>Hobbies</em>'.
-	 * @see de.hannesniederhausen.storynotes.model.Person#getHobbies()
-	 * @see #getPerson()
+	 * @see de.hannesniederhausen.storynotes.model.PersonNote#getHobbies()
+	 * @see #getPersonNote()
 	 * @generated
 	 */
-	EAttribute getPerson_Hobbies();
+	EAttribute getPersonNote_Hobbies();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.hannesniederhausen.storynotes.model.Person#getPsychologicalBackground <em>Psychological Background</em>}'.
+	 * Returns the meta object for the attribute '{@link de.hannesniederhausen.storynotes.model.PersonNote#getPsychologicalBackground <em>Psychological Background</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Psychological Background</em>'.
-	 * @see de.hannesniederhausen.storynotes.model.Person#getPsychologicalBackground()
-	 * @see #getPerson()
+	 * @see de.hannesniederhausen.storynotes.model.PersonNote#getPsychologicalBackground()
+	 * @see #getPersonNote()
 	 * @generated
 	 */
-	EAttribute getPerson_PsychologicalBackground();
+	EAttribute getPersonNote_PsychologicalBackground();
 
 	/**
-	 * Returns the meta object for class '{@link de.hannesniederhausen.storynotes.model.Setting <em>Setting</em>}'.
+	 * Returns the meta object for class '{@link de.hannesniederhausen.storynotes.model.SettingNote <em>Setting Note</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Setting</em>'.
-	 * @see de.hannesniederhausen.storynotes.model.Setting
+	 * @return the meta object for class '<em>Setting Note</em>'.
+	 * @see de.hannesniederhausen.storynotes.model.SettingNote
 	 * @generated
 	 */
-	EClass getSetting();
+	EClass getSettingNote();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.hannesniederhausen.storynotes.model.Setting#getName <em>Name</em>}'.
+	 * Returns the meta object for the attribute '{@link de.hannesniederhausen.storynotes.model.SettingNote#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see de.hannesniederhausen.storynotes.model.Setting#getName()
-	 * @see #getSetting()
+	 * @see de.hannesniederhausen.storynotes.model.SettingNote#getName()
+	 * @see #getSettingNote()
 	 * @generated
 	 */
-	EAttribute getSetting_Name();
+	EAttribute getSettingNote_Name();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.hannesniederhausen.storynotes.model.Setting#getKind <em>Kind</em>}'.
+	 * Returns the meta object for the attribute '{@link de.hannesniederhausen.storynotes.model.SettingNote#getKind <em>Kind</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Kind</em>'.
-	 * @see de.hannesniederhausen.storynotes.model.Setting#getKind()
-	 * @see #getSetting()
+	 * @see de.hannesniederhausen.storynotes.model.SettingNote#getKind()
+	 * @see #getSettingNote()
 	 * @generated
 	 */
-	EAttribute getSetting_Kind();
+	EAttribute getSettingNote_Kind();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.hannesniederhausen.storynotes.model.Setting#getDescription <em>Description</em>}'.
+	 * Returns the meta object for the attribute '{@link de.hannesniederhausen.storynotes.model.SettingNote#getDescription <em>Description</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Description</em>'.
-	 * @see de.hannesniederhausen.storynotes.model.Setting#getDescription()
-	 * @see #getSetting()
+	 * @see de.hannesniederhausen.storynotes.model.SettingNote#getDescription()
+	 * @see #getSettingNote()
 	 * @generated
 	 */
-	EAttribute getSetting_Description();
+	EAttribute getSettingNote_Description();
 
 	/**
-	 * Returns the meta object for class '{@link de.hannesniederhausen.storynotes.model.Plot <em>Plot</em>}'.
+	 * Returns the meta object for class '{@link de.hannesniederhausen.storynotes.model.PlotNote <em>Plot Note</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Plot</em>'.
-	 * @see de.hannesniederhausen.storynotes.model.Plot
+	 * @return the meta object for class '<em>Plot Note</em>'.
+	 * @see de.hannesniederhausen.storynotes.model.PlotNote
 	 * @generated
 	 */
-	EClass getPlot();
+	EClass getPlotNote();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.hannesniederhausen.storynotes.model.Plot#getKind <em>Kind</em>}'.
+	 * Returns the meta object for the attribute '{@link de.hannesniederhausen.storynotes.model.PlotNote#getKind <em>Kind</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Kind</em>'.
-	 * @see de.hannesniederhausen.storynotes.model.Plot#getKind()
-	 * @see #getPlot()
+	 * @see de.hannesniederhausen.storynotes.model.PlotNote#getKind()
+	 * @see #getPlotNote()
 	 * @generated
 	 */
-	EAttribute getPlot_Kind();
+	EAttribute getPlotNote_Kind();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.hannesniederhausen.storynotes.model.Plot#getTitle <em>Title</em>}'.
+	 * Returns the meta object for the attribute '{@link de.hannesniederhausen.storynotes.model.PlotNote#getTitle <em>Title</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Title</em>'.
-	 * @see de.hannesniederhausen.storynotes.model.Plot#getTitle()
-	 * @see #getPlot()
+	 * @see de.hannesniederhausen.storynotes.model.PlotNote#getTitle()
+	 * @see #getPlotNote()
 	 * @generated
 	 */
-	EAttribute getPlot_Title();
+	EAttribute getPlotNote_Title();
 
 	/**
-	 * Returns the meta object for the reference '{@link de.hannesniederhausen.storynotes.model.Plot#getNotes <em>Notes</em>}'.
+	 * Returns the meta object for the reference '{@link de.hannesniederhausen.storynotes.model.PlotNote#getNotes <em>Notes</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Notes</em>'.
-	 * @see de.hannesniederhausen.storynotes.model.Plot#getNotes()
-	 * @see #getPlot()
+	 * @see de.hannesniederhausen.storynotes.model.PlotNote#getNotes()
+	 * @see #getPlotNote()
 	 * @generated
 	 */
-	EReference getPlot_Notes();
+	EReference getPlotNote_Notes();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.hannesniederhausen.storynotes.model.Plot#getDescription <em>Description</em>}'.
+	 * Returns the meta object for the attribute '{@link de.hannesniederhausen.storynotes.model.PlotNote#getDescription <em>Description</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Description</em>'.
-	 * @see de.hannesniederhausen.storynotes.model.Plot#getDescription()
-	 * @see #getPlot()
+	 * @see de.hannesniederhausen.storynotes.model.PlotNote#getDescription()
+	 * @see #getPlotNote()
 	 * @generated
 	 */
-	EAttribute getPlot_Description();
+	EAttribute getPlotNote_Description();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -1047,22 +1027,14 @@ public interface StorynotesPackage extends EPackage {
 		EAttribute FILE_ELEMENT__ID = eINSTANCE.getFileElement_Id();
 
 		/**
-		 * The meta object literal for the '{@link de.hannesniederhausen.storynotes.model.Category <em>Category</em>}' class.
+		 * The meta object literal for the '{@link de.hannesniederhausen.storynotes.model.impl.CategoryImpl <em>Category</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.hannesniederhausen.storynotes.model.Category
+		 * @see de.hannesniederhausen.storynotes.model.impl.CategoryImpl
 		 * @see de.hannesniederhausen.storynotes.model.impl.StorynotesPackageImpl#getCategory()
 		 * @generated
 		 */
 		EClass CATEGORY = eINSTANCE.getCategory();
-
-		/**
-		 * The meta object literal for the '<em><b>Notes</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference CATEGORY__NOTES = eINSTANCE.getCategory_Notes();
 
 		/**
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -1091,14 +1063,14 @@ public interface StorynotesPackage extends EPackage {
 		EAttribute NOTE__REF_ID = eINSTANCE.getNote_RefId();
 
 		/**
-		 * The meta object literal for the '{@link de.hannesniederhausen.storynotes.model.impl.PersonImpl <em>Person</em>}' class.
+		 * The meta object literal for the '{@link de.hannesniederhausen.storynotes.model.impl.PersonNoteImpl <em>Person Note</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.hannesniederhausen.storynotes.model.impl.PersonImpl
-		 * @see de.hannesniederhausen.storynotes.model.impl.StorynotesPackageImpl#getPerson()
+		 * @see de.hannesniederhausen.storynotes.model.impl.PersonNoteImpl
+		 * @see de.hannesniederhausen.storynotes.model.impl.StorynotesPackageImpl#getPersonNote()
 		 * @generated
 		 */
-		EClass PERSON = eINSTANCE.getPerson();
+		EClass PERSON_NOTE = eINSTANCE.getPersonNote();
 
 		/**
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -1106,7 +1078,7 @@ public interface StorynotesPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PERSON__NAME = eINSTANCE.getPerson_Name();
+		EAttribute PERSON_NOTE__NAME = eINSTANCE.getPersonNote_Name();
 
 		/**
 		 * The meta object literal for the '<em><b>Cv</b></em>' attribute feature.
@@ -1114,7 +1086,7 @@ public interface StorynotesPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PERSON__CV = eINSTANCE.getPerson_Cv();
+		EAttribute PERSON_NOTE__CV = eINSTANCE.getPersonNote_Cv();
 
 		/**
 		 * The meta object literal for the '<em><b>Age</b></em>' attribute feature.
@@ -1122,7 +1094,7 @@ public interface StorynotesPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PERSON__AGE = eINSTANCE.getPerson_Age();
+		EAttribute PERSON_NOTE__AGE = eINSTANCE.getPersonNote_Age();
 
 		/**
 		 * The meta object literal for the '<em><b>Hair Color</b></em>' attribute feature.
@@ -1130,7 +1102,8 @@ public interface StorynotesPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PERSON__HAIR_COLOR = eINSTANCE.getPerson_HairColor();
+		EAttribute PERSON_NOTE__HAIR_COLOR = eINSTANCE
+				.getPersonNote_HairColor();
 
 		/**
 		 * The meta object literal for the '<em><b>Eye Color</b></em>' attribute feature.
@@ -1138,7 +1111,7 @@ public interface StorynotesPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PERSON__EYE_COLOR = eINSTANCE.getPerson_EyeColor();
+		EAttribute PERSON_NOTE__EYE_COLOR = eINSTANCE.getPersonNote_EyeColor();
 
 		/**
 		 * The meta object literal for the '<em><b>Size</b></em>' attribute feature.
@@ -1146,7 +1119,7 @@ public interface StorynotesPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PERSON__SIZE = eINSTANCE.getPerson_Size();
+		EAttribute PERSON_NOTE__SIZE = eINSTANCE.getPersonNote_Size();
 
 		/**
 		 * The meta object literal for the '<em><b>Weight</b></em>' attribute feature.
@@ -1154,7 +1127,7 @@ public interface StorynotesPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PERSON__WEIGHT = eINSTANCE.getPerson_Weight();
+		EAttribute PERSON_NOTE__WEIGHT = eINSTANCE.getPersonNote_Weight();
 
 		/**
 		 * The meta object literal for the '<em><b>Skin Color</b></em>' attribute feature.
@@ -1162,7 +1135,8 @@ public interface StorynotesPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PERSON__SKIN_COLOR = eINSTANCE.getPerson_SkinColor();
+		EAttribute PERSON_NOTE__SKIN_COLOR = eINSTANCE
+				.getPersonNote_SkinColor();
 
 		/**
 		 * The meta object literal for the '<em><b>Social Background</b></em>' attribute feature.
@@ -1170,8 +1144,8 @@ public interface StorynotesPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PERSON__SOCIAL_BACKGROUND = eINSTANCE
-				.getPerson_SocialBackground();
+		EAttribute PERSON_NOTE__SOCIAL_BACKGROUND = eINSTANCE
+				.getPersonNote_SocialBackground();
 
 		/**
 		 * The meta object literal for the '<em><b>Hobbies</b></em>' attribute list feature.
@@ -1179,7 +1153,7 @@ public interface StorynotesPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PERSON__HOBBIES = eINSTANCE.getPerson_Hobbies();
+		EAttribute PERSON_NOTE__HOBBIES = eINSTANCE.getPersonNote_Hobbies();
 
 		/**
 		 * The meta object literal for the '<em><b>Psychological Background</b></em>' attribute feature.
@@ -1187,18 +1161,18 @@ public interface StorynotesPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PERSON__PSYCHOLOGICAL_BACKGROUND = eINSTANCE
-				.getPerson_PsychologicalBackground();
+		EAttribute PERSON_NOTE__PSYCHOLOGICAL_BACKGROUND = eINSTANCE
+				.getPersonNote_PsychologicalBackground();
 
 		/**
-		 * The meta object literal for the '{@link de.hannesniederhausen.storynotes.model.impl.SettingImpl <em>Setting</em>}' class.
+		 * The meta object literal for the '{@link de.hannesniederhausen.storynotes.model.impl.SettingNoteImpl <em>Setting Note</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.hannesniederhausen.storynotes.model.impl.SettingImpl
-		 * @see de.hannesniederhausen.storynotes.model.impl.StorynotesPackageImpl#getSetting()
+		 * @see de.hannesniederhausen.storynotes.model.impl.SettingNoteImpl
+		 * @see de.hannesniederhausen.storynotes.model.impl.StorynotesPackageImpl#getSettingNote()
 		 * @generated
 		 */
-		EClass SETTING = eINSTANCE.getSetting();
+		EClass SETTING_NOTE = eINSTANCE.getSettingNote();
 
 		/**
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -1206,7 +1180,7 @@ public interface StorynotesPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SETTING__NAME = eINSTANCE.getSetting_Name();
+		EAttribute SETTING_NOTE__NAME = eINSTANCE.getSettingNote_Name();
 
 		/**
 		 * The meta object literal for the '<em><b>Kind</b></em>' attribute feature.
@@ -1214,7 +1188,7 @@ public interface StorynotesPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SETTING__KIND = eINSTANCE.getSetting_Kind();
+		EAttribute SETTING_NOTE__KIND = eINSTANCE.getSettingNote_Kind();
 
 		/**
 		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
@@ -1222,17 +1196,18 @@ public interface StorynotesPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SETTING__DESCRIPTION = eINSTANCE.getSetting_Description();
+		EAttribute SETTING_NOTE__DESCRIPTION = eINSTANCE
+				.getSettingNote_Description();
 
 		/**
-		 * The meta object literal for the '{@link de.hannesniederhausen.storynotes.model.impl.PlotImpl <em>Plot</em>}' class.
+		 * The meta object literal for the '{@link de.hannesniederhausen.storynotes.model.impl.PlotNoteImpl <em>Plot Note</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.hannesniederhausen.storynotes.model.impl.PlotImpl
-		 * @see de.hannesniederhausen.storynotes.model.impl.StorynotesPackageImpl#getPlot()
+		 * @see de.hannesniederhausen.storynotes.model.impl.PlotNoteImpl
+		 * @see de.hannesniederhausen.storynotes.model.impl.StorynotesPackageImpl#getPlotNote()
 		 * @generated
 		 */
-		EClass PLOT = eINSTANCE.getPlot();
+		EClass PLOT_NOTE = eINSTANCE.getPlotNote();
 
 		/**
 		 * The meta object literal for the '<em><b>Kind</b></em>' attribute feature.
@@ -1240,7 +1215,7 @@ public interface StorynotesPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PLOT__KIND = eINSTANCE.getPlot_Kind();
+		EAttribute PLOT_NOTE__KIND = eINSTANCE.getPlotNote_Kind();
 
 		/**
 		 * The meta object literal for the '<em><b>Title</b></em>' attribute feature.
@@ -1248,7 +1223,7 @@ public interface StorynotesPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PLOT__TITLE = eINSTANCE.getPlot_Title();
+		EAttribute PLOT_NOTE__TITLE = eINSTANCE.getPlotNote_Title();
 
 		/**
 		 * The meta object literal for the '<em><b>Notes</b></em>' reference feature.
@@ -1256,7 +1231,7 @@ public interface StorynotesPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference PLOT__NOTES = eINSTANCE.getPlot_Notes();
+		EReference PLOT_NOTE__NOTES = eINSTANCE.getPlotNote_Notes();
 
 		/**
 		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
@@ -1264,7 +1239,7 @@ public interface StorynotesPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PLOT__DESCRIPTION = eINSTANCE.getPlot_Description();
+		EAttribute PLOT_NOTE__DESCRIPTION = eINSTANCE.getPlotNote_Description();
 
 	}
 

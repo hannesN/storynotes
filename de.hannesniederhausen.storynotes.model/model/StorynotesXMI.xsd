@@ -32,14 +32,10 @@
     <xsd:attribute name="id" type="xsd:long" use="required"/>
   </xsd:complexType>
   <xsd:element name="FileElement" type="sn:FileElement"/>
-  <xsd:complexType abstract="true" name="Category">
+  <xsd:complexType name="Category">
     <xsd:complexContent>
       <xsd:extension base="sn:FileElement">
-        <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="notes" type="sn:Note"/>
-        </xsd:choice>
         <xsd:attribute name="name" type="xsd:string" use="required"/>
-        <xsd:attribute name="notes" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -52,7 +48,7 @@
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="Note" type="sn:Note"/>
-  <xsd:complexType name="Person">
+  <xsd:complexType name="PersonNote">
     <xsd:complexContent>
       <xsd:extension base="sn:Note">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
@@ -71,8 +67,8 @@
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="Person" type="sn:Person"/>
-  <xsd:complexType name="Setting">
+  <xsd:element name="PersonNote" type="sn:PersonNote"/>
+  <xsd:complexType name="SettingNote">
     <xsd:complexContent>
       <xsd:extension base="sn:Note">
         <xsd:attribute name="name" type="xsd:string" use="required"/>
@@ -81,8 +77,8 @@
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="Setting" type="sn:Setting"/>
-  <xsd:complexType name="Plot">
+  <xsd:element name="SettingNote" type="sn:SettingNote"/>
+  <xsd:complexType name="PlotNote">
     <xsd:complexContent>
       <xsd:extension base="sn:Note">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
@@ -95,5 +91,5 @@
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="Plot" type="sn:Plot"/>
+  <xsd:element name="PlotNote" type="sn:PlotNote"/>
 </xsd:schema>

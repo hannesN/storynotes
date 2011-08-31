@@ -22,17 +22,14 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"
         iD="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Category" abstract="true" interface="true"
-      eSuperTypes="#//FileElement">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="notes" upperBound="-1"
-        eType="#//Note"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Category" eSuperTypes="#//FileElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Note" abstract="true" interface="true"
       eSuperTypes="#//FileElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="refId" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Person" eSuperTypes="#//Note">
+  <eClassifiers xsi:type="ecore:EClass" name="PersonNote" eSuperTypes="#//Note">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="cv" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="age" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
@@ -52,13 +49,13 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="psychologicalBackground"
         lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Setting" eSuperTypes="#//Note">
+  <eClassifiers xsi:type="ecore:EClass" name="SettingNote" eSuperTypes="#//Note">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="kind" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Plot" eSuperTypes="#//Note">
+  <eClassifiers xsi:type="ecore:EClass" name="PlotNote" eSuperTypes="#//Note">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="kind" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="title" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="notes" eType="#//Note"/>

@@ -80,12 +80,14 @@ public class StorynotesFactoryImpl extends EFactoryImpl implements
 			return createFile();
 		case StorynotesPackage.PROJECT:
 			return createProject();
-		case StorynotesPackage.PERSON:
-			return createPerson();
-		case StorynotesPackage.SETTING:
-			return createSetting();
-		case StorynotesPackage.PLOT:
-			return createPlot();
+		case StorynotesPackage.CATEGORY:
+			return createCategory();
+		case StorynotesPackage.PERSON_NOTE:
+			return createPersonNote();
+		case StorynotesPackage.SETTING_NOTE:
+			return createSettingNote();
+		case StorynotesPackage.PLOT_NOTE:
+			return createPlotNote();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName()
 					+ "' is not a valid classifier");
@@ -118,10 +120,10 @@ public class StorynotesFactoryImpl extends EFactoryImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Person createPerson() {
-		PersonImpl person = new PersonImpl();
-		setId(person);
-		return person;
+	public Category createCategory() {
+		CategoryImpl category = new CategoryImpl();
+		setId(category);
+		return category;
 	}
 
 	/**
@@ -129,10 +131,10 @@ public class StorynotesFactoryImpl extends EFactoryImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Setting createSetting() {
-		SettingImpl setting = new SettingImpl();
-		setId(setting);
-		return setting;
+	public PersonNote createPersonNote() {
+		PersonNoteImpl personNote = new PersonNoteImpl();
+		setId(personNote);
+		return personNote;
 	}
 
 	/**
@@ -140,10 +142,21 @@ public class StorynotesFactoryImpl extends EFactoryImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Plot createPlot() {
-		PlotImpl plot = new PlotImpl();
-		setId(plot);
-		return plot;
+	public SettingNote createSettingNote() {
+		SettingNoteImpl settingNote = new SettingNoteImpl();
+		setId(settingNote);
+		return settingNote;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PlotNote createPlotNote() {
+		PlotNoteImpl plotNote = new PlotNoteImpl();
+		setId(plotNote);
+		return plotNote;
 	}
 
 	/**

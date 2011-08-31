@@ -15,10 +15,10 @@ import de.hannesniederhausen.storynotes.model.Category;
 import de.hannesniederhausen.storynotes.model.File;
 import de.hannesniederhausen.storynotes.model.FileElement;
 import de.hannesniederhausen.storynotes.model.Note;
-import de.hannesniederhausen.storynotes.model.Person;
-import de.hannesniederhausen.storynotes.model.Plot;
+import de.hannesniederhausen.storynotes.model.PersonNote;
+import de.hannesniederhausen.storynotes.model.PlotNote;
 import de.hannesniederhausen.storynotes.model.Project;
-import de.hannesniederhausen.storynotes.model.Setting;
+import de.hannesniederhausen.storynotes.model.SettingNote;
 import de.hannesniederhausen.storynotes.model.StorynotesFactory;
 import de.hannesniederhausen.storynotes.model.StorynotesPackage;
 
@@ -77,21 +77,21 @@ public class StorynotesPackageImpl extends EPackageImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass personEClass = null;
+	private EClass personNoteEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass settingEClass = null;
+	private EClass settingNoteEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass plotEClass = null;
+	private EClass plotNoteEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -262,17 +262,8 @@ public class StorynotesPackageImpl extends EPackageImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getCategory_Notes() {
-		return (EReference) categoryEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EAttribute getCategory_Name() {
-		return (EAttribute) categoryEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) categoryEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -298,8 +289,8 @@ public class StorynotesPackageImpl extends EPackageImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getPerson() {
-		return personEClass;
+	public EClass getPersonNote() {
+		return personNoteEClass;
 	}
 
 	/**
@@ -307,8 +298,8 @@ public class StorynotesPackageImpl extends EPackageImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPerson_Name() {
-		return (EAttribute) personEClass.getEStructuralFeatures().get(0);
+	public EAttribute getPersonNote_Name() {
+		return (EAttribute) personNoteEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -316,8 +307,8 @@ public class StorynotesPackageImpl extends EPackageImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPerson_Cv() {
-		return (EAttribute) personEClass.getEStructuralFeatures().get(1);
+	public EAttribute getPersonNote_Cv() {
+		return (EAttribute) personNoteEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -325,8 +316,8 @@ public class StorynotesPackageImpl extends EPackageImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPerson_Age() {
-		return (EAttribute) personEClass.getEStructuralFeatures().get(2);
+	public EAttribute getPersonNote_Age() {
+		return (EAttribute) personNoteEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -334,8 +325,8 @@ public class StorynotesPackageImpl extends EPackageImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPerson_HairColor() {
-		return (EAttribute) personEClass.getEStructuralFeatures().get(3);
+	public EAttribute getPersonNote_HairColor() {
+		return (EAttribute) personNoteEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -343,8 +334,8 @@ public class StorynotesPackageImpl extends EPackageImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPerson_EyeColor() {
-		return (EAttribute) personEClass.getEStructuralFeatures().get(4);
+	public EAttribute getPersonNote_EyeColor() {
+		return (EAttribute) personNoteEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -352,8 +343,8 @@ public class StorynotesPackageImpl extends EPackageImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPerson_Size() {
-		return (EAttribute) personEClass.getEStructuralFeatures().get(5);
+	public EAttribute getPersonNote_Size() {
+		return (EAttribute) personNoteEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -361,8 +352,8 @@ public class StorynotesPackageImpl extends EPackageImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPerson_Weight() {
-		return (EAttribute) personEClass.getEStructuralFeatures().get(6);
+	public EAttribute getPersonNote_Weight() {
+		return (EAttribute) personNoteEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -370,8 +361,8 @@ public class StorynotesPackageImpl extends EPackageImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPerson_SkinColor() {
-		return (EAttribute) personEClass.getEStructuralFeatures().get(7);
+	public EAttribute getPersonNote_SkinColor() {
+		return (EAttribute) personNoteEClass.getEStructuralFeatures().get(7);
 	}
 
 	/**
@@ -379,8 +370,8 @@ public class StorynotesPackageImpl extends EPackageImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPerson_SocialBackground() {
-		return (EAttribute) personEClass.getEStructuralFeatures().get(8);
+	public EAttribute getPersonNote_SocialBackground() {
+		return (EAttribute) personNoteEClass.getEStructuralFeatures().get(8);
 	}
 
 	/**
@@ -388,8 +379,8 @@ public class StorynotesPackageImpl extends EPackageImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPerson_Hobbies() {
-		return (EAttribute) personEClass.getEStructuralFeatures().get(9);
+	public EAttribute getPersonNote_Hobbies() {
+		return (EAttribute) personNoteEClass.getEStructuralFeatures().get(9);
 	}
 
 	/**
@@ -397,8 +388,8 @@ public class StorynotesPackageImpl extends EPackageImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPerson_PsychologicalBackground() {
-		return (EAttribute) personEClass.getEStructuralFeatures().get(10);
+	public EAttribute getPersonNote_PsychologicalBackground() {
+		return (EAttribute) personNoteEClass.getEStructuralFeatures().get(10);
 	}
 
 	/**
@@ -406,8 +397,8 @@ public class StorynotesPackageImpl extends EPackageImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getSetting() {
-		return settingEClass;
+	public EClass getSettingNote() {
+		return settingNoteEClass;
 	}
 
 	/**
@@ -415,8 +406,8 @@ public class StorynotesPackageImpl extends EPackageImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSetting_Name() {
-		return (EAttribute) settingEClass.getEStructuralFeatures().get(0);
+	public EAttribute getSettingNote_Name() {
+		return (EAttribute) settingNoteEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -424,8 +415,8 @@ public class StorynotesPackageImpl extends EPackageImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSetting_Kind() {
-		return (EAttribute) settingEClass.getEStructuralFeatures().get(1);
+	public EAttribute getSettingNote_Kind() {
+		return (EAttribute) settingNoteEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -433,8 +424,8 @@ public class StorynotesPackageImpl extends EPackageImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSetting_Description() {
-		return (EAttribute) settingEClass.getEStructuralFeatures().get(2);
+	public EAttribute getSettingNote_Description() {
+		return (EAttribute) settingNoteEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -442,8 +433,8 @@ public class StorynotesPackageImpl extends EPackageImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getPlot() {
-		return plotEClass;
+	public EClass getPlotNote() {
+		return plotNoteEClass;
 	}
 
 	/**
@@ -451,8 +442,8 @@ public class StorynotesPackageImpl extends EPackageImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPlot_Kind() {
-		return (EAttribute) plotEClass.getEStructuralFeatures().get(0);
+	public EAttribute getPlotNote_Kind() {
+		return (EAttribute) plotNoteEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -460,8 +451,8 @@ public class StorynotesPackageImpl extends EPackageImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPlot_Title() {
-		return (EAttribute) plotEClass.getEStructuralFeatures().get(1);
+	public EAttribute getPlotNote_Title() {
+		return (EAttribute) plotNoteEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -469,8 +460,8 @@ public class StorynotesPackageImpl extends EPackageImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getPlot_Notes() {
-		return (EReference) plotEClass.getEStructuralFeatures().get(2);
+	public EReference getPlotNote_Notes() {
+		return (EReference) plotNoteEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -478,8 +469,8 @@ public class StorynotesPackageImpl extends EPackageImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPlot_Description() {
-		return (EAttribute) plotEClass.getEStructuralFeatures().get(3);
+	public EAttribute getPlotNote_Description() {
+		return (EAttribute) plotNoteEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -525,35 +516,35 @@ public class StorynotesPackageImpl extends EPackageImpl implements
 		createEAttribute(fileElementEClass, FILE_ELEMENT__ID);
 
 		categoryEClass = createEClass(CATEGORY);
-		createEReference(categoryEClass, CATEGORY__NOTES);
 		createEAttribute(categoryEClass, CATEGORY__NAME);
 
 		noteEClass = createEClass(NOTE);
 		createEAttribute(noteEClass, NOTE__REF_ID);
 
-		personEClass = createEClass(PERSON);
-		createEAttribute(personEClass, PERSON__NAME);
-		createEAttribute(personEClass, PERSON__CV);
-		createEAttribute(personEClass, PERSON__AGE);
-		createEAttribute(personEClass, PERSON__HAIR_COLOR);
-		createEAttribute(personEClass, PERSON__EYE_COLOR);
-		createEAttribute(personEClass, PERSON__SIZE);
-		createEAttribute(personEClass, PERSON__WEIGHT);
-		createEAttribute(personEClass, PERSON__SKIN_COLOR);
-		createEAttribute(personEClass, PERSON__SOCIAL_BACKGROUND);
-		createEAttribute(personEClass, PERSON__HOBBIES);
-		createEAttribute(personEClass, PERSON__PSYCHOLOGICAL_BACKGROUND);
+		personNoteEClass = createEClass(PERSON_NOTE);
+		createEAttribute(personNoteEClass, PERSON_NOTE__NAME);
+		createEAttribute(personNoteEClass, PERSON_NOTE__CV);
+		createEAttribute(personNoteEClass, PERSON_NOTE__AGE);
+		createEAttribute(personNoteEClass, PERSON_NOTE__HAIR_COLOR);
+		createEAttribute(personNoteEClass, PERSON_NOTE__EYE_COLOR);
+		createEAttribute(personNoteEClass, PERSON_NOTE__SIZE);
+		createEAttribute(personNoteEClass, PERSON_NOTE__WEIGHT);
+		createEAttribute(personNoteEClass, PERSON_NOTE__SKIN_COLOR);
+		createEAttribute(personNoteEClass, PERSON_NOTE__SOCIAL_BACKGROUND);
+		createEAttribute(personNoteEClass, PERSON_NOTE__HOBBIES);
+		createEAttribute(personNoteEClass,
+				PERSON_NOTE__PSYCHOLOGICAL_BACKGROUND);
 
-		settingEClass = createEClass(SETTING);
-		createEAttribute(settingEClass, SETTING__NAME);
-		createEAttribute(settingEClass, SETTING__KIND);
-		createEAttribute(settingEClass, SETTING__DESCRIPTION);
+		settingNoteEClass = createEClass(SETTING_NOTE);
+		createEAttribute(settingNoteEClass, SETTING_NOTE__NAME);
+		createEAttribute(settingNoteEClass, SETTING_NOTE__KIND);
+		createEAttribute(settingNoteEClass, SETTING_NOTE__DESCRIPTION);
 
-		plotEClass = createEClass(PLOT);
-		createEAttribute(plotEClass, PLOT__KIND);
-		createEAttribute(plotEClass, PLOT__TITLE);
-		createEReference(plotEClass, PLOT__NOTES);
-		createEAttribute(plotEClass, PLOT__DESCRIPTION);
+		plotNoteEClass = createEClass(PLOT_NOTE);
+		createEAttribute(plotNoteEClass, PLOT_NOTE__KIND);
+		createEAttribute(plotNoteEClass, PLOT_NOTE__TITLE);
+		createEReference(plotNoteEClass, PLOT_NOTE__NOTES);
+		createEAttribute(plotNoteEClass, PLOT_NOTE__DESCRIPTION);
 	}
 
 	/**
@@ -588,9 +579,9 @@ public class StorynotesPackageImpl extends EPackageImpl implements
 		projectEClass.getESuperTypes().add(this.getFileElement());
 		categoryEClass.getESuperTypes().add(this.getFileElement());
 		noteEClass.getESuperTypes().add(this.getFileElement());
-		personEClass.getESuperTypes().add(this.getNote());
-		settingEClass.getESuperTypes().add(this.getNote());
-		plotEClass.getESuperTypes().add(this.getNote());
+		personNoteEClass.getESuperTypes().add(this.getNote());
+		settingNoteEClass.getESuperTypes().add(this.getNote());
+		plotNoteEClass.getESuperTypes().add(this.getNote());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(fileEClass, File.class, "File", !IS_ABSTRACT, !IS_INTERFACE,
@@ -630,12 +621,8 @@ public class StorynotesPackageImpl extends EPackageImpl implements
 				IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
 
-		initEClass(categoryEClass, Category.class, "Category", IS_ABSTRACT,
-				IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getCategory_Notes(), this.getNote(), null, "notes",
-				null, 0, -1, Category.class, !IS_TRANSIENT, !IS_VOLATILE,
-				IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(categoryEClass, Category.class, "Category", !IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCategory_Name(), ecorePackage.getEString(), "name",
 				null, 1, 1, Category.class, !IS_TRANSIENT, !IS_VOLATILE,
 				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
@@ -648,80 +635,85 @@ public class StorynotesPackageImpl extends EPackageImpl implements
 				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
 
-		initEClass(personEClass, Person.class, "Person", !IS_ABSTRACT,
-				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getPerson_Name(), ecorePackage.getEString(), "name",
-				null, 1, 1, Person.class, !IS_TRANSIENT, !IS_VOLATILE,
+		initEClass(personNoteEClass, PersonNote.class, "PersonNote",
+				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getPersonNote_Name(), ecorePackage.getEString(), "name",
+				null, 1, 1, PersonNote.class, !IS_TRANSIENT, !IS_VOLATILE,
 				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
-		initEAttribute(getPerson_Cv(), ecorePackage.getEString(), "cv", null,
-				0, 1, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-				!IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPerson_Age(), ecorePackage.getEInt(), "age", null, 0,
-				1, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-				!IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPerson_HairColor(), ecorePackage.getEString(),
-				"hairColor", null, 1, 1, Person.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-				!IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPerson_EyeColor(), ecorePackage.getEString(),
-				"eyeColor", null, 1, 1, Person.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-				!IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPerson_Size(), ecorePackage.getEInt(), "size", null,
-				1, 1, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-				!IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPerson_Weight(), ecorePackage.getEFloat(), "weight",
-				null, 1, 1, Person.class, !IS_TRANSIENT, !IS_VOLATILE,
+		initEAttribute(getPersonNote_Cv(), ecorePackage.getEString(), "cv",
+				null, 0, 1, PersonNote.class, !IS_TRANSIENT, !IS_VOLATILE,
 				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
-		initEAttribute(getPerson_SkinColor(), ecorePackage.getEString(),
-				"skinColor", null, 1, 1, Person.class, !IS_TRANSIENT,
+		initEAttribute(getPersonNote_Age(), ecorePackage.getEInt(), "age",
+				null, 0, 1, PersonNote.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEAttribute(getPersonNote_HairColor(), ecorePackage.getEString(),
+				"hairColor", null, 1, 1, PersonNote.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPerson_SocialBackground(), ecorePackage.getEString(),
-				"socialBackground", null, 1, 1, Person.class, !IS_TRANSIENT,
+		initEAttribute(getPersonNote_EyeColor(), ecorePackage.getEString(),
+				"eyeColor", null, 1, 1, PersonNote.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPerson_Hobbies(), ecorePackage.getEString(),
-				"hobbies", null, 1, -1, Person.class, !IS_TRANSIENT,
+		initEAttribute(getPersonNote_Size(), ecorePackage.getEInt(), "size",
+				null, 1, 1, PersonNote.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEAttribute(getPersonNote_Weight(), ecorePackage.getEFloat(),
+				"weight", null, 1, 1, PersonNote.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPerson_PsychologicalBackground(),
+		initEAttribute(getPersonNote_SkinColor(), ecorePackage.getEString(),
+				"skinColor", null, 1, 1, PersonNote.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPersonNote_SocialBackground(),
+				ecorePackage.getEString(), "socialBackground", null, 1, 1,
+				PersonNote.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				!IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPersonNote_Hobbies(), ecorePackage.getEString(),
+				"hobbies", null, 1, -1, PersonNote.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPersonNote_PsychologicalBackground(),
 				ecorePackage.getEString(), "psychologicalBackground", null, 1,
-				1, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-				!IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+				1, PersonNote.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
 
-		initEClass(settingEClass, Setting.class, "Setting", !IS_ABSTRACT,
-				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getSetting_Name(), ecorePackage.getEString(), "name",
-				null, 1, 1, Setting.class, !IS_TRANSIENT, !IS_VOLATILE,
-				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
-		initEAttribute(getSetting_Kind(), ecorePackage.getEString(), "kind",
-				null, 1, 1, Setting.class, !IS_TRANSIENT, !IS_VOLATILE,
-				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
-		initEAttribute(getSetting_Description(), ecorePackage.getEString(),
-				"description", null, 1, 1, Setting.class, !IS_TRANSIENT,
+		initEClass(settingNoteEClass, SettingNote.class, "SettingNote",
+				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSettingNote_Name(), ecorePackage.getEString(),
+				"name", null, 1, 1, SettingNote.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSettingNote_Kind(), ecorePackage.getEString(),
+				"kind", null, 1, 1, SettingNote.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSettingNote_Description(), ecorePackage.getEString(),
+				"description", null, 1, 1, SettingNote.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
 
-		initEClass(plotEClass, Plot.class, "Plot", !IS_ABSTRACT, !IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getPlot_Kind(), ecorePackage.getEString(), "kind", null,
-				1, 1, Plot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-				!IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPlot_Title(), ecorePackage.getEString(), "title",
-				null, 0, 1, Plot.class, !IS_TRANSIENT, !IS_VOLATILE,
+		initEClass(plotNoteEClass, PlotNote.class, "PlotNote", !IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getPlotNote_Kind(), ecorePackage.getEString(), "kind",
+				null, 1, 1, PlotNote.class, !IS_TRANSIENT, !IS_VOLATILE,
 				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
-		initEReference(getPlot_Notes(), this.getNote(), null, "notes", null, 0,
-				1, Plot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-				!IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
-				!IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPlot_Description(), ecorePackage.getEString(),
-				"description", null, 1, 1, Plot.class, !IS_TRANSIENT,
+		initEAttribute(getPlotNote_Title(), ecorePackage.getEString(), "title",
+				null, 0, 1, PlotNote.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEReference(getPlotNote_Notes(), this.getNote(), null, "notes",
+				null, 0, 1, PlotNote.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPlotNote_Description(), ecorePackage.getEString(),
+				"description", null, 1, 1, PlotNote.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
 

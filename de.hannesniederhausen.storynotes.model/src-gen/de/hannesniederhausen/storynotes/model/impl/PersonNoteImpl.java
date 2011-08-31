@@ -11,7 +11,7 @@
  */
 package de.hannesniederhausen.storynotes.model.impl;
 
-import de.hannesniederhausen.storynotes.model.Person;
+import de.hannesniederhausen.storynotes.model.PersonNote;
 import de.hannesniederhausen.storynotes.model.StorynotesPackage;
 
 import java.util.Collection;
@@ -28,29 +28,29 @@ import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Person</b></em>'.
+ * An implementation of the model object '<em><b>Person Note</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link de.hannesniederhausen.storynotes.model.impl.PersonImpl#getRefId <em>Ref Id</em>}</li>
- *   <li>{@link de.hannesniederhausen.storynotes.model.impl.PersonImpl#getName <em>Name</em>}</li>
- *   <li>{@link de.hannesniederhausen.storynotes.model.impl.PersonImpl#getCv <em>Cv</em>}</li>
- *   <li>{@link de.hannesniederhausen.storynotes.model.impl.PersonImpl#getAge <em>Age</em>}</li>
- *   <li>{@link de.hannesniederhausen.storynotes.model.impl.PersonImpl#getHairColor <em>Hair Color</em>}</li>
- *   <li>{@link de.hannesniederhausen.storynotes.model.impl.PersonImpl#getEyeColor <em>Eye Color</em>}</li>
- *   <li>{@link de.hannesniederhausen.storynotes.model.impl.PersonImpl#getSize <em>Size</em>}</li>
- *   <li>{@link de.hannesniederhausen.storynotes.model.impl.PersonImpl#getWeight <em>Weight</em>}</li>
- *   <li>{@link de.hannesniederhausen.storynotes.model.impl.PersonImpl#getSkinColor <em>Skin Color</em>}</li>
- *   <li>{@link de.hannesniederhausen.storynotes.model.impl.PersonImpl#getSocialBackground <em>Social Background</em>}</li>
- *   <li>{@link de.hannesniederhausen.storynotes.model.impl.PersonImpl#getHobbies <em>Hobbies</em>}</li>
- *   <li>{@link de.hannesniederhausen.storynotes.model.impl.PersonImpl#getPsychologicalBackground <em>Psychological Background</em>}</li>
+ *   <li>{@link de.hannesniederhausen.storynotes.model.impl.PersonNoteImpl#getRefId <em>Ref Id</em>}</li>
+ *   <li>{@link de.hannesniederhausen.storynotes.model.impl.PersonNoteImpl#getName <em>Name</em>}</li>
+ *   <li>{@link de.hannesniederhausen.storynotes.model.impl.PersonNoteImpl#getCv <em>Cv</em>}</li>
+ *   <li>{@link de.hannesniederhausen.storynotes.model.impl.PersonNoteImpl#getAge <em>Age</em>}</li>
+ *   <li>{@link de.hannesniederhausen.storynotes.model.impl.PersonNoteImpl#getHairColor <em>Hair Color</em>}</li>
+ *   <li>{@link de.hannesniederhausen.storynotes.model.impl.PersonNoteImpl#getEyeColor <em>Eye Color</em>}</li>
+ *   <li>{@link de.hannesniederhausen.storynotes.model.impl.PersonNoteImpl#getSize <em>Size</em>}</li>
+ *   <li>{@link de.hannesniederhausen.storynotes.model.impl.PersonNoteImpl#getWeight <em>Weight</em>}</li>
+ *   <li>{@link de.hannesniederhausen.storynotes.model.impl.PersonNoteImpl#getSkinColor <em>Skin Color</em>}</li>
+ *   <li>{@link de.hannesniederhausen.storynotes.model.impl.PersonNoteImpl#getSocialBackground <em>Social Background</em>}</li>
+ *   <li>{@link de.hannesniederhausen.storynotes.model.impl.PersonNoteImpl#getHobbies <em>Hobbies</em>}</li>
+ *   <li>{@link de.hannesniederhausen.storynotes.model.impl.PersonNoteImpl#getPsychologicalBackground <em>Psychological Background</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class PersonImpl extends FileElementImpl implements Person {
+public class PersonNoteImpl extends FileElementImpl implements PersonNote {
 	/**
 	 * The default value of the '{@link #getRefId() <em>Ref Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -286,7 +286,7 @@ public class PersonImpl extends FileElementImpl implements Person {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected PersonImpl() {
+	protected PersonNoteImpl() {
 		super();
 	}
 
@@ -297,7 +297,7 @@ public class PersonImpl extends FileElementImpl implements Person {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return StorynotesPackage.Literals.PERSON;
+		return StorynotesPackage.Literals.PERSON_NOTE;
 	}
 
 	/**
@@ -319,7 +319,7 @@ public class PersonImpl extends FileElementImpl implements Person {
 		refId = newRefId;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					StorynotesPackage.PERSON__REF_ID, oldRefId, refId));
+					StorynotesPackage.PERSON_NOTE__REF_ID, oldRefId, refId));
 	}
 
 	/**
@@ -341,7 +341,7 @@ public class PersonImpl extends FileElementImpl implements Person {
 		name = newName;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					StorynotesPackage.PERSON__NAME, oldName, name));
+					StorynotesPackage.PERSON_NOTE__NAME, oldName, name));
 	}
 
 	/**
@@ -363,7 +363,7 @@ public class PersonImpl extends FileElementImpl implements Person {
 		cv = newCv;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					StorynotesPackage.PERSON__CV, oldCv, cv));
+					StorynotesPackage.PERSON_NOTE__CV, oldCv, cv));
 	}
 
 	/**
@@ -385,7 +385,7 @@ public class PersonImpl extends FileElementImpl implements Person {
 		age = newAge;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					StorynotesPackage.PERSON__AGE, oldAge, age));
+					StorynotesPackage.PERSON_NOTE__AGE, oldAge, age));
 	}
 
 	/**
@@ -407,7 +407,7 @@ public class PersonImpl extends FileElementImpl implements Person {
 		hairColor = newHairColor;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					StorynotesPackage.PERSON__HAIR_COLOR, oldHairColor,
+					StorynotesPackage.PERSON_NOTE__HAIR_COLOR, oldHairColor,
 					hairColor));
 	}
 
@@ -430,7 +430,8 @@ public class PersonImpl extends FileElementImpl implements Person {
 		eyeColor = newEyeColor;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					StorynotesPackage.PERSON__EYE_COLOR, oldEyeColor, eyeColor));
+					StorynotesPackage.PERSON_NOTE__EYE_COLOR, oldEyeColor,
+					eyeColor));
 	}
 
 	/**
@@ -452,7 +453,7 @@ public class PersonImpl extends FileElementImpl implements Person {
 		size = newSize;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					StorynotesPackage.PERSON__SIZE, oldSize, size));
+					StorynotesPackage.PERSON_NOTE__SIZE, oldSize, size));
 	}
 
 	/**
@@ -474,7 +475,7 @@ public class PersonImpl extends FileElementImpl implements Person {
 		weight = newWeight;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					StorynotesPackage.PERSON__WEIGHT, oldWeight, weight));
+					StorynotesPackage.PERSON_NOTE__WEIGHT, oldWeight, weight));
 	}
 
 	/**
@@ -496,7 +497,7 @@ public class PersonImpl extends FileElementImpl implements Person {
 		skinColor = newSkinColor;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					StorynotesPackage.PERSON__SKIN_COLOR, oldSkinColor,
+					StorynotesPackage.PERSON_NOTE__SKIN_COLOR, oldSkinColor,
 					skinColor));
 	}
 
@@ -519,7 +520,7 @@ public class PersonImpl extends FileElementImpl implements Person {
 		socialBackground = newSocialBackground;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					StorynotesPackage.PERSON__SOCIAL_BACKGROUND,
+					StorynotesPackage.PERSON_NOTE__SOCIAL_BACKGROUND,
 					oldSocialBackground, socialBackground));
 	}
 
@@ -531,7 +532,7 @@ public class PersonImpl extends FileElementImpl implements Person {
 	public EList<String> getHobbies() {
 		if (hobbies == null) {
 			hobbies = new EDataTypeUniqueEList<String>(String.class, this,
-					StorynotesPackage.PERSON__HOBBIES);
+					StorynotesPackage.PERSON_NOTE__HOBBIES);
 		}
 		return hobbies;
 	}
@@ -555,7 +556,7 @@ public class PersonImpl extends FileElementImpl implements Person {
 		psychologicalBackground = newPsychologicalBackground;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					StorynotesPackage.PERSON__PSYCHOLOGICAL_BACKGROUND,
+					StorynotesPackage.PERSON_NOTE__PSYCHOLOGICAL_BACKGROUND,
 					oldPsychologicalBackground, psychologicalBackground));
 	}
 
@@ -567,29 +568,29 @@ public class PersonImpl extends FileElementImpl implements Person {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case StorynotesPackage.PERSON__REF_ID:
+		case StorynotesPackage.PERSON_NOTE__REF_ID:
 			return getRefId();
-		case StorynotesPackage.PERSON__NAME:
+		case StorynotesPackage.PERSON_NOTE__NAME:
 			return getName();
-		case StorynotesPackage.PERSON__CV:
+		case StorynotesPackage.PERSON_NOTE__CV:
 			return getCv();
-		case StorynotesPackage.PERSON__AGE:
+		case StorynotesPackage.PERSON_NOTE__AGE:
 			return getAge();
-		case StorynotesPackage.PERSON__HAIR_COLOR:
+		case StorynotesPackage.PERSON_NOTE__HAIR_COLOR:
 			return getHairColor();
-		case StorynotesPackage.PERSON__EYE_COLOR:
+		case StorynotesPackage.PERSON_NOTE__EYE_COLOR:
 			return getEyeColor();
-		case StorynotesPackage.PERSON__SIZE:
+		case StorynotesPackage.PERSON_NOTE__SIZE:
 			return getSize();
-		case StorynotesPackage.PERSON__WEIGHT:
+		case StorynotesPackage.PERSON_NOTE__WEIGHT:
 			return getWeight();
-		case StorynotesPackage.PERSON__SKIN_COLOR:
+		case StorynotesPackage.PERSON_NOTE__SKIN_COLOR:
 			return getSkinColor();
-		case StorynotesPackage.PERSON__SOCIAL_BACKGROUND:
+		case StorynotesPackage.PERSON_NOTE__SOCIAL_BACKGROUND:
 			return getSocialBackground();
-		case StorynotesPackage.PERSON__HOBBIES:
+		case StorynotesPackage.PERSON_NOTE__HOBBIES:
 			return getHobbies();
-		case StorynotesPackage.PERSON__PSYCHOLOGICAL_BACKGROUND:
+		case StorynotesPackage.PERSON_NOTE__PSYCHOLOGICAL_BACKGROUND:
 			return getPsychologicalBackground();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -604,41 +605,41 @@ public class PersonImpl extends FileElementImpl implements Person {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case StorynotesPackage.PERSON__REF_ID:
+		case StorynotesPackage.PERSON_NOTE__REF_ID:
 			setRefId((String) newValue);
 			return;
-		case StorynotesPackage.PERSON__NAME:
+		case StorynotesPackage.PERSON_NOTE__NAME:
 			setName((String) newValue);
 			return;
-		case StorynotesPackage.PERSON__CV:
+		case StorynotesPackage.PERSON_NOTE__CV:
 			setCv((String) newValue);
 			return;
-		case StorynotesPackage.PERSON__AGE:
+		case StorynotesPackage.PERSON_NOTE__AGE:
 			setAge((Integer) newValue);
 			return;
-		case StorynotesPackage.PERSON__HAIR_COLOR:
+		case StorynotesPackage.PERSON_NOTE__HAIR_COLOR:
 			setHairColor((String) newValue);
 			return;
-		case StorynotesPackage.PERSON__EYE_COLOR:
+		case StorynotesPackage.PERSON_NOTE__EYE_COLOR:
 			setEyeColor((String) newValue);
 			return;
-		case StorynotesPackage.PERSON__SIZE:
+		case StorynotesPackage.PERSON_NOTE__SIZE:
 			setSize((Integer) newValue);
 			return;
-		case StorynotesPackage.PERSON__WEIGHT:
+		case StorynotesPackage.PERSON_NOTE__WEIGHT:
 			setWeight((Float) newValue);
 			return;
-		case StorynotesPackage.PERSON__SKIN_COLOR:
+		case StorynotesPackage.PERSON_NOTE__SKIN_COLOR:
 			setSkinColor((String) newValue);
 			return;
-		case StorynotesPackage.PERSON__SOCIAL_BACKGROUND:
+		case StorynotesPackage.PERSON_NOTE__SOCIAL_BACKGROUND:
 			setSocialBackground((String) newValue);
 			return;
-		case StorynotesPackage.PERSON__HOBBIES:
+		case StorynotesPackage.PERSON_NOTE__HOBBIES:
 			getHobbies().clear();
 			getHobbies().addAll((Collection<? extends String>) newValue);
 			return;
-		case StorynotesPackage.PERSON__PSYCHOLOGICAL_BACKGROUND:
+		case StorynotesPackage.PERSON_NOTE__PSYCHOLOGICAL_BACKGROUND:
 			setPsychologicalBackground((String) newValue);
 			return;
 		}
@@ -653,40 +654,40 @@ public class PersonImpl extends FileElementImpl implements Person {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case StorynotesPackage.PERSON__REF_ID:
+		case StorynotesPackage.PERSON_NOTE__REF_ID:
 			setRefId(REF_ID_EDEFAULT);
 			return;
-		case StorynotesPackage.PERSON__NAME:
+		case StorynotesPackage.PERSON_NOTE__NAME:
 			setName(NAME_EDEFAULT);
 			return;
-		case StorynotesPackage.PERSON__CV:
+		case StorynotesPackage.PERSON_NOTE__CV:
 			setCv(CV_EDEFAULT);
 			return;
-		case StorynotesPackage.PERSON__AGE:
+		case StorynotesPackage.PERSON_NOTE__AGE:
 			setAge(AGE_EDEFAULT);
 			return;
-		case StorynotesPackage.PERSON__HAIR_COLOR:
+		case StorynotesPackage.PERSON_NOTE__HAIR_COLOR:
 			setHairColor(HAIR_COLOR_EDEFAULT);
 			return;
-		case StorynotesPackage.PERSON__EYE_COLOR:
+		case StorynotesPackage.PERSON_NOTE__EYE_COLOR:
 			setEyeColor(EYE_COLOR_EDEFAULT);
 			return;
-		case StorynotesPackage.PERSON__SIZE:
+		case StorynotesPackage.PERSON_NOTE__SIZE:
 			setSize(SIZE_EDEFAULT);
 			return;
-		case StorynotesPackage.PERSON__WEIGHT:
+		case StorynotesPackage.PERSON_NOTE__WEIGHT:
 			setWeight(WEIGHT_EDEFAULT);
 			return;
-		case StorynotesPackage.PERSON__SKIN_COLOR:
+		case StorynotesPackage.PERSON_NOTE__SKIN_COLOR:
 			setSkinColor(SKIN_COLOR_EDEFAULT);
 			return;
-		case StorynotesPackage.PERSON__SOCIAL_BACKGROUND:
+		case StorynotesPackage.PERSON_NOTE__SOCIAL_BACKGROUND:
 			setSocialBackground(SOCIAL_BACKGROUND_EDEFAULT);
 			return;
-		case StorynotesPackage.PERSON__HOBBIES:
+		case StorynotesPackage.PERSON_NOTE__HOBBIES:
 			getHobbies().clear();
 			return;
-		case StorynotesPackage.PERSON__PSYCHOLOGICAL_BACKGROUND:
+		case StorynotesPackage.PERSON_NOTE__PSYCHOLOGICAL_BACKGROUND:
 			setPsychologicalBackground(PSYCHOLOGICAL_BACKGROUND_EDEFAULT);
 			return;
 		}
@@ -701,35 +702,35 @@ public class PersonImpl extends FileElementImpl implements Person {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case StorynotesPackage.PERSON__REF_ID:
+		case StorynotesPackage.PERSON_NOTE__REF_ID:
 			return REF_ID_EDEFAULT == null ? refId != null : !REF_ID_EDEFAULT
 					.equals(refId);
-		case StorynotesPackage.PERSON__NAME:
+		case StorynotesPackage.PERSON_NOTE__NAME:
 			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT
 					.equals(name);
-		case StorynotesPackage.PERSON__CV:
+		case StorynotesPackage.PERSON_NOTE__CV:
 			return CV_EDEFAULT == null ? cv != null : !CV_EDEFAULT.equals(cv);
-		case StorynotesPackage.PERSON__AGE:
+		case StorynotesPackage.PERSON_NOTE__AGE:
 			return age != AGE_EDEFAULT;
-		case StorynotesPackage.PERSON__HAIR_COLOR:
+		case StorynotesPackage.PERSON_NOTE__HAIR_COLOR:
 			return HAIR_COLOR_EDEFAULT == null ? hairColor != null
 					: !HAIR_COLOR_EDEFAULT.equals(hairColor);
-		case StorynotesPackage.PERSON__EYE_COLOR:
+		case StorynotesPackage.PERSON_NOTE__EYE_COLOR:
 			return EYE_COLOR_EDEFAULT == null ? eyeColor != null
 					: !EYE_COLOR_EDEFAULT.equals(eyeColor);
-		case StorynotesPackage.PERSON__SIZE:
+		case StorynotesPackage.PERSON_NOTE__SIZE:
 			return size != SIZE_EDEFAULT;
-		case StorynotesPackage.PERSON__WEIGHT:
+		case StorynotesPackage.PERSON_NOTE__WEIGHT:
 			return weight != WEIGHT_EDEFAULT;
-		case StorynotesPackage.PERSON__SKIN_COLOR:
+		case StorynotesPackage.PERSON_NOTE__SKIN_COLOR:
 			return SKIN_COLOR_EDEFAULT == null ? skinColor != null
 					: !SKIN_COLOR_EDEFAULT.equals(skinColor);
-		case StorynotesPackage.PERSON__SOCIAL_BACKGROUND:
+		case StorynotesPackage.PERSON_NOTE__SOCIAL_BACKGROUND:
 			return SOCIAL_BACKGROUND_EDEFAULT == null ? socialBackground != null
 					: !SOCIAL_BACKGROUND_EDEFAULT.equals(socialBackground);
-		case StorynotesPackage.PERSON__HOBBIES:
+		case StorynotesPackage.PERSON_NOTE__HOBBIES:
 			return hobbies != null && !hobbies.isEmpty();
-		case StorynotesPackage.PERSON__PSYCHOLOGICAL_BACKGROUND:
+		case StorynotesPackage.PERSON_NOTE__PSYCHOLOGICAL_BACKGROUND:
 			return PSYCHOLOGICAL_BACKGROUND_EDEFAULT == null ? psychologicalBackground != null
 					: !PSYCHOLOGICAL_BACKGROUND_EDEFAULT
 							.equals(psychologicalBackground);
@@ -776,4 +777,4 @@ public class PersonImpl extends FileElementImpl implements Person {
 		return result.toString();
 	}
 
-} //PersonImpl
+} //PersonNoteImpl

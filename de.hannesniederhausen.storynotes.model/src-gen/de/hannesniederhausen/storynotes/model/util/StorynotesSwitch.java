@@ -116,35 +116,35 @@ public class StorynotesSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case StorynotesPackage.PERSON: {
-			Person person = (Person) theEObject;
-			T result = casePerson(person);
+		case StorynotesPackage.PERSON_NOTE: {
+			PersonNote personNote = (PersonNote) theEObject;
+			T result = casePersonNote(personNote);
 			if (result == null)
-				result = caseNote(person);
+				result = caseNote(personNote);
 			if (result == null)
-				result = caseFileElement(person);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case StorynotesPackage.SETTING: {
-			Setting setting = (Setting) theEObject;
-			T result = caseSetting(setting);
-			if (result == null)
-				result = caseNote(setting);
-			if (result == null)
-				result = caseFileElement(setting);
+				result = caseFileElement(personNote);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case StorynotesPackage.PLOT: {
-			Plot plot = (Plot) theEObject;
-			T result = casePlot(plot);
+		case StorynotesPackage.SETTING_NOTE: {
+			SettingNote settingNote = (SettingNote) theEObject;
+			T result = caseSettingNote(settingNote);
 			if (result == null)
-				result = caseNote(plot);
+				result = caseNote(settingNote);
 			if (result == null)
-				result = caseFileElement(plot);
+				result = caseFileElement(settingNote);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case StorynotesPackage.PLOT_NOTE: {
+			PlotNote plotNote = (PlotNote) theEObject;
+			T result = casePlotNote(plotNote);
+			if (result == null)
+				result = caseNote(plotNote);
+			if (result == null)
+				result = caseFileElement(plotNote);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -230,47 +230,47 @@ public class StorynotesSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Person</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Person Note</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Person</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Person Note</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T casePerson(Person object) {
+	public T casePersonNote(PersonNote object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Setting</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Setting Note</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Setting</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Setting Note</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseSetting(Setting object) {
+	public T caseSettingNote(SettingNote object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Plot</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Plot Note</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Plot</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Plot Note</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T casePlot(Plot object) {
+	public T casePlotNote(PlotNote object) {
 		return null;
 	}
 
