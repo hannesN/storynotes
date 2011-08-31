@@ -11,6 +11,8 @@
  */
 package de.hannesniederhausen.storynotes.model;
 
+import org.eclipse.emf.common.util.EList;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Category</b></em>'.
@@ -20,6 +22,7 @@ package de.hannesniederhausen.storynotes.model;
  * The following features are supported:
  * <ul>
  *   <li>{@link de.hannesniederhausen.storynotes.model.Category#getName <em>Name</em>}</li>
+ *   <li>{@link de.hannesniederhausen.storynotes.model.Category#getNotes <em>Notes</em>}</li>
  * </ul>
  * </p>
  *
@@ -53,5 +56,21 @@ public interface Category extends FileElement {
 	 * @generated
 	 */
 	void setName(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Notes</b></em>' containment reference list.
+	 * The list contents are of type {@link de.hannesniederhausen.storynotes.model.Note}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Notes</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Notes</em>' containment reference list.
+	 * @see de.hannesniederhausen.storynotes.model.StorynotesPackage#getCategory_Notes()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<Note> getNotes();
 
 } // Category

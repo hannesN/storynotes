@@ -223,13 +223,22 @@ public interface StorynotesPackage extends EPackage {
 	int CATEGORY__NAME = FILE_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Notes</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CATEGORY__NOTES = FILE_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Category</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CATEGORY_FEATURE_COUNT = FILE_ELEMENT_FEATURE_COUNT + 1;
+	int CATEGORY_FEATURE_COUNT = FILE_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link de.hannesniederhausen.storynotes.model.Note <em>Note</em>}' class.
@@ -670,6 +679,17 @@ public interface StorynotesPackage extends EPackage {
 	EAttribute getCategory_Name();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link de.hannesniederhausen.storynotes.model.Category#getNotes <em>Notes</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Notes</em>'.
+	 * @see de.hannesniederhausen.storynotes.model.Category#getNotes()
+	 * @see #getCategory()
+	 * @generated
+	 */
+	EReference getCategory_Notes();
+
+	/**
 	 * Returns the meta object for class '{@link de.hannesniederhausen.storynotes.model.Note <em>Note</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1043,6 +1063,14 @@ public interface StorynotesPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute CATEGORY__NAME = eINSTANCE.getCategory_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Notes</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CATEGORY__NOTES = eINSTANCE.getCategory_Notes();
 
 		/**
 		 * The meta object literal for the '{@link de.hannesniederhausen.storynotes.model.Note <em>Note</em>}' class.

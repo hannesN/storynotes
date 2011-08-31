@@ -30,8 +30,9 @@ public class StoryNotesActionProvider implements IActionProvider {
 		} 
 		
 		if (element instanceof Project) {
-			return getAction((File)element, CreateCategoryAction.class);
+			return getAction((Project)element, CreateCategoryAction.class);
 		}
+		
 		return new IAction[0];
 	}
 	

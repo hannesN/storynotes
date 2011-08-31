@@ -3,11 +3,15 @@
  */
 package de.hannesniederhausen.storynotes.ui.navigation.widgets;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.IContentProvider;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.Viewer;
 
+import de.hannesniederhausen.storynotes.model.Category;
 import de.hannesniederhausen.storynotes.model.File;
 import de.hannesniederhausen.storynotes.model.Project;
 
@@ -23,43 +27,45 @@ import de.hannesniederhausen.storynotes.model.Project;
  */
 public class StoryNotesModelContentProvider implements ITreeContentProvider{
 
-	private EObject currentModel;
-	
 	@Override
 	public void dispose() {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
-		currentModel = (EObject) newInput;
 	}
 
-	/* (non-Javadoc)
-	 * @see org.eclipse.jface.viewers.ITreeContentProvider#getElements(java.lang.Object)
-	 */
 	@Override
 	public Object[] getElements(Object inputElement) {
-		if (inputElement instanceof File) {
-			return new Object[]{inputElement};
-		}
 		
-		if (inputElement instanceof Project) {
-			return new Object[]{((EObject)inputElement).eContainer(), inputElement};
-		}
+		ArrayList<EObject> parents = new ArrayList<EObject>(5);
 		
-		return new Object[0];
+		EObject currObject = (EObject) inputElement;
+		
+		do {
+			parents.add(currObject);
+			currObject = currObject.eContainer();
+		} while (currObject!=null);
+			
+		Collections.reverse(parents);
+		return parents.toArray();
 	}
 
-	/* (non-Javadoc)
-	 * @see org.eclipse.jface.viewers.ITreeContentProvider#getChildren(java.lang.Object)
-	 */
 	@Override
 	public Object[] getChildren(Object parentElement) {
 		if (parentElement instanceof File) {
 			File file = (File) parentElement;
 			return file.getProjects().toArray();
+		}
+		
+		if (parentElement instanceof Category) {
+			Category c = (Category) parentElement;
+			return c.getNotes().toArray();
+		}
+		
+		if (parentElement instanceof Project) {
+			Project p = (Project) parentElement;
+			return p.getCategories().toArray();
 		}
 		
 		return new Object[0];
@@ -73,9 +79,6 @@ public class StoryNotesModelContentProvider implements ITreeContentProvider{
 			return ((EObject)element).eContainer();
 	}
 
-	/* (non-Javadoc)
-	 * @see org.eclipse.jface.viewers.ITreeContentProvider#hasChildren(java.lang.Object)
-	 */
 	@Override
 	public boolean hasChildren(Object element) {
 		if ((element instanceof File) || (element==null))

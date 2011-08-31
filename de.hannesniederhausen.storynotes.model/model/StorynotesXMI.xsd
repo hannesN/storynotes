@@ -35,6 +35,9 @@
   <xsd:complexType name="Category">
     <xsd:complexContent>
       <xsd:extension base="sn:FileElement">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="notes" type="sn:Note"/>
+        </xsd:choice>
         <xsd:attribute name="name" type="xsd:string" use="required"/>
       </xsd:extension>
     </xsd:complexContent>

@@ -271,6 +271,15 @@ public class StorynotesPackageImpl extends EPackageImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getCategory_Notes() {
+		return (EReference) categoryEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getNote() {
 		return noteEClass;
 	}
@@ -517,6 +526,7 @@ public class StorynotesPackageImpl extends EPackageImpl implements
 
 		categoryEClass = createEClass(CATEGORY);
 		createEAttribute(categoryEClass, CATEGORY__NAME);
+		createEReference(categoryEClass, CATEGORY__NOTES);
 
 		noteEClass = createEClass(NOTE);
 		createEAttribute(noteEClass, NOTE__REF_ID);
@@ -627,6 +637,10 @@ public class StorynotesPackageImpl extends EPackageImpl implements
 				null, 1, 1, Category.class, !IS_TRANSIENT, !IS_VOLATILE,
 				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
+		initEReference(getCategory_Notes(), this.getNote(), null, "notes",
+				null, 0, -1, Category.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(noteEClass, Note.class, "Note", IS_ABSTRACT, IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
