@@ -19,6 +19,8 @@ import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swt.widgets.Widget;
 
+import de.hannesniederhausen.storynotes.model.Note;
+
 /**
  * @author Hannes Niederhausen
  *
@@ -69,6 +71,10 @@ public class NavigationItem extends Item  {
 			}
 		});
 		
+		setText(labelProvider.getText(model));
+		
+		if (model instanceof Note) 
+			return;
 		
 		childrenButton = new Button(container, SWT.PUSH);
 		childrenButton.setText(">");
@@ -80,7 +86,7 @@ public class NavigationItem extends Item  {
 			}
 		});
 		
-		setText(labelProvider.getText(model));
+		
 	}
 
 
@@ -119,8 +125,18 @@ public class NavigationItem extends Item  {
 		
 		Object[] children = contentProvider.getChildren(parent);
 		
-		Menu childMenu = new Menu(siblingButton);
-		fillMenu(children, childMenu);
-		childMenu.setVisible(true);
+		ChoiceDialog dlg = new ChoiceDialog(container.getShell(), 0,
+											context,
+											labelProvider, 
+											null, model);
+		
+		
+		dlg.setInput(children);
+		
+		Point p = siblingButton.toDisplay(0,0);
+		p.y += siblingButton.getBounds().height;
+		dlg.getShell().setLocation(p);
+		
+		dlg.open();
 	}
 }

@@ -114,8 +114,12 @@ public class ChoiceDialog extends Dialog implements FocusListener, IDoubleClickL
 	private class ContentProvider extends ArrayContentProvider {
 		@Override
 		public Object[] getElements(Object arg0) {
-
-			IAction[] actions = actionProvider.getActions(model);
+			IAction[] actions = null;
+			if (actionProvider==null) {
+				actions = new IAction[0];
+			} else {
+				actions = actionProvider.getActions(model);
+			}
 			Object[] elements = super.getElements(arg0);
 			if (actions.length==0) {
 				return elements;

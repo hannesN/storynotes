@@ -7,12 +7,16 @@ import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.action.IAction;
 
+import de.hannesniederhausen.storynotes.model.Category;
 import de.hannesniederhausen.storynotes.model.File;
 import de.hannesniederhausen.storynotes.model.Project;
 import de.hannesniederhausen.storynotes.model.service.IModelProviderService;
 import de.hannesniederhausen.storynotes.ui.actions.AbstractCreationAction;
 import de.hannesniederhausen.storynotes.ui.actions.CreateCategoryAction;
+import de.hannesniederhausen.storynotes.ui.actions.CreateGenericNote;
+import de.hannesniederhausen.storynotes.ui.actions.CreatePersonNote;
 import de.hannesniederhausen.storynotes.ui.actions.CreateProjectAction;
+import de.hannesniederhausen.storynotes.ui.actions.CreateSettingNote;
 
 /**
  * @author Hannes Niederhausen
@@ -25,21 +29,27 @@ public class StoryNotesActionProvider implements IActionProvider {
 	
 	@Override
 	public IAction[] getActions(Object element) {
+		
 		if (element instanceof File) {
-			return getAction((File)element, CreateProjectAction.class);
+			return new IAction[]{getAction((EObject)element, CreateProjectAction.class)};
 		} 
 		
 		if (element instanceof Project) {
-			return getAction((Project)element, CreateCategoryAction.class);
+			return new IAction[]{getAction((EObject)element, CreateCategoryAction.class)};
+		}
+		
+		if (element instanceof Category) {
+			return new IAction[]{
+					getAction((EObject)element, CreatePersonNote.class),
+					getAction((EObject)element, CreateGenericNote.class),
+					getAction((EObject)element, CreateSettingNote.class),
+					getAction((EObject)element, CreateGenericNote.class)					
+			};
 		}
 		
 		return new IAction[0];
 	}
 	
-	private IAction[] getProjectActions(Project element) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	public void setModelProviderService(
 			IModelProviderService modelProviderService) {
@@ -50,18 +60,18 @@ public class StoryNotesActionProvider implements IActionProvider {
 		this.context = context;
 	}
 
-	private IAction[] getAction(EObject element, Class<? extends AbstractCreationAction> clazz) {
+	private IAction getAction(EObject element, Class<? extends AbstractCreationAction> clazz) {
 		try {
 			AbstractCreationAction a = (AbstractCreationAction) clazz.newInstance();
 			a.setParentElement(element);
 			a.setContext(context);
 			a.setModelProviderService(modelProviderService);
-			return new IAction[]{a};
+			return a;
 		} catch (Exception e) {
-			// TODO logging
 			e.printStackTrace();
+			throw new RuntimeException(e);
 		}
-		return new IAction[0];
+		
 	}
 
 }

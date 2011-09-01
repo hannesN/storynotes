@@ -6,7 +6,11 @@ import org.eclipse.swt.graphics.Image;
 
 import de.hannesniederhausen.storynotes.model.Category;
 import de.hannesniederhausen.storynotes.model.File;
+import de.hannesniederhausen.storynotes.model.GenericNote;
+import de.hannesniederhausen.storynotes.model.PersonNote;
+import de.hannesniederhausen.storynotes.model.PlotNote;
 import de.hannesniederhausen.storynotes.model.Project;
+import de.hannesniederhausen.storynotes.model.SettingNote;
 
 public class StoryNotesLabelProvider implements ILabelProvider {
 	@Override
@@ -23,6 +27,26 @@ public class StoryNotesLabelProvider implements ILabelProvider {
 		
 		if (element instanceof Category)
 			return ((Category) element).getName();
+		
+		if (element instanceof PersonNote) {
+			return ((PersonNote) element).getName();
+		}
+		
+		if (element instanceof GenericNote) {
+			return ((GenericNote) element).getTitle();
+		}
+		
+		if (element instanceof PlotNote) {
+			return ((PlotNote) element).getTitle();
+		}
+		
+		if (element instanceof PersonNote) {
+			return ((PersonNote) element).getName();
+		}
+		
+		if (element instanceof SettingNote) {
+			return ((SettingNote) element).getName();
+		}
 		
 		return element.toString();
 	}
