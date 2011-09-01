@@ -13,49 +13,22 @@ package de.hannesniederhausen.storynotes.model;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Plot Note</b></em>'.
+ * A representation of the model object '<em><b>Generic Note</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link de.hannesniederhausen.storynotes.model.PlotNote#getKind <em>Kind</em>}</li>
- *   <li>{@link de.hannesniederhausen.storynotes.model.PlotNote#getTitle <em>Title</em>}</li>
- *   <li>{@link de.hannesniederhausen.storynotes.model.PlotNote#getDescription <em>Description</em>}</li>
+ *   <li>{@link de.hannesniederhausen.storynotes.model.GenericNote#getTitle <em>Title</em>}</li>
+ *   <li>{@link de.hannesniederhausen.storynotes.model.GenericNote#getDescription <em>Description</em>}</li>
  * </ul>
  * </p>
  *
- * @see de.hannesniederhausen.storynotes.model.StorynotesPackage#getPlotNote()
+ * @see de.hannesniederhausen.storynotes.model.StorynotesPackage#getGenericNote()
  * @model
  * @generated
  */
-public interface PlotNote extends Note {
-	/**
-	 * Returns the value of the '<em><b>Kind</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Kind</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Kind</em>' attribute.
-	 * @see #setKind(String)
-	 * @see de.hannesniederhausen.storynotes.model.StorynotesPackage#getPlotNote_Kind()
-	 * @model required="true"
-	 * @generated
-	 */
-	String getKind();
-
-	/**
-	 * Sets the value of the '{@link de.hannesniederhausen.storynotes.model.PlotNote#getKind <em>Kind</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Kind</em>' attribute.
-	 * @see #getKind()
-	 * @generated
-	 */
-	void setKind(String value);
-
+public interface GenericNote extends Note {
 	/**
 	 * Returns the value of the '<em><b>Title</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -66,14 +39,14 @@ public interface PlotNote extends Note {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Title</em>' attribute.
 	 * @see #setTitle(String)
-	 * @see de.hannesniederhausen.storynotes.model.StorynotesPackage#getPlotNote_Title()
+	 * @see de.hannesniederhausen.storynotes.model.StorynotesPackage#getGenericNote_Title()
 	 * @model
 	 * @generated
 	 */
 	String getTitle();
 
 	/**
-	 * Sets the value of the '{@link de.hannesniederhausen.storynotes.model.PlotNote#getTitle <em>Title</em>}' attribute.
+	 * Sets the value of the '{@link de.hannesniederhausen.storynotes.model.GenericNote#getTitle <em>Title</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Title</em>' attribute.
@@ -92,14 +65,14 @@ public interface PlotNote extends Note {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Description</em>' attribute.
 	 * @see #setDescription(String)
-	 * @see de.hannesniederhausen.storynotes.model.StorynotesPackage#getPlotNote_Description()
+	 * @see de.hannesniederhausen.storynotes.model.StorynotesPackage#getGenericNote_Description()
 	 * @model required="true"
 	 * @generated
 	 */
 	String getDescription();
 
 	/**
-	 * Sets the value of the '{@link de.hannesniederhausen.storynotes.model.PlotNote#getDescription <em>Description</em>}' attribute.
+	 * Sets the value of the '{@link de.hannesniederhausen.storynotes.model.GenericNote#getDescription <em>Description</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Description</em>' attribute.
@@ -108,4 +81,4 @@ public interface PlotNote extends Note {
 	 */
 	void setDescription(String value);
 
-} // PlotNote
+} // GenericNote

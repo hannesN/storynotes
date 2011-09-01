@@ -524,22 +524,13 @@ public interface StorynotesPackage extends EPackage {
 	int PLOT_NOTE__TITLE = NOTE_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Notes</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PLOT_NOTE__NOTES = NOTE_FEATURE_COUNT + 2;
-
-	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PLOT_NOTE__DESCRIPTION = NOTE_FEATURE_COUNT + 3;
+	int PLOT_NOTE__DESCRIPTION = NOTE_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Plot Note</em>' class.
@@ -548,7 +539,62 @@ public interface StorynotesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PLOT_NOTE_FEATURE_COUNT = NOTE_FEATURE_COUNT + 4;
+	int PLOT_NOTE_FEATURE_COUNT = NOTE_FEATURE_COUNT + 3;
+
+	/**
+	 * The meta object id for the '{@link de.hannesniederhausen.storynotes.model.impl.GenericNoteImpl <em>Generic Note</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.hannesniederhausen.storynotes.model.impl.GenericNoteImpl
+	 * @see de.hannesniederhausen.storynotes.model.impl.StorynotesPackageImpl#getGenericNote()
+	 * @generated
+	 */
+	int GENERIC_NOTE = 8;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERIC_NOTE__ID = NOTE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Ref Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERIC_NOTE__REF_ID = NOTE__REF_ID;
+
+	/**
+	 * The feature id for the '<em><b>Title</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERIC_NOTE__TITLE = NOTE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERIC_NOTE__DESCRIPTION = NOTE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Generic Note</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERIC_NOTE_FEATURE_COUNT = NOTE_FEATURE_COUNT + 2;
 
 	/**
 	 * Returns the meta object for class '{@link de.hannesniederhausen.storynotes.model.File <em>File</em>}'.
@@ -917,17 +963,6 @@ public interface StorynotesPackage extends EPackage {
 	EAttribute getPlotNote_Title();
 
 	/**
-	 * Returns the meta object for the reference '{@link de.hannesniederhausen.storynotes.model.PlotNote#getNotes <em>Notes</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Notes</em>'.
-	 * @see de.hannesniederhausen.storynotes.model.PlotNote#getNotes()
-	 * @see #getPlotNote()
-	 * @generated
-	 */
-	EReference getPlotNote_Notes();
-
-	/**
 	 * Returns the meta object for the attribute '{@link de.hannesniederhausen.storynotes.model.PlotNote#getDescription <em>Description</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -937,6 +972,38 @@ public interface StorynotesPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getPlotNote_Description();
+
+	/**
+	 * Returns the meta object for class '{@link de.hannesniederhausen.storynotes.model.GenericNote <em>Generic Note</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Generic Note</em>'.
+	 * @see de.hannesniederhausen.storynotes.model.GenericNote
+	 * @generated
+	 */
+	EClass getGenericNote();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.hannesniederhausen.storynotes.model.GenericNote#getTitle <em>Title</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Title</em>'.
+	 * @see de.hannesniederhausen.storynotes.model.GenericNote#getTitle()
+	 * @see #getGenericNote()
+	 * @generated
+	 */
+	EAttribute getGenericNote_Title();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.hannesniederhausen.storynotes.model.GenericNote#getDescription <em>Description</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Description</em>'.
+	 * @see de.hannesniederhausen.storynotes.model.GenericNote#getDescription()
+	 * @see #getGenericNote()
+	 * @generated
+	 */
+	EAttribute getGenericNote_Description();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -1254,12 +1321,30 @@ public interface StorynotesPackage extends EPackage {
 		EAttribute PLOT_NOTE__TITLE = eINSTANCE.getPlotNote_Title();
 
 		/**
-		 * The meta object literal for the '<em><b>Notes</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference PLOT_NOTE__NOTES = eINSTANCE.getPlotNote_Notes();
+		EAttribute PLOT_NOTE__DESCRIPTION = eINSTANCE.getPlotNote_Description();
+
+		/**
+		 * The meta object literal for the '{@link de.hannesniederhausen.storynotes.model.impl.GenericNoteImpl <em>Generic Note</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.hannesniederhausen.storynotes.model.impl.GenericNoteImpl
+		 * @see de.hannesniederhausen.storynotes.model.impl.StorynotesPackageImpl#getGenericNote()
+		 * @generated
+		 */
+		EClass GENERIC_NOTE = eINSTANCE.getGenericNote();
+
+		/**
+		 * The meta object literal for the '<em><b>Title</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GENERIC_NOTE__TITLE = eINSTANCE.getGenericNote_Title();
 
 		/**
 		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
@@ -1267,7 +1352,8 @@ public interface StorynotesPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PLOT_NOTE__DESCRIPTION = eINSTANCE.getPlotNote_Description();
+		EAttribute GENERIC_NOTE__DESCRIPTION = eINSTANCE
+				.getGenericNote_Description();
 
 	}
 

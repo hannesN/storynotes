@@ -14,6 +14,7 @@ package de.hannesniederhausen.storynotes.model.impl;
 import de.hannesniederhausen.storynotes.model.Category;
 import de.hannesniederhausen.storynotes.model.File;
 import de.hannesniederhausen.storynotes.model.FileElement;
+import de.hannesniederhausen.storynotes.model.GenericNote;
 import de.hannesniederhausen.storynotes.model.Note;
 import de.hannesniederhausen.storynotes.model.PersonNote;
 import de.hannesniederhausen.storynotes.model.PlotNote;
@@ -92,6 +93,13 @@ public class StorynotesPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	private EClass plotNoteEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass genericNoteEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -469,8 +477,8 @@ public class StorynotesPackageImpl extends EPackageImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getPlotNote_Notes() {
-		return (EReference) plotNoteEClass.getEStructuralFeatures().get(2);
+	public EAttribute getPlotNote_Description() {
+		return (EAttribute) plotNoteEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -478,8 +486,26 @@ public class StorynotesPackageImpl extends EPackageImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPlotNote_Description() {
-		return (EAttribute) plotNoteEClass.getEStructuralFeatures().get(3);
+	public EClass getGenericNote() {
+		return genericNoteEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getGenericNote_Title() {
+		return (EAttribute) genericNoteEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getGenericNote_Description() {
+		return (EAttribute) genericNoteEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -553,8 +579,11 @@ public class StorynotesPackageImpl extends EPackageImpl implements
 		plotNoteEClass = createEClass(PLOT_NOTE);
 		createEAttribute(plotNoteEClass, PLOT_NOTE__KIND);
 		createEAttribute(plotNoteEClass, PLOT_NOTE__TITLE);
-		createEReference(plotNoteEClass, PLOT_NOTE__NOTES);
 		createEAttribute(plotNoteEClass, PLOT_NOTE__DESCRIPTION);
+
+		genericNoteEClass = createEClass(GENERIC_NOTE);
+		createEAttribute(genericNoteEClass, GENERIC_NOTE__TITLE);
+		createEAttribute(genericNoteEClass, GENERIC_NOTE__DESCRIPTION);
 	}
 
 	/**
@@ -592,6 +621,7 @@ public class StorynotesPackageImpl extends EPackageImpl implements
 		personNoteEClass.getESuperTypes().add(this.getNote());
 		settingNoteEClass.getESuperTypes().add(this.getNote());
 		plotNoteEClass.getESuperTypes().add(this.getNote());
+		genericNoteEClass.getESuperTypes().add(this.getNote());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(fileEClass, File.class, "File", !IS_ABSTRACT, !IS_INTERFACE,
@@ -722,12 +752,19 @@ public class StorynotesPackageImpl extends EPackageImpl implements
 				null, 0, 1, PlotNote.class, !IS_TRANSIENT, !IS_VOLATILE,
 				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
-		initEReference(getPlotNote_Notes(), this.getNote(), null, "notes",
-				null, 0, 1, PlotNote.class, !IS_TRANSIENT, !IS_VOLATILE,
-				IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPlotNote_Description(), ecorePackage.getEString(),
 				"description", null, 1, 1, PlotNote.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+
+		initEClass(genericNoteEClass, GenericNote.class, "GenericNote",
+				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getGenericNote_Title(), ecorePackage.getEString(),
+				"title", null, 0, 1, GenericNote.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGenericNote_Description(), ecorePackage.getEString(),
+				"description", null, 1, 1, GenericNote.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
 

@@ -88,6 +88,8 @@ public class StorynotesFactoryImpl extends EFactoryImpl implements
 			return createSettingNote();
 		case StorynotesPackage.PLOT_NOTE:
 			return createPlotNote();
+		case StorynotesPackage.GENERIC_NOTE:
+			return createGenericNote();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName()
 					+ "' is not a valid classifier");
@@ -157,6 +159,17 @@ public class StorynotesFactoryImpl extends EFactoryImpl implements
 		PlotNoteImpl plotNote = new PlotNoteImpl();
 		setId(plotNote);
 		return plotNote;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public GenericNote createGenericNote() {
+		GenericNoteImpl genericNote = new GenericNoteImpl();
+		setId(genericNote);
+		return genericNote;
 	}
 
 	/**

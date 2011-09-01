@@ -87,6 +87,15 @@ public interface StorynotesFactory extends EFactory {
 	PlotNote createPlotNote();
 
 	/**
+	 * Returns a new object of class '<em>Generic Note</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Generic Note</em>'.
+	 * @generated
+	 */
+	GenericNote createGenericNote();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

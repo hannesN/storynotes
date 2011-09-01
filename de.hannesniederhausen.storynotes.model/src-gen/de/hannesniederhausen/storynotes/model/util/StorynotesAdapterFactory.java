@@ -116,6 +116,11 @@ public class StorynotesAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
+		public Adapter caseGenericNote(GenericNote object) {
+			return createGenericNoteAdapter();
+		}
+
+		@Override
 		public Adapter defaultCase(EObject object) {
 			return createEObjectAdapter();
 		}
@@ -243,6 +248,20 @@ public class StorynotesAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createPlotNoteAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.hannesniederhausen.storynotes.model.GenericNote <em>Generic Note</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.hannesniederhausen.storynotes.model.GenericNote
+	 * @generated
+	 */
+	public Adapter createGenericNoteAdapter() {
 		return null;
 	}
 

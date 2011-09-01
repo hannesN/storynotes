@@ -11,34 +11,31 @@
  */
 package de.hannesniederhausen.storynotes.model.impl;
 
-import de.hannesniederhausen.storynotes.model.Note;
-import de.hannesniederhausen.storynotes.model.PlotNote;
+import de.hannesniederhausen.storynotes.model.GenericNote;
 import de.hannesniederhausen.storynotes.model.StorynotesPackage;
 
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Plot Note</b></em>'.
+ * An implementation of the model object '<em><b>Generic Note</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link de.hannesniederhausen.storynotes.model.impl.PlotNoteImpl#getRefId <em>Ref Id</em>}</li>
- *   <li>{@link de.hannesniederhausen.storynotes.model.impl.PlotNoteImpl#getKind <em>Kind</em>}</li>
- *   <li>{@link de.hannesniederhausen.storynotes.model.impl.PlotNoteImpl#getTitle <em>Title</em>}</li>
- *   <li>{@link de.hannesniederhausen.storynotes.model.impl.PlotNoteImpl#getDescription <em>Description</em>}</li>
+ *   <li>{@link de.hannesniederhausen.storynotes.model.impl.GenericNoteImpl#getRefId <em>Ref Id</em>}</li>
+ *   <li>{@link de.hannesniederhausen.storynotes.model.impl.GenericNoteImpl#getTitle <em>Title</em>}</li>
+ *   <li>{@link de.hannesniederhausen.storynotes.model.impl.GenericNoteImpl#getDescription <em>Description</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class PlotNoteImpl extends FileElementImpl implements PlotNote {
+public class GenericNoteImpl extends FileElementImpl implements GenericNote {
 	/**
 	 * The default value of the '{@link #getRefId() <em>Ref Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -58,26 +55,6 @@ public class PlotNoteImpl extends FileElementImpl implements PlotNote {
 	 * @ordered
 	 */
 	protected String refId = REF_ID_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getKind() <em>Kind</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getKind()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String KIND_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getKind() <em>Kind</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getKind()
-	 * @generated
-	 * @ordered
-	 */
-	protected String kind = KIND_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getTitle() <em>Title</em>}' attribute.
@@ -124,7 +101,7 @@ public class PlotNoteImpl extends FileElementImpl implements PlotNote {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected PlotNoteImpl() {
+	protected GenericNoteImpl() {
 		super();
 	}
 
@@ -135,7 +112,7 @@ public class PlotNoteImpl extends FileElementImpl implements PlotNote {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return StorynotesPackage.Literals.PLOT_NOTE;
+		return StorynotesPackage.Literals.GENERIC_NOTE;
 	}
 
 	/**
@@ -157,29 +134,7 @@ public class PlotNoteImpl extends FileElementImpl implements PlotNote {
 		refId = newRefId;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					StorynotesPackage.PLOT_NOTE__REF_ID, oldRefId, refId));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getKind() {
-		return kind;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setKind(String newKind) {
-		String oldKind = kind;
-		kind = newKind;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					StorynotesPackage.PLOT_NOTE__KIND, oldKind, kind));
+					StorynotesPackage.GENERIC_NOTE__REF_ID, oldRefId, refId));
 	}
 
 	/**
@@ -201,7 +156,7 @@ public class PlotNoteImpl extends FileElementImpl implements PlotNote {
 		title = newTitle;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					StorynotesPackage.PLOT_NOTE__TITLE, oldTitle, title));
+					StorynotesPackage.GENERIC_NOTE__TITLE, oldTitle, title));
 	}
 
 	/**
@@ -223,8 +178,8 @@ public class PlotNoteImpl extends FileElementImpl implements PlotNote {
 		description = newDescription;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					StorynotesPackage.PLOT_NOTE__DESCRIPTION, oldDescription,
-					description));
+					StorynotesPackage.GENERIC_NOTE__DESCRIPTION,
+					oldDescription, description));
 	}
 
 	/**
@@ -235,13 +190,11 @@ public class PlotNoteImpl extends FileElementImpl implements PlotNote {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case StorynotesPackage.PLOT_NOTE__REF_ID:
+		case StorynotesPackage.GENERIC_NOTE__REF_ID:
 			return getRefId();
-		case StorynotesPackage.PLOT_NOTE__KIND:
-			return getKind();
-		case StorynotesPackage.PLOT_NOTE__TITLE:
+		case StorynotesPackage.GENERIC_NOTE__TITLE:
 			return getTitle();
-		case StorynotesPackage.PLOT_NOTE__DESCRIPTION:
+		case StorynotesPackage.GENERIC_NOTE__DESCRIPTION:
 			return getDescription();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -255,16 +208,13 @@ public class PlotNoteImpl extends FileElementImpl implements PlotNote {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case StorynotesPackage.PLOT_NOTE__REF_ID:
+		case StorynotesPackage.GENERIC_NOTE__REF_ID:
 			setRefId((String) newValue);
 			return;
-		case StorynotesPackage.PLOT_NOTE__KIND:
-			setKind((String) newValue);
-			return;
-		case StorynotesPackage.PLOT_NOTE__TITLE:
+		case StorynotesPackage.GENERIC_NOTE__TITLE:
 			setTitle((String) newValue);
 			return;
-		case StorynotesPackage.PLOT_NOTE__DESCRIPTION:
+		case StorynotesPackage.GENERIC_NOTE__DESCRIPTION:
 			setDescription((String) newValue);
 			return;
 		}
@@ -279,16 +229,13 @@ public class PlotNoteImpl extends FileElementImpl implements PlotNote {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case StorynotesPackage.PLOT_NOTE__REF_ID:
+		case StorynotesPackage.GENERIC_NOTE__REF_ID:
 			setRefId(REF_ID_EDEFAULT);
 			return;
-		case StorynotesPackage.PLOT_NOTE__KIND:
-			setKind(KIND_EDEFAULT);
-			return;
-		case StorynotesPackage.PLOT_NOTE__TITLE:
+		case StorynotesPackage.GENERIC_NOTE__TITLE:
 			setTitle(TITLE_EDEFAULT);
 			return;
-		case StorynotesPackage.PLOT_NOTE__DESCRIPTION:
+		case StorynotesPackage.GENERIC_NOTE__DESCRIPTION:
 			setDescription(DESCRIPTION_EDEFAULT);
 			return;
 		}
@@ -303,16 +250,13 @@ public class PlotNoteImpl extends FileElementImpl implements PlotNote {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case StorynotesPackage.PLOT_NOTE__REF_ID:
+		case StorynotesPackage.GENERIC_NOTE__REF_ID:
 			return REF_ID_EDEFAULT == null ? refId != null : !REF_ID_EDEFAULT
 					.equals(refId);
-		case StorynotesPackage.PLOT_NOTE__KIND:
-			return KIND_EDEFAULT == null ? kind != null : !KIND_EDEFAULT
-					.equals(kind);
-		case StorynotesPackage.PLOT_NOTE__TITLE:
+		case StorynotesPackage.GENERIC_NOTE__TITLE:
 			return TITLE_EDEFAULT == null ? title != null : !TITLE_EDEFAULT
 					.equals(title);
-		case StorynotesPackage.PLOT_NOTE__DESCRIPTION:
+		case StorynotesPackage.GENERIC_NOTE__DESCRIPTION:
 			return DESCRIPTION_EDEFAULT == null ? description != null
 					: !DESCRIPTION_EDEFAULT.equals(description);
 		}
@@ -332,8 +276,6 @@ public class PlotNoteImpl extends FileElementImpl implements PlotNote {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (refId: ");
 		result.append(refId);
-		result.append(", kind: ");
-		result.append(kind);
 		result.append(", title: ");
 		result.append(title);
 		result.append(", description: ");
@@ -342,4 +284,4 @@ public class PlotNoteImpl extends FileElementImpl implements PlotNote {
 		return result.toString();
 	}
 
-} //PlotNoteImpl
+} //GenericNoteImpl
