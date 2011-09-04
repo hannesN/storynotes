@@ -1,4 +1,4 @@
-<Composite xmlns="http://www.eclipse.org/xwt/presentation" xmlns:x="http://www.eclipse.org/xwt" x:Class="de.hannesniederhausen.storynotes.ui.xwt.WelcomeView">
+<Composite xmlns="http://www.eclipse.org/xwt/presentation" xmlns:x="http://www.eclipse.org/xwt" x:Class="de.hannesniederhausen.storynotes.ui.internal.views.xwt.WelcomeView">
 	<Composite.layout>
 		<GridLayout numColumns="2"/>
 	</Composite.layout>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <application:Application xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_3nxecKAIEeCMHLQZFU1fxg" elementId="org.eclipse.e4.ide.application" bindingContexts="_3nxecaAIEeCMHLQZFU1fxg">
   <children xsi:type="basic:TrimmedWindow" xmi:id="_Lxi_wMKdEeCPp6cpUPk1qw" width="800" height="600">
-    <children xsi:type="basic:Part" xmi:id="_OBx9AMKdEeCPp6cpUPk1qw" elementId="mainview" contributionURI="platform:/plugin/de.hannesniederhausen.storynotes.ui/de.hannesniederhausen.storynotes.ui.views.MainView"/>
+    <children xsi:type="basic:Part" xmi:id="_OBx9AMKdEeCPp6cpUPk1qw" elementId="mainview" contributionURI="platform:/plugin/de.hannesniederhausen.storynotes.ui/de.hannesniederhausen.storynotes.ui.internal.views.MainView"/>
     <mainMenu xmi:id="_M1SUsMKdEeCPp6cpUPk1qw">
       <children xsi:type="menu:Menu" xmi:id="_XdPx4MKdEeCPp6cpUPk1qw" elementId="file" label="&amp;File">
         <children xsi:type="menu:HandledMenuItem" xmi:id="_lZOkkMKdEeCPp6cpUPk1qw" label="&amp;Open" command="_3nxefqAIEeCMHLQZFU1fxg"/>

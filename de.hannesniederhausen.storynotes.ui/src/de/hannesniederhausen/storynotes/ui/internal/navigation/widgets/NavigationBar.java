@@ -1,7 +1,7 @@
 /**
  * 
  */
-package de.hannesniederhausen.storynotes.ui.navigation.widgets;
+package de.hannesniederhausen.storynotes.ui.internal.navigation.widgets;
 
 import java.util.Collections;
 import java.util.List;

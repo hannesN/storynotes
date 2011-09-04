@@ -1,4 +1,4 @@
-package de.hannesniederhausen.storynotes.ui.xwt;
+package de.hannesniederhausen.storynotes.ui.internal.views.xwt;
 
 import java.net.URL;
 import java.util.HashMap;

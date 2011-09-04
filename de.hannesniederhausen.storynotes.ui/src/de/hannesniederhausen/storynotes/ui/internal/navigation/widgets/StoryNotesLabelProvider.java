@@ -1,4 +1,4 @@
-package de.hannesniederhausen.storynotes.ui.navigation.widgets;
+package de.hannesniederhausen.storynotes.ui.internal.navigation.widgets;
 
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ILabelProviderListener;

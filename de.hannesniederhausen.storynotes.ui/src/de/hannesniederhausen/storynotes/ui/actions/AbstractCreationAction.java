@@ -10,7 +10,7 @@ import org.eclipse.jface.action.Action;
 import org.eclipse.swt.widgets.Shell;
 
 import de.hannesniederhausen.storynotes.model.service.IModelProviderService;
-import de.hannesniederhausen.storynotes.ui.views.MainView;
+import de.hannesniederhausen.storynotes.ui.internal.views.MainView;
 
 /**
  * @author Hannes Niederhausen

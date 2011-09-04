@@ -1,7 +1,7 @@
 /**
  * 
  */
-package de.hannesniederhausen.storynotes.ui.navigation.widgets;
+package de.hannesniederhausen.storynotes.ui.internal.navigation.widgets;
 
 import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.ui.workbench.modeling.ESelectionService;

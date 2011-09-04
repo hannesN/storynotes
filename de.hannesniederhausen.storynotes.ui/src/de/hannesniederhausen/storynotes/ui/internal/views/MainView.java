@@ -1,4 +1,4 @@
-package de.hannesniederhausen.storynotes.ui.views;
+package de.hannesniederhausen.storynotes.ui.internal.views;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -24,11 +24,11 @@ import org.eclipse.swt.widgets.Label;
 import de.hannesniederhausen.storynotes.model.File;
 import de.hannesniederhausen.storynotes.model.Project;
 import de.hannesniederhausen.storynotes.model.service.IModelProviderService;
-import de.hannesniederhausen.storynotes.ui.navigation.widgets.NavigationBar;
-import de.hannesniederhausen.storynotes.ui.navigation.widgets.StoryNotesActionProvider;
-import de.hannesniederhausen.storynotes.ui.navigation.widgets.StoryNotesLabelProvider;
-import de.hannesniederhausen.storynotes.ui.navigation.widgets.StoryNotesModelContentProvider;
-import de.hannesniederhausen.storynotes.ui.xwt.WelcomeView;
+import de.hannesniederhausen.storynotes.ui.internal.navigation.widgets.NavigationBar;
+import de.hannesniederhausen.storynotes.ui.internal.navigation.widgets.StoryNotesActionProvider;
+import de.hannesniederhausen.storynotes.ui.internal.navigation.widgets.StoryNotesLabelProvider;
+import de.hannesniederhausen.storynotes.ui.internal.navigation.widgets.StoryNotesModelContentProvider;
+import de.hannesniederhausen.storynotes.ui.internal.views.xwt.WelcomeView;
 
 /**
  * Main View for the application including the "breadcrumb" navigation and a
