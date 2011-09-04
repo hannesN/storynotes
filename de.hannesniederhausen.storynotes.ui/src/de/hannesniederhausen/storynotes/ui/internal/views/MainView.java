@@ -1,7 +1,6 @@
 package de.hannesniederhausen.storynotes.ui.internal.views;
 
 import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -9,18 +8,15 @@ import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.core.di.annotations.Optional;
 import org.eclipse.e4.core.services.log.Logger;
 import org.eclipse.e4.ui.css.swt.CSSSWTConstants;
-import org.eclipse.e4.ui.model.application.ui.basic.MPart;
 import org.eclipse.e4.ui.services.IServiceConstants;
-import org.eclipse.e4.ui.workbench.modeling.EPartService;
-import org.eclipse.e4.ui.workbench.modeling.ESelectionService;
-import org.eclipse.e4.ui.workbench.modeling.ISelectionListener;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.StackLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Label;
 
+import de.hannesniederhausen.storynotes.model.Category;
 import de.hannesniederhausen.storynotes.model.File;
 import de.hannesniederhausen.storynotes.model.Project;
 import de.hannesniederhausen.storynotes.model.service.IModelProviderService;
@@ -29,6 +25,7 @@ import de.hannesniederhausen.storynotes.ui.internal.navigation.widgets.StoryNote
 import de.hannesniederhausen.storynotes.ui.internal.navigation.widgets.StoryNotesLabelProvider;
 import de.hannesniederhausen.storynotes.ui.internal.navigation.widgets.StoryNotesModelContentProvider;
 import de.hannesniederhausen.storynotes.ui.internal.views.xwt.WelcomeView;
+import de.hannesniederhausen.storynotes.ui.views.category.CategoryInputMask;
 
 /**
  * Main View for the application including the "breadcrumb" navigation and a
@@ -54,6 +51,8 @@ public class MainView  {
 	private StackLayout stackLayout;
 
 	private NavigationBar navigationBar;
+
+	private Composite stack;
 
 	@PostConstruct
 	public void init() {
@@ -88,15 +87,11 @@ public class MainView  {
 		navigationBar.setContext(context);
 		navigationBar.setInput(project);
 		
-		final Composite stack = new Composite(comp, SWT.NONE);
+		stack = new Composite(comp, SWT.NONE);
 		stack.setData(CSSSWTConstants.CSS_ID_KEY, "mainstack");
 		stack.setLayoutData(new GridData(GridData.FILL_BOTH));
 		stackLayout = new StackLayout();
 		stack.setLayout(stackLayout);
-
-		final Label l1 = new Label(stack, SWT.NONE);
-		l1.setText("Label 1");
-		stackLayout.topControl = l1;
 
 		final WelcomeView welcomeView = new WelcomeView(stack, SWT.NONE,
 				context);
@@ -111,7 +106,14 @@ public class MainView  {
 	@Inject
 	public void setSelection(@Optional @Named(IServiceConstants.ACTIVE_SELECTION) Object selection) {
 		if (selection!=null)
-			navigationBar.setInput(selection);
+			navigationBar.setInput(selection); 
+		
+		if (selection instanceof Category) {
+			CategoryInputMask catIM = new CategoryInputMask(stack, SWT.NONE);
+			catIM.setModel((EObject) selection);
+			stackLayout.topControl = catIM;
+			stack.layout();
+		}
 	}
 
 }
