@@ -27,7 +27,7 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  *
  * @see de.hannesniederhausen.storynotes.model.StorynotesPackage#getCategory()
- * @model
+ * @model abstract="true"
  * @generated
  */
 public interface Category extends FileElement {

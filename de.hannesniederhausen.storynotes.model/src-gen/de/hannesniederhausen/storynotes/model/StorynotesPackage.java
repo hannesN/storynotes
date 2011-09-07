@@ -597,6 +597,190 @@ public interface StorynotesPackage extends EPackage {
 	int GENERIC_NOTE_FEATURE_COUNT = NOTE_FEATURE_COUNT + 2;
 
 	/**
+	 * The meta object id for the '{@link de.hannesniederhausen.storynotes.model.impl.GenericCategoryImpl <em>Generic Category</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.hannesniederhausen.storynotes.model.impl.GenericCategoryImpl
+	 * @see de.hannesniederhausen.storynotes.model.impl.StorynotesPackageImpl#getGenericCategory()
+	 * @generated
+	 */
+	int GENERIC_CATEGORY = 9;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERIC_CATEGORY__ID = CATEGORY__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERIC_CATEGORY__NAME = CATEGORY__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Notes</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERIC_CATEGORY__NOTES = CATEGORY__NOTES;
+
+	/**
+	 * The number of structural features of the '<em>Generic Category</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERIC_CATEGORY_FEATURE_COUNT = CATEGORY_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.hannesniederhausen.storynotes.model.impl.PersonCategoryImpl <em>Person Category</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.hannesniederhausen.storynotes.model.impl.PersonCategoryImpl
+	 * @see de.hannesniederhausen.storynotes.model.impl.StorynotesPackageImpl#getPersonCategory()
+	 * @generated
+	 */
+	int PERSON_CATEGORY = 10;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON_CATEGORY__ID = CATEGORY__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON_CATEGORY__NAME = CATEGORY__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Notes</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON_CATEGORY__NOTES = CATEGORY__NOTES;
+
+	/**
+	 * The number of structural features of the '<em>Person Category</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSON_CATEGORY_FEATURE_COUNT = CATEGORY_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.hannesniederhausen.storynotes.model.impl.SettingCategoryImpl <em>Setting Category</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.hannesniederhausen.storynotes.model.impl.SettingCategoryImpl
+	 * @see de.hannesniederhausen.storynotes.model.impl.StorynotesPackageImpl#getSettingCategory()
+	 * @generated
+	 */
+	int SETTING_CATEGORY = 11;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SETTING_CATEGORY__ID = CATEGORY__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SETTING_CATEGORY__NAME = CATEGORY__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Notes</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SETTING_CATEGORY__NOTES = CATEGORY__NOTES;
+
+	/**
+	 * The number of structural features of the '<em>Setting Category</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SETTING_CATEGORY_FEATURE_COUNT = CATEGORY_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.hannesniederhausen.storynotes.model.impl.PlotCategoryImpl <em>Plot Category</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.hannesniederhausen.storynotes.model.impl.PlotCategoryImpl
+	 * @see de.hannesniederhausen.storynotes.model.impl.StorynotesPackageImpl#getPlotCategory()
+	 * @generated
+	 */
+	int PLOT_CATEGORY = 12;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLOT_CATEGORY__ID = CATEGORY__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLOT_CATEGORY__NAME = CATEGORY__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Notes</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLOT_CATEGORY__NOTES = CATEGORY__NOTES;
+
+	/**
+	 * The number of structural features of the '<em>Plot Category</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLOT_CATEGORY_FEATURE_COUNT = CATEGORY_FEATURE_COUNT + 0;
+
+	/**
 	 * Returns the meta object for class '{@link de.hannesniederhausen.storynotes.model.File <em>File</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1006,6 +1190,46 @@ public interface StorynotesPackage extends EPackage {
 	EAttribute getGenericNote_Description();
 
 	/**
+	 * Returns the meta object for class '{@link de.hannesniederhausen.storynotes.model.GenericCategory <em>Generic Category</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Generic Category</em>'.
+	 * @see de.hannesniederhausen.storynotes.model.GenericCategory
+	 * @generated
+	 */
+	EClass getGenericCategory();
+
+	/**
+	 * Returns the meta object for class '{@link de.hannesniederhausen.storynotes.model.PersonCategory <em>Person Category</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Person Category</em>'.
+	 * @see de.hannesniederhausen.storynotes.model.PersonCategory
+	 * @generated
+	 */
+	EClass getPersonCategory();
+
+	/**
+	 * Returns the meta object for class '{@link de.hannesniederhausen.storynotes.model.SettingCategory <em>Setting Category</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Setting Category</em>'.
+	 * @see de.hannesniederhausen.storynotes.model.SettingCategory
+	 * @generated
+	 */
+	EClass getSettingCategory();
+
+	/**
+	 * Returns the meta object for class '{@link de.hannesniederhausen.storynotes.model.PlotCategory <em>Plot Category</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Plot Category</em>'.
+	 * @see de.hannesniederhausen.storynotes.model.PlotCategory
+	 * @generated
+	 */
+	EClass getPlotCategory();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1354,6 +1578,46 @@ public interface StorynotesPackage extends EPackage {
 		 */
 		EAttribute GENERIC_NOTE__DESCRIPTION = eINSTANCE
 				.getGenericNote_Description();
+
+		/**
+		 * The meta object literal for the '{@link de.hannesniederhausen.storynotes.model.impl.GenericCategoryImpl <em>Generic Category</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.hannesniederhausen.storynotes.model.impl.GenericCategoryImpl
+		 * @see de.hannesniederhausen.storynotes.model.impl.StorynotesPackageImpl#getGenericCategory()
+		 * @generated
+		 */
+		EClass GENERIC_CATEGORY = eINSTANCE.getGenericCategory();
+
+		/**
+		 * The meta object literal for the '{@link de.hannesniederhausen.storynotes.model.impl.PersonCategoryImpl <em>Person Category</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.hannesniederhausen.storynotes.model.impl.PersonCategoryImpl
+		 * @see de.hannesniederhausen.storynotes.model.impl.StorynotesPackageImpl#getPersonCategory()
+		 * @generated
+		 */
+		EClass PERSON_CATEGORY = eINSTANCE.getPersonCategory();
+
+		/**
+		 * The meta object literal for the '{@link de.hannesniederhausen.storynotes.model.impl.SettingCategoryImpl <em>Setting Category</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.hannesniederhausen.storynotes.model.impl.SettingCategoryImpl
+		 * @see de.hannesniederhausen.storynotes.model.impl.StorynotesPackageImpl#getSettingCategory()
+		 * @generated
+		 */
+		EClass SETTING_CATEGORY = eINSTANCE.getSettingCategory();
+
+		/**
+		 * The meta object literal for the '{@link de.hannesniederhausen.storynotes.model.impl.PlotCategoryImpl <em>Plot Category</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.hannesniederhausen.storynotes.model.impl.PlotCategoryImpl
+		 * @see de.hannesniederhausen.storynotes.model.impl.StorynotesPackageImpl#getPlotCategory()
+		 * @generated
+		 */
+		EClass PLOT_CATEGORY = eINSTANCE.getPlotCategory();
 
 	}
 

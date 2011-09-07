@@ -14,11 +14,15 @@ package de.hannesniederhausen.storynotes.model.impl;
 import de.hannesniederhausen.storynotes.model.Category;
 import de.hannesniederhausen.storynotes.model.File;
 import de.hannesniederhausen.storynotes.model.FileElement;
+import de.hannesniederhausen.storynotes.model.GenericCategory;
 import de.hannesniederhausen.storynotes.model.GenericNote;
 import de.hannesniederhausen.storynotes.model.Note;
+import de.hannesniederhausen.storynotes.model.PersonCategory;
 import de.hannesniederhausen.storynotes.model.PersonNote;
+import de.hannesniederhausen.storynotes.model.PlotCategory;
 import de.hannesniederhausen.storynotes.model.PlotNote;
 import de.hannesniederhausen.storynotes.model.Project;
+import de.hannesniederhausen.storynotes.model.SettingCategory;
 import de.hannesniederhausen.storynotes.model.SettingNote;
 import de.hannesniederhausen.storynotes.model.StorynotesFactory;
 import de.hannesniederhausen.storynotes.model.StorynotesPackage;
@@ -100,6 +104,34 @@ public class StorynotesPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	private EClass genericNoteEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass genericCategoryEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass personCategoryEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass settingCategoryEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass plotCategoryEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -513,6 +545,42 @@ public class StorynotesPackageImpl extends EPackageImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getGenericCategory() {
+		return genericCategoryEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getPersonCategory() {
+		return personCategoryEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getSettingCategory() {
+		return settingCategoryEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getPlotCategory() {
+		return plotCategoryEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public StorynotesFactory getStorynotesFactory() {
 		return (StorynotesFactory) getEFactoryInstance();
 	}
@@ -584,6 +652,14 @@ public class StorynotesPackageImpl extends EPackageImpl implements
 		genericNoteEClass = createEClass(GENERIC_NOTE);
 		createEAttribute(genericNoteEClass, GENERIC_NOTE__TITLE);
 		createEAttribute(genericNoteEClass, GENERIC_NOTE__DESCRIPTION);
+
+		genericCategoryEClass = createEClass(GENERIC_CATEGORY);
+
+		personCategoryEClass = createEClass(PERSON_CATEGORY);
+
+		settingCategoryEClass = createEClass(SETTING_CATEGORY);
+
+		plotCategoryEClass = createEClass(PLOT_CATEGORY);
 	}
 
 	/**
@@ -622,6 +698,10 @@ public class StorynotesPackageImpl extends EPackageImpl implements
 		settingNoteEClass.getESuperTypes().add(this.getNote());
 		plotNoteEClass.getESuperTypes().add(this.getNote());
 		genericNoteEClass.getESuperTypes().add(this.getNote());
+		genericCategoryEClass.getESuperTypes().add(this.getCategory());
+		personCategoryEClass.getESuperTypes().add(this.getCategory());
+		settingCategoryEClass.getESuperTypes().add(this.getCategory());
+		plotCategoryEClass.getESuperTypes().add(this.getCategory());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(fileEClass, File.class, "File", !IS_ABSTRACT, !IS_INTERFACE,
@@ -661,7 +741,7 @@ public class StorynotesPackageImpl extends EPackageImpl implements
 				IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
 
-		initEClass(categoryEClass, Category.class, "Category", !IS_ABSTRACT,
+		initEClass(categoryEClass, Category.class, "Category", IS_ABSTRACT,
 				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCategory_Name(), ecorePackage.getEString(), "name",
 				null, 1, 1, Category.class, !IS_TRANSIENT, !IS_VOLATILE,
@@ -767,6 +847,21 @@ public class StorynotesPackageImpl extends EPackageImpl implements
 				"description", null, 1, 1, GenericNote.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
+
+		initEClass(genericCategoryEClass, GenericCategory.class,
+				"GenericCategory", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(personCategoryEClass, PersonCategory.class,
+				"PersonCategory", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(settingCategoryEClass, SettingCategory.class,
+				"SettingCategory", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(plotCategoryEClass, PlotCategory.class, "PlotCategory",
+				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

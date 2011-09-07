@@ -121,6 +121,26 @@ public class StorynotesAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
+		public Adapter caseGenericCategory(GenericCategory object) {
+			return createGenericCategoryAdapter();
+		}
+
+		@Override
+		public Adapter casePersonCategory(PersonCategory object) {
+			return createPersonCategoryAdapter();
+		}
+
+		@Override
+		public Adapter caseSettingCategory(SettingCategory object) {
+			return createSettingCategoryAdapter();
+		}
+
+		@Override
+		public Adapter casePlotCategory(PlotCategory object) {
+			return createPlotCategoryAdapter();
+		}
+
+		@Override
 		public Adapter defaultCase(EObject object) {
 			return createEObjectAdapter();
 		}
@@ -262,6 +282,62 @@ public class StorynotesAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createGenericNoteAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.hannesniederhausen.storynotes.model.GenericCategory <em>Generic Category</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.hannesniederhausen.storynotes.model.GenericCategory
+	 * @generated
+	 */
+	public Adapter createGenericCategoryAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.hannesniederhausen.storynotes.model.PersonCategory <em>Person Category</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.hannesniederhausen.storynotes.model.PersonCategory
+	 * @generated
+	 */
+	public Adapter createPersonCategoryAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.hannesniederhausen.storynotes.model.SettingCategory <em>Setting Category</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.hannesniederhausen.storynotes.model.SettingCategory
+	 * @generated
+	 */
+	public Adapter createSettingCategoryAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.hannesniederhausen.storynotes.model.PlotCategory <em>Plot Category</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.hannesniederhausen.storynotes.model.PlotCategory
+	 * @generated
+	 */
+	public Adapter createPlotCategoryAdapter() {
 		return null;
 	}
 

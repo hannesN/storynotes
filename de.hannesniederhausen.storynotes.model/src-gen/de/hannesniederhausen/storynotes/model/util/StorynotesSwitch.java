@@ -160,6 +160,50 @@ public class StorynotesSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
+		case StorynotesPackage.GENERIC_CATEGORY: {
+			GenericCategory genericCategory = (GenericCategory) theEObject;
+			T result = caseGenericCategory(genericCategory);
+			if (result == null)
+				result = caseCategory(genericCategory);
+			if (result == null)
+				result = caseFileElement(genericCategory);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case StorynotesPackage.PERSON_CATEGORY: {
+			PersonCategory personCategory = (PersonCategory) theEObject;
+			T result = casePersonCategory(personCategory);
+			if (result == null)
+				result = caseCategory(personCategory);
+			if (result == null)
+				result = caseFileElement(personCategory);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case StorynotesPackage.SETTING_CATEGORY: {
+			SettingCategory settingCategory = (SettingCategory) theEObject;
+			T result = caseSettingCategory(settingCategory);
+			if (result == null)
+				result = caseCategory(settingCategory);
+			if (result == null)
+				result = caseFileElement(settingCategory);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case StorynotesPackage.PLOT_CATEGORY: {
+			PlotCategory plotCategory = (PlotCategory) theEObject;
+			T result = casePlotCategory(plotCategory);
+			if (result == null)
+				result = caseCategory(plotCategory);
+			if (result == null)
+				result = caseFileElement(plotCategory);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
 		default:
 			return defaultCase(theEObject);
 		}
@@ -297,6 +341,66 @@ public class StorynotesSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseGenericNote(GenericNote object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Generic Category</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Generic Category</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseGenericCategory(GenericCategory object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Person Category</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Person Category</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T casePersonCategory(PersonCategory object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Setting Category</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Setting Category</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSettingCategory(SettingCategory object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Plot Category</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Plot Category</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T casePlotCategory(PlotCategory object) {
 		return null;
 	}
 

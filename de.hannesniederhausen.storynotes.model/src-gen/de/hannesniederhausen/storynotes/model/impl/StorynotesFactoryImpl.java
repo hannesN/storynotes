@@ -80,8 +80,6 @@ public class StorynotesFactoryImpl extends EFactoryImpl implements
 			return createFile();
 		case StorynotesPackage.PROJECT:
 			return createProject();
-		case StorynotesPackage.CATEGORY:
-			return createCategory();
 		case StorynotesPackage.PERSON_NOTE:
 			return createPersonNote();
 		case StorynotesPackage.SETTING_NOTE:
@@ -90,6 +88,14 @@ public class StorynotesFactoryImpl extends EFactoryImpl implements
 			return createPlotNote();
 		case StorynotesPackage.GENERIC_NOTE:
 			return createGenericNote();
+		case StorynotesPackage.GENERIC_CATEGORY:
+			return createGenericCategory();
+		case StorynotesPackage.PERSON_CATEGORY:
+			return createPersonCategory();
+		case StorynotesPackage.SETTING_CATEGORY:
+			return createSettingCategory();
+		case StorynotesPackage.PLOT_CATEGORY:
+			return createPlotCategory();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName()
 					+ "' is not a valid classifier");
@@ -115,17 +121,6 @@ public class StorynotesFactoryImpl extends EFactoryImpl implements
 		ProjectImpl project = new ProjectImpl();
 		setId(project);
 		return project;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Category createCategory() {
-		CategoryImpl category = new CategoryImpl();
-		setId(category);
-		return category;
 	}
 
 	/**
@@ -170,6 +165,50 @@ public class StorynotesFactoryImpl extends EFactoryImpl implements
 		GenericNoteImpl genericNote = new GenericNoteImpl();
 		setId(genericNote);
 		return genericNote;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public GenericCategory createGenericCategory() {
+		GenericCategoryImpl genericCategory = new GenericCategoryImpl();
+		setId(genericCategory);
+		return genericCategory;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PersonCategory createPersonCategory() {
+		PersonCategoryImpl personCategory = new PersonCategoryImpl();
+		setId(personCategory);
+		return personCategory;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SettingCategory createSettingCategory() {
+		SettingCategoryImpl settingCategory = new SettingCategoryImpl();
+		setId(settingCategory);
+		return settingCategory;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PlotCategory createPlotCategory() {
+		PlotCategoryImpl plotCategory = new PlotCategoryImpl();
+		setId(plotCategory);
+		return plotCategory;
 	}
 
 	/**

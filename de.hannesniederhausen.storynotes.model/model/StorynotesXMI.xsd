@@ -32,7 +32,7 @@
     <xsd:attribute name="id" type="xsd:long" use="required"/>
   </xsd:complexType>
   <xsd:element name="FileElement" type="sn:FileElement"/>
-  <xsd:complexType name="Category">
+  <xsd:complexType abstract="true" name="Category">
     <xsd:complexContent>
       <xsd:extension base="sn:FileElement">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
@@ -100,4 +100,28 @@
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="GenericNote" type="sn:GenericNote"/>
+  <xsd:complexType name="GenericCategory">
+    <xsd:complexContent>
+      <xsd:extension base="sn:Category"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="GenericCategory" type="sn:GenericCategory"/>
+  <xsd:complexType name="PersonCategory">
+    <xsd:complexContent>
+      <xsd:extension base="sn:Category"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="PersonCategory" type="sn:PersonCategory"/>
+  <xsd:complexType name="SettingCategory">
+    <xsd:complexContent>
+      <xsd:extension base="sn:Category"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="SettingCategory" type="sn:SettingCategory"/>
+  <xsd:complexType name="PlotCategory">
+    <xsd:complexContent>
+      <xsd:extension base="sn:Category"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="PlotCategory" type="sn:PlotCategory"/>
 </xsd:schema>

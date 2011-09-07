@@ -51,15 +51,6 @@ public interface StorynotesFactory extends EFactory {
 	Project createProject();
 
 	/**
-	 * Returns a new object of class '<em>Category</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Category</em>'.
-	 * @generated
-	 */
-	Category createCategory();
-
-	/**
 	 * Returns a new object of class '<em>Person Note</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -94,6 +85,42 @@ public interface StorynotesFactory extends EFactory {
 	 * @generated
 	 */
 	GenericNote createGenericNote();
+
+	/**
+	 * Returns a new object of class '<em>Generic Category</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Generic Category</em>'.
+	 * @generated
+	 */
+	GenericCategory createGenericCategory();
+
+	/**
+	 * Returns a new object of class '<em>Person Category</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Person Category</em>'.
+	 * @generated
+	 */
+	PersonCategory createPersonCategory();
+
+	/**
+	 * Returns a new object of class '<em>Setting Category</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Setting Category</em>'.
+	 * @generated
+	 */
+	SettingCategory createSettingCategory();
+
+	/**
+	 * Returns a new object of class '<em>Plot Category</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Plot Category</em>'.
+	 * @generated
+	 */
+	PlotCategory createPlotCategory();
 
 	/**
 	 * Returns the package supported by this factory.
