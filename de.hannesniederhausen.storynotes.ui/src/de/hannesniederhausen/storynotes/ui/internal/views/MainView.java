@@ -22,6 +22,7 @@ import org.eclipse.wb.swt.SWTResourceManager;
 
 import de.hannesniederhausen.storynotes.model.Category;
 import de.hannesniederhausen.storynotes.model.File;
+import de.hannesniederhausen.storynotes.model.Note;
 import de.hannesniederhausen.storynotes.model.Project;
 import de.hannesniederhausen.storynotes.model.service.IModelProviderService;
 import de.hannesniederhausen.storynotes.ui.internal.navigation.widgets.NavigationBar;
@@ -31,6 +32,7 @@ import de.hannesniederhausen.storynotes.ui.internal.navigation.widgets.StoryNote
 import de.hannesniederhausen.storynotes.ui.internal.services.ICategoryProviderManager;
 import de.hannesniederhausen.storynotes.ui.internal.views.xwt.WelcomeView;
 import de.hannesniederhausen.storynotes.ui.services.ICategoryProviderService;
+import de.hannesniederhausen.storynotes.ui.views.InputMask;
 import de.hannesniederhausen.storynotes.ui.views.category.CategoryInputMask;
 
 /**
@@ -116,11 +118,24 @@ public class MainView  {
 	public void setSelection(@Optional @Named(IServiceConstants.ACTIVE_SELECTION) Object selection) {
 		if (selection!=null)
 			navigationBar.setInput(selection); 
+		else
+			return;
 		
+		
+		InputMask im = null;
 		if (selection instanceof Category) {
-			CategoryInputMask catIM = new CategoryInputMask(stack, SWT.NONE);
-			catIM.setModel((EObject) selection);
-			stackLayout.topControl = catIM;
+			ICategoryProviderService s = categoryProviderManager.getServiceFor((Class<? extends Category>) selection.getClass());
+			im = s.createCategoryInputMask(stack);
+		} if (selection instanceof Note) {
+			ICategoryProviderService s = categoryProviderManager.getServiceFor((Class<? extends Category>) ((EObject) selection).eContainer().getClass());
+			im = s.createNoteInputMask(stack, (Class<? extends Note>) selection.getClass());
+		}
+		
+		if (im!=null) {
+			im.setModel((EObject) selection);
+			if (stackLayout.topControl!=null)
+				stackLayout.topControl.dispose();
+			stackLayout.topControl = im;
 			stack.layout();
 		}
 	}

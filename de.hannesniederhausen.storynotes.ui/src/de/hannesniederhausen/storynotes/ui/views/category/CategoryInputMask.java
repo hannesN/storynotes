@@ -55,8 +55,9 @@ public class CategoryInputMask extends InputMask {
 		setLayout(new GridLayout(1, false));
 		
 		titleLabel = new Label(this, SWT.NONE);
+		titleLabel.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true, false, 1, 1));
 		titleLabel.setFont(SWTResourceManager.getFont("Ubuntu", 25, SWT.ITALIC));
-		titleLabel.setText("New Label");
+		titleLabel.setText("name");
 		
 		Label lblNewLabel = new Label(this, SWT.NONE);
 		lblNewLabel.setText("Notes in this category:");

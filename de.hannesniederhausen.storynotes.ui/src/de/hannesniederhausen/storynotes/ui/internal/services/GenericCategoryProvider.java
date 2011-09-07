@@ -3,23 +3,19 @@
  */
 package de.hannesniederhausen.storynotes.ui.internal.services;
 
-import javax.inject.Inject;
-
 import org.eclipse.e4.core.contexts.IEclipseContext;
-import org.eclipse.e4.ui.workbench.modeling.EPartService;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Shell;
 
 import de.hannesniederhausen.storynotes.model.Category;
 import de.hannesniederhausen.storynotes.model.GenericCategory;
+import de.hannesniederhausen.storynotes.model.GenericNote;
 import de.hannesniederhausen.storynotes.model.Note;
 import de.hannesniederhausen.storynotes.ui.internal.services.actions.CreateGenericCategoryAction;
 import de.hannesniederhausen.storynotes.ui.internal.services.actions.CreateGenericNote;
-import de.hannesniederhausen.storynotes.ui.internal.views.MainView;
+import de.hannesniederhausen.storynotes.ui.internal.services.ui.GenericNoteInputMask;
 import de.hannesniederhausen.storynotes.ui.services.ICategoryProviderService;
 import de.hannesniederhausen.storynotes.ui.views.InputMask;
 import de.hannesniederhausen.storynotes.ui.views.category.CategoryInputMask;
@@ -38,6 +34,9 @@ public class GenericCategoryProvider implements ICategoryProviderService {
 
 	@Override
 	public InputMask createNoteInputMask(Composite parent, Class<? extends Note> noteClass) {
+		if (GenericNote.class.isAssignableFrom(noteClass))
+			return new GenericNoteInputMask(parent, SWT.NONE);
+		
 		return null;
 	}
 
