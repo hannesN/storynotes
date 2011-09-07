@@ -3,34 +3,34 @@
  */
 package de.hannesniederhausen.storynotes.ui.views.category;
 
+import org.eclipse.core.databinding.Binding;
+import org.eclipse.core.databinding.DataBindingContext;
+import org.eclipse.core.databinding.beans.PojoObservables;
+import org.eclipse.core.databinding.observable.Realm;
+import org.eclipse.core.databinding.observable.list.IObservableList;
+import org.eclipse.core.databinding.observable.map.IObservableMap;
+import org.eclipse.core.databinding.observable.value.IObservableValue;
+import org.eclipse.emf.databinding.EMFObservables;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.jface.databinding.swt.SWTObservables;
+import org.eclipse.jface.databinding.viewers.ObservableListContentProvider;
+import org.eclipse.jface.databinding.viewers.ObservableMapLabelProvider;
+import org.eclipse.jface.viewers.TableViewer;
+import org.eclipse.jface.viewers.TableViewerColumn;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Table;
+import org.eclipse.swt.widgets.TableColumn;
+import org.eclipse.swt.widgets.Text;
 
 import de.hannesniederhausen.storynotes.model.Category;
-import de.hannesniederhausen.storynotes.ui.views.InputMask;
-import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.widgets.Text;
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.layout.GridData;
-import org.eclipse.swt.widgets.Table;
-import org.eclipse.jface.viewers.TableViewer;
-import org.eclipse.swt.widgets.TableColumn;
-import org.eclipse.jface.viewers.TableViewerColumn;
-import org.eclipse.core.databinding.DataBindingContext;
-import org.eclipse.core.databinding.observable.value.IObservableValue;
-import org.eclipse.jface.databinding.swt.SWTObservables;
-import org.eclipse.core.databinding.beans.PojoObservables;
-import org.eclipse.jface.databinding.viewers.ObservableListContentProvider;
-import org.eclipse.core.databinding.observable.map.IObservableMap;
-import de.hannesniederhausen.storynotes.model.Note;
-import org.eclipse.jface.databinding.viewers.ObservableMapLabelProvider;
-import org.eclipse.core.databinding.observable.list.IObservableList;
-import org.eclipse.core.databinding.observable.Realm;
-import org.eclipse.emf.databinding.EMFObservables;
 import de.hannesniederhausen.storynotes.model.StorynotesPackage.Literals;
-import org.eclipse.core.databinding.Binding;
-import org.eclipse.emf.ecore.EStructuralFeature;
+import de.hannesniederhausen.storynotes.ui.views.InputMask;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.wb.swt.SWTResourceManager;
 
 /**
  * @author Hannes Niederhausen
@@ -41,9 +41,9 @@ public class CategoryInputMask extends InputMask {
 	private DataBindingContext m_bindingContext;
 
 	private Category category;
-	private Text text;
 	private Table table;
 	private TableViewer tableViewer;
+	private Label titleLabel;
 
 	/**
 	 * Create the composite.
@@ -54,8 +54,12 @@ public class CategoryInputMask extends InputMask {
 		super(parent, style);
 		setLayout(new GridLayout(1, false));
 		
-		text = new Text(this, SWT.BORDER);
-		text.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+		titleLabel = new Label(this, SWT.NONE);
+		titleLabel.setFont(SWTResourceManager.getFont("Ubuntu", 25, SWT.ITALIC));
+		titleLabel.setText("New Label");
+		
+		Label lblNewLabel = new Label(this, SWT.NONE);
+		lblNewLabel.setText("Notes in this category:");
 		
 		tableViewer = new TableViewer(this, SWT.BORDER | SWT.FULL_SELECTION);
 		table = tableViewer.getTable();
@@ -70,7 +74,6 @@ public class CategoryInputMask extends InputMask {
 		TableColumn tblclmnName = tableViewerColumn_1.getColumn();
 		tblclmnName.setWidth(100);
 		tblclmnName.setText("Name");
-		
 
 	}
 
@@ -89,10 +92,6 @@ public class CategoryInputMask extends InputMask {
 	protected DataBindingContext initDataBindings() {
 		DataBindingContext bindingContext = new DataBindingContext();
 		//
-		IObservableValue textObserveMessageObserveWidget = SWTObservables.observeMessage(text);
-		IObservableValue categoryNameObserveValue = EMFObservables.observeValue(category, Literals.CATEGORY__NAME);
-		name = bindingContext.bindValue(textObserveMessageObserveWidget, categoryNameObserveValue, null, null);
-		//
 		ObservableListContentProvider listContentProvider = new ObservableListContentProvider();
 		tableViewer.setContentProvider(listContentProvider);
 		//
@@ -101,6 +100,10 @@ public class CategoryInputMask extends InputMask {
 		//
 		IObservableList categoryNotesObserveList = EMFObservables.observeList(Realm.getDefault(), category, Literals.CATEGORY__NOTES);
 		tableViewer.setInput(categoryNotesObserveList);
+		//
+		IObservableValue titleLabelObserveTextObserveWidget = SWTObservables.observeText(titleLabel);
+		IObservableValue categoryNameObserveValue = PojoObservables.observeValue(category, "name");
+		bindingContext.bindValue(titleLabelObserveTextObserveWidget, categoryNameObserveValue, null, null);
 		//
 		return bindingContext;
 	}
