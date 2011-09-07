@@ -3,6 +3,7 @@ package de.hannesniederhausen.storynotes.ui.internal.views;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -17,6 +18,7 @@ import org.eclipse.swt.custom.StackLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.wb.swt.SWTResourceManager;
 
 import de.hannesniederhausen.storynotes.model.Category;
 import de.hannesniederhausen.storynotes.model.File;

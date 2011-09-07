@@ -33,3 +33,4 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Import-Package: org.osgi.framework;version="1.3.0"
 Bundle-ActivationPolicy: lazy
 Service-Component: OSGI-INF/genericcategory.xml,OSGI-INF/personcategory.xml, OSGI-INF/categorymanager.xml, OSGI-INF/plotcategory.xml, OSGI-INF/settingcategory.xml
+Export-Package: org.eclipse.wb.swt

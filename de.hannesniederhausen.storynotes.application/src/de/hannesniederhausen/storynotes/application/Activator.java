@@ -1,5 +1,6 @@
 package de.hannesniederhausen.storynotes.application;
 
+import org.eclipse.wb.swt.SWTResourceManager;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 
@@ -25,6 +26,7 @@ public class Activator implements BundleActivator {
 	 */
 	public void stop(BundleContext bundleContext) throws Exception {
 		Activator.context = null;
+		SWTResourceManager.dispose();
 	}
 
 }
