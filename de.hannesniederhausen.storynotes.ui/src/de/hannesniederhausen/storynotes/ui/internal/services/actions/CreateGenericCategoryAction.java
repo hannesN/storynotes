@@ -1,15 +1,18 @@
 /**
  * 
  */
-package de.hannesniederhausen.storynotes.ui.actions;
+package de.hannesniederhausen.storynotes.ui.internal.services.actions;
 
+import org.eclipse.e4.core.contexts.IEclipseContext;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.IInputValidator;
 import org.eclipse.jface.dialogs.InputDialog;
 
 import de.hannesniederhausen.storynotes.model.Category;
-import de.hannesniederhausen.storynotes.model.File;
+import de.hannesniederhausen.storynotes.model.GenericCategory;
 import de.hannesniederhausen.storynotes.model.Project;
+import de.hannesniederhausen.storynotes.ui.internal.actions.AbstractCreationAction;
 
 
 
@@ -17,10 +20,10 @@ import de.hannesniederhausen.storynotes.model.Project;
  * @author Hannes Niederhausen
  *
  */
-public class CreateCategoryAction extends AbstractCreationAction {
+public class CreateGenericCategoryAction extends AbstractCreationAction {
 	
-	public CreateCategoryAction() {
-		super();
+	public CreateGenericCategoryAction(IEclipseContext context, EObject parent) {
+		super(context, parent);
 		setText("Create Category...");
 	}
 	
@@ -50,7 +53,7 @@ public class CreateCategoryAction extends AbstractCreationAction {
 		if (dlg.open()==Dialog.OK) {
 			String name = dlg.getValue();
 			
-			Category c = getModelProviderService().getModelFactory().createCategory();
+			GenericCategory c = getModelProviderService().getModelFactory().createGenericCategory();
 			c.setName(name);
 			project.getCategories().add(c);
 			

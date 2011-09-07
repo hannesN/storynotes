@@ -3,6 +3,9 @@
  */
 package de.hannesniederhausen.storynotes.ui.internal.navigation.widgets;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.action.IAction;
@@ -11,12 +14,13 @@ import de.hannesniederhausen.storynotes.model.Category;
 import de.hannesniederhausen.storynotes.model.File;
 import de.hannesniederhausen.storynotes.model.Project;
 import de.hannesniederhausen.storynotes.model.service.IModelProviderService;
-import de.hannesniederhausen.storynotes.ui.actions.AbstractCreationAction;
-import de.hannesniederhausen.storynotes.ui.actions.CreateCategoryAction;
-import de.hannesniederhausen.storynotes.ui.actions.CreateGenericNote;
-import de.hannesniederhausen.storynotes.ui.actions.CreatePersonNote;
-import de.hannesniederhausen.storynotes.ui.actions.CreateProjectAction;
-import de.hannesniederhausen.storynotes.ui.actions.CreateSettingNote;
+import de.hannesniederhausen.storynotes.ui.internal.actions.AbstractCreationAction;
+import de.hannesniederhausen.storynotes.ui.internal.actions.CreateProjectAction;
+import de.hannesniederhausen.storynotes.ui.internal.services.ICategoryProviderManager;
+import de.hannesniederhausen.storynotes.ui.internal.services.actions.CreateGenericNote;
+import de.hannesniederhausen.storynotes.ui.internal.services.actions.CreatePersonNote;
+import de.hannesniederhausen.storynotes.ui.internal.services.actions.CreateSettingNote;
+import de.hannesniederhausen.storynotes.ui.services.ICategoryProviderService;
 
 /**
  * @author Hannes Niederhausen
@@ -24,8 +28,8 @@ import de.hannesniederhausen.storynotes.ui.actions.CreateSettingNote;
  */
 public class StoryNotesActionProvider implements IActionProvider {
 
-	private IModelProviderService modelProviderService;
 	private IEclipseContext context;
+	private ICategoryProviderManager categoryProviderManager;
 	
 	@Override
 	public IAction[] getActions(Object element) {
@@ -35,29 +39,27 @@ public class StoryNotesActionProvider implements IActionProvider {
 		} 
 		
 		if (element instanceof Project) {
-			return new IAction[]{getAction((EObject)element, CreateCategoryAction.class)};
+			List<IAction> actionList = new ArrayList<IAction>();
+			for (ICategoryProviderService cps : categoryProviderManager.getServices()) {
+				IAction a = cps.getCategoryActions(context, (EObject) element);
+				if (a.isEnabled())
+					actionList.add(a);
+			}
+			return actionList.toArray(new IAction[actionList.size()]);
 		}
 		
 		if (element instanceof Category) {
-			return new IAction[]{
-					getAction((EObject)element, CreatePersonNote.class),
-					getAction((EObject)element, CreateGenericNote.class),
-					getAction((EObject)element, CreateSettingNote.class),
-					getAction((EObject)element, CreateGenericNote.class)					
-			};
+			ICategoryProviderService s = categoryProviderManager.getServiceFor(((Category)element).getClass());
+			return s.getNoteActions(context, (EObject) element);
 		}
 		
 		return new IAction[0];
 	}
 	
 
-	public void setModelProviderService(
-			IModelProviderService modelProviderService) {
-		this.modelProviderService = modelProviderService;
-	}
-
 	public void setContext(IEclipseContext context) {
 		this.context = context;
+		this.categoryProviderManager = context.get(ICategoryProviderManager.class);
 	}
 
 	private IAction getAction(EObject element, Class<? extends AbstractCreationAction> clazz) {
@@ -65,7 +67,6 @@ public class StoryNotesActionProvider implements IActionProvider {
 			AbstractCreationAction a = (AbstractCreationAction) clazz.newInstance();
 			a.setParentElement(element);
 			a.setContext(context);
-			a.setModelProviderService(modelProviderService);
 			return a;
 		} catch (Exception e) {
 			e.printStackTrace();

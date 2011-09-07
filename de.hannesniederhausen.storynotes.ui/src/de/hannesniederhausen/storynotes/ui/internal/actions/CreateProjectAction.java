@@ -1,8 +1,10 @@
 /**
  * 
  */
-package de.hannesniederhausen.storynotes.ui.actions;
+package de.hannesniederhausen.storynotes.ui.internal.actions;
 
+import org.eclipse.e4.core.contexts.IEclipseContext;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.InputDialog;
 import org.eclipse.swt.widgets.Display;
@@ -18,8 +20,8 @@ import de.hannesniederhausen.storynotes.model.Project;
  */
 public class CreateProjectAction extends AbstractCreationAction {
 	
-	public CreateProjectAction() {
-		super();
+	public CreateProjectAction(IEclipseContext context, EObject parent) {
+		super(context, parent);
 		setText("Create Project...");
 	}
 	

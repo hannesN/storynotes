@@ -1,5 +1,7 @@
 package de.hannesniederhausen.storynotes.ui.internal.views;
 
+import java.util.List;
+
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -24,7 +26,9 @@ import de.hannesniederhausen.storynotes.ui.internal.navigation.widgets.Navigatio
 import de.hannesniederhausen.storynotes.ui.internal.navigation.widgets.StoryNotesActionProvider;
 import de.hannesniederhausen.storynotes.ui.internal.navigation.widgets.StoryNotesLabelProvider;
 import de.hannesniederhausen.storynotes.ui.internal.navigation.widgets.StoryNotesModelContentProvider;
+import de.hannesniederhausen.storynotes.ui.internal.services.ICategoryProviderManager;
 import de.hannesniederhausen.storynotes.ui.internal.views.xwt.WelcomeView;
+import de.hannesniederhausen.storynotes.ui.services.ICategoryProviderService;
 import de.hannesniederhausen.storynotes.ui.views.category.CategoryInputMask;
 
 /**
@@ -44,6 +48,9 @@ public class MainView  {
 	
 	@Inject
 	private IEclipseContext context;
+	
+	@Inject
+	private ICategoryProviderManager categoryProviderManager;
 	
 	@Inject
 	private Composite parent;
@@ -75,7 +82,6 @@ public class MainView  {
 		comp.setLayout(layout);
 
 		StoryNotesActionProvider actionProvider = new StoryNotesActionProvider();
-		actionProvider.setModelProviderService(modelProvider);
 		actionProvider.setContext(context);
 		
 		navigationBar = new NavigationBar(comp);
@@ -97,6 +103,7 @@ public class MainView  {
 				context);
 		welcomeView.setLayoutData(new GridData(GridData.FILL_BOTH));
 
+		
 	}
 	
 	public Composite getParent() {

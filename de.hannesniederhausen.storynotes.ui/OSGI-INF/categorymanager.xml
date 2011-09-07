@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="category manager">
+   <implementation class="de.hannesniederhausen.storynotes.ui.internal.services.CategoryProviderManager"/>
+   <service>
+      <provide interface="de.hannesniederhausen.storynotes.ui.internal.services.ICategoryProviderManager"/>
+   </service>
+   <reference bind="addService" cardinality="1..n" interface="de.hannesniederhausen.storynotes.ui.services.ICategoryProviderService" name="ICategoryProviderService" policy="static" unbind="removeService"/>
+</scr:component>

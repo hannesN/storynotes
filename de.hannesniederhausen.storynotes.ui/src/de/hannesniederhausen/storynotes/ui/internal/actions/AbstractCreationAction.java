@@ -1,7 +1,7 @@
 /**
  * 
  */
-package de.hannesniederhausen.storynotes.ui.actions;
+package de.hannesniederhausen.storynotes.ui.internal.actions;
 
 import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.ui.workbench.modeling.ESelectionService;
@@ -19,10 +19,11 @@ import de.hannesniederhausen.storynotes.ui.internal.views.MainView;
 public class AbstractCreationAction extends Action {
 
 	private EObject parentElement;
-	private IModelProviderService modelProviderService;
 	private IEclipseContext context;
 	
-	public AbstractCreationAction() {
+	public AbstractCreationAction(IEclipseContext context, EObject parent) {
+		this.parentElement = parent;
+		this.context = context;
 	}
 	
 	public void setContext(IEclipseContext context) {
@@ -34,11 +35,6 @@ public class AbstractCreationAction extends Action {
 		this.parentElement = parentElement;
 	}
 	
-	public void setModelProviderService(
-			IModelProviderService modelProviderService) {
-		this.modelProviderService = modelProviderService;
-	}
-	
 	protected ESelectionService getSelectionService() {
 		return context.get(ESelectionService.class);
 	}
@@ -48,7 +44,7 @@ public class AbstractCreationAction extends Action {
 	}
 	
 	protected IModelProviderService getModelProviderService() {
-		return modelProviderService;
+		return context.get(IModelProviderService.class);
 	}
 	
 	protected EObject getParentElement() {

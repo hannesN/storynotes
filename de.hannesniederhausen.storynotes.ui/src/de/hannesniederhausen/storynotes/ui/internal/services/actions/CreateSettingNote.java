@@ -1,14 +1,17 @@
 /**
  * 
  */
-package de.hannesniederhausen.storynotes.ui.actions;
+package de.hannesniederhausen.storynotes.ui.internal.services.actions;
 
+import org.eclipse.e4.core.contexts.IEclipseContext;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.InputDialog;
 
 import de.hannesniederhausen.storynotes.model.Category;
 import de.hannesniederhausen.storynotes.model.PersonNote;
 import de.hannesniederhausen.storynotes.model.SettingNote;
+import de.hannesniederhausen.storynotes.ui.internal.actions.AbstractCreationAction;
 
 /**
  * @author Hannes Niederhausen
@@ -16,7 +19,8 @@ import de.hannesniederhausen.storynotes.model.SettingNote;
  */
 public class CreateSettingNote extends AbstractCreationAction {
 
-	public CreateSettingNote() {
+	public CreateSettingNote(IEclipseContext context, EObject parent) {
+		super(context, parent);
 		setText("Create Setting...");
 	}
 	
