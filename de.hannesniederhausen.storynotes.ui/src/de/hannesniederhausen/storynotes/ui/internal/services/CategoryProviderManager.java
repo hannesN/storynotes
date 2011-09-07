@@ -6,6 +6,7 @@ package de.hannesniederhausen.storynotes.ui.internal.services;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import de.hannesniederhausen.storynotes.model.Category;
 import de.hannesniederhausen.storynotes.ui.services.ICategoryProviderService;
@@ -48,10 +49,10 @@ public class CategoryProviderManager implements ICategoryProviderManager {
 		ICategoryProviderService result = this.services.get(clazz);
 		
 		if (result == null) {
-			for (Class<?> i : clazz.getInterfaces()) {
-				result = this.services.get(i);
-				if (result!=null)
-					break;
+			for (Entry<Class<? extends Category>, ICategoryProviderService> e : services.entrySet()) {
+				if (e.getKey().isAssignableFrom(clazz)) {
+					return e.getValue();
+				}
 			}
 		}
 		
