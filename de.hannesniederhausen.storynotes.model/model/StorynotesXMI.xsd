@@ -84,7 +84,6 @@
   <xsd:complexType name="PlotNote">
     <xsd:complexContent>
       <xsd:extension base="sn:Note">
-        <xsd:attribute name="kind" type="xsd:string" use="required"/>
         <xsd:attribute name="title" type="xsd:string"/>
         <xsd:attribute name="description" type="xsd:string" use="required"/>
       </xsd:extension>

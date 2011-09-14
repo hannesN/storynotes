@@ -506,22 +506,13 @@ public interface StorynotesPackage extends EPackage {
 	int PLOT_NOTE__REF_ID = NOTE__REF_ID;
 
 	/**
-	 * The feature id for the '<em><b>Kind</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PLOT_NOTE__KIND = NOTE_FEATURE_COUNT + 0;
-
-	/**
 	 * The feature id for the '<em><b>Title</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PLOT_NOTE__TITLE = NOTE_FEATURE_COUNT + 1;
+	int PLOT_NOTE__TITLE = NOTE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -530,7 +521,7 @@ public interface StorynotesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PLOT_NOTE__DESCRIPTION = NOTE_FEATURE_COUNT + 2;
+	int PLOT_NOTE__DESCRIPTION = NOTE_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Plot Note</em>' class.
@@ -539,7 +530,7 @@ public interface StorynotesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PLOT_NOTE_FEATURE_COUNT = NOTE_FEATURE_COUNT + 3;
+	int PLOT_NOTE_FEATURE_COUNT = NOTE_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link de.hannesniederhausen.storynotes.model.impl.GenericNoteImpl <em>Generic Note</em>}' class.
@@ -1125,17 +1116,6 @@ public interface StorynotesPackage extends EPackage {
 	EClass getPlotNote();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.hannesniederhausen.storynotes.model.PlotNote#getKind <em>Kind</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Kind</em>'.
-	 * @see de.hannesniederhausen.storynotes.model.PlotNote#getKind()
-	 * @see #getPlotNote()
-	 * @generated
-	 */
-	EAttribute getPlotNote_Kind();
-
-	/**
 	 * Returns the meta object for the attribute '{@link de.hannesniederhausen.storynotes.model.PlotNote#getTitle <em>Title</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1527,14 +1507,6 @@ public interface StorynotesPackage extends EPackage {
 		 * @generated
 		 */
 		EClass PLOT_NOTE = eINSTANCE.getPlotNote();
-
-		/**
-		 * The meta object literal for the '<em><b>Kind</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute PLOT_NOTE__KIND = eINSTANCE.getPlotNote_Kind();
 
 		/**
 		 * The meta object literal for the '<em><b>Title</b></em>' attribute feature.
