@@ -12,8 +12,10 @@ import org.eclipse.swt.widgets.Composite;
 import de.hannesniederhausen.storynotes.model.Category;
 import de.hannesniederhausen.storynotes.model.Note;
 import de.hannesniederhausen.storynotes.model.PlotCategory;
+import de.hannesniederhausen.storynotes.model.PlotNote;
 import de.hannesniederhausen.storynotes.ui.internal.services.actions.CreatePlotCategoryAction;
 import de.hannesniederhausen.storynotes.ui.internal.services.actions.CreatePlotNote;
+import de.hannesniederhausen.storynotes.ui.internal.services.ui.PlotNoteInputmask;
 import de.hannesniederhausen.storynotes.ui.services.ICategoryProviderService;
 import de.hannesniederhausen.storynotes.ui.views.InputMask;
 import de.hannesniederhausen.storynotes.ui.views.category.CategoryInputMask;
@@ -32,6 +34,8 @@ public class PlotCategoryProvider implements ICategoryProviderService {
 	@Override
 	public InputMask createNoteInputMask(Composite parent,
 			Class<? extends Note> noteClass) {
+		if (PlotNote.class.isAssignableFrom(noteClass))
+			return new PlotNoteInputmask(parent, SWT.NONE);
 		return null;
 	}
 

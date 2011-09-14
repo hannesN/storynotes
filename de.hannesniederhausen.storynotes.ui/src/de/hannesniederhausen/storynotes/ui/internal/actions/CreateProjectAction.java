@@ -7,8 +7,6 @@ import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.InputDialog;
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Shell;
 
 import de.hannesniederhausen.storynotes.model.File;
 import de.hannesniederhausen.storynotes.model.Project;

@@ -9,7 +9,6 @@ import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.InputDialog;
 
 import de.hannesniederhausen.storynotes.model.Category;
-import de.hannesniederhausen.storynotes.model.PersonNote;
 import de.hannesniederhausen.storynotes.model.SettingNote;
 import de.hannesniederhausen.storynotes.ui.internal.actions.AbstractCreationAction;
 

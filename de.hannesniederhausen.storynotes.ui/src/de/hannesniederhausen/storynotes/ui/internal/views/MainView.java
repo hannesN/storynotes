@@ -1,9 +1,6 @@
 package de.hannesniederhausen.storynotes.ui.internal.views;
 
-import java.util.List;
-
 import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -18,7 +15,6 @@ import org.eclipse.swt.custom.StackLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.wb.swt.SWTResourceManager;
 
 import de.hannesniederhausen.storynotes.model.Category;
 import de.hannesniederhausen.storynotes.model.File;
@@ -30,10 +26,8 @@ import de.hannesniederhausen.storynotes.ui.internal.navigation.widgets.StoryNote
 import de.hannesniederhausen.storynotes.ui.internal.navigation.widgets.StoryNotesLabelProvider;
 import de.hannesniederhausen.storynotes.ui.internal.navigation.widgets.StoryNotesModelContentProvider;
 import de.hannesniederhausen.storynotes.ui.internal.services.ICategoryProviderManager;
-import de.hannesniederhausen.storynotes.ui.internal.views.xwt.WelcomeView;
 import de.hannesniederhausen.storynotes.ui.services.ICategoryProviderService;
 import de.hannesniederhausen.storynotes.ui.views.InputMask;
-import de.hannesniederhausen.storynotes.ui.views.category.CategoryInputMask;
 
 /**
  * Main View for the application including the "breadcrumb" navigation and a
@@ -103,11 +97,6 @@ public class MainView  {
 		stackLayout = new StackLayout();
 		stack.setLayout(stackLayout);
 
-		final WelcomeView welcomeView = new WelcomeView(stack, SWT.NONE,
-				context);
-		welcomeView.setLayoutData(new GridData(GridData.FILL_BOTH));
-
-		
 	}
 	
 	public Composite getParent() {

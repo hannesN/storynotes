@@ -4,9 +4,7 @@
 package de.hannesniederhausen.storynotes.ui.internal.services;
 
 import org.eclipse.e4.core.contexts.IEclipseContext;
-import org.eclipse.e4.ui.workbench.modeling.ESelectionService;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
@@ -14,7 +12,6 @@ import org.eclipse.swt.widgets.Composite;
 import de.hannesniederhausen.storynotes.model.Category;
 import de.hannesniederhausen.storynotes.model.Note;
 import de.hannesniederhausen.storynotes.model.PersonCategory;
-import de.hannesniederhausen.storynotes.model.service.IModelProviderService;
 import de.hannesniederhausen.storynotes.ui.internal.services.actions.CreatePersonCategoryAction;
 import de.hannesniederhausen.storynotes.ui.internal.services.actions.CreatePersonNote;
 import de.hannesniederhausen.storynotes.ui.services.ICategoryProviderService;
