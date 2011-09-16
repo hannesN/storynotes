@@ -26,6 +26,7 @@ import de.hannesniederhausen.storynotes.ui.internal.navigation.widgets.StoryNote
 import de.hannesniederhausen.storynotes.ui.internal.navigation.widgets.StoryNotesLabelProvider;
 import de.hannesniederhausen.storynotes.ui.internal.navigation.widgets.StoryNotesModelContentProvider;
 import de.hannesniederhausen.storynotes.ui.internal.services.ICategoryProviderManager;
+import de.hannesniederhausen.storynotes.ui.internal.views.pages.ProjectInputMask;
 import de.hannesniederhausen.storynotes.ui.services.ICategoryProviderService;
 import de.hannesniederhausen.storynotes.ui.views.InputMask;
 
@@ -58,6 +59,8 @@ public class MainView  {
 	private NavigationBar navigationBar;
 
 	private Composite stack;
+
+	private ProjectInputMask projectInputMask;
 
 	@PostConstruct
 	public void init() {
@@ -112,10 +115,14 @@ public class MainView  {
 		
 		
 		InputMask im = null;
-		if (selection instanceof Category) {
+		if (selection instanceof Project) {
+//			if (projectInputMask==null) // wait until widgets are cached
+				projectInputMask = new ProjectInputMask(stack, SWT.None);
+			im = projectInputMask;
+		} else if (selection instanceof Category) {
 			ICategoryProviderService s = categoryProviderManager.getServiceFor((Class<? extends Category>) selection.getClass());
 			im = s.createCategoryInputMask(stack);
-		} if (selection instanceof Note) {
+		} else if (selection instanceof Note) {
 			ICategoryProviderService s = categoryProviderManager.getServiceFor((Class<? extends Category>) ((EObject) selection).eContainer().getClass());
 			im = s.createNoteInputMask(stack, (Class<? extends Note>) selection.getClass());
 		}

@@ -266,8 +266,17 @@ public class StorynotesPackageImpl extends EPackageImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getProject_Description() {
+		return (EAttribute) projectEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EReference getProject_Categories() {
-		return (EReference) projectEClass.getEStructuralFeatures().get(1);
+		return (EReference) projectEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -604,6 +613,7 @@ public class StorynotesPackageImpl extends EPackageImpl implements
 
 		projectEClass = createEClass(PROJECT);
 		createEAttribute(projectEClass, PROJECT__NAME);
+		createEAttribute(projectEClass, PROJECT__DESCRIPTION);
 		createEReference(projectEClass, PROJECT__CATEGORIES);
 
 		fileElementEClass = createEClass(FILE_ELEMENT);
@@ -719,6 +729,10 @@ public class StorynotesPackageImpl extends EPackageImpl implements
 				null, 1, 1, Project.class, !IS_TRANSIENT, !IS_VOLATILE,
 				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
+		initEAttribute(getProject_Description(), ecorePackage.getEString(),
+				"description", null, 0, 1, Project.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
 		initEReference(getProject_Categories(), this.getCategory(), null,
 				"categories", null, 0, -1, Project.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,

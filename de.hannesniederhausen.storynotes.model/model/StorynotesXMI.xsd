@@ -19,6 +19,7 @@
           <xsd:element name="categories" type="sn:Category"/>
         </xsd:choice>
         <xsd:attribute name="name" type="xsd:string" use="required"/>
+        <xsd:attribute name="description" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
