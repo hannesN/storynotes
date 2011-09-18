@@ -12,6 +12,7 @@ import org.eclipse.swt.widgets.Composite;
 import de.hannesniederhausen.storynotes.model.Category;
 import de.hannesniederhausen.storynotes.model.Note;
 import de.hannesniederhausen.storynotes.model.PersonCategory;
+import de.hannesniederhausen.storynotes.model.PersonNote;
 import de.hannesniederhausen.storynotes.ui.internal.services.actions.CreatePersonCategoryAction;
 import de.hannesniederhausen.storynotes.ui.internal.services.actions.CreatePersonNote;
 import de.hannesniederhausen.storynotes.ui.services.ICategoryProviderService;
@@ -32,6 +33,9 @@ public class PersonCategoryProvider implements ICategoryProviderService {
 	@Override
 	public InputMask createNoteInputMask(Composite parent,
 			Class<? extends Note> noteClass) {
+		if (PersonNote.class.isAssignableFrom(noteClass))
+			return new PersonNoteInputmask(parent, SWT.NONE);
+		
 		return null;
 	}
 
