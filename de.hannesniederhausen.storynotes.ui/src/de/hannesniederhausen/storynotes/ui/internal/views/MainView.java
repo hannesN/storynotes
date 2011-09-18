@@ -116,7 +116,7 @@ public class MainView  {
 		
 		InputMask im = null;
 		if (selection instanceof Project) {
-//			if (projectInputMask==null) // wait until widgets are cached
+			if (projectInputMask==null) 
 				projectInputMask = new ProjectInputMask(stack, SWT.None);
 			im = projectInputMask;
 		} else if (selection instanceof Category) {
@@ -129,8 +129,6 @@ public class MainView  {
 		
 		if (im!=null) {
 			im.setModel((EObject) selection);
-			if (stackLayout.topControl!=null)
-				stackLayout.topControl.dispose();
 			stackLayout.topControl = im;
 			stack.layout();
 		}
