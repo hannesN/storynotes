@@ -177,13 +177,22 @@ public interface StorynotesPackage extends EPackage {
 	int PROJECT__NAME = FILE_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROJECT__DESCRIPTION = FILE_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
 	 * The feature id for the '<em><b>Categories</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROJECT__CATEGORIES = FILE_ELEMENT_FEATURE_COUNT + 1;
+	int PROJECT__CATEGORIES = FILE_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Project</em>' class.
@@ -192,7 +201,7 @@ public interface StorynotesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PROJECT_FEATURE_COUNT = FILE_ELEMENT_FEATURE_COUNT + 2;
+	int PROJECT_FEATURE_COUNT = FILE_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link de.hannesniederhausen.storynotes.model.impl.CategoryImpl <em>Category</em>}' class.
@@ -847,6 +856,17 @@ public interface StorynotesPackage extends EPackage {
 	EAttribute getProject_Name();
 
 	/**
+	 * Returns the meta object for the attribute '{@link de.hannesniederhausen.storynotes.model.Project#getDescription <em>Description</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Description</em>'.
+	 * @see de.hannesniederhausen.storynotes.model.Project#getDescription()
+	 * @see #getProject()
+	 * @generated
+	 */
+	EAttribute getProject_Description();
+
+	/**
 	 * Returns the meta object for the containment reference list '{@link de.hannesniederhausen.storynotes.model.Project#getCategories <em>Categories</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1290,6 +1310,14 @@ public interface StorynotesPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PROJECT__NAME = eINSTANCE.getProject_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PROJECT__DESCRIPTION = eINSTANCE.getProject_Description();
 
 		/**
 		 * The meta object literal for the '<em><b>Categories</b></em>' containment reference list feature.
