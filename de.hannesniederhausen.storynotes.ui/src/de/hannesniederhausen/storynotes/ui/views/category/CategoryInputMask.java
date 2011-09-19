@@ -3,7 +3,6 @@
  */
 package de.hannesniederhausen.storynotes.ui.views.category;
 
-import org.eclipse.core.databinding.Binding;
 import org.eclipse.core.databinding.DataBindingContext;
 import org.eclipse.core.databinding.beans.PojoObservables;
 import org.eclipse.core.databinding.observable.Realm;
@@ -22,22 +21,20 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
-import org.eclipse.swt.widgets.Text;
+import org.eclipse.wb.swt.SWTResourceManager;
 
 import de.hannesniederhausen.storynotes.model.Category;
 import de.hannesniederhausen.storynotes.model.StorynotesPackage.Literals;
 import de.hannesniederhausen.storynotes.ui.views.InputMask;
-import org.eclipse.swt.widgets.Label;
-import org.eclipse.wb.swt.SWTResourceManager;
 
 /**
  * @author Hannes Niederhausen
  *
  */
 public class CategoryInputMask extends InputMask {
-	private Binding name;
 	private DataBindingContext m_bindingContext;
 
 	private Category category;

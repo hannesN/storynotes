@@ -5,6 +5,7 @@ package de.hannesniederhausen.storynotes.ui.internal.services;
 
 import java.security.InvalidParameterException;
 
+import org.eclipse.e4.core.contexts.ContextInjectionFactory;
 import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.action.IAction;
@@ -17,10 +18,10 @@ import de.hannesniederhausen.storynotes.model.PersonCategory;
 import de.hannesniederhausen.storynotes.model.PersonNote;
 import de.hannesniederhausen.storynotes.ui.internal.services.actions.CreatePersonCategoryAction;
 import de.hannesniederhausen.storynotes.ui.internal.services.actions.CreatePersonNote;
+import de.hannesniederhausen.storynotes.ui.internal.services.ui.PersonCategoryInputMask;
 import de.hannesniederhausen.storynotes.ui.internal.services.ui.PersonNoteInputMask;
 import de.hannesniederhausen.storynotes.ui.services.AbstractCategoryProviderService;
 import de.hannesniederhausen.storynotes.ui.views.InputMask;
-import de.hannesniederhausen.storynotes.ui.views.category.CategoryInputMask;
 
 /**
  * @author Hannes Niederhausen
@@ -31,8 +32,8 @@ public class PersonCategoryProvider extends AbstractCategoryProviderService {
 	@Override
 	public InputMask createCategoryInputMask(Composite parent) {
 		InputMask im = super.createCategoryInputMask(parent);
-		if (im==null) {
-			im = new CategoryInputMask(parent, SWT.NONE);
+		if (im==null) {					
+			im = new PersonCategoryInputMask(parent, SWT.NONE);
 			setCategoryInputMask(im);
 		}
 		
