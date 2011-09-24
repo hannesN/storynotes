@@ -3,6 +3,7 @@
  */
 package de.hannesniederhausen.storynotes.ui.services;
 
+import org.eclipse.e4.core.contexts.ContextInjectionFactory;
 import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.action.IAction;
@@ -22,20 +23,18 @@ import de.hannesniederhausen.storynotes.ui.views.InputMask;
 public interface ICategoryProviderService {
 
 	/**
-	 * Returns an input mask for the pro
+	 * Creates and returns the input mask class should be instanciated using the {@link ContextInjectionFactory}
 	 * 
 	 */
-	public Class<? extends InputMask> getCategoryInputClassClass();
+	public Class<? extends InputMask> getCategoryInputMaskClass();
 	
 	/**
-	 * Creates and returns a composite which contains the
-	 * input mask to edit a note.
+	 * Creates and returns the input mask class should be instanciated using the {@link ContextInjectionFactory}
 	 * 
-	 * @param parent
 	 * @param noteClass
 	 * @return
 	 */
-	public InputMask createNoteInputMask(Composite parent, Class<? extends Note> noteClass);
+	public Class<? extends InputMask> getNoteInputMaskClass(Class<? extends Note> noteClass);
 	
 	/**
 	 * An array of actions, which can be executed at the categories

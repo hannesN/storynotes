@@ -125,10 +125,12 @@ public class MainView  {
 			im = projectInputMask;
 		} else if (selection instanceof Category) {
 			ICategoryProviderService s = categoryProviderManager.getServiceFor((Class<? extends Category>) selection.getClass());
-//			im = s.createCategoryInputMask(stack);
+			im = ContextInjectionFactory.make(s.getCategoryInputMaskClass(), context);
+			im.createControl(stack);
 		} else if (selection instanceof Note) {
 			ICategoryProviderService s = categoryProviderManager.getServiceFor((Class<? extends Category>) ((EObject) selection).eContainer().getClass());
-//			im = s.createNoteInputMask(stack, (Class<? extends Note>) selection.getClass());
+			im = ContextInjectionFactory.make(s.getNoteInputMaskClass((Class<? extends Note>) selection.getClass()), context);
+			im.createControl(stack);
 		}
 		
 		if (im!=null) {

@@ -6,8 +6,6 @@ package de.hannesniederhausen.storynotes.ui.internal.services;
 import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.action.IAction;
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.widgets.Composite;
 
 import de.hannesniederhausen.storynotes.model.Category;
 import de.hannesniederhausen.storynotes.model.GenericCategory;
@@ -27,18 +25,15 @@ import de.hannesniederhausen.storynotes.ui.views.category.CategoryInputMask;
 public class GenericCategoryProvider implements ICategoryProviderService {
 
 
-	/* (non-Javadoc)
-	 * @see de.hannesniederhausen.storynotes.ui.services.ICategoryProviderService#getCategoryInputClassClass()
-	 */
 	@Override
-	public Class<? extends InputMask> getCategoryInputClassClass() {
+	public Class<? extends InputMask> getCategoryInputMaskClass() {
 		return CategoryInputMask.class;
 	}
 
 	@Override
-	public InputMask createNoteInputMask(Composite parent, Class<? extends Note> noteClass) {
-//		if (GenericNote.class.isAssignableFrom(noteClass))
-//			return new GenericNoteInputMask(parent, SWT.NONE);
+	public java.lang.Class<? extends InputMask> getNoteInputMaskClass(java.lang.Class<? extends Note> noteClass) {
+		if (GenericNote.class.isAssignableFrom(noteClass))
+			return GenericNoteInputMask.class;
 		
 		return null;
 	}
@@ -53,9 +48,6 @@ public class GenericCategoryProvider implements ICategoryProviderService {
 		return new CreateGenericCategoryAction(context, parent);
 	}
 
-	/* (non-Javadoc)
-	 * @see de.hannesniederhausen.storynotes.ui.services.ICategoryProviderService#getCategoryClass()
-	 */
 	@Override
 	public Class<? extends Category> getCategoryClass() {
 		return GenericCategory.class;
