@@ -62,6 +62,7 @@ public class ProjectInputMask extends InputMask {
 		if (project != null)
 			m_bindingContext = initDataBindings();
 		
+		setControl(comp);
 	}
 	
 	@Override
