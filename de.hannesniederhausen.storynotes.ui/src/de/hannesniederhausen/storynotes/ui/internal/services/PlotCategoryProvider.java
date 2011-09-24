@@ -27,15 +27,15 @@ import de.hannesniederhausen.storynotes.ui.views.category.CategoryInputMask;
 public class PlotCategoryProvider implements ICategoryProviderService {
 
 	@Override
-	public InputMask createCategoryInputMask(Composite parent) {
-		return new CategoryInputMask(parent, SWT.NONE);
+	public Class<? extends InputMask> getCategoryInputClassClass() {
+		return CategoryInputMask.class;
 	}
 
 	@Override
 	public InputMask createNoteInputMask(Composite parent,
 			Class<? extends Note> noteClass) {
-		if (PlotNote.class.isAssignableFrom(noteClass))
-			return new PlotNoteInputmask(parent, SWT.NONE);
+//		if (PlotNote.class.isAssignableFrom(noteClass))
+//			return new PlotNoteInputmask(parent, SWT.NONE);
 		return null;
 	}
 

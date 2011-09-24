@@ -22,11 +22,10 @@ import de.hannesniederhausen.storynotes.ui.views.InputMask;
 public interface ICategoryProviderService {
 
 	/**
-	 * Creates and returns a composite which contains the
-	 * input mask to edit the category attributes.
+	 * Returns an input mask for the pro
 	 * 
 	 */
-	public InputMask createCategoryInputMask(Composite parent);
+	public Class<? extends InputMask> getCategoryInputClassClass();
 	
 	/**
 	 * Creates and returns a composite which contains the

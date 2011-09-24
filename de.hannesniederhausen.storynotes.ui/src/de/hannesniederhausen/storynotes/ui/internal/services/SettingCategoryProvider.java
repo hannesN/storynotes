@@ -6,16 +6,13 @@ package de.hannesniederhausen.storynotes.ui.internal.services;
 import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.action.IAction;
-import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 
 import de.hannesniederhausen.storynotes.model.Category;
 import de.hannesniederhausen.storynotes.model.Note;
 import de.hannesniederhausen.storynotes.model.SettingCategory;
-import de.hannesniederhausen.storynotes.model.SettingNote;
 import de.hannesniederhausen.storynotes.ui.internal.services.actions.CreateSettingCategoryAction;
 import de.hannesniederhausen.storynotes.ui.internal.services.actions.CreateSettingNote;
-import de.hannesniederhausen.storynotes.ui.internal.services.ui.SettingNoteInputmask;
 import de.hannesniederhausen.storynotes.ui.services.ICategoryProviderService;
 import de.hannesniederhausen.storynotes.ui.views.InputMask;
 import de.hannesniederhausen.storynotes.ui.views.category.CategoryInputMask;
@@ -27,15 +24,15 @@ import de.hannesniederhausen.storynotes.ui.views.category.CategoryInputMask;
 public class SettingCategoryProvider implements ICategoryProviderService {
 
 	@Override
-	public InputMask createCategoryInputMask(Composite parent) {
-		return new CategoryInputMask(parent, SWT.NONE);
+	public Class<? extends InputMask> getCategoryInputClassClass() {
+		return CategoryInputMask.class;
 	}
 
 	@Override
 	public InputMask createNoteInputMask(Composite parent,
 			Class<? extends Note> noteClass) {
-		if (SettingNote.class.isAssignableFrom(noteClass))
-			return new SettingNoteInputmask(parent, SWT.NONE);
+//		if (SettingNote.class.isAssignableFrom(noteClass))
+//			return new SettingNoteInputmask(parent, SWT.NONE);
 		return null;
 	}
 

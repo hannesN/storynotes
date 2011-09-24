@@ -31,15 +31,7 @@ public class PlotNoteInputmask extends InputMask {
 	private Text nameText;
 	private Text contentText;
 
-	/**
-	 * @param parent
-	 * @param style
-	 */
-	public PlotNoteInputmask(Composite parent, int style) {
-		super(parent, style);
-		init(parent, style);
-	}
-
+	
 	@Override
 	public void setModel(EObject model) {
 		if (m_bindingContext!=null)
@@ -48,29 +40,30 @@ public class PlotNoteInputmask extends InputMask {
 		m_bindingContext = initDataBindings();
 	}
 
-	
-	private void init(Composite parent, int style) {
+	@Override
+	public void createControl(Composite parent) {
+		Composite comp = new Composite(parent, SWT.NONE);
 		GridLayout gridLayout = new GridLayout();
 		gridLayout.numColumns = 2;
-		setLayout(gridLayout);
+		comp.setLayout(gridLayout);
 		
-		Label lblPlotNote = new Label(this, SWT.NONE);
+		Label lblPlotNote = new Label(comp, SWT.NONE);
 		lblPlotNote.setText("Plot Note:");
-		new Label(this, SWT.NONE);
+		new Label(comp, SWT.NONE);
 		
-		Label lblTitle = new Label(this, SWT.NONE);
+		Label lblTitle = new Label(comp, SWT.NONE);
 		lblTitle.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
 		lblTitle.setText("Name:");
 		
-		nameText = new Text(this, SWT.BORDER);
+		nameText = new Text(comp, SWT.BORDER);
 		nameText.setMessage("Chapter 1");
 		nameText.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 		
-		Label lblContent = new Label(this, SWT.NONE);
+		Label lblContent = new Label(comp, SWT.NONE);
 		lblContent.setLayoutData(new GridData(SWT.RIGHT, SWT.TOP, false, false, 1, 1));
 		lblContent.setText("Content:");
 		
-		contentText = new Text(this, SWT.BORDER | SWT.WRAP | SWT.V_SCROLL | SWT.MULTI);
+		contentText = new Text(comp, SWT.BORDER | SWT.WRAP | SWT.V_SCROLL | SWT.MULTI);
 		contentText.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1));
 		contentText.setMessage("The protagonist walk alone at the beach. No one is there...");
 		

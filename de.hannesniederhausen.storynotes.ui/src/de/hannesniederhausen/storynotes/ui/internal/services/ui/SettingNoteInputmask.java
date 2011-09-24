@@ -23,7 +23,7 @@ import de.hannesniederhausen.storynotes.ui.views.InputMask;
  * This input mask provides a form for the {@link PlotNote}.
  * 
  * @author Hannes Niederhausen
- *
+ * 
  */
 public class SettingNoteInputmask extends InputMask {
 	private DataBindingContext m_bindingContext;
@@ -33,77 +33,97 @@ public class SettingNoteInputmask extends InputMask {
 	private Text contentText;
 	private Text typeText;
 
-	/**
-	 * @param parent
-	 * @param style
-	 */
-	public SettingNoteInputmask(Composite parent, int style) {
-		super(parent, style);
-		init(parent, style);
-	}
-
 	@Override
 	public void setModel(EObject model) {
-		if (m_bindingContext!=null)
+		if (m_bindingContext != null)
 			m_bindingContext.dispose();
 		this.model = (SettingNote) model;
 		m_bindingContext = initDataBindings();
 	}
 
-	
-	private void init(Composite parent, int style) {
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * de.hannesniederhausen.storynotes.ui.views.InputMask#createControl(org
+	 * .eclipse.swt.widgets.Composite)
+	 */
+	@Override
+	public void createControl(Composite parent) {
+		Composite comp = new Composite(parent, SWT.NONE);
 		GridLayout gridLayout = new GridLayout();
 		gridLayout.numColumns = 2;
-		setLayout(gridLayout);
-		
-		Label lblPlotNote = new Label(this, SWT.NONE);
-		lblPlotNote.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false, 2, 1));
+		comp.setLayout(gridLayout);
+
+		Label lblPlotNote = new Label(comp, SWT.NONE);
+		lblPlotNote.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false,
+				false, 2, 1));
 		lblPlotNote.setText("Setting Note:");
-		
-		Label lblTitle = new Label(this, SWT.NONE);
-		lblTitle.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
+
+		Label lblTitle = new Label(comp, SWT.NONE);
+		lblTitle.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false,
+				false, 1, 1));
 		lblTitle.setText("Name:");
-		
-		nameText = new Text(this, SWT.BORDER);
+
+		nameText = new Text(comp, SWT.BORDER);
 		nameText.setMessage("Chapter 1");
-		nameText.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
-		
-		Label lblType = new Label(this, SWT.NONE);
-		lblType.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
+		nameText.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false,
+				1, 1));
+
+		Label lblType = new Label(comp, SWT.NONE);
+		lblType.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false,
+				1, 1));
 		lblType.setText("Type:");
-		
-		typeText = new Text(this, SWT.BORDER);
-		typeText.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
-		
-		Label lblContent = new Label(this, SWT.NONE);
-		lblContent.setLayoutData(new GridData(SWT.RIGHT, SWT.TOP, false, false, 1, 1));
+
+		typeText = new Text(comp, SWT.BORDER);
+		typeText.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false,
+				1, 1));
+
+		Label lblContent = new Label(comp, SWT.NONE);
+		lblContent.setLayoutData(new GridData(SWT.RIGHT, SWT.TOP, false, false,
+				1, 1));
 		lblContent.setText("Content:");
-		
-		contentText = new Text(this, SWT.BORDER | SWT.WRAP | SWT.V_SCROLL | SWT.MULTI);
-		contentText.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1));
-		contentText.setMessage("The protagonist walk alone at the beach. No one is there...");
-		new Label(this, SWT.NONE);
-		new Label(this, SWT.NONE);
-		
-		if (model!=null)
+
+		contentText = new Text(comp, SWT.BORDER | SWT.WRAP | SWT.V_SCROLL
+				| SWT.MULTI);
+		contentText.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true,
+				1, 1));
+		contentText
+				.setMessage("The protagonist walk alone at the beach. No one is there...");
+		new Label(comp, SWT.NONE);
+		new Label(comp, SWT.NONE);
+
+		if (model != null)
 			m_bindingContext = initDataBindings();
 	}
+
 	protected DataBindingContext initDataBindings() {
 		DataBindingContext bindingContext = new DataBindingContext();
 		//
-		IObservableValue nameTextObserveTextObserveWidget = SWTObservables.observeDelayedValue(300, SWTObservables.observeText(nameText, SWT.Modify));
-		IObservableValue modelTitleObserveValue = PojoObservables.observeValue(model, "name");
-		bindingContext.bindValue(nameTextObserveTextObserveWidget, modelTitleObserveValue, null, null);
+		IObservableValue nameTextObserveTextObserveWidget = SWTObservables
+				.observeDelayedValue(300,
+						SWTObservables.observeText(nameText, SWT.Modify));
+		IObservableValue modelTitleObserveValue = PojoObservables.observeValue(
+				model, "name");
+		bindingContext.bindValue(nameTextObserveTextObserveWidget,
+				modelTitleObserveValue, null, null);
 		//
-		IObservableValue textObserveTextObserveWidget = SWTObservables.observeDelayedValue(1000, SWTObservables.observeText(contentText, SWT.Modify));
-		IObservableValue modelDescriptionObserveValue = PojoObservables.observeValue(model, "description");
-		bindingContext.bindValue(textObserveTextObserveWidget, modelDescriptionObserveValue, null, null);
+		IObservableValue textObserveTextObserveWidget = SWTObservables
+				.observeDelayedValue(1000,
+						SWTObservables.observeText(contentText, SWT.Modify));
+		IObservableValue modelDescriptionObserveValue = PojoObservables
+				.observeValue(model, "description");
+		bindingContext.bindValue(textObserveTextObserveWidget,
+				modelDescriptionObserveValue, null, null);
 		//
-		IObservableValue typeTextObserveTextObserveWidget = SWTObservables.observeDelayedValue(1000, SWTObservables.observeText(typeText, SWT.Modify));
-		IObservableValue modelKindObserveValue = PojoObservables.observeValue(model, "kind");
-		bindingContext.bindValue(typeTextObserveTextObserveWidget, modelKindObserveValue, null, null);
+		IObservableValue typeTextObserveTextObserveWidget = SWTObservables
+				.observeDelayedValue(1000,
+						SWTObservables.observeText(typeText, SWT.Modify));
+		IObservableValue modelKindObserveValue = PojoObservables.observeValue(
+				model, "kind");
+		bindingContext.bindValue(typeTextObserveTextObserveWidget,
+				modelKindObserveValue, null, null);
 		//
 		return bindingContext;
 	}
 }
-

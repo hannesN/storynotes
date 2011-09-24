@@ -29,35 +29,29 @@ public class GenericNoteInputMask extends InputMask {
 	private Text titleText;
 	private Text descriptionText;
 
-	/**
-	 * Create the composite.
-	 * @param parent
-	 * @param style
-	 */
-	public GenericNoteInputMask(Composite parent, int style) {
-		super(parent, style);
-		setLayout(new GridLayout(2, false));
+	
+	@Override
+	public void createControl(Composite parent) {
+		Composite comp = new Composite(parent, SWT.NONE);
+		comp.setLayout(new GridLayout(2, false));
 		
-		Label lblTitle = new Label(this, SWT.NONE);
+		Label lblTitle = new Label(comp, SWT.NONE);
 		lblTitle.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
 		lblTitle.setText("Title:");
 		
-		titleText = new Text(this, SWT.BORDER);
+		titleText = new Text(comp, SWT.BORDER);
 		titleText.setMessage("Title");
 		titleText.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 		
-		Label lblContent = new Label(this, SWT.NONE);
+		Label lblContent = new Label(comp, SWT.NONE);
 		lblContent.setLayoutData(new GridData(SWT.RIGHT, SWT.TOP, false, false, 1, 1));
 		lblContent.setText("Content:");
 		
-		descriptionText = new Text(this, SWT.BORDER | SWT.WRAP | SWT.MULTI);
+		descriptionText = new Text(comp, SWT.BORDER | SWT.WRAP | SWT.MULTI);
 		descriptionText.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1));
 		
 
-	}
-
-	@Override
-	protected void checkSubclass() {
+		
 	}
 
 	@Override

@@ -27,15 +27,18 @@ import de.hannesniederhausen.storynotes.ui.views.category.CategoryInputMask;
 public class GenericCategoryProvider implements ICategoryProviderService {
 
 
+	/* (non-Javadoc)
+	 * @see de.hannesniederhausen.storynotes.ui.services.ICategoryProviderService#getCategoryInputClassClass()
+	 */
 	@Override
-	public InputMask createCategoryInputMask(Composite parent) {
-		return new CategoryInputMask(parent, SWT.NONE);
+	public Class<? extends InputMask> getCategoryInputClassClass() {
+		return CategoryInputMask.class;
 	}
 
 	@Override
 	public InputMask createNoteInputMask(Composite parent, Class<? extends Note> noteClass) {
-		if (GenericNote.class.isAssignableFrom(noteClass))
-			return new GenericNoteInputMask(parent, SWT.NONE);
+//		if (GenericNote.class.isAssignableFrom(noteClass))
+//			return new GenericNoteInputMask(parent, SWT.NONE);
 		
 		return null;
 	}

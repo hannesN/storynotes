@@ -3,7 +3,6 @@
  */
 package de.hannesniederhausen.storynotes.ui.views.category;
 
-import org.eclipse.core.databinding.Binding;
 import org.eclipse.core.databinding.DataBindingContext;
 import org.eclipse.core.databinding.beans.PojoObservables;
 import org.eclipse.core.databinding.observable.Realm;
@@ -22,22 +21,20 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
-import org.eclipse.swt.widgets.Text;
+import org.eclipse.wb.swt.SWTResourceManager;
 
 import de.hannesniederhausen.storynotes.model.Category;
 import de.hannesniederhausen.storynotes.model.StorynotesPackage.Literals;
 import de.hannesniederhausen.storynotes.ui.views.InputMask;
-import org.eclipse.swt.widgets.Label;
-import org.eclipse.wb.swt.SWTResourceManager;
 
 /**
  * @author Hannes Niederhausen
  *
  */
 public class CategoryInputMask extends InputMask {
-	private Binding name;
 	private DataBindingContext m_bindingContext;
 
 	private Category category;
@@ -50,19 +47,27 @@ public class CategoryInputMask extends InputMask {
 	 * @param parent
 	 * @param style
 	 */
-	public CategoryInputMask(Composite parent, int style) {
-		super(parent, style);
-		setLayout(new GridLayout(1, false));
+	public CategoryInputMask() {
+	}
+
+	/**
+	 * @wbp.parser.entryPoint
+	 */
+	@Override
+	public void createControl(Composite parent) {
 		
-		titleLabel = new Label(this, SWT.NONE);
+		Composite comp = new Composite(parent, SWT.NONE);
+		comp.setLayout(new GridLayout(1, false));
+		
+		titleLabel = new Label(comp, SWT.NONE);
 		titleLabel.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true, false, 1, 1));
 		titleLabel.setFont(SWTResourceManager.getFont("Ubuntu", 25, SWT.ITALIC));
 		titleLabel.setText("name");
 		
-		Label lblNewLabel = new Label(this, SWT.NONE);
+		Label lblNewLabel = new Label(comp, SWT.NONE);
 		lblNewLabel.setText("Notes in this category:");
 		
-		tableViewer = new TableViewer(this, SWT.BORDER | SWT.FULL_SELECTION);
+		tableViewer = new TableViewer(comp, SWT.BORDER | SWT.FULL_SELECTION);
 		table = tableViewer.getTable();
 		table.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1));
 		
@@ -76,12 +81,9 @@ public class CategoryInputMask extends InputMask {
 		tblclmnName.setWidth(100);
 		tblclmnName.setText("Name");
 
+		setControl(comp);
 	}
-
-	@Override
-	protected void checkSubclass() {
-	}
-
+	
 	@Override
 	public void setModel(EObject model) {
 		if (m_bindingContext!=null) {

@@ -31,40 +31,39 @@ public class ProjectInputMask extends InputMask {
 	private Text nameText;
 	private Text descriptionText;
 
-	/**
-	 * @param parent
-	 * @param style
-	 */
-	public ProjectInputMask(Composite parent, int style) {
-		super(parent, style);
-		setLayout(new GridLayout(2, false));
 
-		Label lblProject = new Label(this, SWT.NONE);
+	@Override
+	public void createControl(Composite parent) {
+		Composite comp = new Composite(parent, SWT.NONE);
+		comp.setLayout(new GridLayout(2, false));
+
+		Label lblProject = new Label(comp, SWT.NONE);
 		lblProject.setText("Project:");
-		new Label(this, SWT.NONE);
+		new Label(comp, SWT.NONE);
 
-		Label lblName = new Label(this, SWT.NONE);
+		Label lblName = new Label(comp, SWT.NONE);
 		lblName.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false,
 				1, 1));
 		lblName.setText("Name:");
 
-		nameText = new Text(this, SWT.BORDER);
+		nameText = new Text(comp, SWT.BORDER);
 		nameText.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false,
 				1, 1));
 
-		Label lblDescription = new Label(this, SWT.NONE);
+		Label lblDescription = new Label(comp, SWT.NONE);
 		lblDescription.setLayoutData(new GridData(SWT.RIGHT, SWT.TOP, false,
 				false, 1, 1));
 		lblDescription.setText("Description:");
 
-		descriptionText = new Text(this, SWT.BORDER | SWT.WRAP | SWT.V_SCROLL);
+		descriptionText = new Text(comp, SWT.BORDER | SWT.WRAP | SWT.V_SCROLL);
 		descriptionText.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true,
 				true, 1, 1));
 		
 		if (project != null)
 			m_bindingContext = initDataBindings();
+		
 	}
-
+	
 	@Override
 	public void setModel(EObject model) {
 		if (m_bindingContext != null)

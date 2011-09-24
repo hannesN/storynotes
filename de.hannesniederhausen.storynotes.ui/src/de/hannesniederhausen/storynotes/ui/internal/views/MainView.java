@@ -4,6 +4,7 @@ import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.eclipse.e4.core.contexts.ContextInjectionFactory;
 import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.core.di.annotations.Optional;
 import org.eclipse.e4.core.services.log.Logger;
@@ -116,22 +117,25 @@ public class MainView  {
 		
 		InputMask im = null;
 		if (selection instanceof Project) {
-//			if (projectInputMask==null) // wait until widgets are cached
-				projectInputMask = new ProjectInputMask(stack, SWT.None);
+			if (projectInputMask==null) { // wait until widgets are cached
+				projectInputMask = ContextInjectionFactory.make(ProjectInputMask.class, context);
+				projectInputMask.createControl(stack);
+			}
+				
 			im = projectInputMask;
 		} else if (selection instanceof Category) {
 			ICategoryProviderService s = categoryProviderManager.getServiceFor((Class<? extends Category>) selection.getClass());
-			im = s.createCategoryInputMask(stack);
+//			im = s.createCategoryInputMask(stack);
 		} else if (selection instanceof Note) {
 			ICategoryProviderService s = categoryProviderManager.getServiceFor((Class<? extends Category>) ((EObject) selection).eContainer().getClass());
-			im = s.createNoteInputMask(stack, (Class<? extends Note>) selection.getClass());
+//			im = s.createNoteInputMask(stack, (Class<? extends Note>) selection.getClass());
 		}
 		
 		if (im!=null) {
 			im.setModel((EObject) selection);
 			if (stackLayout.topControl!=null)
 				stackLayout.topControl.dispose();
-			stackLayout.topControl = im;
+			stackLayout.topControl = im.getControl();
 			stack.layout();
 		}
 	}

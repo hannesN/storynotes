@@ -6,7 +6,6 @@ package de.hannesniederhausen.storynotes.ui.internal.services;
 import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.action.IAction;
-import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 
 import de.hannesniederhausen.storynotes.model.Category;
@@ -25,8 +24,8 @@ import de.hannesniederhausen.storynotes.ui.views.category.CategoryInputMask;
 public class PersonCategoryProvider implements ICategoryProviderService {
 
 	@Override
-	public InputMask createCategoryInputMask(Composite parent) {
-		return new CategoryInputMask(parent, SWT.NONE);
+	public Class<? extends InputMask> getCategoryInputClassClass() {
+		return CategoryInputMask.class;
 	}
 
 	@Override
