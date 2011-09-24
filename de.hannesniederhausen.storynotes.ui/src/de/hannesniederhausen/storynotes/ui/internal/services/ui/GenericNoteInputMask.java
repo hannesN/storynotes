@@ -50,7 +50,7 @@ public class GenericNoteInputMask extends InputMask {
 		descriptionText = new Text(comp, SWT.BORDER | SWT.WRAP | SWT.MULTI);
 		descriptionText.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1));
 		
-
+		setControl(comp);
 		
 	}
 

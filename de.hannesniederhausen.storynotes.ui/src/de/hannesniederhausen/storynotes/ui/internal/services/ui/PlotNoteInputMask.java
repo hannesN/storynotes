@@ -24,7 +24,7 @@ import org.eclipse.core.databinding.beans.PojoObservables;
  * @author Hannes Niederhausen
  *
  */
-public class PlotNoteInputmask extends InputMask {
+public class PlotNoteInputMask extends InputMask {
 	private DataBindingContext m_bindingContext;
 
 	private PlotNote model;
@@ -40,6 +40,9 @@ public class PlotNoteInputmask extends InputMask {
 		m_bindingContext = initDataBindings();
 	}
 
+	/* (non-Javadoc)
+	 * @see de.hannesniederhausen.storynotes.ui.views.InputMask#createControl(org.eclipse.swt.widgets.Composite)
+	 */
 	@Override
 	public void createControl(Composite parent) {
 		Composite comp = new Composite(parent, SWT.NONE);
