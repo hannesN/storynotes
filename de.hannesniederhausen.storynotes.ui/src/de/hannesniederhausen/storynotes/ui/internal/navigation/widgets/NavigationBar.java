@@ -13,16 +13,20 @@ import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.layout.RowLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.Widget;
 
 /**
  * @author Hannes Niederhausen
  *
  */
-public class NavigationBar extends StructuredViewer {
+public class NavigationBar extends StructuredViewer implements ModifyListener {
 
 	private ESelectionService selectionService;
 	
@@ -64,7 +68,7 @@ public class NavigationBar extends StructuredViewer {
 	private void init(Composite parent) {
 		setActionProvider(null);
 		control = new Composite(parent, SWT.NONE);
-		control.setLayout(new GridLayout());
+		control.setLayout(new RowLayout(SWT.HORIZONTAL));
 //		control.setData(CSSSWTConstants.CSS_ID_KEY, "navigationBar");
 		
 	}
@@ -131,7 +135,7 @@ public class NavigationBar extends StructuredViewer {
 		
 		IStructuredContentProvider cp = (IStructuredContentProvider) getContentProvider();
 		Object[] elements = cp.getElements(getInput());
-		((GridLayout)control.getLayout()).numColumns=elements.length;
+//		((GridLayout)control.getLayout()).numColumns=elements.length;
 		for (Object obj : elements) {
 			new NavigationItem(control, SWT.NONE, 
 					(ILabelProvider) getLabelProvider(), 
@@ -141,9 +145,21 @@ public class NavigationBar extends StructuredViewer {
 		}
 		control.layout(true);
 	}
+	
+	private void initSearchText() {
+		Text searchText = new Text(control, SWT.BORDER|SWT.CANCEL);
+		searchText.addModifyListener(this);
+	}
 
 	public void setContext(IEclipseContext context) {
 		this.context = context;
 	}
 	
+	/* (non-Javadoc)
+	 * @see org.eclipse.swt.events.ModifyListener#modifyText(org.eclipse.swt.events.ModifyEvent)
+	 */
+	@Override
+	public void modifyText(ModifyEvent e) {
+		// TODO do something: search and show results
+	}
 }
