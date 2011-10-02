@@ -11,6 +11,7 @@ import org.eclipse.e4.core.services.log.Logger;
 import org.eclipse.e4.ui.css.swt.CSSSWTConstants;
 import org.eclipse.e4.ui.services.IServiceConstants;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.jface.viewers.EditingSupport;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.StackLayout;
 import org.eclipse.swt.layout.GridData;
@@ -83,6 +84,8 @@ public class MainView  {
 		layout.marginHeight = 0;
 		comp.setLayout(layout);
 
+		
+		
 		StoryNotesActionProvider actionProvider = new StoryNotesActionProvider();
 		actionProvider.setContext(context);
 		
