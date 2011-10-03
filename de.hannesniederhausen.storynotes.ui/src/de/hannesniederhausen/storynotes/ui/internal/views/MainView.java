@@ -10,8 +10,11 @@ import org.eclipse.e4.core.di.annotations.Optional;
 import org.eclipse.e4.core.services.log.Logger;
 import org.eclipse.e4.ui.css.swt.CSSSWTConstants;
 import org.eclipse.e4.ui.services.IServiceConstants;
+import org.eclipse.emf.common.command.BasicCommandStack;
+import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.jface.viewers.EditingSupport;
+import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
+import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.StackLayout;
 import org.eclipse.swt.layout.GridData;
@@ -23,6 +26,7 @@ import de.hannesniederhausen.storynotes.model.File;
 import de.hannesniederhausen.storynotes.model.Note;
 import de.hannesniederhausen.storynotes.model.Project;
 import de.hannesniederhausen.storynotes.model.service.IModelProviderService;
+import de.hannesniederhausen.storynotes.model.util.StorynotesAdapterFactory;
 import de.hannesniederhausen.storynotes.ui.internal.navigation.widgets.NavigationBar;
 import de.hannesniederhausen.storynotes.ui.internal.navigation.widgets.StoryNotesActionProvider;
 import de.hannesniederhausen.storynotes.ui.internal.navigation.widgets.StoryNotesLabelProvider;
@@ -104,6 +108,15 @@ public class MainView  {
 		stackLayout = new StackLayout();
 		stack.setLayout(stackLayout);
 
+		
+		initEditingDomain();
+	}
+	
+	public void initEditingDomain() {
+		BasicCommandStack cmdStack = new BasicCommandStack();
+		AdapterFactory adapterFactory = new StorynotesAdapterFactory();
+		EditingDomain editingDomain = new AdapterFactoryEditingDomain(adapterFactory, cmdStack);
+		context.set(EditingDomain.class, editingDomain);
 	}
 	
 	public Composite getParent() {
