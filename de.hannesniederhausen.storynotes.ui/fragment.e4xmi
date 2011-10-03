@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ASCII"?>
+<fragment:ModelFragments xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:commands="http://www.eclipse.org/ui/2010/UIModel/application/commands" xmlns:fragment="http://www.eclipse.org/ui/2010/UIModel/fragment" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_0w9_MO0REeCwzZCkZV1Luw">
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_M3_CgO0SEeCwzZCkZV1Luw" featurename="commands" parentElementId="de.hannesniederhausen.storynotes.application">
+    <elements xsi:type="commands:Command" xmi:id="_sssxUO0SEeCwzZCkZV1Luw" elementId="de.hannesniederhausen.storynotes.undo" commandName="Undo"/>
+    <elements xsi:type="commands:Command" xmi:id="_xBu34O0SEeCwzZCkZV1Luw" elementId="de.hannesniederhausen.storynotes.redo" commandName="Redo"/>
+  </fragments>
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_CGYEoO0TEeCwzZCkZV1Luw" featurename="handlers" parentElementId="de.hannesniederhausen.storynotes.application">
+    <elements xsi:type="commands:Handler" xmi:id="_Fr8dIO0TEeCwzZCkZV1Luw" elementId="de.hannesniederhausen.storynotes.handler.undo" contributionURI="platform:/plugin/de.hannesniederhausen.storynotes.ui/de.hannesniederhausen.storynotes.ui.internal.handler.UndoHandler" command="_sssxUO0SEeCwzZCkZV1Luw"/>
+    <elements xsi:type="commands:Handler" xmi:id="_bu5W8O0TEeCwzZCkZV1Luw" elementId="de.hannesniederhausen.storynotes.handlerredo" contributionURI="platform:/plugin/de.hannesniederhausen.storynotes.ui/de.hannesniederhausen.storynotes.ui.internal.handler.RedoHandler" command="_xBu34O0SEeCwzZCkZV1Luw"/>
+  </fragments>
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_7JxXgO0VEeCwzZCkZV1Luw" featurename="children" parentElementId="de.hannesniederhausen.storynotes.toolbar">
+    <elements xsi:type="menu:HandledToolItem" xmi:id="_Do1OgO0WEeCwzZCkZV1Luw" label="Undo" command="_sssxUO0SEeCwzZCkZV1Luw"/>
+    <elements xsi:type="menu:HandledToolItem" xmi:id="_IJJYAO0WEeCwzZCkZV1Luw" label="Redo" command="_xBu34O0SEeCwzZCkZV1Luw"/>
+  </fragments>
+</fragment:ModelFragments>
