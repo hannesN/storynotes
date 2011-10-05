@@ -14,7 +14,7 @@
       </children>
     </mainMenu>
     <trimBars xmi:id="_ybgIEMKdEeCPp6cpUPk1qw">
-      <children xsi:type="menu:ToolBar" xmi:id="_zEOU8MKdEeCPp6cpUPk1qw">
+      <children xsi:type="menu:ToolBar" xmi:id="_zEOU8MKdEeCPp6cpUPk1qw" elementId="de.hannesniederhausen.storynotes.toolbar">
         <children xsi:type="menu:HandledToolItem" xmi:id="_zyBPEMKdEeCPp6cpUPk1qw" iconURI="platform:/plugin/de.hannesniederhausen.storynotes.application/icons/sample.gif" command="_3nxefqAIEeCMHLQZFU1fxg"/>
         <children xsi:type="menu:HandledToolItem" xmi:id="_1JTLEMKdEeCPp6cpUPk1qw" iconURI="platform:/plugin/de.hannesniederhausen.storynotes.application/icons/save_edit.gif" command="_3nxegaAIEeCMHLQZFU1fxg"/>
       </children>

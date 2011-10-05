@@ -4,6 +4,9 @@ import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.eclipse.core.commands.Command;
+import org.eclipse.e4.core.commands.ECommandService;
+import org.eclipse.e4.core.commands.EHandlerService;
 import org.eclipse.e4.core.contexts.ContextInjectionFactory;
 import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.core.di.annotations.Optional;
@@ -73,6 +76,13 @@ public class MainView  {
 
 		context.set(MainView.class, this);
 		modelProvider.newFile();
+		
+		EHandlerService ehs = context.get(EHandlerService.class);
+		ECommandService ecs = context.get(ECommandService.class);
+		
+		Command cmd = ecs.getCommand("de.hannesniederhausen.storynotes.undo");
+		System.out.println(cmd.isDefined());
+		
 		
 		// TODO remove test model
 		File file = modelProvider.getFile();
