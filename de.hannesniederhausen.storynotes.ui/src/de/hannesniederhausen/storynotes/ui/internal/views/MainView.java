@@ -4,9 +4,6 @@ import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import org.eclipse.core.commands.Command;
-import org.eclipse.e4.core.commands.ECommandService;
-import org.eclipse.e4.core.commands.EHandlerService;
 import org.eclipse.e4.core.contexts.ContextInjectionFactory;
 import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.core.di.annotations.Optional;
@@ -30,6 +27,8 @@ import de.hannesniederhausen.storynotes.model.Note;
 import de.hannesniederhausen.storynotes.model.Project;
 import de.hannesniederhausen.storynotes.model.service.IModelProviderService;
 import de.hannesniederhausen.storynotes.model.util.StorynotesAdapterFactory;
+import de.hannesniederhausen.storynotes.ui.internal.handler.RedoHandler;
+import de.hannesniederhausen.storynotes.ui.internal.handler.UndoHandler;
 import de.hannesniederhausen.storynotes.ui.internal.navigation.widgets.NavigationBar;
 import de.hannesniederhausen.storynotes.ui.internal.navigation.widgets.StoryNotesActionProvider;
 import de.hannesniederhausen.storynotes.ui.internal.navigation.widgets.StoryNotesLabelProvider;
@@ -77,13 +76,6 @@ public class MainView  {
 		context.set(MainView.class, this);
 		modelProvider.newFile();
 		
-		EHandlerService ehs = context.get(EHandlerService.class);
-		ECommandService ecs = context.get(ECommandService.class);
-		
-		Command cmd = ecs.getCommand("de.hannesniederhausen.storynotes.undo");
-		System.out.println(cmd.isDefined());
-		
-		
 		// TODO remove test model
 		File file = modelProvider.getFile();
 		Project project = modelProvider.getModelFactory().createProject();
@@ -127,6 +119,12 @@ public class MainView  {
 		AdapterFactory adapterFactory = new StorynotesAdapterFactory();
 		EditingDomain editingDomain = new AdapterFactoryEditingDomain(adapterFactory, cmdStack);
 		context.set(EditingDomain.class, editingDomain);
+		
+		UndoHandler uh = (UndoHandler) context.get("handler::de.hannesniederhausen.storynotes.undo");
+		uh.setCommandStack(cmdStack);
+		
+		RedoHandler rh = (RedoHandler) context.get("handler::de.hannesniederhausen.storynotes.redo");
+		rh.setCommandStack(cmdStack);
 	}
 	
 	public Composite getParent() {
