@@ -3,20 +3,22 @@
  */
 package de.hannesniederhausen.storynotes.ui.internal.services.ui;
 
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.widgets.Composite;
-
-import de.hannesniederhausen.storynotes.model.PlotNote;
-import de.hannesniederhausen.storynotes.ui.views.InputMask;
-import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.widgets.Text;
-import org.eclipse.swt.layout.GridData;
 import org.eclipse.core.databinding.DataBindingContext;
 import org.eclipse.core.databinding.observable.value.IObservableValue;
+import org.eclipse.emf.databinding.edit.EMFEditProperties;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.jface.databinding.swt.SWTObservables;
-import org.eclipse.core.databinding.beans.PojoObservables;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Text;
+
+import de.hannesniederhausen.storynotes.model.PlotNote;
+import de.hannesniederhausen.storynotes.model.StorynotesPackage;
+import de.hannesniederhausen.storynotes.ui.views.InputMask;
 
 /**
  * This input mask provides a form for the {@link PlotNote}.
@@ -40,9 +42,6 @@ public class PlotNoteInputMask extends InputMask {
 		m_bindingContext = initDataBindings();
 	}
 
-	/* (non-Javadoc)
-	 * @see de.hannesniederhausen.storynotes.ui.views.InputMask#createControl(org.eclipse.swt.widgets.Composite)
-	 */
 	@Override
 	public void createControl(Composite parent) {
 		Composite comp = new Composite(parent, SWT.NONE);
@@ -76,14 +75,16 @@ public class PlotNoteInputMask extends InputMask {
 		setControl(comp);
 	}
 	protected DataBindingContext initDataBindings() {
+		EditingDomain ed = getEclipseContext().get(EditingDomain.class);
+		
 		DataBindingContext bindingContext = new DataBindingContext();
 		//
 		IObservableValue nameTextObserveTextObserveWidget = SWTObservables.observeDelayedValue(300, SWTObservables.observeText(nameText, SWT.Modify));
-		IObservableValue modelTitleObserveValue = PojoObservables.observeValue(model, "title");
+		IObservableValue modelTitleObserveValue = EMFEditProperties.value(ed, StorynotesPackage.Literals.PLOT_NOTE__TITLE).observe(model);
 		bindingContext.bindValue(nameTextObserveTextObserveWidget, modelTitleObserveValue, null, null);
 		//
 		IObservableValue textObserveTextObserveWidget = SWTObservables.observeDelayedValue(1000, SWTObservables.observeText(contentText, SWT.Modify));
-		IObservableValue modelDescriptionObserveValue = PojoObservables.observeValue(model, "description");
+		IObservableValue modelDescriptionObserveValue = EMFEditProperties.value(ed, StorynotesPackage.Literals.PLOT_NOTE__DESCRIPTION).observe(model);
 		bindingContext.bindValue(textObserveTextObserveWidget, modelDescriptionObserveValue, null, null);
 		//
 		return bindingContext;
