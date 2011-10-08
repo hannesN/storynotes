@@ -6,8 +6,19 @@ package de.hannesniederhausen.storynotes.ui.internal.navigation.widgets;
 import java.util.Collections;
 import java.util.List;
 
+import org.eclipse.core.databinding.DataBindingContext;
+import org.eclipse.core.databinding.observable.IChangeListener;
+import org.eclipse.core.databinding.observable.IDisposeListener;
+import org.eclipse.core.databinding.observable.IStaleListener;
+import org.eclipse.core.databinding.observable.Realm;
+import org.eclipse.core.databinding.observable.value.AbstractObservableValue;
+import org.eclipse.core.databinding.observable.value.IObservableValue;
+import org.eclipse.core.databinding.observable.value.IValueChangeListener;
 import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.ui.workbench.modeling.ESelectionService;
+import org.eclipse.emf.databinding.EMFProperties;
+import org.eclipse.emf.databinding.edit.EMFEditProperties;
+import org.eclipse.jface.databinding.swt.SWTObservables;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.ITreeContentProvider;
@@ -22,6 +33,8 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.Widget;
 
+import de.hannesniederhausen.storynotes.model.StorynotesPackage;
+
 /**
  * @author Hannes Niederhausen
  *
@@ -35,6 +48,8 @@ public class NavigationBar extends StructuredViewer implements ModifyListener {
 	private Composite control;
 
 	private IEclipseContext context;
+	
+	private DataBindingContext bindingContext;
 	
 	public NavigationBar(Composite parent) {
 		init(parent);
@@ -133,15 +148,29 @@ public class NavigationBar extends StructuredViewer implements ModifyListener {
 			c.dispose();
 		}
 		
+		if (bindingContext!=null)
+			bindingContext.dispose();
+		
+		bindingContext = new DataBindingContext();
+		
 		IStructuredContentProvider cp = (IStructuredContentProvider) getContentProvider();
 		Object[] elements = cp.getElements(getInput());
+		
+		StoryNotesLabelProvider lp = (StoryNotesLabelProvider) getLabelProvider();
+		
 //		((GridLayout)control.getLayout()).numColumns=elements.length;
 		for (Object obj : elements) {
-			new NavigationItem(control, SWT.NONE, 
-					(ILabelProvider) getLabelProvider(), 
+			NavigationItem item = new NavigationItem(control, SWT.NONE, 
+					lp, 
 					(ITreeContentProvider) getContentProvider(), 
 					context,
 					actionProvider, obj);
+			
+			IObservableValue itemObservableValue = SWTObservables.observeText(item);
+			IObservableValue modelObserveValue = EMFProperties.value(lp.getLabelFeature(obj)).observe(obj);
+			
+			bindingContext.bindValue(itemObservableValue, modelObserveValue, null, null);
+			
 		}
 		control.layout(true);
 	}
@@ -161,5 +190,24 @@ public class NavigationBar extends StructuredViewer implements ModifyListener {
 	@Override
 	public void modifyText(ModifyEvent e) {
 		// TODO do something: search and show results
+	}
+	
+	private class ModelObservableValue extends AbstractObservableValue {
+
+		
+		
+		@Override
+		public Object getValueType() {
+			return String.class;
+		}
+
+		/* (non-Javadoc)
+		 * @see org.eclipse.core.databinding.observable.value.AbstractObservableValue#doGetValue()
+		 */
+		@Override
+		protected Object doGetValue() {
+			
+			return null;
+		}
 	}
 }

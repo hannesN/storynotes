@@ -4,7 +4,6 @@
 package de.hannesniederhausen.storynotes.ui.internal.navigation.widgets;
 
 import org.eclipse.e4.core.contexts.IEclipseContext;
-import org.eclipse.e4.ui.workbench.modeling.ESelectionService;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.swt.SWT;
@@ -53,9 +52,12 @@ public class NavigationItem extends Item  {
 
 	@Override
 	public void setText(String string) {
+		if (string == null || string.isEmpty()) {
+			string = labelProvider.getText(model);
+		}
 		super.setText(string);
 		siblingButton.setText(string);
-		container.layout();
+		container.getParent().layout();
 	}
 
 	private void createControl(Widget parent, int style, ILabelProvider labelProvider, Object model) {
