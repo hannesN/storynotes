@@ -4,19 +4,21 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.core.databinding.DataBindingContext;
-import org.eclipse.core.databinding.beans.PojoObservables;
-import org.eclipse.core.databinding.observable.Realm;
 import org.eclipse.core.databinding.observable.list.IObservableList;
-import org.eclipse.core.databinding.observable.map.IObservableMap;
 import org.eclipse.core.databinding.observable.value.IObservableValue;
+import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.databinding.edit.EMFEditProperties;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.edit.command.AddCommand;
+import org.eclipse.emf.edit.command.RemoveCommand;
+import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.jface.databinding.swt.SWTObservables;
 import org.eclipse.jface.databinding.viewers.ObservableListContentProvider;
-import org.eclipse.jface.databinding.viewers.ObservableMapLabelProvider;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.IInputValidator;
 import org.eclipse.jface.dialogs.InputDialog;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CTabFolder;
@@ -35,6 +37,7 @@ import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.Text;
 
 import de.hannesniederhausen.storynotes.model.PersonNote;
+import de.hannesniederhausen.storynotes.model.StorynotesPackage;
 import de.hannesniederhausen.storynotes.ui.views.InputMask;
 
 /**
@@ -66,7 +69,6 @@ public class PersonNoteInputMask extends InputMask {
 		
 		CTabFolder tabFolder = new CTabFolder(comp, SWT.BORDER);
 		tabFolder.setTabPosition(SWT.BOTTOM);
-		tabFolder.setSelection(0);
 		tabFolder.setSelectionBackground(Display.getCurrent().getSystemColor(SWT.COLOR_TITLE_INACTIVE_BACKGROUND_GRADIENT));
 		
 		CTabItem generalItem = new CTabItem(tabFolder, SWT.NONE);
@@ -201,14 +203,19 @@ public class PersonNoteInputMask extends InputMask {
 			m_bindingContext = initDataBindings();
 		
 		setControl(comp);
+		
+		tabFolder.setSelection(0);
 	}
 
 	/**
 	 * 
 	 */
 	protected void removeAllHobbies() {
-		this.person.getHobbies().clear();
-		
+		EditingDomain ed = getEclipseContext().get(EditingDomain.class);
+		Command cmd = RemoveCommand.create(ed, person, StorynotesPackage.Literals.PERSON_NOTE__HOBBIES, new ArrayList<String>(person.getHobbies()));
+		if (cmd.canExecute()) {
+			ed.getCommandStack().execute(cmd);
+		}
 	}
 
 	/**
@@ -223,7 +230,12 @@ public class PersonNoteInputMask extends InputMask {
 		Iterator<String> it = sel.iterator(); it.hasNext();) {
 			removeableHobbies.add(it.next());
 		}
-		person.getHobbies().removeAll(removeableHobbies);
+		
+		EditingDomain ed = getEclipseContext().get(EditingDomain.class);
+		Command cmd = RemoveCommand.create(ed, person, StorynotesPackage.Literals.PERSON_NOTE__HOBBIES, removeableHobbies);
+		if (cmd.canExecute()) {
+			ed.getCommandStack().execute(cmd);
+		}
 	}
 
 	/**
@@ -245,7 +257,11 @@ public class PersonNoteInputMask extends InputMask {
 		});
 		
 		if (dlg.open()==Dialog.OK) {
-			person.getHobbies().add(dlg.getValue());
+			EditingDomain ed = getEclipseContext().get(EditingDomain.class);
+			Command cmd = AddCommand.create(ed, person, StorynotesPackage.Literals.PERSON_NOTE__HOBBIES, dlg.getValue());
+			if (cmd.canExecute()) {
+				ed.getCommandStack().execute(cmd);
+			}
 		}
 	}
 
@@ -259,55 +275,61 @@ public class PersonNoteInputMask extends InputMask {
 		m_bindingContext = initDataBindings();
 	}
 	protected DataBindingContext initDataBindings() {
+		EditingDomain ed = getEclipseContext().get(EditingDomain.class);
+		
 		DataBindingContext bindingContext = new DataBindingContext();
 		//
 		IObservableValue nameTextObserveTextObserveWidget = SWTObservables.observeDelayedValue(1000, SWTObservables.observeText(nameText, SWT.Modify));
-		IObservableValue personNameObserveValue = PojoObservables.observeValue(person, "name");
+		IObservableValue personNameObserveValue = EMFEditProperties.value(ed, StorynotesPackage.Literals.PERSON_NOTE__NAME).observe(person);
 		bindingContext.bindValue(nameTextObserveTextObserveWidget, personNameObserveValue, null, null);
 		//
 		IObservableValue comboObserveSelectionObserveWidget = SWTObservables.observeSelection(combo);
-		IObservableValue personAgeObserveValue = PojoObservables.observeValue(person, "age");
+		IObservableValue personAgeObserveValue = EMFEditProperties.value(ed, StorynotesPackage.Literals.PERSON_NOTE__AGE).observe(person);
 		bindingContext.bindValue(comboObserveSelectionObserveWidget, personAgeObserveValue, null, null);
 		//
 		IObservableValue sizeTextObserveTextObserveWidget = SWTObservables.observeText(sizeText, SWT.Modify);
-		IObservableValue personSizeObserveValue = PojoObservables.observeValue(person, "size");
+		IObservableValue personSizeObserveValue = EMFEditProperties.value(ed, StorynotesPackage.Literals.PERSON_NOTE__SIZE).observe(person);
 		bindingContext.bindValue(sizeTextObserveTextObserveWidget, personSizeObserveValue, null, null);
 		//
 		IObservableValue weightTextObserveTextObserveWidget = SWTObservables.observeText(weightText, SWT.Modify);
-		IObservableValue personWeightObserveValue = PojoObservables.observeValue(person, "weight");
+		IObservableValue personWeightObserveValue = EMFEditProperties.value(ed, StorynotesPackage.Literals.PERSON_NOTE__WEIGHT).observe(person);
 		bindingContext.bindValue(weightTextObserveTextObserveWidget, personWeightObserveValue, null, null);
 		//
 		IObservableValue skinColorTextObserveTextObserveWidget = SWTObservables.observeDelayedValue(1000, SWTObservables.observeText(skinColorText, SWT.Modify));
-		IObservableValue personSkinColorObserveValue = PojoObservables.observeValue(person, "skinColor");
+		IObservableValue personSkinColorObserveValue = EMFEditProperties.value(ed, StorynotesPackage.Literals.PERSON_NOTE__SKIN_COLOR).observe(person);
 		bindingContext.bindValue(skinColorTextObserveTextObserveWidget, personSkinColorObserveValue, null, null);
 		//
 		IObservableValue hairColorTextObserveTextObserveWidget = SWTObservables.observeDelayedValue(1000, SWTObservables.observeText(hairColorText, SWT.Modify));
-		IObservableValue personHairColorObserveValue = PojoObservables.observeValue(person, "hairColor");
+		IObservableValue personHairColorObserveValue = EMFEditProperties.value(ed, StorynotesPackage.Literals.PERSON_NOTE__HAIR_COLOR).observe(person);
 		bindingContext.bindValue(hairColorTextObserveTextObserveWidget, personHairColorObserveValue, null, null);
 		//
 		IObservableValue eyeColorTextObserveTextObserveWidget = SWTObservables.observeDelayedValue(1000, SWTObservables.observeText(eyeColorText, SWT.Modify));
-		IObservableValue personEyeColorObserveValue = PojoObservables.observeValue(person, "eyeColor");
+		IObservableValue personEyeColorObserveValue = EMFEditProperties.value(ed, StorynotesPackage.Literals.PERSON_NOTE__EYE_COLOR).observe(person);
 		bindingContext.bindValue(eyeColorTextObserveTextObserveWidget, personEyeColorObserveValue, null, null);
 		//
 		ObservableListContentProvider listContentProvider = new ObservableListContentProvider();
 		hobbyTableViewer.setContentProvider(listContentProvider);
 		//
-		IObservableMap observeMap = PojoObservables.observeMap(listContentProvider.getKnownElements(), String.class, "bytes");
-		hobbyTableViewer.setLabelProvider(new ObservableMapLabelProvider(observeMap));
+		hobbyTableViewer.setLabelProvider(new LabelProvider() {
+			@Override
+			public String getText(Object element) {
+				return (String) element;
+			}
+		});
 		//
-		IObservableList personHobbiesObserveList = PojoObservables.observeList(Realm.getDefault(), person, "hobbies");
+		IObservableList personHobbiesObserveList = EMFEditProperties.list(ed, StorynotesPackage.Literals.PERSON_NOTE__HOBBIES).observe(person); 
 		hobbyTableViewer.setInput(personHobbiesObserveList);
 		//
 		IObservableValue socialBackgroundTextObserveTextObserveWidget = SWTObservables.observeDelayedValue(1000, SWTObservables.observeText(socialBackgroundText, SWT.Modify));
-		IObservableValue personSocialBackgroundObserveValue = PojoObservables.observeValue(person, "socialBackground");
+		IObservableValue personSocialBackgroundObserveValue = EMFEditProperties.value(ed, StorynotesPackage.Literals.PERSON_NOTE__SOCIAL_BACKGROUND).observe(person);
 		bindingContext.bindValue(socialBackgroundTextObserveTextObserveWidget, personSocialBackgroundObserveValue, null, null);
 		//
 		IObservableValue psychoBackgroundTextObserveTextObserveWidget = SWTObservables.observeDelayedValue(1000, SWTObservables.observeText(psychoBackgroundText, SWT.Modify));
-		IObservableValue personPsychologicalBackgroundObserveValue = PojoObservables.observeValue(person, "psychologicalBackground");
+		IObservableValue personPsychologicalBackgroundObserveValue = EMFEditProperties.value(ed, StorynotesPackage.Literals.PERSON_NOTE__PSYCHOLOGICAL_BACKGROUND).observe(person);
 		bindingContext.bindValue(psychoBackgroundTextObserveTextObserveWidget, personPsychologicalBackgroundObserveValue, null, null);
 		//
 		IObservableValue cvTextObserveTextObserveWidget = SWTObservables.observeDelayedValue(1000, SWTObservables.observeText(cvText, SWT.Modify));
-		IObservableValue personCvObserveValue = PojoObservables.observeValue(person, "cv");
+		IObservableValue personCvObserveValue = EMFEditProperties.value(ed, StorynotesPackage.Literals.PERSON_NOTE__CV).observe(person);
 		bindingContext.bindValue(cvTextObserveTextObserveWidget, personCvObserveValue, null, null);
 		//
 		return bindingContext;
