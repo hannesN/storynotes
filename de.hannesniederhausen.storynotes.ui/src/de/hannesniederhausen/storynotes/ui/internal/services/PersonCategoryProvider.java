@@ -13,10 +13,10 @@ import de.hannesniederhausen.storynotes.model.PersonCategory;
 import de.hannesniederhausen.storynotes.model.PersonNote;
 import de.hannesniederhausen.storynotes.ui.internal.services.actions.CreatePersonCategoryAction;
 import de.hannesniederhausen.storynotes.ui.internal.services.actions.CreatePersonNote;
+import de.hannesniederhausen.storynotes.ui.internal.services.ui.PersonCategoryInputMask;
 import de.hannesniederhausen.storynotes.ui.internal.services.ui.PersonNoteInputMask;
 import de.hannesniederhausen.storynotes.ui.services.ICategoryProviderService;
 import de.hannesniederhausen.storynotes.ui.views.InputMask;
-import de.hannesniederhausen.storynotes.ui.views.category.CategoryInputMask;
 
 /**
  * @author Hannes Niederhausen
@@ -26,7 +26,7 @@ public class PersonCategoryProvider implements ICategoryProviderService {
 
 	@Override
 	public Class<? extends InputMask> getCategoryInputMaskClass() {
-		return CategoryInputMask.class;
+		return PersonCategoryInputMask.class;
 
 	}
 
