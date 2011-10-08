@@ -3,25 +3,22 @@
  */
 package de.hannesniederhausen.storynotes.ui.internal.services.ui;
 
-import org.eclipse.emf.databinding.EMFProperties;
-import org.eclipse.emf.databinding.IEMFValueProperty;
+import org.eclipse.core.databinding.DataBindingContext;
+import org.eclipse.core.databinding.observable.value.IObservableValue;
 import org.eclipse.emf.databinding.edit.EMFEditProperties;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.jface.databinding.swt.SWTObservables;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Text;
 
 import de.hannesniederhausen.storynotes.model.GenericNote;
 import de.hannesniederhausen.storynotes.model.StorynotesPackage;
 import de.hannesniederhausen.storynotes.ui.views.InputMask;
-import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.widgets.Text;
-import org.eclipse.swt.layout.GridData;
-import org.eclipse.core.databinding.DataBindingContext;
-import org.eclipse.core.databinding.observable.value.IObservableValue;
-import org.eclipse.jface.databinding.swt.SWTObservables;
-import org.eclipse.core.databinding.beans.PojoObservables;
 
 /**
  * @author Hannes Niederhausen
