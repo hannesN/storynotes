@@ -101,12 +101,12 @@ public interface PersonNote extends Note {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Age</em>' attribute.
-	 * @see #setAge(int)
+	 * @see #setAge(String)
 	 * @see de.hannesniederhausen.storynotes.model.StorynotesPackage#getPersonNote_Age()
 	 * @model
 	 * @generated
 	 */
-	int getAge();
+	String getAge();
 
 	/**
 	 * Sets the value of the '{@link de.hannesniederhausen.storynotes.model.PersonNote#getAge <em>Age</em>}' attribute.
@@ -116,7 +116,7 @@ public interface PersonNote extends Note {
 	 * @see #getAge()
 	 * @generated
 	 */
-	void setAge(int value);
+	void setAge(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Hair Color</b></em>' attribute.

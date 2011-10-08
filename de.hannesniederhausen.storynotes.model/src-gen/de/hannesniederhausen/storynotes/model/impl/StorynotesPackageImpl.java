@@ -773,7 +773,7 @@ public class StorynotesPackageImpl extends EPackageImpl implements
 				null, 0, 1, PersonNote.class, !IS_TRANSIENT, !IS_VOLATILE,
 				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
-		initEAttribute(getPersonNote_Age(), ecorePackage.getEInt(), "age",
+		initEAttribute(getPersonNote_Age(), ecorePackage.getEString(), "age",
 				null, 0, 1, PersonNote.class, !IS_TRANSIENT, !IS_VOLATILE,
 				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);

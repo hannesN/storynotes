@@ -29,7 +29,6 @@ import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
-import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
@@ -59,10 +58,13 @@ public class PersonNoteInputMask extends InputMask {
 	private Text weightText;
 	private Table table;
 	private TableViewer hobbyTableViewer;
-	private Combo combo;
+	private Text ageText;
 	private Text cvText;
 
 	
+	/**
+	 * @wbp.parser.entryPoint
+	 */
 	public void createControl(Composite parent) {
 		Composite comp = new Composite(parent, SWT.NONE);
 		comp.setLayout(new FillLayout(SWT.HORIZONTAL));
@@ -89,9 +91,8 @@ public class PersonNoteInputMask extends InputMask {
 		lblAge.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
 		lblAge.setText("Age:");
 		
-		combo = new Combo(composite, SWT.NONE);
-		combo.setItems(new String[] {"1", "2"});
-		combo.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+		ageText = new Text(composite, SWT.BORDER);
+		ageText.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 		
 		Label lblSize = new Label(composite, SWT.NONE);
 		lblSize.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
@@ -279,11 +280,11 @@ public class PersonNoteInputMask extends InputMask {
 		
 		DataBindingContext bindingContext = new DataBindingContext();
 		//
-		IObservableValue nameTextObserveTextObserveWidget = SWTObservables.observeDelayedValue(1000, SWTObservables.observeText(nameText, SWT.Modify));
+		IObservableValue nameTextObserveTextObserveWidget = SWTObservables.observeDelayedValue(500, SWTObservables.observeText(nameText, SWT.Modify));
 		IObservableValue personNameObserveValue = EMFEditProperties.value(ed, StorynotesPackage.Literals.PERSON_NOTE__NAME).observe(person);
 		bindingContext.bindValue(nameTextObserveTextObserveWidget, personNameObserveValue, null, null);
 		//
-		IObservableValue comboObserveSelectionObserveWidget = SWTObservables.observeSelection(combo);
+		IObservableValue comboObserveSelectionObserveWidget = SWTObservables.observeDelayedValue(500, SWTObservables.observeText(ageText, SWT.Modify));
 		IObservableValue personAgeObserveValue = EMFEditProperties.value(ed, StorynotesPackage.Literals.PERSON_NOTE__AGE).observe(person);
 		bindingContext.bindValue(comboObserveSelectionObserveWidget, personAgeObserveValue, null, null);
 		//

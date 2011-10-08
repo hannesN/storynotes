@@ -119,7 +119,7 @@ public class PersonNoteImpl extends FileElementImpl implements PersonNote {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int AGE_EDEFAULT = 0;
+	protected static final String AGE_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getAge() <em>Age</em>}' attribute.
@@ -129,7 +129,7 @@ public class PersonNoteImpl extends FileElementImpl implements PersonNote {
 	 * @generated
 	 * @ordered
 	 */
-	protected int age = AGE_EDEFAULT;
+	protected String age = AGE_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getHairColor() <em>Hair Color</em>}' attribute.
@@ -371,7 +371,7 @@ public class PersonNoteImpl extends FileElementImpl implements PersonNote {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getAge() {
+	public String getAge() {
 		return age;
 	}
 
@@ -380,8 +380,8 @@ public class PersonNoteImpl extends FileElementImpl implements PersonNote {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setAge(int newAge) {
-		int oldAge = age;
+	public void setAge(String newAge) {
+		String oldAge = age;
 		age = newAge;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
@@ -615,7 +615,7 @@ public class PersonNoteImpl extends FileElementImpl implements PersonNote {
 			setCv((String) newValue);
 			return;
 		case StorynotesPackage.PERSON_NOTE__AGE:
-			setAge((Integer) newValue);
+			setAge((String) newValue);
 			return;
 		case StorynotesPackage.PERSON_NOTE__HAIR_COLOR:
 			setHairColor((String) newValue);
@@ -711,7 +711,8 @@ public class PersonNoteImpl extends FileElementImpl implements PersonNote {
 		case StorynotesPackage.PERSON_NOTE__CV:
 			return CV_EDEFAULT == null ? cv != null : !CV_EDEFAULT.equals(cv);
 		case StorynotesPackage.PERSON_NOTE__AGE:
-			return age != AGE_EDEFAULT;
+			return AGE_EDEFAULT == null ? age != null : !AGE_EDEFAULT
+					.equals(age);
 		case StorynotesPackage.PERSON_NOTE__HAIR_COLOR:
 			return HAIR_COLOR_EDEFAULT == null ? hairColor != null
 					: !HAIR_COLOR_EDEFAULT.equals(hairColor);

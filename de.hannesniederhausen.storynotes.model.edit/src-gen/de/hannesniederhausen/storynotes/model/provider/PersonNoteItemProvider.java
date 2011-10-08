@@ -137,18 +137,15 @@ public class PersonNoteItemProvider extends FileElementItemProvider implements
 	 * @generated
 	 */
 	protected void addAgePropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_PersonNote_age_feature"),
-						getString("_UI_PropertyDescriptor_description",
-								"_UI_PersonNote_age_feature",
-								"_UI_PersonNote_type"),
-						StorynotesPackage.Literals.PERSON_NOTE__AGE, true,
-						false, false,
-						ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_PersonNote_age_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_PersonNote_age_feature", "_UI_PersonNote_type"),
+				StorynotesPackage.Literals.PERSON_NOTE__AGE, true, false,
+				false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**

@@ -60,7 +60,7 @@
         </xsd:choice>
         <xsd:attribute name="name" type="xsd:string" use="required"/>
         <xsd:attribute name="cv" type="xsd:string"/>
-        <xsd:attribute name="age" type="xsd:int"/>
+        <xsd:attribute name="age" type="xsd:string"/>
         <xsd:attribute name="hairColor" type="xsd:string" use="required"/>
         <xsd:attribute name="eyeColor" type="xsd:string" use="required"/>
         <xsd:attribute name="size" type="xsd:int" use="required"/>
