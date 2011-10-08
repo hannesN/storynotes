@@ -3,10 +3,15 @@
  */
 package de.hannesniederhausen.storynotes.ui.internal.services.ui;
 
+import org.eclipse.emf.databinding.EMFProperties;
+import org.eclipse.emf.databinding.IEMFValueProperty;
+import org.eclipse.emf.databinding.edit.EMFEditProperties;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.swt.widgets.Composite;
 
 import de.hannesniederhausen.storynotes.model.GenericNote;
+import de.hannesniederhausen.storynotes.model.StorynotesPackage;
 import de.hannesniederhausen.storynotes.ui.views.InputMask;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Label;
@@ -62,14 +67,16 @@ public class GenericNoteInputMask extends InputMask {
 		m_bindingContext = initDataBindings();
 	}
 	protected DataBindingContext initDataBindings() {
+		EditingDomain ed = getEclipseContext().get(EditingDomain.class);
+		
 		DataBindingContext bindingContext = new DataBindingContext();
 		//
-		IObservableValue textObserveTextObserveWidget = SWTObservables.observeDelayedValue(50, SWTObservables.observeText(titleText, SWT.Modify));
-		IObservableValue noteTitleObserveValue = PojoObservables.observeValue(note, "title");
+		IObservableValue textObserveTextObserveWidget = SWTObservables.observeDelayedValue(300, SWTObservables.observeText(titleText, SWT.Modify));
+		IObservableValue noteTitleObserveValue = EMFEditProperties.value(ed, StorynotesPackage.Literals.GENERIC_NOTE__TITLE).observe(note);
 		bindingContext.bindValue(textObserveTextObserveWidget, noteTitleObserveValue, null, null);
 		//
-		IObservableValue text_1ObserveTextObserveWidget = SWTObservables.observeDelayedValue(500, SWTObservables.observeText(descriptionText, SWT.Modify));
-		IObservableValue noteDescriptionObserveValue = PojoObservables.observeValue(note, "description");
+		IObservableValue text_1ObserveTextObserveWidget = SWTObservables.observeDelayedValue(300, SWTObservables.observeText(descriptionText, SWT.Modify));
+		IObservableValue noteDescriptionObserveValue = EMFEditProperties.value(ed, StorynotesPackage.Literals.GENERIC_NOTE__DESCRIPTION).observe(note);
 		bindingContext.bindValue(text_1ObserveTextObserveWidget, noteDescriptionObserveValue, null, null);
 		//
 		return bindingContext;
