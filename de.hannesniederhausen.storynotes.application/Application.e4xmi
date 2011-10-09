@@ -1,34 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <application:Application xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_3nxecKAIEeCMHLQZFU1fxg" elementId="de.hannesniederhausen.storynotes.application" bindingContexts="_3nxecaAIEeCMHLQZFU1fxg">
-  <children xsi:type="basic:TrimmedWindow" xmi:id="_Lxi_wMKdEeCPp6cpUPk1qw" width="800" height="600">
+  <children xsi:type="basic:TrimmedWindow" xmi:id="_Lxi_wMKdEeCPp6cpUPk1qw" selectedElement="_OBx9AMKdEeCPp6cpUPk1qw" width="800" height="600">
     <children xsi:type="basic:Part" xmi:id="_OBx9AMKdEeCPp6cpUPk1qw" elementId="mainview" contributionURI="platform:/plugin/de.hannesniederhausen.storynotes.ui/de.hannesniederhausen.storynotes.ui.internal.views.MainView"/>
-    <mainMenu xmi:id="_M1SUsMKdEeCPp6cpUPk1qw">
-      <children xsi:type="menu:Menu" xmi:id="_XdPx4MKdEeCPp6cpUPk1qw" elementId="file" label="&amp;File">
-        <children xsi:type="menu:HandledMenuItem" xmi:id="_lZOkkMKdEeCPp6cpUPk1qw" label="&amp;Open" command="_3nxefqAIEeCMHLQZFU1fxg"/>
-        <children xsi:type="menu:HandledMenuItem" xmi:id="_n4pNUMKdEeCPp6cpUPk1qw" label="&amp;Save" command="_3nxegaAIEeCMHLQZFU1fxg"/>
-        <children xsi:type="menu:HandledMenuItem" xmi:id="_gVVM4MKdEeCPp6cpUPk1qw" label="E&amp;xit" command="_3nxeeqAIEeCMHLQZFU1fxg"/>
-      </children>
-      <children xsi:type="menu:Menu" xmi:id="_pvPikMKdEeCPp6cpUPk1qw" label="&amp;Help">
-        <children xsi:type="menu:MenuSeparator" xmi:id="_srOLgMKdEeCPp6cpUPk1qw"/>
-        <children xsi:type="menu:HandledMenuItem" xmi:id="_q12lUMKdEeCPp6cpUPk1qw" label="&amp;About" command="_3nxehKAIEeCMHLQZFU1fxg"/>
+    <mainMenu xmi:id="_glt2UPKBEeCH6_Gd3XQLMg" elementId="menu">
+      <children xsi:type="menu:Menu" xmi:id="_h-MFIPKBEeCH6_Gd3XQLMg" elementId="menu.file" label="&amp;File">
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_lE4wUPKBEeCH6_Gd3XQLMg" elementId="menu.file.exit" label="E&amp;xit" command="_3nxeeqAIEeCMHLQZFU1fxg"/>
       </children>
     </mainMenu>
     <trimBars xmi:id="_ybgIEMKdEeCPp6cpUPk1qw">
-      <children xsi:type="menu:ToolBar" xmi:id="_zEOU8MKdEeCPp6cpUPk1qw" elementId="de.hannesniederhausen.storynotes.toolbar">
-        <children xsi:type="menu:HandledToolItem" xmi:id="_zyBPEMKdEeCPp6cpUPk1qw" iconURI="platform:/plugin/de.hannesniederhausen.storynotes.application/icons/sample.gif" command="_3nxefqAIEeCMHLQZFU1fxg"/>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_1JTLEMKdEeCPp6cpUPk1qw" iconURI="platform:/plugin/de.hannesniederhausen.storynotes.application/icons/save_edit.gif" command="_3nxegaAIEeCMHLQZFU1fxg"/>
-      </children>
+      <children xsi:type="menu:ToolBar" xmi:id="_zEOU8MKdEeCPp6cpUPk1qw" elementId="de.hannesniederhausen.storynotes.toolbar"/>
     </trimBars>
   </children>
   <handlers xmi:id="_3nxee6AIEeCMHLQZFU1fxg" contributionURI="platform:/plugin/de.hannesniederhausen.storynotes.application/de.hannesniederhausen.storynotes.application.handlers.QuitHandler" command="_3nxeeqAIEeCMHLQZFU1fxg"/>
-  <handlers xmi:id="_3nxef6AIEeCMHLQZFU1fxg" elementId="de.hannesniederhausen.storynotes.ui.openCommand" contributionURI="platform:/plugin/de.hannesniederhausen.storynotes.application/de.hannesniederhausen.storynotes.application.handlers.OpenHandler" command="_3nxefqAIEeCMHLQZFU1fxg"/>
-  <handlers xmi:id="_3nxegqAIEeCMHLQZFU1fxg" contributionURI="platform:/plugin/de.hannesniederhausen.storynotes.application/de.hannesniederhausen.storynotes.application.handlers.SaveHandler" command="_3nxegaAIEeCMHLQZFU1fxg"/>
-  <handlers xmi:id="_3nxehaAIEeCMHLQZFU1fxg" contributionURI="platform:/plugin/de.hannesniederhausen.storynotes.application/de.hannesniederhausen.storynotes.application.handlers.AboutHandler" command="_3nxehKAIEeCMHLQZFU1fxg"/>
   <bindingTables xmi:id="_3nxefKAIEeCMHLQZFU1fxg" bindingContext="_3nxecaAIEeCMHLQZFU1fxg">
     <bindings xmi:id="_3nxefaAIEeCMHLQZFU1fxg" keySequence="Ctrl+Q" command="_3nxeeqAIEeCMHLQZFU1fxg"/>
-    <bindings xmi:id="_3nxegKAIEeCMHLQZFU1fxg" keySequence="Ctrl+O" command="_3nxefqAIEeCMHLQZFU1fxg"/>
-    <bindings xmi:id="_3nxeg6AIEeCMHLQZFU1fxg" keySequence="Ctrl+S" command="_3nxegaAIEeCMHLQZFU1fxg"/>
-    <bindings xmi:id="_3nxehqAIEeCMHLQZFU1fxg" keySequence="Ctrl+A" command="_3nxehKAIEeCMHLQZFU1fxg"/>
   </bindingTables>
   <rootContext xmi:id="_3nxecaAIEeCMHLQZFU1fxg" elementId="org.eclipse.ui.contexts.dialogAndWindow" name="In Dialog and Windows">
     <children xmi:id="_3nxecqAIEeCMHLQZFU1fxg" elementId="org.eclipse.ui.contexts.window" name="In Windows"/>
@@ -36,9 +21,6 @@
   </rootContext>
   <descriptors xmi:id="_sgBTAMKbEeCPp6cpUPk1qw" elementId="mainview"/>
   <commands xmi:id="_3nxeeqAIEeCMHLQZFU1fxg" elementId="de.hannesniederhausen.storynotes.ui.quitCommand" commandName="quitCommand"/>
-  <commands xmi:id="_3nxefqAIEeCMHLQZFU1fxg" elementId="de.hannesniederhausen.storynotes.ui.openCommand" commandName="openCommand"/>
-  <commands xmi:id="_3nxegaAIEeCMHLQZFU1fxg" elementId="de.hannesniederhausen.storynotes.ui.saveCommand" commandName="saveCommand"/>
-  <commands xmi:id="_3nxehKAIEeCMHLQZFU1fxg" elementId="de.hannesniederhausen.storynotes.ui.aboutCommand" commandName="aboutCommand"/>
   <addons xmi:id="_3nxedKAIEeCMHLQZFU1fxg" elementId="org.eclipse.e4.core.commands.service" contributionURI="platform:/plugin/org.eclipse.e4.core.commands/org.eclipse.e4.core.commands.CommandServiceAddon"/>
   <addons xmi:id="_3nxedaAIEeCMHLQZFU1fxg" elementId="org.eclipse.e4.ui.contexts.service" contributionURI="platform:/plugin/org.eclipse.e4.ui.services/org.eclipse.e4.ui.services.ContextServiceAddon"/>
   <addons xmi:id="_3nxedqAIEeCMHLQZFU1fxg" elementId="org.eclipse.e4.ui.bindings.service" contributionURI="platform:/plugin/org.eclipse.e4.ui.bindings/org.eclipse.e4.ui.bindings.BindingServiceAddon"/>
