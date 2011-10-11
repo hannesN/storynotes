@@ -20,11 +20,13 @@ import org.eclipse.swt.custom.StackLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Shell;
 
 import de.hannesniederhausen.storynotes.model.Category;
 import de.hannesniederhausen.storynotes.model.File;
 import de.hannesniederhausen.storynotes.model.Note;
 import de.hannesniederhausen.storynotes.model.Project;
+import de.hannesniederhausen.storynotes.model.service.IFileListener;
 import de.hannesniederhausen.storynotes.model.service.IModelProviderService;
 import de.hannesniederhausen.storynotes.model.util.StorynotesAdapterFactory;
 import de.hannesniederhausen.storynotes.ui.internal.handler.RedoHandler;
@@ -46,7 +48,7 @@ import de.hannesniederhausen.storynotes.ui.views.InputMask;
  * @author Hannes Niederhausen
  * 
  */
-public class MainView  {
+public class MainView implements IFileListener {
 	@Inject
 	private IModelProviderService modelProvider;
 	
@@ -73,6 +75,8 @@ public class MainView  {
 	@PostConstruct
 	public void init() {
 
+		modelProvider.addFileListener(this);
+		
 		context.set(MainView.class, this);
 		modelProvider.newFile();
 		
@@ -133,7 +137,7 @@ public class MainView  {
 	
 	@Inject
 	public void setSelection(@Optional @Named(IServiceConstants.ACTIVE_SELECTION) Object selection) {
-		if (selection!=null)
+		if (selection!=null && navigationBar!=null)
 			navigationBar.setInput(selection); 
 		else
 			return;
@@ -164,6 +168,14 @@ public class MainView  {
 			stackLayout.topControl = im.getControl();
 			stack.layout();
 		}
+	}
+
+	/* (non-Javadoc)
+	 * @see de.hannesniederhausen.storynotes.model.service.IFileListener#fileChanged(de.hannesniederhausen.storynotes.model.File, de.hannesniederhausen.storynotes.model.File)
+	 */
+	@Override
+	public void fileChanged(File oldFile, File newFile) {
+		setSelection(newFile);
 	}
 
 }

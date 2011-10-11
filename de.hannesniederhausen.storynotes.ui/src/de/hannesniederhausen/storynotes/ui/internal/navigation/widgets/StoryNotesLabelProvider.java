@@ -21,6 +21,10 @@ public class StoryNotesLabelProvider implements ILabelProvider {
 			String filename = ((File) element).getFilename();
 			if (filename==null)
 				filename = "Unnamed file";
+			else {
+				java.io.File f = new java.io.File(filename);
+				filename=f.getName();
+			}
 			return filename;
 		}
 		

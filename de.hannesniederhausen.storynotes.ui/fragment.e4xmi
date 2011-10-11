@@ -12,10 +12,12 @@
     <elements xsi:type="commands:Handler" xmi:id="_bu5W8O0TEeCwzZCkZV1Luw" elementId="de.hannesniederhausen.storynotes.handler.redo" contributionURI="platform:/plugin/de.hannesniederhausen.storynotes.ui/de.hannesniederhausen.storynotes.ui.internal.handler.RedoHandler" command="_xBu34O0SEeCwzZCkZV1Luw"/>
     <elements xsi:type="commands:Handler" xmi:id="__wBEQPKDEeCH6_Gd3XQLMg" elementId="de.hannesniederhausen.storynotes.handler.open" contributionURI="platform:/plugin/de.hannesniederhausen.storynotes.ui/de.hannesniederhausen.storynotes.ui.internal.handler.OpenHandler" command="_xw428PKDEeCH6_Gd3XQLMg"/>
     <elements xsi:type="commands:Handler" xmi:id="_GoJZsPKEEeCH6_Gd3XQLMg" elementId="de.hannesniederhausen.storynotes.handler.save" contributionURI="platform:/plugin/de.hannesniederhausen.storynotes.ui/de.hannesniederhausen.storynotes.ui.internal.handler.SaveHandler" command="_1zkCMPKDEeCH6_Gd3XQLMg"/>
+    <elements xsi:type="commands:Handler" xmi:id="_SKtLEPQ-EeC5EeUubrWmMQ" elementId="de.hannesniederhausen.storynotes.handler.saveas" contributionURI="platform:/plugin/de.hannesniederhausen.storynotes.ui/de.hannesniederhausen.storynotes.ui.internal.handler.SaveAsHandler" command="_4XhMsPKDEeCH6_Gd3XQLMg"/>
   </fragments>
   <fragments xsi:type="fragment:StringModelFragment" xmi:id="_7JxXgO0VEeCwzZCkZV1Luw" featurename="children" parentElementId="de.hannesniederhausen.storynotes.toolbar">
     <elements xsi:type="menu:HandledToolItem" xmi:id="_ywqccPKEEeCH6_Gd3XQLMg" label="Open" command="_xw428PKDEeCH6_Gd3XQLMg"/>
     <elements xsi:type="menu:HandledToolItem" xmi:id="_22Rm8PKEEeCH6_Gd3XQLMg" label="Save" iconURI="platform:/plugin/de.hannesniederhausen.storynotes.ui/icons/save_edit.gif" command="_1zkCMPKDEeCH6_Gd3XQLMg"/>
+    <elements xsi:type="menu:HandledToolItem" xmi:id="_dZbtUPQ-EeC5EeUubrWmMQ" label="Save As" command="_4XhMsPKDEeCH6_Gd3XQLMg"/>
     <elements xsi:type="menu:HandledToolItem" xmi:id="_Do1OgO0WEeCwzZCkZV1Luw" label="Undo" command="_sssxUO0SEeCwzZCkZV1Luw"/>
     <elements xsi:type="menu:HandledToolItem" xmi:id="_IJJYAO0WEeCwzZCkZV1Luw" label="Redo" command="_xBu34O0SEeCwzZCkZV1Luw"/>
   </fragments>

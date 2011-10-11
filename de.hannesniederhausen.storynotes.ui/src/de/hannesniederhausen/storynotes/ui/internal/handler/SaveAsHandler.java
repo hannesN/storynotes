@@ -12,32 +12,40 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Shell;
 
+import de.hannesniederhausen.storynotes.model.File;
 import de.hannesniederhausen.storynotes.model.service.IModelProviderService;
 
 /**
  * @author Hannes Niederhausen
- *
+ * 
  */
-public class OpenHandler {
+public class SaveAsHandler {
+
 	@Inject
 	private IModelProviderService modelProviderService;
-	
+
 	@Inject
 	@Named(IServiceConstants.ACTIVE_SHELL)
 	private Shell shell;
 	
 	@Execute
 	public void execute() {
-		FileDialog dlg = new FileDialog(shell, SWT.OPEN);
+		FileDialog dlg = new FileDialog(shell, SWT.SAVE);
 		dlg.setFilterExtensions(new String[] { "*.stn" });
-		dlg.setText("Open File...");
+		dlg.setText("Save File...");
 
 		String filename = dlg.open();
 		if (filename != null) {
-			modelProviderService.loadFile(filename);	
+			File file = modelProviderService.getFile();
+			file.setFilename(filename);
+			modelProviderService.saveFile();	
 		}
 
 		
 	}
 
+	public boolean canExecute() {
+		File file = modelProviderService.getFile();
+		return file != null;
+	}
 }

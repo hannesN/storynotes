@@ -49,4 +49,15 @@ public interface IModelProviderService {
 	 */
 	public void closeFile();
 	
+	/**
+	 * Adds a file listener
+	 * @param l
+	 */
+	public void addFileListener(IFileListener l);
+	
+	/**
+	 * Removes a file listener
+	 * @param l
+	 */
+	public void removeFileListener(IFileListener l);
 }
