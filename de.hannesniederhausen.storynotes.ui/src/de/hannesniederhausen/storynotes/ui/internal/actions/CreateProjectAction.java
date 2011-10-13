@@ -18,8 +18,8 @@ import de.hannesniederhausen.storynotes.model.Project;
  */
 public class CreateProjectAction extends AbstractCreationAction {
 	
-	public CreateProjectAction(IEclipseContext context, EObject parent) {
-		super(context, parent);
+	public CreateProjectAction() {
+		super();
 		setText("Create Project...");
 	}
 	

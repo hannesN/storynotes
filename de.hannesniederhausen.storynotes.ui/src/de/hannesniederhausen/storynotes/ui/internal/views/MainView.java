@@ -145,10 +145,10 @@ public class MainView implements IFileListener {
 		
 		InputMask im = null;
 		if (selection instanceof Project) {
-			if (projectInputMask==null) { // wait until widgets are cached
+//			if (projectInputMask==null) { // wait until widgets are cached
 				projectInputMask = ContextInjectionFactory.make(ProjectInputMask.class, context);
 				projectInputMask.createControl(stack);
-			}
+//			}
 				
 			im = projectInputMask;
 		} else if (selection instanceof Category) {

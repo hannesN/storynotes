@@ -13,13 +13,9 @@ import org.eclipse.jface.action.IAction;
 import de.hannesniederhausen.storynotes.model.Category;
 import de.hannesniederhausen.storynotes.model.File;
 import de.hannesniederhausen.storynotes.model.Project;
-import de.hannesniederhausen.storynotes.model.service.IModelProviderService;
 import de.hannesniederhausen.storynotes.ui.internal.actions.AbstractCreationAction;
 import de.hannesniederhausen.storynotes.ui.internal.actions.CreateProjectAction;
 import de.hannesniederhausen.storynotes.ui.internal.services.ICategoryProviderManager;
-import de.hannesniederhausen.storynotes.ui.internal.services.actions.CreateGenericNote;
-import de.hannesniederhausen.storynotes.ui.internal.services.actions.CreatePersonNote;
-import de.hannesniederhausen.storynotes.ui.internal.services.actions.CreateSettingNote;
 import de.hannesniederhausen.storynotes.ui.services.ICategoryProviderService;
 
 /**

@@ -21,6 +21,12 @@ public class AbstractCreationAction extends Action {
 	private EObject parentElement;
 	private IEclipseContext context;
 	
+	/**
+	 * 
+	 */
+	public AbstractCreationAction() {
+	}
+	
 	public AbstractCreationAction(IEclipseContext context, EObject parent) {
 		this.parentElement = parent;
 		this.context = context;
