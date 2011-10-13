@@ -1,16 +1,22 @@
 package de.hannesniederhausen.storynotes.model.service.internal;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
+import java.util.zip.ZipOutputStream;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
+import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 
 import de.hannesniederhausen.storynotes.model.File;
 import de.hannesniederhausen.storynotes.model.StorynotesFactory;
@@ -34,16 +40,19 @@ public class ModelProviderService implements IModelProviderService {
 
 	@Override
 	public void loadFile(String filename) {
-
-		ResourceSet resSet = getResourceSet();
-		Resource res = resSet.getResource(URI.createFileURI(filename), true);
-		
 		try {
-			res.load(Collections.emptyMap());
-			File oldFile = file;
-			file = (File) res.getContents().get(0);
-			file.setFilename(filename);
-			notifyChange(oldFile, file);
+			java.io.File file = new java.io.File(filename);
+			ZipFile zf = new ZipFile(file);
+			ZipEntry entry = zf.getEntry("content.xmi");
+			InputStream is = zf.getInputStream(entry);
+
+			XMIResourceImpl res = (XMIResourceImpl) getResourceSet().createResource(URI.createFileURI(filename));
+			res.setEncoding("UTF-8");
+			res.load(is, Collections.emptyMap());
+			File oldFile = this.file;
+			this.file = (File) res.getContents().get(0);
+			this.file.setFilename(filename);
+			notifyChange(oldFile, this.file);
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
@@ -61,14 +70,30 @@ public class ModelProviderService implements IModelProviderService {
 		if (file==null || file.getFilename()==null)
 			throw new IllegalStateException("invalid file or filename");
 		
-		ResourceSet resSet = getResourceSet();
 		
-		Resource res = resSet.createResource(URI.createFileURI(file.getFilename()));
+		ResourceSet resSet = getResourceSet();
+		XMIResourceImpl res = (XMIResourceImpl) resSet.createResource(URI.createFileURI(file.getFilename()));
 		
 		res.getContents().add(file);
-		
 		try {
-			res.save(Collections.emptyMap());
+			
+			java.io.File realFile = new java.io.File(file.getFilename());
+			if (realFile.exists())
+				realFile.delete();
+			
+			ZipOutputStream zos = new ZipOutputStream(new FileOutputStream(realFile));
+			ZipEntry entry = new ZipEntry("content.xmi");
+
+			
+			zos.putNextEntry(entry);
+			
+			
+			res.setEncoding("UTF-8");
+			res.save(zos, Collections.emptyMap());
+			zos.closeEntry();
+			
+			
+			zos.close();
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
