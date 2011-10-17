@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ASCII"?>
+<fragment:ModelFragments xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:commands="http://www.eclipse.org/ui/2010/UIModel/application/commands" xmlns:fragment="http://www.eclipse.org/ui/2010/UIModel/fragment" xmi:id="_JG7gQPjaEeCJ1covA7AdNw">
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_NLDdAPjaEeCJ1covA7AdNw" featurename="commands" parentElementId="de.hannesniederhausen.storynotes.application">
+    <elements xsi:type="commands:Command" xmi:id="_i_A4kPjaEeCJ1covA7AdNw" elementId="de.niederhausen.storynotes.help" commandName="Help"/>
+  </fragments>
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_VKO6EPjaEeCJ1covA7AdNw" featurename="handlers" parentElementId="de.hannesniederhausen.storynotes.application">
+    <elements xsi:type="commands:Handler" xmi:id="_gjsFoPjaEeCJ1covA7AdNw" elementId="help.help" contributionURI="platform:/plugin/de.hannesniederhausen.storynotes.doc/de.hannesniederhausen.storynotes.doc.internal.handler.HelpHandler" command="_i_A4kPjaEeCJ1covA7AdNw"/>
+  </fragments>
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_Xp6BgPjaEeCJ1covA7AdNw" featurename="children" parentElementId="de.hannesniederhausen.storynotes.toolbar"/>
+</fragment:ModelFragments>
