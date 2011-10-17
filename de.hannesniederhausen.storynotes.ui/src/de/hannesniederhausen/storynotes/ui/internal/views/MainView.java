@@ -1,5 +1,8 @@
 package de.hannesniederhausen.storynotes.ui.internal.views;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -69,22 +72,19 @@ public class MainView implements IFileListener {
 	private NavigationBar navigationBar;
 
 	private Composite stack;
-
-	private ProjectInputMask projectInputMask;
+	
+	private Map<Class<?>, InputMask> inputMaskCache;
 
 	@PostConstruct
 	public void init() {
 
+		inputMaskCache = new HashMap<Class<?>, InputMask>();
+		
 		modelProvider.addFileListener(this);
 		
 		context.set(MainView.class, this);
 		modelProvider.newFile();
 		
-		// TODO remove test model
-		File file = modelProvider.getFile();
-		Project project = modelProvider.getModelFactory().createProject();
-		project.setName("Test Project");
-		file.getProjects().add(project);
 		
 		// create some stuff to see how the dependency injection works
 
@@ -106,7 +106,7 @@ public class MainView implements IFileListener {
 		navigationBar.setLabelProvider(new StoryNotesLabelProvider());
 		
 		navigationBar.setContext(context);
-		navigationBar.setInput(project);
+		
 		
 		stack = new Composite(comp, SWT.NONE);
 		stack.setData(CSSSWTConstants.CSS_ID_KEY, "mainstack");
@@ -116,6 +116,8 @@ public class MainView implements IFileListener {
 
 		
 		initEditingDomain();
+		
+		setSelection(modelProvider.getFile());
 	}
 	
 	public void initEditingDomain() {
@@ -143,28 +145,29 @@ public class MainView implements IFileListener {
 			return;
 		
 		
-		InputMask im = null;
-		if (selection instanceof Project) {
-//			if (projectInputMask==null) { // wait until widgets are cached
-				projectInputMask = ContextInjectionFactory.make(ProjectInputMask.class, context);
-				projectInputMask.createControl(stack);
-//			}
-				
-			im = projectInputMask;
-		} else if (selection instanceof Category) {
-			ICategoryProviderService s = categoryProviderManager.getServiceFor((Class<? extends Category>) selection.getClass());
-			im = ContextInjectionFactory.make(s.getCategoryInputMaskClass(), context);
-			im.createControl(stack);
-		} else if (selection instanceof Note) {
-			ICategoryProviderService s = categoryProviderManager.getServiceFor((Class<? extends Category>) ((EObject) selection).eContainer().getClass());
-			im = ContextInjectionFactory.make(s.getNoteInputMaskClass((Class<? extends Note>) selection.getClass()), context);
-			im.createControl(stack);
-		}
+		InputMask im = inputMaskCache.get(selection.getClass());
 		
+		if (im==null) {
+			
+			if (selection instanceof Project) {
+				InputMask projectInputMask = ContextInjectionFactory.make(ProjectInputMask.class, context);
+				projectInputMask.createControl(stack);
+				im = projectInputMask;
+			} else if (selection instanceof Category) {
+				ICategoryProviderService s = categoryProviderManager.getServiceFor((Class<? extends Category>) selection.getClass());
+				im = ContextInjectionFactory.make(s.getCategoryInputMaskClass(), context);
+				im.createControl(stack);
+			} else if (selection instanceof Note) {
+				ICategoryProviderService s = categoryProviderManager.getServiceFor((Class<? extends Category>) ((EObject) selection).eContainer().getClass());
+				im = ContextInjectionFactory.make(s.getNoteInputMaskClass((Class<? extends Note>) selection.getClass()), context);
+				im.createControl(stack);
+			}
+			
+			if (im!=null)
+				inputMaskCache.put(selection.getClass(), im);
+		}
 		if (im!=null) {
 			im.setModel((EObject) selection);
-			if (stackLayout.topControl!=null)
-				stackLayout.topControl.dispose();
 			stackLayout.topControl = im.getControl();
 			stack.layout();
 		}
