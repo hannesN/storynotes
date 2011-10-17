@@ -18,9 +18,9 @@ import de.hannesniederhausen.storynotes.ui.internal.actions.AbstractCreationActi
  */
 public class CreateGenericNote extends AbstractCreationAction {
 
-	public CreateGenericNote(IEclipseContext context, EObject parent) {
+	public CreateGenericNote(IEclipseContext context, EObject parent, String categoryName) {
 		super(context, parent);
-		setText("Create Generic Note...");
+		setText("Create "+categoryName+" Note...");
 	}
 	
 	@Override

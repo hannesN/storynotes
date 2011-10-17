@@ -40,7 +40,10 @@ public class GenericCategoryProvider implements ICategoryProviderService {
 
 	@Override
 	public IAction[] getNoteActions(IEclipseContext context, EObject parent) {
-		return new IAction[] {new CreateGenericNote(context, parent)};
+		if (parent instanceof GenericCategory) {
+			return new IAction[] {new CreateGenericNote(context, parent, ((GenericCategory)parent).getName())};
+		}
+		return new IAction[0];
 	}
 
 	@Override
