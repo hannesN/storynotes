@@ -12,13 +12,17 @@ import java.util.zip.ZipFile;
 import java.util.zip.ZipOutputStream;
 
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 
+import de.hannesniederhausen.storynotes.model.Category;
 import de.hannesniederhausen.storynotes.model.File;
+import de.hannesniederhausen.storynotes.model.Note;
+import de.hannesniederhausen.storynotes.model.Project;
 import de.hannesniederhausen.storynotes.model.StorynotesFactory;
 import de.hannesniederhausen.storynotes.model.service.IFileListener;
 import de.hannesniederhausen.storynotes.model.service.IModelProviderService;
@@ -120,6 +124,35 @@ public class ModelProviderService implements IModelProviderService {
 		if (listeners==null)
 			return;
 		listeners.remove(l);
+	}
+	
+	
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public EObject getElementById(long id) {
+		
+		// TODO find an efficient way
+		
+		if (file == null)
+			return null;
+		
+		for (Project p : file.getProjects()) {
+			if (p.getId()==id)
+				return p;
+			
+			for (Category c : p.getCategories()) {
+				if (c.getId()==id)
+					return c;
+				
+				for (Note n : c.getNotes()) {
+					if (n.getId()==id)
+						return n;
+				}
+			}
+		}
+		return null;
 	}
 
 	private ResourceSet getResourceSet() {

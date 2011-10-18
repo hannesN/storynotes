@@ -34,6 +34,7 @@ import de.hannesniederhausen.storynotes.model.service.IModelProviderService;
 import de.hannesniederhausen.storynotes.model.util.StorynotesAdapterFactory;
 import de.hannesniederhausen.storynotes.ui.internal.handler.RedoHandler;
 import de.hannesniederhausen.storynotes.ui.internal.handler.UndoHandler;
+import de.hannesniederhausen.storynotes.ui.internal.index.ModelIndexer;
 import de.hannesniederhausen.storynotes.ui.internal.navigation.widgets.NavigationBar;
 import de.hannesniederhausen.storynotes.ui.internal.navigation.widgets.StoryNotesActionProvider;
 import de.hannesniederhausen.storynotes.ui.internal.navigation.widgets.StoryNotesLabelProvider;
@@ -54,6 +55,8 @@ import de.hannesniederhausen.storynotes.ui.views.InputMask;
 public class MainView implements IFileListener {
 	@Inject
 	private IModelProviderService modelProvider;
+	
+	private ModelIndexer modelIndexer;
 	
 	@Inject
 	private Logger logger;
@@ -83,7 +86,7 @@ public class MainView implements IFileListener {
 		modelProvider.addFileListener(this);
 		
 		context.set(MainView.class, this);
-		modelProvider.newFile();
+		
 		
 		
 		// create some stuff to see how the dependency injection works
@@ -117,6 +120,7 @@ public class MainView implements IFileListener {
 		
 		initEditingDomain();
 		
+		modelProvider.newFile();
 		setSelection(modelProvider.getFile());
 	}
 	
@@ -178,6 +182,9 @@ public class MainView implements IFileListener {
 	 */
 	@Override
 	public void fileChanged(File oldFile, File newFile) {
+		
+		modelIndexer = ContextInjectionFactory.make(ModelIndexer.class, context);
+		modelIndexer.init();
 		setSelection(newFile);
 	}
 

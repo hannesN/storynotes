@@ -3,6 +3,8 @@
  */
 package de.hannesniederhausen.storynotes.model.service;
 
+import org.eclipse.emf.ecore.EObject;
+
 import de.hannesniederhausen.storynotes.model.File;
 import de.hannesniederhausen.storynotes.model.StorynotesFactory;
 
@@ -60,4 +62,12 @@ public interface IModelProviderService {
 	 * @param l
 	 */
 	public void removeFileListener(IFileListener l);
+	
+	/**
+	 * Returns the element with the given id.
+	 * 
+	 * @param id the id of the element
+	 * @return the element with the given id or <code>null</code>
+	 */
+	public EObject getElementById(long id);
 }
