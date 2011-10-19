@@ -4,7 +4,7 @@
 package de.hannesniederhausen.storynotes.ui.internal.index;
 
 import java.io.IOException;
-import java.util.EventObject;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -20,18 +20,21 @@ import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.index.IndexWriter;
 import org.apache.lucene.index.StaleReaderException;
 import org.apache.lucene.index.Term;
+import org.apache.lucene.queryParser.MultiFieldQueryParser;
+import org.apache.lucene.search.BooleanClause;
+import org.apache.lucene.search.IndexSearcher;
+import org.apache.lucene.search.Query;
+import org.apache.lucene.search.ScoreDoc;
+import org.apache.lucene.search.TopDocs;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.LockObtainFailedException;
-import org.apache.lucene.store.SimpleFSDirectory;
+import org.apache.lucene.store.RAMDirectory;
 import org.apache.lucene.util.Version;
-import org.eclipse.emf.common.command.CommandStack;
-import org.eclipse.emf.common.command.CommandStackListener;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.edit.domain.EditingDomain;
 
 import de.hannesniederhausen.storynotes.model.Category;
 import de.hannesniederhausen.storynotes.model.File;
@@ -64,6 +67,8 @@ public class ModelIndexer {
 	private static final String PROJECT = "project";
 	
 	private static final String PARENT = "parent";
+	
+	private Set<String> fieldNames;
 
 	@Inject
 	private IModelProviderService modelProviderService;
@@ -71,6 +76,10 @@ public class ModelIndexer {
 	private Directory index; 
 	
 	private IndexAdapter indexAdapter;
+
+	private IndexWriter writer;
+
+	private StandardAnalyzer analyzer;
 	
 	@PostConstruct
 	public void init() {
@@ -81,20 +90,22 @@ public class ModelIndexer {
 				deleteDir(fsFile);
 			}
 			
-			indexAdapter = new IndexAdapter();
+			fieldNames = new HashSet<String>();
+			fieldNames.add(DESCRIPTION);
 			
-			index = new SimpleFSDirectory(fsFile);		
-			IndexWriter writer = getIndexWriter();
+			
+			indexAdapter = new IndexAdapter();
+			index = new RAMDirectory();		
+			analyzer = new StandardAnalyzer(Version.LUCENE_29);
+			writer = new IndexWriter(index, analyzer, true, IndexWriter.MaxFieldLength.UNLIMITED);
 			
 			File file = modelProviderService.getFile();
 			
 			for (Project p : file.getProjects()) {
 				addProject(p, writer, true);
 			}
-			
-			writer.close();
 
-			IndexReader reader = IndexReader.open(index, true);
+			IndexReader reader = writer.getReader();
 			int nDocs = reader.numDocs();
 			for (int i=0; i<nDocs; i++) {
 				System.out.println("d="+reader.document(i));
@@ -110,26 +121,55 @@ public class ModelIndexer {
 
 	public void dispose() {
 		try {
+			fieldNames.clear();
 			index.close();
+			writer.close();
 			indexAdapter.dispose();
 		} catch (IOException e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);
 		}
 	}
-
-	/**
-	 * @return
-	 * @throws CorruptIndexException
-	 * @throws LockObtainFailedException
-	 * @throws IOException
-	 */
-	private IndexWriter getIndexWriter() throws CorruptIndexException,
-			LockObtainFailedException, IOException {
-		IndexWriter writer = new IndexWriter(index, new StandardAnalyzer(Version.LUCENE_29), true, IndexWriter.MaxFieldLength.UNLIMITED);
-		return writer;
-	}
 	
+	public List<Document> query(String queryString) {
+		IndexSearcher searcher = null;
+		try {
+			searcher = new IndexSearcher(writer.getReader());
+			
+			if (queryString.charAt(queryString.length()-1)!=' ') {
+				queryString+="*";
+			}
+			
+			int size = fieldNames.size();
+			String[] fields = fieldNames.toArray(new String[size]);
+			BooleanClause.Occur[] flags = new BooleanClause.Occur[size];
+			for (int i=0; i<size; i++) {
+				flags[i]=BooleanClause.Occur.MUST;
+			}
+			
+			Query query = MultiFieldQueryParser.parse(Version.LUCENE_29, queryString, fields, flags, analyzer);
+			
+			List<Document> resultList = new ArrayList<Document>(10);
+			
+			TopDocs td = searcher.search(query, null, 10);
+			
+			for (ScoreDoc sd : td.scoreDocs) {
+				resultList.add(searcher.doc(sd.doc));
+			}
+			
+			return resultList;
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		} finally {
+			try {
+				if (searcher!=null)
+					searcher.close();
+			} catch (IOException e) {
+			}
+		}
+	}
+
 	/**
 	 * @param writer 
 	 * @param file
@@ -141,8 +181,9 @@ public class ModelIndexer {
 
 		indexAdapter.addTo(p);
 		String description = p.getDescription();
-		if (description!=null)
+		if (description!=null) {
 			doc.add(new Field(DESCRIPTION, description, Field.Store.YES, Field.Index.ANALYZED));
+		}
 		
 		writer.addDocument(doc);
 		
@@ -151,9 +192,7 @@ public class ModelIndexer {
 				addCategory(cat, writer, handleChildren);
 			}
 		}
-		
 	}
-
 
 	/**
 	 * @param p
@@ -211,7 +250,11 @@ public class ModelIndexer {
 		EList<EStructuralFeature> features = n.eClass().getEStructuralFeatures();
 		indexAdapter.addTo(n);
 		for (EStructuralFeature f : features) {
-			doc.add(new Field(f.getName(), n.eGet(f).toString(), Field.Store.YES, Field.Index.ANALYZED));
+			Object value = n.eGet(f);
+			if (value != null) {
+				doc.add(new Field(f.getName(), value.toString(), Field.Store.YES, Field.Index.ANALYZED));
+				fieldNames.add(f.getName());
+			}
 		}
 		writer.addDocument(doc);
 	}
@@ -238,21 +281,17 @@ public class ModelIndexer {
 
 
 	private void removeElement(FileElement element, boolean removeChildren) throws CorruptIndexException, IOException {
-		IndexReader reader = IndexReader.open(index, false);
-		
-		removeElements(reader, removeChildren, element);
-		
-		reader.close();
+		removeElements(removeChildren, element);
 	}
 	
 
-	private void removeElements(IndexReader reader, boolean removeChildren, FileElement... elements) throws StaleReaderException, CorruptIndexException, LockObtainFailedException, IOException {
+	private void removeElements(boolean removeChildren, FileElement... elements) throws StaleReaderException, CorruptIndexException, LockObtainFailedException, IOException {
 		for (FileElement e : elements) {
 			Term term = new Term(ID, Long.toString(e.getId()));
-			reader.deleteDocuments(term);
+			writer.deleteDocuments(term);
 			if (removeChildren) {
 				Term childTerm = new Term(PARENT, Long.toString(e.getId()));
-				reader.deleteDocuments(childTerm);
+				writer.deleteDocuments(childTerm);
 			}
 		}
 	}
@@ -314,19 +353,15 @@ public class ModelIndexer {
 				case Notification.ADD:
 				{
 					Category cat = (Category) msg.getNewValue();
-					IndexWriter writer = getIndexWriter();
 					addCategory(cat, writer, true);
-					writer.close();
 				}
 				case Notification.ADD_MANY:
 				{
 					@SuppressWarnings("unchecked")
 					List<Project> projects = (List<Project>) msg.getNewValue();
-					IndexWriter writer = getIndexWriter();
 					for (Project p : projects) {
 						addProject(p, writer, true);
 					}
-					writer.close();
 				}	
 				case Notification.REMOVE:
 				{
@@ -337,9 +372,7 @@ public class ModelIndexer {
 				{
 					@SuppressWarnings("unchecked")
 					List<Category> projects = (List<Category>) msg.getNewValue();
-					IndexReader reader = IndexReader.open(index, false);
-					removeElements(reader, true, projects.toArray(new FileElement[projects.size()]));
-					reader.close();
+					removeElements(true, projects.toArray(new FileElement[projects.size()]));
 				}
 				
 				} // end of switch
@@ -363,19 +396,15 @@ public class ModelIndexer {
 				case Notification.ADD:
 				{
 					Project p = (Project) msg.getNewValue();
-					IndexWriter writer = getIndexWriter();
 					addProject(p, writer, true);
-					writer.close();
 				}
 				case Notification.ADD_MANY:
 				{
 					@SuppressWarnings("unchecked")
 					List<Project> projects = (List<Project>) msg.getNewValue();
-					IndexWriter writer = getIndexWriter();
 					for (Project p : projects) {
 						addProject(p, writer, true);
 					}
-					writer.close();
 				}	
 				case Notification.REMOVE:
 				{
@@ -386,9 +415,7 @@ public class ModelIndexer {
 				{
 					@SuppressWarnings("unchecked")
 					List<Project> projects = (List<Project>) msg.getNewValue();
-					IndexReader reader = IndexReader.open(index, false);
-					removeElements(reader, true, projects.toArray(new FileElement[projects.size()]));
-					reader.close();
+					removeElements(true, projects.toArray(new FileElement[projects.size()]));
 				}
 				
 				} // end of switch
