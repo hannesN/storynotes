@@ -122,8 +122,8 @@ public class ModelIndexer {
 	public void dispose() {
 		try {
 			fieldNames.clear();
-			index.close();
 			writer.close();
+			index.close();
 			indexAdapter.dispose();
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -144,7 +144,7 @@ public class ModelIndexer {
 			String[] fields = fieldNames.toArray(new String[size]);
 			BooleanClause.Occur[] flags = new BooleanClause.Occur[size];
 			for (int i=0; i<size; i++) {
-				flags[i]=BooleanClause.Occur.MUST;
+				flags[i]=BooleanClause.Occur.SHOULD;
 			}
 			
 			Query query = MultiFieldQueryParser.parse(Version.LUCENE_29, queryString, fields, flags, analyzer);
