@@ -865,6 +865,27 @@ public class StorynotesPackageImpl extends EPackageImpl implements
 
 		// Create resource
 		createResource(eNS_URI);
+
+		// Create annotations
+		// http://storynote.hannesniederhausen.de/model/label
+		createLabelAnnotations();
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://storynote.hannesniederhausen.de/model/label</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createLabelAnnotations() {
+		String source = "http://storynote.hannesniederhausen.de/model/label";
+		addAnnotation(getFile_Filename(), source, new String[] {});
+		addAnnotation(getProject_Name(), source, new String[] {});
+		addAnnotation(getCategory_Name(), source, new String[] {});
+		addAnnotation(getPersonNote_Name(), source, new String[] {});
+		addAnnotation(getSettingNote_Name(), source, new String[] {});
+		addAnnotation(getPlotNote_Title(), source, new String[] {});
+		addAnnotation(getGenericNote_Title(), source, new String[] {});
 	}
 
 } //StorynotesPackageImpl
