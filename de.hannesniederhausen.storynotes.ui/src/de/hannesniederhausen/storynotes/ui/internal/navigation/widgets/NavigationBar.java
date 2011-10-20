@@ -6,26 +6,21 @@ package de.hannesniederhausen.storynotes.ui.internal.navigation.widgets;
 import java.util.Collections;
 import java.util.List;
 
+import org.apache.lucene.document.Document;
 import org.eclipse.core.databinding.DataBindingContext;
-import org.eclipse.core.databinding.observable.IChangeListener;
-import org.eclipse.core.databinding.observable.IDisposeListener;
-import org.eclipse.core.databinding.observable.IStaleListener;
-import org.eclipse.core.databinding.observable.Realm;
 import org.eclipse.core.databinding.observable.value.AbstractObservableValue;
 import org.eclipse.core.databinding.observable.value.IObservableValue;
-import org.eclipse.core.databinding.observable.value.IValueChangeListener;
 import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.ui.workbench.modeling.ESelectionService;
 import org.eclipse.emf.databinding.EMFProperties;
-import org.eclipse.emf.databinding.edit.EMFEditProperties;
 import org.eclipse.jface.databinding.swt.SWTObservables;
-import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
+import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.layout.RowLayout;
 import org.eclipse.swt.widgets.Composite;
@@ -33,7 +28,7 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.Widget;
 
-import de.hannesniederhausen.storynotes.model.StorynotesPackage;
+import de.hannesniederhausen.storynotes.ui.internal.index.ModelIndexer;
 
 /**
  * @author Hannes Niederhausen
@@ -50,6 +45,8 @@ public class NavigationBar extends StructuredViewer implements ModifyListener {
 	private IEclipseContext context;
 	
 	private DataBindingContext bindingContext;
+
+	private Composite naviComp;
 	
 	public NavigationBar(Composite parent) {
 		init(parent);
@@ -83,8 +80,17 @@ public class NavigationBar extends StructuredViewer implements ModifyListener {
 	private void init(Composite parent) {
 		setActionProvider(null);
 		control = new Composite(parent, SWT.NONE);
-		control.setLayout(new RowLayout(SWT.HORIZONTAL));
-//		control.setData(CSSSWTConstants.CSS_ID_KEY, "navigationBar");
+		control.setLayout(new GridLayout(2, false));
+		naviComp = new Composite(control, SWT.NONE);
+		naviComp.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+		naviComp.setLayout(new RowLayout(SWT.HORIZONTAL));
+//		control2.setData(CSSSWTConstants.CSS_ID_KEY, "navigationBar");
+		
+		Text searchText = new Text(control, SWT.BORDER|SWT.CANCEL|SWT.SEARCH);
+		GridData gd = new GridData();
+		gd.widthHint = 150;
+		searchText.setLayoutData(gd);
+		searchText.addModifyListener(this);
 		
 	}
 
@@ -140,11 +146,11 @@ public class NavigationBar extends StructuredViewer implements ModifyListener {
 
 	@Override
 	protected void inputChanged(Object input, Object oldInput) {
-		if (control.isDisposed()) {
+		if (naviComp.isDisposed()) {
 			return;
 		}
 		
-		for (Control c : control.getChildren()) {
+		for (Control c : naviComp.getChildren()) {
 			c.dispose();
 		}
 		
@@ -158,9 +164,9 @@ public class NavigationBar extends StructuredViewer implements ModifyListener {
 		
 		StoryNotesLabelProvider lp = (StoryNotesLabelProvider) getLabelProvider();
 		
-//		((GridLayout)control.getLayout()).numColumns=elements.length;
+//		((GridLayout)control2.getLayout()).numColumns=elements.length;
 		for (Object obj : elements) {
-			NavigationItem item = new NavigationItem(control, SWT.NONE, 
+			NavigationItem item = new NavigationItem(naviComp, SWT.NONE, 
 					lp, 
 					(ITreeContentProvider) getContentProvider(), 
 					context,
@@ -172,24 +178,30 @@ public class NavigationBar extends StructuredViewer implements ModifyListener {
 			bindingContext.bindValue(itemObservableValue, modelObserveValue, null, null);
 			
 		}
-		control.layout(true);
+		
+		naviComp.layout(true);
 	}
 	
-	private void initSearchText() {
-		Text searchText = new Text(control, SWT.BORDER|SWT.CANCEL);
-		searchText.addModifyListener(this);
-	}
 
 	public void setContext(IEclipseContext context) {
 		this.context = context;
 	}
 	
-	/* (non-Javadoc)
-	 * @see org.eclipse.swt.events.ModifyListener#modifyText(org.eclipse.swt.events.ModifyEvent)
-	 */
 	@Override
 	public void modifyText(ModifyEvent e) {
-		// TODO do something: search and show results
+		String text = ((Text) e.widget).getText();
+		
+		if (text.length()<3)
+			return;
+		
+		ModelIndexer mi = context.get(ModelIndexer.class);
+		
+		List<Document> result = mi.query(text);
+		for (Document d : result) {
+			// TODO get real doc results and render them in a list popup
+			System.out.println(d);
+		}
+		
 	}
 	
 	private class ModelObservableValue extends AbstractObservableValue {

@@ -182,9 +182,14 @@ public class MainView implements IFileListener {
 	 */
 	@Override
 	public void fileChanged(File oldFile, File newFile) {
-		
-		modelIndexer = ContextInjectionFactory.make(ModelIndexer.class, context);
+		if (modelIndexer!=null) {
+			modelIndexer.dispose();
+		} else {
+			modelIndexer = ContextInjectionFactory.make(ModelIndexer.class, context);
+			context.set(ModelIndexer.class, modelIndexer);
+		}
 		modelIndexer.init();
+		
 		setSelection(newFile);
 	}
 
