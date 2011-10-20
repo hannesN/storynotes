@@ -32,6 +32,7 @@ import de.hannesniederhausen.storynotes.model.Project;
 import de.hannesniederhausen.storynotes.model.service.IFileListener;
 import de.hannesniederhausen.storynotes.model.service.IModelProviderService;
 import de.hannesniederhausen.storynotes.model.util.StorynotesAdapterFactory;
+import de.hannesniederhausen.storynotes.ui.internal.handler.CommandStackHandler;
 import de.hannesniederhausen.storynotes.ui.internal.handler.RedoHandler;
 import de.hannesniederhausen.storynotes.ui.internal.handler.UndoHandler;
 import de.hannesniederhausen.storynotes.ui.internal.index.ModelIndexer;
@@ -130,11 +131,17 @@ public class MainView implements IFileListener {
 		EditingDomain editingDomain = new AdapterFactoryEditingDomain(adapterFactory, cmdStack);
 		context.set(EditingDomain.class, editingDomain);
 		
-		UndoHandler uh = (UndoHandler) context.get("handler::de.hannesniederhausen.storynotes.undo");
-		uh.setCommandStack(cmdStack);
+		String[] cmdIds = {
+				"handler::de.hannesniederhausen.storynotes.undo",
+				"handler::de.hannesniederhausen.storynotes.redo",
+				"handler::de.hannesniederhausen.storynotes.save"
+		};
 		
-		RedoHandler rh = (RedoHandler) context.get("handler::de.hannesniederhausen.storynotes.redo");
-		rh.setCommandStack(cmdStack);
+		for (String id : cmdIds) {
+			CommandStackHandler csh = (CommandStackHandler) context.get(id);
+			csh.setCommandStack(cmdStack);	
+		}
+	
 	}
 	
 	public Composite getParent() {

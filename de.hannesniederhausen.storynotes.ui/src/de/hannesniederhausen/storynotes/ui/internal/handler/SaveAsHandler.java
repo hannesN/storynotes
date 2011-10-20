@@ -8,6 +8,7 @@ import javax.inject.Named;
 
 import org.eclipse.e4.core.di.annotations.Execute;
 import org.eclipse.e4.ui.services.IServiceConstants;
+import org.eclipse.emf.common.command.BasicCommandStack;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Shell;
@@ -19,7 +20,7 @@ import de.hannesniederhausen.storynotes.model.service.IModelProviderService;
  * @author Hannes Niederhausen
  * 
  */
-public class SaveAsHandler {
+public class SaveAsHandler extends CommandStackHandler {
 
 	@Inject
 	private IModelProviderService modelProviderService;
@@ -38,7 +39,10 @@ public class SaveAsHandler {
 		if (filename != null) {
 			File file = modelProviderService.getFile();
 			file.setFilename(filename);
-			modelProviderService.saveFile();	
+			modelProviderService.saveFile();
+			
+			if (getCommandStack()!=null)
+				((BasicCommandStack)getCommandStack()).saveIsDone();
 		}
 
 		
