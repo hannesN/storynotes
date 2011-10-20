@@ -8,7 +8,6 @@ import java.util.List;
 
 import org.apache.lucene.document.Document;
 import org.eclipse.core.databinding.DataBindingContext;
-import org.eclipse.core.databinding.observable.value.AbstractObservableValue;
 import org.eclipse.core.databinding.observable.value.IObservableValue;
 import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.ui.workbench.modeling.ESelectionService;
@@ -202,24 +201,5 @@ public class NavigationBar extends StructuredViewer implements ModifyListener {
 			System.out.println(d);
 		}
 		
-	}
-	
-	private class ModelObservableValue extends AbstractObservableValue {
-
-		
-		
-		@Override
-		public Object getValueType() {
-			return String.class;
-		}
-
-		/* (non-Javadoc)
-		 * @see org.eclipse.core.databinding.observable.value.AbstractObservableValue#doGetValue()
-		 */
-		@Override
-		protected Object doGetValue() {
-			
-			return null;
-		}
 	}
 }
