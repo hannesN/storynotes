@@ -197,8 +197,7 @@ public class NavigationBar extends StructuredViewer implements ModifyListener {
 		
 		List<Document> result = mi.query(text);
 		for (Document d : result) {
-			// TODO get real doc results and render them in a list popup
-			System.out.println(d);
+			System.out.println(d.get("field_label"));
 		}
 		
 	}
