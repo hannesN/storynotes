@@ -42,6 +42,7 @@ import de.hannesniederhausen.storynotes.model.FileElement;
 import de.hannesniederhausen.storynotes.model.Note;
 import de.hannesniederhausen.storynotes.model.Project;
 import de.hannesniederhausen.storynotes.model.StorynotesPackage;
+import de.hannesniederhausen.storynotes.model.annotations.IAnnotationConstants;
 import de.hannesniederhausen.storynotes.model.service.IModelProviderService;
 
 /**
@@ -185,6 +186,15 @@ public class ModelIndexer {
 			doc.add(new Field(DESCRIPTION, description, Field.Store.YES, Field.Index.ANALYZED));
 		}
 		
+		for (EStructuralFeature f : p.eClass().getEAllStructuralFeatures()) {
+			Object value = p.eGet(f);
+			if (value != null) {
+				if (f.getEAnnotation(IAnnotationConstants.MODEL_LABEL)!=null) {
+					doc.add(new Field("field_label", value.toString(), Field.Store.YES, Field.Index.NO));
+				}
+			}
+		}
+		
 		writer.addDocument(doc);
 		
 		if (handleChildren) {
@@ -230,6 +240,16 @@ public class ModelIndexer {
 	private void addCategory(Category cat, IndexWriter writer, boolean handleChildren) throws CorruptIndexException, IOException {
 		Document doc = createDocument(CATEGORY, cat.getName(), cat);
 		indexAdapter.addTo(cat);
+		
+		for (EStructuralFeature f : cat.eClass().getEAllStructuralFeatures()) {
+			Object value = cat.eGet(f);
+			if (value != null) {
+				if (f.getEAnnotation(IAnnotationConstants.MODEL_LABEL)!=null) {
+					doc.add(new Field("field_label", value.toString(), Field.Store.YES, Field.Index.NO));
+				}
+			}
+		}
+		
 		if (handleChildren) {
 			for (Note n : cat.getNotes()) {
 				addNote(n, writer);
@@ -247,12 +267,14 @@ public class ModelIndexer {
 	 */
 	private void addNote(Note n, IndexWriter writer) throws CorruptIndexException, IOException {
 		Document doc = createDocument(NOTE, null, n);
-		EList<EStructuralFeature> features = n.eClass().getEStructuralFeatures();
 		indexAdapter.addTo(n);
-		for (EStructuralFeature f : features) {
+		for (EStructuralFeature f : n.eClass().getEStructuralFeatures()) {
 			Object value = n.eGet(f);
 			if (value != null) {
-				doc.add(new Field(f.getName(), value.toString(), Field.Store.YES, Field.Index.ANALYZED));
+				if (f.getEAnnotation(IAnnotationConstants.MODEL_LABEL)!=null) {
+					doc.add(new Field("field_label", value.toString(), Field.Store.YES, Field.Index.NO));
+				}
+				doc.add(new Field(f.getName(), value.toString(), Field.Store.NO, Field.Index.ANALYZED));
 				fieldNames.add(f.getName());
 			}
 		}
