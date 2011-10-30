@@ -10,7 +10,6 @@ import org.apache.lucene.document.Document;
 import org.eclipse.core.databinding.DataBindingContext;
 import org.eclipse.core.databinding.observable.value.IObservableValue;
 import org.eclipse.e4.core.contexts.IEclipseContext;
-import org.eclipse.e4.ui.workbench.modeling.ESelectionService;
 import org.eclipse.emf.databinding.EMFProperties;
 import org.eclipse.jface.databinding.swt.SWTObservables;
 import org.eclipse.jface.viewers.IStructuredContentProvider;
@@ -19,6 +18,8 @@ import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
+import org.eclipse.swt.graphics.Point;
+import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.layout.RowLayout;
@@ -35,8 +36,6 @@ import de.hannesniederhausen.storynotes.ui.internal.index.ModelIndexer;
  */
 public class NavigationBar extends StructuredViewer implements ModifyListener {
 
-	private ESelectionService selectionService;
-	
 	private IActionProvider actionProvider;
 	
 	private Composite control;
@@ -46,6 +45,8 @@ public class NavigationBar extends StructuredViewer implements ModifyListener {
 	private DataBindingContext bindingContext;
 
 	private Composite naviComp;
+
+	private SearchDialog searchDialog;
 	
 	public NavigationBar(Composite parent) {
 		init(parent);
@@ -60,10 +61,6 @@ public class NavigationBar extends StructuredViewer implements ModifyListener {
 		return control;
 	}
 
-	public void setSelectionService(ESelectionService selectionService) {
-		this.selectionService = selectionService;
-	}
-	
 	/**
 	 * Sets the action provider. Setting it to null removes the already set provider.
 	 * @param actionProvider the new action provider or <code>null</code>
@@ -188,7 +185,8 @@ public class NavigationBar extends StructuredViewer implements ModifyListener {
 	
 	@Override
 	public void modifyText(ModifyEvent e) {
-		String text = ((Text) e.widget).getText();
+		Text searchText = (Text) e.widget;
+		String text = searchText.getText();
 		
 		if (text.length()<3)
 			return;
@@ -196,9 +194,20 @@ public class NavigationBar extends StructuredViewer implements ModifyListener {
 		ModelIndexer mi = context.get(ModelIndexer.class);
 		
 		List<Document> result = mi.query(text);
-		for (Document d : result) {
-			System.out.println(d.get("field_label"));
+		
+		if (searchDialog==null) {
+			searchDialog = new SearchDialog(control.getShell(), SWT.NONE, context);
 		}
+	
+		searchDialog.setInput(result);
+		searchDialog.open();
+		Point p = searchText.toDisplay(0,0);
+		Rectangle searchBounds = searchText.getBounds();
+		p.y += searchBounds.height;
+		p.x -= Math.max(0, (searchDialog.getShell().getBounds().width-searchBounds.width));
+		searchDialog.getShell().setLocation(p);
+		
+		System.out.println(searchDialog.getShell().getBounds());
 		
 	}
 }
