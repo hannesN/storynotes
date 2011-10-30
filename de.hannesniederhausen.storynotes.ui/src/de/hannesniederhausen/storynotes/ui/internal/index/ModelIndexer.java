@@ -32,7 +32,6 @@ import org.apache.lucene.store.RAMDirectory;
 import org.apache.lucene.util.Version;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
@@ -46,10 +45,11 @@ import de.hannesniederhausen.storynotes.model.annotations.IAnnotationConstants;
 import de.hannesniederhausen.storynotes.model.service.IModelProviderService;
 
 /**
- * The {@link ModelIndexer} creates a lucene index from the current model. It listenes to the command stack and adds model changes to the index.
+ * The {@link ModelIndexer} creates a lucene index from the current model. It
+ * listenes to the command stack and adds model changes to the index.
  * 
  * @author Hannes Niederhausen
- *
+ * 
  */
 public class ModelIndexer {
 
@@ -66,58 +66,57 @@ public class ModelIndexer {
 	private static final String DESCRIPTION = "description";
 
 	private static final String PROJECT = "project";
-	
+
 	private static final String PARENT = "parent";
-	
+
 	private Set<String> fieldNames;
 
 	@Inject
 	private IModelProviderService modelProviderService;
 
-	private Directory index; 
-	
+	private Directory index;
+
 	private IndexAdapter indexAdapter;
 
 	private IndexWriter writer;
 
 	private StandardAnalyzer analyzer;
-	
+
 	@PostConstruct
 	public void init() {
-		
+
 		try {
 			java.io.File fsFile = new java.io.File("/tmp/index");
 			if (fsFile.exists()) {
 				deleteDir(fsFile);
 			}
-			
+
 			fieldNames = new HashSet<String>();
 			fieldNames.add(DESCRIPTION);
-			
-			
+
 			indexAdapter = new IndexAdapter();
-			index = new RAMDirectory();		
+			index = new RAMDirectory();
 			analyzer = new StandardAnalyzer(Version.LUCENE_29);
-			writer = new IndexWriter(index, analyzer, true, IndexWriter.MaxFieldLength.UNLIMITED);
-			
+			writer = new IndexWriter(index, analyzer, true,
+					IndexWriter.MaxFieldLength.UNLIMITED);
+
 			File file = modelProviderService.getFile();
-			
+
 			for (Project p : file.getProjects()) {
 				addProject(p, writer, true);
 			}
 
 			IndexReader reader = writer.getReader();
 			int nDocs = reader.numDocs();
-			for (int i=0; i<nDocs; i++) {
-				System.out.println("d="+reader.document(i));
+			for (int i = 0; i < nDocs; i++) {
+				System.out.println("d=" + reader.document(i));
 			}
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);
 		}
-		
-		
+
 	}
 
 	public void dispose() {
@@ -131,40 +130,41 @@ public class ModelIndexer {
 			throw new RuntimeException(e);
 		}
 	}
-	
+
 	public List<Document> query(String queryString) {
 		IndexSearcher searcher = null;
 		try {
 			searcher = new IndexSearcher(writer.getReader());
-			
-			if (queryString.charAt(queryString.length()-1)!=' ') {
-				queryString+="*";
+
+			if (queryString.charAt(queryString.length() - 1) != ' ') {
+				queryString += "*";
 			}
-			
+
 			int size = fieldNames.size();
 			String[] fields = fieldNames.toArray(new String[size]);
 			BooleanClause.Occur[] flags = new BooleanClause.Occur[size];
-			for (int i=0; i<size; i++) {
-				flags[i]=BooleanClause.Occur.SHOULD;
+			for (int i = 0; i < size; i++) {
+				flags[i] = BooleanClause.Occur.SHOULD;
 			}
-			
-			Query query = MultiFieldQueryParser.parse(Version.LUCENE_29, queryString, fields, flags, analyzer);
-			
+
+			Query query = MultiFieldQueryParser.parse(Version.LUCENE_29,
+					queryString, fields, flags, analyzer);
+
 			List<Document> resultList = new ArrayList<Document>(10);
-			
+
 			TopDocs td = searcher.search(query, null, 10);
-			
+
 			for (ScoreDoc sd : td.scoreDocs) {
 				resultList.add(searcher.doc(sd.doc));
 			}
-			
+
 			return resultList;
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);
 		} finally {
 			try {
-				if (searcher!=null)
+				if (searcher != null)
 					searcher.close();
 			} catch (IOException e) {
 			}
@@ -172,31 +172,34 @@ public class ModelIndexer {
 	}
 
 	/**
-	 * @param writer 
+	 * @param writer
 	 * @param file
-	 * @throws IOException 
-	 * @throws CorruptIndexException 
+	 * @throws IOException
+	 * @throws CorruptIndexException
 	 */
-	private void addProject(Project p, IndexWriter writer, boolean handleChildren) throws CorruptIndexException, IOException {
+	private void addProject(Project p, IndexWriter writer,
+			boolean handleChildren) throws CorruptIndexException, IOException {
 		Document doc = createDocument(PROJECT, p.getName(), p);
 
 		indexAdapter.addTo(p);
 		String description = p.getDescription();
-		if (description!=null) {
-			doc.add(new Field(DESCRIPTION, description, Field.Store.YES, Field.Index.ANALYZED));
+		if (description != null) {
+			doc.add(new Field(DESCRIPTION, description, Field.Store.YES,
+					Field.Index.ANALYZED));
 		}
-		
+
 		for (EStructuralFeature f : p.eClass().getEAllStructuralFeatures()) {
 			Object value = p.eGet(f);
 			if (value != null) {
-				if (f.getEAnnotation(IAnnotationConstants.MODEL_LABEL)!=null) {
-					doc.add(new Field("field_label", value.toString(), Field.Store.YES, Field.Index.NO));
+				if (f.getEAnnotation(IAnnotationConstants.MODEL_LABEL) != null) {
+					doc.add(new Field("field_label", value.toString(),
+							Field.Store.YES, Field.Index.NO));
 				}
 			}
 		}
-		
+
 		writer.addDocument(doc);
-		
+
 		if (handleChildren) {
 			for (Category cat : p.getCategories()) {
 				addCategory(cat, writer, handleChildren);
@@ -207,49 +210,50 @@ public class ModelIndexer {
 	/**
 	 * @param p
 	 * @param doc
-	 * @param typeName 
-	 * @param name 
-	 * @param fe 
+	 * @param typeName
+	 * @param name
+	 * @param fe
 	 */
 	private Document createDocument(String typeName, String name, FileElement fe) {
 		Document doc = new Document();
-		
-		doc.add(new Field(ID, Long.toString(fe.getId()), Field.Store.YES, Field.Index.NO));
+
+		doc.add(new Field(ID, Long.toString(fe.getId()), Field.Store.YES,
+				Field.Index.NO));
 		doc.add(new Field(TYPE, typeName, Field.Store.YES, Field.Index.NO));
-		if (name!=null)
+		if (name != null)
 			doc.add(new Field(NAME, name, Field.Store.YES, Field.Index.ANALYZED));
-		
+
 		EObject parent = fe.eContainer();
 		while (parent instanceof FileElement) {
-			doc.add(new Field(PARENT, Long.toString(((FileElement) parent).getId()), 
-					Field.Store.YES, Field.Index.NO));
+			doc.add(new Field(PARENT, Long.toString(((FileElement) parent)
+					.getId()), Field.Store.YES, Field.Index.NO));
 			parent = parent.eContainer();
 		}
-		
-		
+
 		return doc;
 	}
-
 
 	/**
 	 * @param cat
 	 * @param writer
-	 * @throws IOException 
-	 * @throws CorruptIndexException 
+	 * @throws IOException
+	 * @throws CorruptIndexException
 	 */
-	private void addCategory(Category cat, IndexWriter writer, boolean handleChildren) throws CorruptIndexException, IOException {
+	private void addCategory(Category cat, IndexWriter writer,
+			boolean handleChildren) throws CorruptIndexException, IOException {
 		Document doc = createDocument(CATEGORY, cat.getName(), cat);
 		indexAdapter.addTo(cat);
-		
+
 		for (EStructuralFeature f : cat.eClass().getEAllStructuralFeatures()) {
 			Object value = cat.eGet(f);
 			if (value != null) {
-				if (f.getEAnnotation(IAnnotationConstants.MODEL_LABEL)!=null) {
-					doc.add(new Field("field_label", value.toString(), Field.Store.YES, Field.Index.NO));
+				if (f.getEAnnotation(IAnnotationConstants.MODEL_LABEL) != null) {
+					doc.add(new Field("field_label", value.toString(),
+							Field.Store.YES, Field.Index.NO));
 				}
 			}
 		}
-		
+
 		if (handleChildren) {
 			for (Note n : cat.getNotes()) {
 				addNote(n, writer);
@@ -258,38 +262,42 @@ public class ModelIndexer {
 		writer.addDocument(doc);
 	}
 
-
 	/**
 	 * @param n
 	 * @param writer
-	 * @throws IOException 
-	 * @throws CorruptIndexException 
+	 * @throws IOException
+	 * @throws CorruptIndexException
 	 */
-	private void addNote(Note n, IndexWriter writer) throws CorruptIndexException, IOException {
+	private void addNote(Note n, IndexWriter writer)
+			throws CorruptIndexException, IOException {
 		Document doc = createDocument(NOTE, null, n);
 		indexAdapter.addTo(n);
 		for (EStructuralFeature f : n.eClass().getEStructuralFeatures()) {
 			Object value = n.eGet(f);
 			if (value != null) {
-				if (f.getEAnnotation(IAnnotationConstants.MODEL_LABEL)!=null) {
-					doc.add(new Field("field_label", value.toString(), Field.Store.YES, Field.Index.NO));
+				if (f.getEAnnotation(IAnnotationConstants.MODEL_LABEL) != null) {
+					doc.add(new Field("field_label", value.toString(),
+							Field.Store.YES, Field.Index.NO));
 				}
-				doc.add(new Field(f.getName(), value.toString(), Field.Store.NO, Field.Index.ANALYZED));
-				fieldNames.add(f.getName());
+				if (f.getEAnnotation(IAnnotationConstants.NO_INDEX_LABEL)==null) {
+					doc.add(new Field(f.getName(), value.toString(), Field.Store.NO, Field.Index.ANALYZED));
+					fieldNames.add(f.getName());
+				}
 			}
 		}
 		writer.addDocument(doc);
 	}
-	
+
 	/**
 	 * Deletes
+	 * 
 	 * @param dir
 	 */
 	private void deleteDir(java.io.File dir) {
 		if (!dir.isDirectory()) {
 			throw new IllegalArgumentException("dir is not a directory");
 		}
-		
+
 		for (java.io.File f : dir.listFiles()) {
 			if (f.isDirectory()) {
 				deleteDir(f);
@@ -297,17 +305,18 @@ public class ModelIndexer {
 				f.delete();
 			}
 		}
-		
+
 		dir.delete();
 	}
 
-
-	private void removeElement(FileElement element, boolean removeChildren) throws CorruptIndexException, IOException {
+	private void removeElement(FileElement element, boolean removeChildren)
+			throws CorruptIndexException, IOException {
 		removeElements(removeChildren, element);
 	}
-	
 
-	private void removeElements(boolean removeChildren, FileElement... elements) throws StaleReaderException, CorruptIndexException, LockObtainFailedException, IOException {
+	private void removeElements(boolean removeChildren, FileElement... elements)
+			throws StaleReaderException, CorruptIndexException,
+			LockObtainFailedException, IOException {
 		for (FileElement e : elements) {
 			Term term = new Term(ID, Long.toString(e.getId()));
 			writer.deleteDocuments(term);
@@ -317,18 +326,18 @@ public class ModelIndexer {
 			}
 		}
 	}
-	
+
 	private class IndexAdapter extends AdapterImpl {
-		
+
 		private Set<EObject> listenedObjects = new HashSet<EObject>();
-		
+
 		@Override
 		public void notifyChanged(Notification msg) {
 			Object notifier = msg.getNotifier();
 			if (notifier instanceof File) {
 				handleFileChanges(msg);
 				return;
-			} 
+			}
 			if (notifier instanceof Project) {
 				handleProjectChanges(msg);
 				return;
@@ -342,7 +351,7 @@ public class ModelIndexer {
 				return;
 			}
 		}
-		
+
 		public void dispose() {
 			for (EObject o : listenedObjects) {
 				o.eAdapters().remove(this);
@@ -354,16 +363,58 @@ public class ModelIndexer {
 		 * @param msg
 		 */
 		private void handleNoteChanges(Notification msg) {
-			// TODO Auto-generated method stub
-			
+			try {
+				Note note = (Note) msg.getNotifier();
+				removeElement(note, false);
+				addNote(note, writer);
+			} catch (Exception e) {
+				throw new RuntimeException(e);
+			}
+
 		}
 
 		/**
 		 * @param msg
 		 */
 		private void handleCategoryChanges(Notification msg) {
-			// TODO Auto-generated method stub
-			
+			try {
+				switch (msg.getEventType()) {
+				case Notification.ADD: {
+					Note note = (Note) msg.getNewValue();
+					addNote(note, writer);
+					break;
+				}
+				case Notification.ADD_MANY: {
+					@SuppressWarnings("unchecked")
+					List<Note> notes = (List<Note>) msg.getNewValue();
+					for (Note n : notes) {
+						addNote(n, writer);
+					}
+					break;
+				}
+				case Notification.REMOVE: {
+					Note note = (Note) msg.getNewValue();
+					removeElement(note, true);
+					break;
+				}
+				case Notification.REMOVE_MANY: {
+					@SuppressWarnings("unchecked")
+					List<Note> notes = (List<Note>) msg.getNewValue();
+					removeElements(true,
+							notes.toArray(new FileElement[notes.size()]));
+					break;
+				}
+				case Notification.SET: {
+					Category cat = (Category) msg.getNotifier();
+					removeElement(cat, false);
+					addCategory(cat, writer, false);
+					break;
+				}
+				} // end of switch
+			} catch (Exception e) {
+				throw new RuntimeException(e);
+			}
+
 		}
 
 		/**
@@ -372,82 +423,94 @@ public class ModelIndexer {
 		private void handleProjectChanges(Notification msg) {
 			try {
 				switch (msg.getEventType()) {
-				case Notification.ADD:
-				{
+				case Notification.ADD: {
 					Category cat = (Category) msg.getNewValue();
 					addCategory(cat, writer, true);
+					break;
 				}
-				case Notification.ADD_MANY:
-				{
+				case Notification.ADD_MANY: {
 					@SuppressWarnings("unchecked")
-					List<Project> projects = (List<Project>) msg.getNewValue();
-					for (Project p : projects) {
-						addProject(p, writer, true);
+					List<Category> categories = (List<Category>) msg
+							.getNewValue();
+					for (Category p : categories) {
+						addCategory(p, writer, true);
 					}
-				}	
-				case Notification.REMOVE:
-				{
+					break;
+				}
+				case Notification.REMOVE: {
 					Category cat = (Category) msg.getNewValue();
 					removeElement(cat, true);
+					break;
 				}
-				case Notification.REMOVE_MANY:
-				{
+				case Notification.REMOVE_MANY: {
 					@SuppressWarnings("unchecked")
-					List<Category> projects = (List<Category>) msg.getNewValue();
-					removeElements(true, projects.toArray(new FileElement[projects.size()]));
+					List<Category> categories = (List<Category>) msg
+							.getNewValue();
+					removeElements(true,
+							categories.toArray(new FileElement[categories
+									.size()]));
+					break;
 				}
-				
+				case Notification.SET: {
+
+					Project project = (Project) msg.getNotifier();
+					removeElement(project, false);
+					addProject(project, writer, false);
+					break;
+				}
+
 				} // end of switch
 			} catch (Exception e) {
 				e.printStackTrace();
 				throw new RuntimeException(e);
 			}
-			
+
 		}
 
 		/**
 		 * @param msg
 		 */
 		private void handleFileChanges(Notification msg) {
-			
-			if (msg.getFeatureID(File.class)!=StorynotesPackage.FILE__PROJECTS)
+
+			if (msg.getFeatureID(File.class) != StorynotesPackage.FILE__PROJECTS)
 				return;
-			
+
 			try {
 				switch (msg.getEventType()) {
-				case Notification.ADD:
-				{
+				case Notification.ADD: {
 					Project p = (Project) msg.getNewValue();
 					addProject(p, writer, true);
+					break;
 				}
-				case Notification.ADD_MANY:
-				{
+				case Notification.ADD_MANY: {
 					@SuppressWarnings("unchecked")
 					List<Project> projects = (List<Project>) msg.getNewValue();
 					for (Project p : projects) {
 						addProject(p, writer, true);
 					}
-				}	
-				case Notification.REMOVE:
-				{
+					break;
+				}
+				case Notification.REMOVE: {
 					Project p = (Project) msg.getNewValue();
 					removeElement(p, true);
+					break;
 				}
-				case Notification.REMOVE_MANY:
-				{
+				case Notification.REMOVE_MANY: {
 					@SuppressWarnings("unchecked")
 					List<Project> projects = (List<Project>) msg.getNewValue();
-					removeElements(true, projects.toArray(new FileElement[projects.size()]));
+					removeElements(true,
+							projects.toArray(new FileElement[projects.size()]));
+					break;
 				}
-				
+
 				} // end of switch
 			} catch (Exception e) {
 				e.printStackTrace();
 				throw new RuntimeException(e);
 			}
-			
+
 		}
-		
+
 		private void addTo(EObject element) {
 			if (listenedObjects.contains(element))
 				return;
