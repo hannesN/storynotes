@@ -16,6 +16,8 @@ import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.KeyAdapter;
+import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.graphics.Point;
@@ -87,6 +89,7 @@ public class NavigationBar extends StructuredViewer implements ModifyListener {
 		gd.widthHint = 150;
 		searchText.setLayoutData(gd);
 		searchText.addModifyListener(this);
+		searchText.addKeyListener(new SearchKeyListener());
 		
 	}
 
@@ -195,7 +198,7 @@ public class NavigationBar extends StructuredViewer implements ModifyListener {
 		
 		List<Document> result = mi.query(text);
 		
-		if (searchDialog==null) {
+		if (searchDialog==null || searchDialog.getShell().isDisposed() && result.size()>0) {
 			searchDialog = new SearchDialog(control.getShell(), SWT.NONE, context);
 		}
 	
@@ -206,8 +209,16 @@ public class NavigationBar extends StructuredViewer implements ModifyListener {
 		p.y += searchBounds.height;
 		p.x -= Math.max(0, (searchDialog.getShell().getBounds().width-searchBounds.width));
 		searchDialog.getShell().setLocation(p);
-		
-		System.out.println(searchDialog.getShell().getBounds());
-		
+	}
+	
+	private class SearchKeyListener extends KeyAdapter {
+		@Override
+		public void keyPressed(KeyEvent e) {
+			if (e.keyCode==SWT.ARROW_DOWN) {
+				if (searchDialog!=null && !searchDialog.getShell().isDisposed()) {
+					searchDialog.setFocus();
+				}
+			}
+		}
 	}
 }

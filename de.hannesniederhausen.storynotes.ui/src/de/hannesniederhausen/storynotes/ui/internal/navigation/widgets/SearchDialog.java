@@ -6,7 +6,6 @@ package de.hannesniederhausen.storynotes.ui.internal.navigation.widgets;
 import org.apache.lucene.document.Document;
 import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.ui.workbench.modeling.ESelectionService;
-import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.DoubleClickEvent;
 import org.eclipse.jface.viewers.IDoubleClickListener;
@@ -70,7 +69,6 @@ public class SearchDialog extends Dialog implements FocusListener,
 
 	public void open() {
 		getShell().setVisible(true);
-		setFocus();
 	}
 
 	public void setFocus() {
@@ -83,7 +81,7 @@ public class SearchDialog extends Dialog implements FocusListener,
 
 	@Override
 	public void focusLost(FocusEvent arg0) {
-		getShell().close();
+//		getShell().close();
 	}
 
 	@Override
