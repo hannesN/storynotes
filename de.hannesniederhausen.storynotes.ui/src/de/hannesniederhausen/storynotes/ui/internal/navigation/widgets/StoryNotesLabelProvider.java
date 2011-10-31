@@ -23,6 +23,12 @@ public class StoryNotesLabelProvider implements ILabelProvider {
 			return filename;
 		}
 		
+		EStructuralFeature lf = getLabelFeature(element);
+		if (lf!=null) {
+			EObject e = (EObject) element;
+			return e.eGet(lf).toString();
+		}
+		
 		return "";
 	}
 	
