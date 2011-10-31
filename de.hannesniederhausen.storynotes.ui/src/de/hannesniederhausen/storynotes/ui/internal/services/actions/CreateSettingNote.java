@@ -5,11 +5,13 @@ package de.hannesniederhausen.storynotes.ui.internal.services.actions;
 
 import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.InputDialog;
 
 import de.hannesniederhausen.storynotes.model.Category;
 import de.hannesniederhausen.storynotes.model.SettingNote;
+import de.hannesniederhausen.storynotes.model.StorynotesPackage;
 import de.hannesniederhausen.storynotes.ui.internal.actions.AbstractCreationAction;
 
 /**
@@ -37,7 +39,9 @@ public class CreateSettingNote extends AbstractCreationAction {
 			
 			SettingNote note = getModelProviderService().getModelFactory().createSettingNote();
 			note.setName(name);
-			cat.getNotes().add(note);
+			
+			AddCommand cmd = new AddCommand(getEditingDomain(), cat, StorynotesPackage.Literals.CATEGORY__NOTES, note);
+			getEditingDomain().getCommandStack().execute(cmd);
 			
 			getSelectionService().setSelection(note);
 		}

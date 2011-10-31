@@ -5,10 +5,12 @@ package de.hannesniederhausen.storynotes.ui.internal.services.actions;
 
 import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.edit.command.AddCommand;
 
 import de.hannesniederhausen.storynotes.model.Category;
 import de.hannesniederhausen.storynotes.model.PersonCategory;
 import de.hannesniederhausen.storynotes.model.Project;
+import de.hannesniederhausen.storynotes.model.StorynotesPackage;
 import de.hannesniederhausen.storynotes.ui.internal.actions.AbstractCreationAction;
 
 /**
@@ -43,7 +45,9 @@ public class CreatePersonCategoryAction extends AbstractCreationAction {
 		Category c = getModelProviderService().getModelFactory()
 				.createPersonCategory();
 		c.setName(PERSON_NAME);
-		project.getCategories().add(c);
+		
+		AddCommand cmd = new AddCommand(getEditingDomain(), project, StorynotesPackage.Literals.PROJECT__CATEGORIES, c);
+		getEditingDomain().getCommandStack().execute(cmd);
 
 		getSelectionService().setSelection(c);
 

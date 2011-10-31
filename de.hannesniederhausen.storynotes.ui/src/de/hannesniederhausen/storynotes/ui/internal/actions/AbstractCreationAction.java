@@ -6,6 +6,7 @@ package de.hannesniederhausen.storynotes.ui.internal.actions;
 import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.ui.workbench.modeling.ESelectionService;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.jface.action.Action;
 import org.eclipse.swt.widgets.Shell;
 
@@ -39,6 +40,17 @@ public class AbstractCreationAction extends Action {
 	
 	public void setParentElement(EObject parentElement) {
 		this.parentElement = parentElement;
+	}
+	
+	/**
+	 * @return the context
+	 */
+	protected IEclipseContext getContext() {
+		return context;
+	}
+	
+	protected EditingDomain getEditingDomain() {
+		return context.get(EditingDomain.class);
 	}
 	
 	protected ESelectionService getSelectionService() {

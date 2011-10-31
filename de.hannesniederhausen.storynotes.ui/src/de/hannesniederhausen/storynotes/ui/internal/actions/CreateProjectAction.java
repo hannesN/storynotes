@@ -3,13 +3,13 @@
  */
 package de.hannesniederhausen.storynotes.ui.internal.actions;
 
-import org.eclipse.e4.core.contexts.IEclipseContext;
-import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.InputDialog;
 
 import de.hannesniederhausen.storynotes.model.File;
 import de.hannesniederhausen.storynotes.model.Project;
+import de.hannesniederhausen.storynotes.model.StorynotesPackage;
 
 
 /**
@@ -37,7 +37,10 @@ public class CreateProjectAction extends AbstractCreationAction {
 			
 			Project p = getModelProviderService().getModelFactory().createProject();
 			p.setName(name);
-			file.getProjects().add(p);
+			
+			
+			AddCommand cmd = new AddCommand(getEditingDomain(), file, StorynotesPackage.Literals.FILE__PROJECTS, p);
+			getEditingDomain().getCommandStack().execute(cmd);
 			
 			getSelectionService().setSelection(p);
 			

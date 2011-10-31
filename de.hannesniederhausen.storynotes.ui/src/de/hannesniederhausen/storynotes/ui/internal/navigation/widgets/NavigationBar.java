@@ -10,7 +10,11 @@ import org.apache.lucene.document.Document;
 import org.eclipse.core.databinding.DataBindingContext;
 import org.eclipse.core.databinding.observable.value.IObservableValue;
 import org.eclipse.e4.core.contexts.IEclipseContext;
+import org.eclipse.e4.ui.workbench.modeling.ESelectionService;
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.databinding.EMFProperties;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.databinding.swt.SWTObservables;
 import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.ITreeContentProvider;
@@ -49,6 +53,10 @@ public class NavigationBar extends StructuredViewer implements ModifyListener {
 	private Composite naviComp;
 
 	private SearchDialog searchDialog;
+
+	private EObject currentInputParent;
+	
+	private InputAdapter inputAdapter = new InputAdapter();
 	
 	public NavigationBar(Composite parent) {
 		init(parent);
@@ -149,6 +157,10 @@ public class NavigationBar extends StructuredViewer implements ModifyListener {
 			return;
 		}
 		
+		if (currentInputParent!=null) {
+				currentInputParent.eAdapters().remove(inputAdapter);
+		}
+		
 		for (Control c : naviComp.getChildren()) {
 			c.dispose();
 		}
@@ -159,6 +171,11 @@ public class NavigationBar extends StructuredViewer implements ModifyListener {
 		bindingContext = new DataBindingContext();
 		
 		IStructuredContentProvider cp = (IStructuredContentProvider) getContentProvider();
+		
+		currentInputParent = ((EObject) getInput()).eContainer();
+		if (currentInputParent!=null)
+			currentInputParent.eAdapters().add(inputAdapter);
+		
 		Object[] elements = cp.getElements(getInput());
 		
 		StoryNotesLabelProvider lp = (StoryNotesLabelProvider) getLabelProvider();
@@ -209,6 +226,18 @@ public class NavigationBar extends StructuredViewer implements ModifyListener {
 		p.y += searchBounds.height;
 		p.x -= Math.max(0, (searchDialog.getShell().getBounds().width-searchBounds.width));
 		searchDialog.getShell().setLocation(p);
+	}
+	
+	private class InputAdapter extends AdapterImpl {
+		@Override
+		public void notifyChanged(Notification msg) {
+			switch(msg.getEventType()) {
+			case Notification.REMOVE:
+			case Notification.REMOVE_MANY:
+				context.get(ESelectionService.class).setSelection(currentInputParent);
+				break;
+			}
+		}
 	}
 	
 	private class SearchKeyListener extends KeyAdapter {
