@@ -61,8 +61,10 @@ public class PlotNoteItemProvider extends FileElementItemProvider implements
 			super.getPropertyDescriptors(object);
 
 			addRefIdPropertyDescriptor(object);
+			addNumberPropertyDescriptor(object);
 			addTitlePropertyDescriptor(object);
 			addDescriptionPropertyDescriptor(object);
+			addInsideOutlinePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -83,6 +85,24 @@ public class PlotNoteItemProvider extends FileElementItemProvider implements
 						"_UI_Note_refId_feature", "_UI_Note_type"),
 				StorynotesPackage.Literals.NOTE__REF_ID, true, false, false,
 				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Number feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addNumberPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_PlotNote_number_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_PlotNote_number_feature", "_UI_PlotNote_type"),
+				StorynotesPackage.Literals.PLOT_NOTE__NUMBER, true, false,
+				false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -125,6 +145,26 @@ public class PlotNoteItemProvider extends FileElementItemProvider implements
 	}
 
 	/**
+	 * This adds a property descriptor for the Inside Outline feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addInsideOutlinePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_PlotNote_insideOutline_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_PlotNote_insideOutline_feature",
+						"_UI_PlotNote_type"),
+				StorynotesPackage.Literals.PLOT_NOTE__INSIDE_OUTLINE, true,
+				false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null,
+				null));
+	}
+
+	/**
 	 * This returns PlotNote.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -161,8 +201,10 @@ public class PlotNoteItemProvider extends FileElementItemProvider implements
 
 		switch (notification.getFeatureID(PlotNote.class)) {
 		case StorynotesPackage.PLOT_NOTE__REF_ID:
+		case StorynotesPackage.PLOT_NOTE__NUMBER:
 		case StorynotesPackage.PLOT_NOTE__TITLE:
 		case StorynotesPackage.PLOT_NOTE__DESCRIPTION:
+		case StorynotesPackage.PLOT_NOTE__INSIDE_OUTLINE:
 			fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), false, true));
 			return;

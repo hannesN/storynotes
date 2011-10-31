@@ -26,8 +26,10 @@ import de.hannesniederhausen.storynotes.model.StorynotesPackage;
  * The following features are implemented:
  * <ul>
  *   <li>{@link de.hannesniederhausen.storynotes.model.impl.PlotNoteImpl#getRefId <em>Ref Id</em>}</li>
+ *   <li>{@link de.hannesniederhausen.storynotes.model.impl.PlotNoteImpl#getNumber <em>Number</em>}</li>
  *   <li>{@link de.hannesniederhausen.storynotes.model.impl.PlotNoteImpl#getTitle <em>Title</em>}</li>
  *   <li>{@link de.hannesniederhausen.storynotes.model.impl.PlotNoteImpl#getDescription <em>Description</em>}</li>
+ *   <li>{@link de.hannesniederhausen.storynotes.model.impl.PlotNoteImpl#isInsideOutline <em>Inside Outline</em>}</li>
  * </ul>
  * </p>
  *
@@ -53,6 +55,26 @@ public class PlotNoteImpl extends FileElementImpl implements PlotNote {
 	 * @ordered
 	 */
 	protected String refId = REF_ID_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getNumber() <em>Number</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNumber()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String NUMBER_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getNumber() <em>Number</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNumber()
+	 * @generated
+	 * @ordered
+	 */
+	protected String number = NUMBER_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getTitle() <em>Title</em>}' attribute.
@@ -95,6 +117,26 @@ public class PlotNoteImpl extends FileElementImpl implements PlotNote {
 	protected String description = DESCRIPTION_EDEFAULT;
 
 	/**
+	 * The default value of the '{@link #isInsideOutline() <em>Inside Outline</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isInsideOutline()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean INSIDE_OUTLINE_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isInsideOutline() <em>Inside Outline</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isInsideOutline()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean insideOutline = INSIDE_OUTLINE_EDEFAULT;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -133,6 +175,28 @@ public class PlotNoteImpl extends FileElementImpl implements PlotNote {
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 					StorynotesPackage.PLOT_NOTE__REF_ID, oldRefId, refId));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getNumber() {
+		return number;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setNumber(String newNumber) {
+		String oldNumber = number;
+		number = newNumber;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					StorynotesPackage.PLOT_NOTE__NUMBER, oldNumber, number));
 	}
 
 	/**
@@ -185,15 +249,42 @@ public class PlotNoteImpl extends FileElementImpl implements PlotNote {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isInsideOutline() {
+		return insideOutline;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setInsideOutline(boolean newInsideOutline) {
+		boolean oldInsideOutline = insideOutline;
+		insideOutline = newInsideOutline;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					StorynotesPackage.PLOT_NOTE__INSIDE_OUTLINE,
+					oldInsideOutline, insideOutline));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case StorynotesPackage.PLOT_NOTE__REF_ID:
 			return getRefId();
+		case StorynotesPackage.PLOT_NOTE__NUMBER:
+			return getNumber();
 		case StorynotesPackage.PLOT_NOTE__TITLE:
 			return getTitle();
 		case StorynotesPackage.PLOT_NOTE__DESCRIPTION:
 			return getDescription();
+		case StorynotesPackage.PLOT_NOTE__INSIDE_OUTLINE:
+			return isInsideOutline();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -209,11 +300,17 @@ public class PlotNoteImpl extends FileElementImpl implements PlotNote {
 		case StorynotesPackage.PLOT_NOTE__REF_ID:
 			setRefId((String) newValue);
 			return;
+		case StorynotesPackage.PLOT_NOTE__NUMBER:
+			setNumber((String) newValue);
+			return;
 		case StorynotesPackage.PLOT_NOTE__TITLE:
 			setTitle((String) newValue);
 			return;
 		case StorynotesPackage.PLOT_NOTE__DESCRIPTION:
 			setDescription((String) newValue);
+			return;
+		case StorynotesPackage.PLOT_NOTE__INSIDE_OUTLINE:
+			setInsideOutline((Boolean) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -230,11 +327,17 @@ public class PlotNoteImpl extends FileElementImpl implements PlotNote {
 		case StorynotesPackage.PLOT_NOTE__REF_ID:
 			setRefId(REF_ID_EDEFAULT);
 			return;
+		case StorynotesPackage.PLOT_NOTE__NUMBER:
+			setNumber(NUMBER_EDEFAULT);
+			return;
 		case StorynotesPackage.PLOT_NOTE__TITLE:
 			setTitle(TITLE_EDEFAULT);
 			return;
 		case StorynotesPackage.PLOT_NOTE__DESCRIPTION:
 			setDescription(DESCRIPTION_EDEFAULT);
+			return;
+		case StorynotesPackage.PLOT_NOTE__INSIDE_OUTLINE:
+			setInsideOutline(INSIDE_OUTLINE_EDEFAULT);
 			return;
 		}
 		super.eUnset(featureID);
@@ -251,12 +354,17 @@ public class PlotNoteImpl extends FileElementImpl implements PlotNote {
 		case StorynotesPackage.PLOT_NOTE__REF_ID:
 			return REF_ID_EDEFAULT == null ? refId != null : !REF_ID_EDEFAULT
 					.equals(refId);
+		case StorynotesPackage.PLOT_NOTE__NUMBER:
+			return NUMBER_EDEFAULT == null ? number != null : !NUMBER_EDEFAULT
+					.equals(number);
 		case StorynotesPackage.PLOT_NOTE__TITLE:
 			return TITLE_EDEFAULT == null ? title != null : !TITLE_EDEFAULT
 					.equals(title);
 		case StorynotesPackage.PLOT_NOTE__DESCRIPTION:
 			return DESCRIPTION_EDEFAULT == null ? description != null
 					: !DESCRIPTION_EDEFAULT.equals(description);
+		case StorynotesPackage.PLOT_NOTE__INSIDE_OUTLINE:
+			return insideOutline != INSIDE_OUTLINE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -274,10 +382,14 @@ public class PlotNoteImpl extends FileElementImpl implements PlotNote {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (refId: ");
 		result.append(refId);
+		result.append(", number: ");
+		result.append(number);
 		result.append(", title: ");
 		result.append(title);
 		result.append(", description: ");
 		result.append(description);
+		result.append(", insideOutline: ");
+		result.append(insideOutline);
 		result.append(')');
 		return result.toString();
 	}

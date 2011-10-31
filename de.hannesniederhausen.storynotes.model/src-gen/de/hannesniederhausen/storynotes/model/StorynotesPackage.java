@@ -515,13 +515,22 @@ public interface StorynotesPackage extends EPackage {
 	int PLOT_NOTE__REF_ID = NOTE__REF_ID;
 
 	/**
+	 * The feature id for the '<em><b>Number</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLOT_NOTE__NUMBER = NOTE_FEATURE_COUNT + 0;
+
+	/**
 	 * The feature id for the '<em><b>Title</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PLOT_NOTE__TITLE = NOTE_FEATURE_COUNT + 0;
+	int PLOT_NOTE__TITLE = NOTE_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -530,7 +539,16 @@ public interface StorynotesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PLOT_NOTE__DESCRIPTION = NOTE_FEATURE_COUNT + 1;
+	int PLOT_NOTE__DESCRIPTION = NOTE_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Inside Outline</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLOT_NOTE__INSIDE_OUTLINE = NOTE_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Plot Note</em>' class.
@@ -539,7 +557,7 @@ public interface StorynotesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PLOT_NOTE_FEATURE_COUNT = NOTE_FEATURE_COUNT + 2;
+	int PLOT_NOTE_FEATURE_COUNT = NOTE_FEATURE_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link de.hannesniederhausen.storynotes.model.impl.GenericNoteImpl <em>Generic Note</em>}' class.
@@ -1136,6 +1154,17 @@ public interface StorynotesPackage extends EPackage {
 	EClass getPlotNote();
 
 	/**
+	 * Returns the meta object for the attribute '{@link de.hannesniederhausen.storynotes.model.PlotNote#getNumber <em>Number</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Number</em>'.
+	 * @see de.hannesniederhausen.storynotes.model.PlotNote#getNumber()
+	 * @see #getPlotNote()
+	 * @generated
+	 */
+	EAttribute getPlotNote_Number();
+
+	/**
 	 * Returns the meta object for the attribute '{@link de.hannesniederhausen.storynotes.model.PlotNote#getTitle <em>Title</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1156,6 +1185,17 @@ public interface StorynotesPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getPlotNote_Description();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.hannesniederhausen.storynotes.model.PlotNote#isInsideOutline <em>Inside Outline</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Inside Outline</em>'.
+	 * @see de.hannesniederhausen.storynotes.model.PlotNote#isInsideOutline()
+	 * @see #getPlotNote()
+	 * @generated
+	 */
+	EAttribute getPlotNote_InsideOutline();
 
 	/**
 	 * Returns the meta object for class '{@link de.hannesniederhausen.storynotes.model.GenericNote <em>Generic Note</em>}'.
@@ -1537,6 +1577,14 @@ public interface StorynotesPackage extends EPackage {
 		EClass PLOT_NOTE = eINSTANCE.getPlotNote();
 
 		/**
+		 * The meta object literal for the '<em><b>Number</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PLOT_NOTE__NUMBER = eINSTANCE.getPlotNote_Number();
+
+		/**
 		 * The meta object literal for the '<em><b>Title</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1551,6 +1599,15 @@ public interface StorynotesPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PLOT_NOTE__DESCRIPTION = eINSTANCE.getPlotNote_Description();
+
+		/**
+		 * The meta object literal for the '<em><b>Inside Outline</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PLOT_NOTE__INSIDE_OUTLINE = eINSTANCE
+				.getPlotNote_InsideOutline();
 
 		/**
 		 * The meta object literal for the '{@link de.hannesniederhausen.storynotes.model.impl.GenericNoteImpl <em>Generic Note</em>}' class.

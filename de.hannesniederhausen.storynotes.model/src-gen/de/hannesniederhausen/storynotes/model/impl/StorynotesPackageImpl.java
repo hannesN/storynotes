@@ -500,7 +500,7 @@ public class StorynotesPackageImpl extends EPackageImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPlotNote_Title() {
+	public EAttribute getPlotNote_Number() {
 		return (EAttribute) plotNoteEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -509,8 +509,26 @@ public class StorynotesPackageImpl extends EPackageImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPlotNote_Description() {
+	public EAttribute getPlotNote_Title() {
 		return (EAttribute) plotNoteEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPlotNote_Description() {
+		return (EAttribute) plotNoteEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPlotNote_InsideOutline() {
+		return (EAttribute) plotNoteEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -646,8 +664,10 @@ public class StorynotesPackageImpl extends EPackageImpl implements
 		createEAttribute(settingNoteEClass, SETTING_NOTE__DESCRIPTION);
 
 		plotNoteEClass = createEClass(PLOT_NOTE);
+		createEAttribute(plotNoteEClass, PLOT_NOTE__NUMBER);
 		createEAttribute(plotNoteEClass, PLOT_NOTE__TITLE);
 		createEAttribute(plotNoteEClass, PLOT_NOTE__DESCRIPTION);
+		createEAttribute(plotNoteEClass, PLOT_NOTE__INSIDE_OUTLINE);
 
 		genericNoteEClass = createEClass(GENERIC_NOTE);
 		createEAttribute(genericNoteEClass, GENERIC_NOTE__TITLE);
@@ -828,12 +848,20 @@ public class StorynotesPackageImpl extends EPackageImpl implements
 
 		initEClass(plotNoteEClass, PlotNote.class, "PlotNote", !IS_ABSTRACT,
 				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getPlotNote_Number(), ecorePackage.getEString(),
+				"number", null, 0, 1, PlotNote.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPlotNote_Title(), ecorePackage.getEString(), "title",
 				null, 0, 1, PlotNote.class, !IS_TRANSIENT, !IS_VOLATILE,
 				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
 		initEAttribute(getPlotNote_Description(), ecorePackage.getEString(),
 				"description", null, 1, 1, PlotNote.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPlotNote_InsideOutline(), ecorePackage.getEBoolean(),
+				"insideOutline", "false", 0, 1, PlotNote.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
 
