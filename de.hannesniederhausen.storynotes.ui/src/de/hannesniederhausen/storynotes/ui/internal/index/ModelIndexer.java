@@ -105,13 +105,6 @@ public class ModelIndexer {
 			for (Project p : file.getProjects()) {
 				addProject(p, writer, true);
 			}
-
-			IndexReader reader = writer.getReader();
-			int nDocs = reader.numDocs();
-			for (int i = 0; i < nDocs; i++) {
-				System.out.println("d=" + reader.document(i));
-			}
-
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);
