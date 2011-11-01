@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Storynotes Export Plug-in
+Bundle-SymbolicName: de.hannesniederhausen.storynotes.export;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Require-Bundle: de.hannesniederhausen.storynotes.model;bundle-version="1.0.0",
+ javax.inject;bundle-version="1.0.0",
+ org.eclipse.e4.core.di,
+ org.eclipse.e4.ui.workbench

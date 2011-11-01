@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ASCII"?>
+<fragment:ModelFragments xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:commands="http://www.eclipse.org/ui/2010/UIModel/application/commands" xmlns:fragment="http://www.eclipse.org/ui/2010/UIModel/fragment" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_0w9_MO0REeCwzZCkZV1Luw">
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_M3_CgO0SEeCwzZCkZV1Luw" featurename="commands" parentElementId="de.hannesniederhausen.storynotes.application">
+    <elements xsi:type="commands:Command" xmi:id="_sssxUO0SEeCwzZCkZV1Luw" elementId="de.hannesniederhausen.storynotes.export" commandName="Export"/>
+  </fragments>
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_CGYEoO0TEeCwzZCkZV1Luw" featurename="handlers" parentElementId="de.hannesniederhausen.storynotes.application">
+    <elements xsi:type="commands:Handler" xmi:id="_Fr8dIO0TEeCwzZCkZV1Luw" elementId="de.hannesniederhausen.storynotes.handler.export" contributionURI="platform:/plugin/de.hannesniederhausen.storynotes.export/de.hannesniederhausen.storynotes.export.internal.handler.ExportHandler" command="_sssxUO0SEeCwzZCkZV1Luw"/>
+  </fragments>
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_7JxXgO0VEeCwzZCkZV1Luw" featurename="children" parentElementId="menu.file" positionInList="before:menu.file.exit">
+    <elements xsi:type="menu:MenuSeparator" xmi:id="_csuf8ASzEeGxfbN_I6b4Aw"/>
+    <elements xsi:type="menu:HandledMenuItem" xmi:id="_f4FBoASzEeGxfbN_I6b4Aw" label="Export" mnemonics="x" command="_sssxUO0SEeCwzZCkZV1Luw"/>
+    <elements xsi:type="menu:MenuSeparator" xmi:id="_dSrFoASzEeGxfbN_I6b4Aw"/>
+  </fragments>
+</fragment:ModelFragments>
