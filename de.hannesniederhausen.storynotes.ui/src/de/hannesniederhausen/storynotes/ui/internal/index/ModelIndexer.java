@@ -16,7 +16,6 @@ import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
 import org.apache.lucene.index.CorruptIndexException;
-import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.index.IndexWriter;
 import org.apache.lucene.index.StaleReaderException;
 import org.apache.lucene.index.Term;
@@ -386,13 +385,13 @@ public class ModelIndexer {
 					break;
 				}
 				case Notification.REMOVE: {
-					Note note = (Note) msg.getNewValue();
+					Note note = (Note) msg.getOldValue();
 					removeElement(note, true);
 					break;
 				}
 				case Notification.REMOVE_MANY: {
 					@SuppressWarnings("unchecked")
-					List<Note> notes = (List<Note>) msg.getNewValue();
+					List<Note> notes = (List<Note>) msg.getOldValue();
 					removeElements(true,
 							notes.toArray(new FileElement[notes.size()]));
 					break;
@@ -431,14 +430,14 @@ public class ModelIndexer {
 					break;
 				}
 				case Notification.REMOVE: {
-					Category cat = (Category) msg.getNewValue();
+					Category cat = (Category) msg.getOldValue();
 					removeElement(cat, true);
 					break;
 				}
 				case Notification.REMOVE_MANY: {
 					@SuppressWarnings("unchecked")
 					List<Category> categories = (List<Category>) msg
-							.getNewValue();
+							.getOldValue();
 					removeElements(true,
 							categories.toArray(new FileElement[categories
 									.size()]));
