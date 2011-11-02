@@ -13,10 +13,10 @@ import de.hannesniederhausen.storynotes.model.PlotCategory;
 import de.hannesniederhausen.storynotes.model.PlotNote;
 import de.hannesniederhausen.storynotes.ui.internal.services.actions.CreatePlotCategoryAction;
 import de.hannesniederhausen.storynotes.ui.internal.services.actions.CreatePlotNote;
+import de.hannesniederhausen.storynotes.ui.internal.services.ui.PlotCategoryInputMask;
 import de.hannesniederhausen.storynotes.ui.internal.services.ui.PlotNoteInputMask;
 import de.hannesniederhausen.storynotes.ui.services.ICategoryProviderService;
 import de.hannesniederhausen.storynotes.ui.views.InputMask;
-import de.hannesniederhausen.storynotes.ui.views.category.CategoryInputMask;
 
 /**
  * @author Hannes Niederhausen
@@ -26,7 +26,7 @@ public class PlotCategoryProvider implements ICategoryProviderService {
 
 	@Override
 	public Class<? extends InputMask> getCategoryInputMaskClass() {
-		return CategoryInputMask.class;
+		return PlotCategoryInputMask.class;
 	}
 
 	@Override
