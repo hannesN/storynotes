@@ -1,7 +1,7 @@
 /**
  * 
  */
-package de.hannesniederhausen.storynotes.ui.views.category;
+package de.hannesniederhausen.storynotes.ui.internal.services.ui;
 
 import java.util.Arrays;
 
@@ -31,8 +31,8 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Table;
 
-import de.hannesniederhausen.storynotes.model.GenericCategory;
-import de.hannesniederhausen.storynotes.model.GenericNote;
+import de.hannesniederhausen.storynotes.model.SettingCategory;
+import de.hannesniederhausen.storynotes.model.SettingNote;
 import de.hannesniederhausen.storynotes.model.StorynotesPackage;
 import de.hannesniederhausen.storynotes.ui.views.InputMask;
 
@@ -42,14 +42,12 @@ import de.hannesniederhausen.storynotes.ui.views.InputMask;
  * @author Hannes Niederhausen
  * 
  */
-public class CategoryInputMask extends InputMask implements IDoubleClickListener {
+public class SettingCategoryInputMask extends InputMask implements IDoubleClickListener {
 	private DataBindingContext m_bindingContext;
 
-	private GenericCategory category;
+	private SettingCategory category;
 	private Table table;
 	private CheckboxTableViewer checkboxTableViewer;
-
-	private Label label;
 
 	
 	/**
@@ -60,8 +58,8 @@ public class CategoryInputMask extends InputMask implements IDoubleClickListener
 		Composite comp = new Composite(parent, SWT.NONE);
 		comp.setLayout(new GridLayout(1, false));
 
-		label = new Label(comp, SWT.NONE);
-		label.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+		Label lblPlotNotes = new Label(comp, SWT.NONE);
+		lblPlotNotes.setText("Plot Notes:");
 		
 		checkboxTableViewer = CheckboxTableViewer.newCheckList(comp, SWT.BORDER
 				| SWT.FULL_SELECTION);
@@ -73,7 +71,7 @@ public class CategoryInputMask extends InputMask implements IDoubleClickListener
 		table.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1));
 		
 		Button deleteButton = new Button(comp, SWT.PUSH);
-		deleteButton.setText("Delete Selected Notes");
+		deleteButton.setText("Delete Selected Settings");
 		deleteButton.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
@@ -101,8 +99,7 @@ public class CategoryInputMask extends InputMask implements IDoubleClickListener
 
 		}
 
-		category = (GenericCategory) model;
-		label.setText(category.getName());
+		category = (SettingCategory) model;
 
 		m_bindingContext = initDataBindings();
 	}
@@ -112,7 +109,7 @@ public class CategoryInputMask extends InputMask implements IDoubleClickListener
 		//
 		ObservableListContentProvider listContentProvider = new ObservableListContentProvider();
 		
-		IObservableMap observeMap = PojoObservables.observeMap(listContentProvider.getKnownElements(), GenericNote.class, "title");
+		IObservableMap observeMap = PojoObservables.observeMap(listContentProvider.getKnownElements(), SettingNote.class, "name");
 		checkboxTableViewer.setLabelProvider(new ObservableMapLabelProvider(observeMap));
 		checkboxTableViewer.setContentProvider(listContentProvider);
 

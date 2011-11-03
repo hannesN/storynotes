@@ -119,7 +119,6 @@ public class PlotCategoryInputMask extends InputMask implements IDoubleClickList
 		DataBindingContext bindingContext = new DataBindingContext();
 		//
 		ObservableListContentProvider listContentProvider = new ObservableListContentProvider();
-		checkboxTableViewer.setContentProvider(listContentProvider);
 		//
 		IObservableMap[] observeMaps = EMFObservables.observeMaps(
 				listContentProvider.getKnownElements(),
@@ -128,6 +127,8 @@ public class PlotCategoryInputMask extends InputMask implements IDoubleClickList
 						Literals.PLOT_NOTE__INSIDE_OUTLINE });
 		checkboxTableViewer.setLabelProvider(new ObservableMapLabelProvider(
 				observeMaps));
+		//
+		checkboxTableViewer.setContentProvider(listContentProvider);
 		//
 		IObservableList modelNotesObserveList = EMFObservables.observeList(
 				Realm.getDefault(), model, Literals.CATEGORY__NOTES);

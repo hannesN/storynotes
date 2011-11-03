@@ -31,13 +31,6 @@
          unpack="false"/>
 
    <plugin
-         id="de.hannesniederhausen.storynotes.model.edit"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="de.hannesniederhausen.storynotes.export"
          download-size="0"
          install-size="0"

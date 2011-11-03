@@ -28,6 +28,7 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Table;
 
 import de.hannesniederhausen.storynotes.model.PersonCategory;
@@ -56,6 +57,9 @@ public class PersonCategoryInputMask extends InputMask implements IDoubleClickLi
 	public void createControl(Composite parent) {
 		Composite comp = new Composite(parent, SWT.NONE);
 		comp.setLayout(new GridLayout(1, false));
+		
+		Label lblPlotNotes = new Label(comp, SWT.NONE);
+		lblPlotNotes.setText("Person Notes:");
 
 		checkboxTableViewer = CheckboxTableViewer.newCheckList(comp, SWT.BORDER
 				| SWT.FULL_SELECTION);

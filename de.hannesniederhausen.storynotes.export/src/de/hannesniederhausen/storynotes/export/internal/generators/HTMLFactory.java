@@ -18,7 +18,6 @@ public class HTMLFactory {
 	public static String getHTML(Project p) {
 		String textile = new TextileFactory().getTextile(p);
 
-		System.out.println(textile);
 		MarkupParser markupParser = new MarkupParser();
 		markupParser.setMarkupLanguage(new TextileLanguage());
 		
