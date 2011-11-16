@@ -12,7 +12,7 @@
     </trimBars>
   </children>
   <handlers xmi:id="_3nxee6AIEeCMHLQZFU1fxg" contributionURI="platform:/plugin/de.hannesniederhausen.storynotes.application/de.hannesniederhausen.storynotes.application.handlers.QuitHandler" command="_3nxeeqAIEeCMHLQZFU1fxg"/>
-  <bindingTables xmi:id="_3nxefKAIEeCMHLQZFU1fxg" bindingContext="_3nxecaAIEeCMHLQZFU1fxg">
+  <bindingTables xmi:id="_3nxefKAIEeCMHLQZFU1fxg" elementId="de.hannesniederhausen.storynotes.binding" bindingContext="_3nxecaAIEeCMHLQZFU1fxg">
     <bindings xmi:id="_3nxefaAIEeCMHLQZFU1fxg" keySequence="Ctrl+Q" command="_3nxeeqAIEeCMHLQZFU1fxg"/>
   </bindingTables>
   <rootContext xmi:id="_3nxecaAIEeCMHLQZFU1fxg" elementId="org.eclipse.ui.contexts.dialogAndWindow" name="In Dialog and Windows">
