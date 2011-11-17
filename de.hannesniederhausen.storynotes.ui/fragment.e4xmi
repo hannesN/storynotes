@@ -23,7 +23,7 @@
   </fragments>
   <fragments xsi:type="fragment:StringModelFragment" xmi:id="_V6igQBCBEeGLCqluGJS8JQ" featurename="bindings" parentElementId="de.hannesniederhausen.storynotes.binding" positionInList="">
     <elements xsi:type="commands:KeyBinding" xmi:id="_2gkXQBCBEeGLCqluGJS8JQ" elementId="undo.keybinding" keySequence="CTRL+Z" command="_sssxUO0SEeCwzZCkZV1Luw"/>
-    <elements xsi:type="commands:KeyBinding" xmi:id="_f0yGYBCCEeGLCqluGJS8JQ" elementId="redo.binding" keySequence="CTRL+y" command="_xBu34O0SEeCwzZCkZV1Luw"/>
+    <elements xsi:type="commands:KeyBinding" xmi:id="_f0yGYBCCEeGLCqluGJS8JQ" elementId="redo.binding" keySequence="CTRL+Y" command="_xBu34O0SEeCwzZCkZV1Luw"/>
     <elements xsi:type="commands:KeyBinding" xmi:id="_sV6rsBCCEeGLCqluGJS8JQ" elementId="save.binding" keySequence="CTRL+S" command="_1zkCMPKDEeCH6_Gd3XQLMg"/>
   </fragments>
 </fragment:ModelFragments>
