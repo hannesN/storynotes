@@ -1,8 +1,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <artifactId>de.hannesniederhausen.storynotes_feature</artifactId>
-  <packaging>eclipse-feature</packaging>
-  <name>Storynotes Main Feature</name>
+  <artifactId>de.hannesniederhausen.storynotes.export</artifactId>
+  <packaging>eclipse-plugin</packaging>
+  <name>Storynotes Product</name>
   <parent>
   	<groupId>de.hannesniederhausen.storynotes</groupId>
   	<artifactId>releng</artifactId>
